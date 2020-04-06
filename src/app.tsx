@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   color: white;
 `;
 
-const App = () => {
+const App = ({state}) => {
   return <Wrapper>It, work styled component1</Wrapper>
 }
 
