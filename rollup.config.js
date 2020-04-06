@@ -1,7 +1,7 @@
 import path from 'path';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import replace from '@rollup/plugin-replace';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -12,9 +12,8 @@ import filesize from 'rollup-plugin-filesize';
 import progress from 'rollup-plugin-progress';
 import { uglify } from 'rollup-plugin-uglify';
 import { name } from './package.json';
-import json from '@rollup/plugin-json';
 
-const isProd = false;
+const isProd = process.env.BUILD === 'production';
 process.env.NODE_ENV = isProd ? 'production' : 'development';
 process.env.BABEL_ENV = isProd ? 'production' : 'development';
 
@@ -93,88 +92,6 @@ const reactIsNamedExports = [
   'isValidElementType',
   'typeOf',
 ];
-
-const extensions = [...DEFAULT_EXTENSIONS, '.jsx', '.ts', '.tsx'];
-
-const commonExternal = ['react', 'react-is', 'styled-components'];
-
-const commonPlugins = [
-  commonjs({
-    include: 'node_modules/**',
-    exclude: ['node_modules/process-es6/**'],
-    extensions,
-    namedExports: {
-      react: reactNamedExports,
-      'react-dom': reactDOMNamedExports,
-      'react-is': reactIsNamedExports,
-    },
-  }),
-  resolve({
-    extensions,
-    preferBuiltins: true,
-  }),
-  babel({
-    extensions,
-    exclude: 'node_modules/**',
-  }),
-  json({
-    compact: true,
-    namedExports: false,
-  }),
-  isProd &&
-    progress({
-      clearLine: false,
-    }),
-  isProd && filesize(),
-];
-
-const commonOptions = {
-  cache: true,
-  treeshake: false,
-};
-
-const clientConfig = {
-  ...commonOptions,
-  input: 'src/index.tsx',
-  external: isProd && [...commonExternal, 'react-dom', 'prop-types'],
-  output: {
-    name: pkg.name,
-    file: `dist/public/${pkg.name}.js`,
-    format: 'iife',
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-      'prop-types': 'PropTypes',
-      'styled-components': 'styled',
-    },
-  },
-  plugins: [
-    typescript({ check: isProd }),
-    ...commonPlugins,
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
-    }),
-    isProd && visualizer(),
-    isProd && uglify(),
-  ],
-  watch: {
-    exclude: 'node_modules/**',
-    include: 'src/**',
-  },
-};
-
-// SSR Rendering frontend application file bundle
-const appConfig = {
-  input: 'src/app.tsx',
-  ...commonOptions,
-  external: [...commonExternal],
-  output: { file: 'dist/app.js', format: 'cjs', compact: true },
-  plugins: [typescript({ check: isProd, tsconfigOverride: { module: 'commonjs', jsx: 'react' } }), ...commonPlugins],
-  watch: {
-    exclude: 'node_modules/**',
-    include: 'src/**',
-  },
-};
 
 export default {
   input: 'src/index.tsx',
