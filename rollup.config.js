@@ -174,11 +174,37 @@ const appConfig = {
   },
 };
 
+const rollupBundler = (hotReload) => {
+  const watcher = rollup.watch([clientConfig, appConfig]);
+
+  watcher.on('event', (event) => {
+    // event.code can be one of:
+    //   START        — the watcher is (re)starting
+    //   BUNDLE_START — building an individual bundle
+    //   BUNDLE_END   — finished building a bundle
+    //   END          — finished building all bundles
+    //   ERROR        — encountered an error while bundling
+
+    if (event.code === 'BUNDLE_START' || event.code === 'BUNDLE_END') {
+      console.info(`${event.code}: ${event.input}`);
+    }
+    if (event.code === 'END') hotReload();
+  });
+};
+
+const runServer = () => ({
+  name: 'server-run',
+  writeBundle: ({ file }) => {
+    const bundleServerPath = require.resolve(`./${file}`);
+    require(bundleServerPath)(rollupBundler);
+  },
+});
+
 const serverConfig = {
   ...commonOptions,
   input: 'src/server.tsx',
   external: [...commonExternal, 'react-dom/server', 'express', 'path', 'http', 'reload', './app'],
-  output: { file: 'dist/server.js', format: 'cjs', compact: true },
+  output: { file: 'dist/server.js', format: 'cjs', compact: true, plugins: [runServer()] },
   plugins: [
     typescript({
       check: isProd,
@@ -192,7 +218,7 @@ const serverConfig = {
   },
 };
 
-export default [clientConfig, appConfig, serverConfig];
+export default serverConfig;
 
 // export default {
 //   input: 'src/index.tsx',

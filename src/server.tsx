@@ -47,9 +47,7 @@ app.get('/', (req, res) => {
 
   const sheet = new ServerStyleSheet()
   const jsx = sheet.collectStyles(<Application state={GLOBAL_STATE} />)
-  console.info('JSX', jsx);
   const bodyStream = sheet.interleaveWithNodeStream(reactDom.renderToNodeStream(jsx))
-  console.info('bodyStream', bodyStream);
 
   res.write(layout.head)
 
@@ -67,6 +65,21 @@ app.get('/', (req, res) => {
 
 const httpServer = http.createServer(app)
 
-httpServer.listen(port, function () {
-    console.info(`Web server listening on port ${port}`)
-  })
+const run = async bundler => {
+    try {
+      if (!isRunningServer) {
+        isRunningServer = true
+        const reloadedServer = await reload(app)
+  
+        bundler(reloadedServer.reload)
+  
+        httpServer.listen(port, function () {
+          console.info(`Web server listening on port ${port}`)
+        })
+      }
+    } catch (err) {
+      console.error(`Reload could not start, could not start server/sample app ${pkg.name}`, err)
+    }
+  }
+
+export default run

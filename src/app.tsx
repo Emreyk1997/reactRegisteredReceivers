@@ -8,7 +8,7 @@ const Wrapper = styled.section`
 `;
 
 const App = ({state}) => {
-  return <Wrapper>It, work styled component1</Wrapper>
+  return <Wrapper>It, work styled component5</Wrapper>
 }
 
 export default App;
