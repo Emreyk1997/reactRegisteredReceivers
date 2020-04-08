@@ -10,7 +10,13 @@ import filesize from 'rollup-plugin-filesize';
 import progress from 'rollup-plugin-progress';
 import json from '@rollup/plugin-json';
 import { uglify } from 'rollup-plugin-uglify';
+import rimraf from 'rimraf';
 import pkg from './package.json';
+
+import low from 'lowdb';
+import FileSync from 'lowdb/adapters/FileSync';
+import fs from 'fs';
+//import ssrBundler from './config/rollup.config.ssr' bu index.ssr.tsx
 
 const isProd = process.env.BUILD === 'production';
 process.env.NODE_ENV = isProd ? 'production' : 'development';
@@ -192,11 +198,125 @@ const rollupBundler = (hotReload) => {
   });
 };
 
+const rollupBuild = async () => {
+  console.log('rollUpBuild');
+  await rimraf.sync('dist');
+  const fragmentManifest = './dist/public';
+
+  if (!fs.existsSync(fragmentManifest)) {
+    await fs.mkdirSync(fragmentManifest, { recursive: true });
+  }
+
+  const adapter = new FileSync(`${fragmentManifest}/fragment.json`);
+  const db = low(adapter);
+
+  db.set('name', pkg.name).write();
+  db.set('version', pkg.version).write();
+
+  const clientSideBuild = async () => {
+    const bundle = await rollup.rollup({
+      input: clientConfig.input,
+      ...commonOptions,
+      external: [...commonExternal],
+      plugins: clientConfig.plugins,
+    });
+
+    const bundleOutput = await bundle.generate(clientConfig.output);
+
+    for (const chunkOrAsset of bundleOutput.output) {
+      if (chunkOrAsset.type === 'asset') {
+        // console.log('Asset', chunkOrAsset)
+      } else {
+        db.set(chunkOrAsset.fileName, chunkOrAsset.code).write();
+      }
+    }
+    await bundle.write(clientConfig.output);
+  };
+
+  // const ssrBuild = async () => {
+  //   const bundle = await rollup.rollup(ssrBundler.rollupInputOptions);
+
+  //   await bundle.write(ssrBundler.rollupOutputOptions);
+
+  //   const reactDomBodyStreamFile = require.resolve(`./${ssrBundler.rollupOutputOptions.file}`);
+  //   if (reactDomBodyStreamFile) {
+  //     let html;
+
+  //     const ReactDomBodyStream = require(reactDomBodyStreamFile);
+
+  //     ReactDomBodyStream.on('data', (chunk) => (html += chunk.toString()));
+
+  //     ReactDomBodyStream.on('end', () => db.set('html', `<div id="${pkg.name}-root">${html}</div>`).write());
+  //   }
+  // };
+  const ssrBuild = async () => {
+    const bundle = await rollup.rollup({
+      input: 'src/index.ssr.tsx',
+      plugins: [
+        typescript({
+          check: isProd,
+          tsconfigOverride: { module: 'commonjs', jsx: 'react' },
+        }),
+        ...commonPlugins,
+      ],
+      ...commonOptions,
+    });
+
+    await bundle.write({ name: 'ssr', file: 'dist/app.js', format: 'cjs', compact: true, sourcemap: !isProd });
+
+    const reactDomBodyStreamFile = require.resolve(`./dist/app.js`);
+    if (reactDomBodyStreamFile) {
+      let html;
+
+      const ReactDomBodyStream = require(reactDomBodyStreamFile);
+
+      ReactDomBodyStream.on('data', (chunk) => (html += chunk.toString()));
+
+      ReactDomBodyStream.on('end', () => db.set('html', `<div id="${pkg.name}-root">${html}</div>`).write());
+    }
+  };
+
+  const serverBuild = async () => {
+    const bundle = await rollup.rollup({
+      input: serverConfig.input,
+      ...commonOptions,
+      external: [...commonExternal],
+      plugins: serverConfig.plugins,
+    });
+    //await bundle.write(serverConfig.output);
+    await bundle.write({ file: 'dist/server.js', format: 'cjs', compact: true });
+  };
+
+  await Promise.all([clientSideBuild(), ssrBuild()]);
+  await serverBuild();
+  //   const bundleOutput = await bundle.generate(clientBundler.rollupOutputOptions);
+
+  //   for (const chunkOrAsset of bundleOutput.output) {
+  //     if (chunkOrAsset.type === 'asset') {
+  //       // console.log('Asset', chunkOrAsset)
+  //     } else {
+  //       db.set(chunkOrAsset.fileName, chunkOrAsset.code).write();
+  //     }
+  //   }
+
+  //   await bundle.write(clientBundler.rollupOutputOptions);
+  // };
+};
+
 const runServer = () => ({
   name: 'server-run',
   writeBundle: ({ file }) => {
     const bundleServerPath = require.resolve(`./${file}`);
-    require(bundleServerPath)(rollupBundler);
+    console.log('Run Server');
+    rollupBuild();
+
+    //const { run, build } = require(bundleServerPath);
+    // if (!isProd) {
+    //   build(rollupBuild);
+    //   //run(rollupBundler);
+    // } else {
+    //   build(rollupBuild);
+    // }
   },
 });
 

@@ -69,9 +69,9 @@ const run = async bundler => {
     try {
       if (!isRunningServer) {
         isRunningServer = true
-        const reloadedServer = await reload(app)
+        //const reloadedServer = await reload(app)
   
-        bundler(reloadedServer.reload)
+        //bundler(reloadedServer.reload)
   
         httpServer.listen(port, function () {
           console.info(`Web server listening on port ${port}`)
