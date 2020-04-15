@@ -11,9 +11,10 @@
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "dev": "rollup -cw --environment BUILD:development",
-    "start": "yarn run build && nodemon"
+    "start": "yarn run build && node dist/server"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "lowdb": "^1.0.0",
     "react": "^16.13.1",

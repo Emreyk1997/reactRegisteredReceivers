@@ -2,4 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
 
-ReactDOM.hydrate(<App state={GLOBAL_STATE}/>, document.getElementById('root'));
+const GLOBAL_STATE = {}
+
+ReactDOM.hydrate(<App state={'GLOBAL_STATE'}/>, document.getElementById('root'));

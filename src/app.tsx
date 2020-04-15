@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Counter from './components/counter'
 
 const Wrapper = styled.section`
   padding: 4em;
@@ -8,7 +9,12 @@ const Wrapper = styled.section`
 `;
 
 const App = ({state}) => {
-  return <Wrapper>It, work styled component5</Wrapper>
+  return (
+    <div>
+      <Wrapper>It, work styled component5</Wrapper>
+      {/* <Counter /> */}
+    </div>
+  )
 }
 
 export default App;

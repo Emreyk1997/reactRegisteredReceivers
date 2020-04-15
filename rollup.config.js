@@ -102,6 +102,8 @@ const extensions = [...DEFAULT_EXTENSIONS, '.jsx', '.ts', '.tsx'];
 
 const commonExternal = ['react', 'react-is', 'styled-components'];
 
+let firstTimeRun = true;
+
 const commonPlugins = [
   commonjs({
     include: 'node_modules/**',
@@ -169,10 +171,10 @@ const clientConfig = {
 
 // SSR Rendering frontend application file bundle
 const appConfig = {
-  input: 'src/app.tsx',
+  input: 'src/index.ssr.tsx',
   ...commonOptions,
   external: [...commonExternal],
-  output: { file: 'dist/app.js', format: 'cjs', compact: true },
+  output: { name: 'ssr', file: 'dist/app.js', format: 'cjs', compact: true, sourcemap: !isProd },
   plugins: [typescript({ check: isProd, tsconfigOverride: { module: 'commonjs', jsx: 'react' } }), ...commonPlugins],
   watch: {
     exclude: 'node_modules/**',
@@ -180,7 +182,9 @@ const appConfig = {
   },
 };
 
-const rollupBundler = (hotReload) => {
+const watch = async (hotReload) => {
+  await rimraf.sync('dist');
+  console.log('WATCH');
   const watcher = rollup.watch([clientConfig, appConfig]);
 
   watcher.on('event', (event) => {
@@ -199,7 +203,6 @@ const rollupBundler = (hotReload) => {
 };
 
 const rollupBuild = async () => {
-  console.log('rollUpBuild');
   await rimraf.sync('dist');
   const fragmentManifest = './dist/public';
 
@@ -217,7 +220,7 @@ const rollupBuild = async () => {
     const bundle = await rollup.rollup({
       input: clientConfig.input,
       ...commonOptions,
-      external: [...commonExternal],
+      external: clientConfig.external,
       plugins: clientConfig.plugins,
     });
 
@@ -277,10 +280,11 @@ const rollupBuild = async () => {
   };
 
   const serverBuild = async () => {
+    console.log('serverBuild');
     const bundle = await rollup.rollup({
       input: serverConfig.input,
       ...commonOptions,
-      external: [...commonExternal],
+      external: serverConfig.external,
       plugins: serverConfig.plugins,
     });
     //await bundle.write(serverConfig.output);
@@ -307,8 +311,9 @@ const runServer = () => ({
   name: 'server-run',
   writeBundle: ({ file }) => {
     const bundleServerPath = require.resolve(`./${file}`);
-    console.log('Run Server');
-    rollupBuild();
+    console.log('Run Server', file);
+    isProd ? rollupBuild() : require(bundleServerPath)(watch());
+    firstTimeRun = false;
 
     //const { run, build } = require(bundleServerPath);
     // if (!isProd) {
@@ -322,9 +327,9 @@ const runServer = () => ({
 
 const serverConfig = {
   ...commonOptions,
-  input: 'src/server.tsx',
+  input: isProd ? 'src/prodServer.tsx' : 'src/devServer.tsx',
   external: [...commonExternal, 'react-dom/server', 'express', 'path', 'http', 'reload', './app'],
-  output: { file: 'dist/server.js', format: 'cjs', compact: true, plugins: [runServer()] },
+  output: { file: 'dist/server.js', format: 'cjs', compact: true, plugins: firstTimeRun ? [runServer()] : [] },
   plugins: [
     typescript({
       check: isProd,

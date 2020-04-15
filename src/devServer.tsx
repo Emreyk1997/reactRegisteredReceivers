@@ -66,6 +66,7 @@ app.get('/', (req, res) => {
 const httpServer = http.createServer(app)
 
 const run = async bundler => {
+  console.log('RUN');
     try {
       if (!isRunningServer) {
         isRunningServer = true
