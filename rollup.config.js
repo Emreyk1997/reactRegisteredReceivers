@@ -183,7 +183,7 @@ const appConfig = {
 };
 
 const watch = async (hotReload) => {
-  await rimraf.sync('dist');
+  // await rimraf.sync('dist');
   console.log('WATCH');
   const watcher = rollup.watch([clientConfig, appConfig]);
 
@@ -311,7 +311,7 @@ const runServer = () => ({
   name: 'server-run',
   writeBundle: ({ file }) => {
     const bundleServerPath = require.resolve(`./${file}`);
-    console.log('Run Server', file);
+    console.log('bundleServerPath', bundleServerPath);
     isProd ? rollupBuild() : require(bundleServerPath)(watch());
     firstTimeRun = false;
 
