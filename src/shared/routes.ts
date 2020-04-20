@@ -3,6 +3,10 @@ import Grid from './Grid'
 
 import { fetchPopularRepos } from './api'
 import Counter from '../components/counter'
+import {CounterView} from '../counterView';
+import {CounterViewModel} from '../counterViewModel';
+
+const model = new CounterViewModel();
 
 const routes = [
   {
@@ -17,6 +21,13 @@ const routes = [
   }, {
     path: '/counter',
     component: Counter,
+    exact: true
+
+  },
+  {
+    path: '/counterMVVM',
+    component: CounterView,
+    model:model,
     exact: true
 
   }

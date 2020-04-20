@@ -35,7 +35,10 @@ const Navbar = () => {
         </li>
       ))}
       <li>
-        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/counter`}>
+        {/* <NavLink activeStyle={{fontWeight: 'bold'}} to={`/counter`}>
+          Counter
+        </NavLink> */}
+        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/counterMVVM`}>
           Counter
         </NavLink>
       </li>
