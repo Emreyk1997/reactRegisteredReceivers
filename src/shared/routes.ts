@@ -3,6 +3,8 @@ import Grid from './Grid'
 
 import { fetchPopularRepos } from './api'
 import Counter from '../components/counter'
+import CounterFlux from '../components/fluxCounter'
+
 
 const routes = [
   {
@@ -17,6 +19,11 @@ const routes = [
   }, {
     path: '/counter',
     component: Counter,
+    exact: true
+
+  }, {
+    path: '/counterFlux',
+    component: CounterFlux,
     exact: true
 
   }

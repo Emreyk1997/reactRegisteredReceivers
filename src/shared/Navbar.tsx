@@ -39,6 +39,11 @@ const Navbar = () => {
           Counter
         </NavLink>
       </li>
+      <li>
+        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/counterFlux`}>
+          Counter Flux
+        </NavLink>
+      </li>
     </ul>
   )
 }

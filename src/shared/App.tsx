@@ -1,5 +1,7 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
+import apolloClient from '../store';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import routes from './routes'
 import Navbar from './Navbar'
@@ -7,6 +9,7 @@ import NoMatch from './NoMatch'
 
 const App = props => (
   <>
+  <ApolloProvider client={apolloClient}>
     <Navbar />
 
     <Switch>
@@ -15,6 +18,7 @@ const App = props => (
       ))}
       <Route render={props => <NoMatch {...props} />} />
     </Switch>
+    </ApolloProvider>
   </>
 )
 
