@@ -9,6 +9,14 @@ import { renderToNodeStream } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { ServerStyleSheet } from 'styled-components'
 import serialize from 'serialize-javascript'
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloProvider } from '@apollo/react-common';
+import ReactDOM from 'react-dom';
+
+import { getDataFromTree } from "@apollo/react-ssr";
+
 
 import pkg from '../../package.json'
 import App from '../shared/App'
@@ -92,28 +100,51 @@ isProd
         const { context } = data
         // console.log('Context True/False', activeRoute.fetchInitialData);
         // console.log('DATA', context);
+        const client = new ApolloClient({
+          ssrMode: true,
+          // Remember that this is the interface the SSR server will use to connect to the
+          // API server, so we need to ensure it isn't firewalled, etc
+          link: createHttpLink({
+            uri: 'http://localhost:81',
+            credentials: 'same-origin',
+            headers: {
+              cookie: req.header('Cookie'),
+            },
+          }),
+          cache: new InMemoryCache(),
+        });
 
         const sheet = new ServerStyleSheet()
         const markup = sheet.collectStyles(
-          <StaticRouter location={req.url} context={data.context}>
-            <App />
-          </StaticRouter>
+          <ApolloProvider client={client}>
+            <StaticRouter location={req.url} context={data.context}>
+              <App />
+            </StaticRouter>
+          </ApolloProvider>
         )
 
-        const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
+        getDataFromTree(markup).then(() => {
+          // We are ready to render for real
+          const content = sheet.interleaveWithNodeStream(renderToNodeStream(markup));
+          const initialState = client.extract();
+          console.log('INITIALSTATE', initialState)
 
-        res.write(`<!DOCTYPE html>
-      <html>
-        <head>
-          <title>${pkg.name} v${pkg.version}</title>
-          <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
-        </head>
-        <body>
-          <div id="root">`)
+          res.write(`<!DOCTYPE html>
+       <html>
+         <head>
+           <title>${pkg.name} v${pkg.version}</title>
+           <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+      
+         </head>
+         <body>
+           <div id="root">
+           <script dangerouslySetInnerHTML={{
+            __html: window.__APOLLO_STATE__=${JSON.stringify(initialState).replace(/</g, '\\u003c')};,
+          }} />`)
 
-        bodyStream.on('data', chunk => res.write(chunk))
+      content.on('data', chunk => res.write(chunk))
 
-        bodyStream.on('end', () => {
+      content.on('end', () => {
           res.write(`</div>
           <script src="/reload/reload.js"></script>
           <script src="/${pkg.name}.js"></script>
@@ -122,9 +153,36 @@ isProd
           res.end()
         })
 
-        bodyStream.on('error', err => {
+        content.on('error', err => {
           console.error('react render error:', err)
         })
+        
+        });
+      //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
+
+      //   res.write(`<!DOCTYPE html>
+      // <html>
+      //   <head>
+      //     <title>${pkg.name} v${pkg.version}</title>
+      //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+      //   </head>
+      //   <body>
+      //     <div id="root">`)
+
+      //   bodyStream.on('data', chunk => res.write(chunk))
+
+      //   bodyStream.on('end', () => {
+      //     res.write(`</div>
+      //     <script src="/reload/reload.js"></script>
+      //     <script src="/${pkg.name}.js"></script>
+      //   </body>
+      // </html>`)
+      //     res.end()
+      //   })
+
+        // bodyStream.on('error', err => {
+        //   console.error('react render error:', err)
+        // })
       } catch (error) {
         next(error)
       }

@@ -48727,7 +48727,7 @@
 	      offset: -1
 	    }
 	  })[0];
-	  return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("h1", null, "Counter: ", data.counter), /*#__PURE__*/react.createElement("div", {
+	  return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("h1", null, "Counter: ", data ? data.counter : 0), /*#__PURE__*/react.createElement("div", {
 	    className: "controllers"
 	  }, /*#__PURE__*/react.createElement("button", {
 	    type: "button",

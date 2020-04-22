@@ -1,4 +1,4 @@
-'use strict';function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}var path$2=_interopDefault(require('path')),http=_interopDefault(require('http')),events=_interopDefault(require('events')),util=_interopDefault(require('util')),tty=_interopDefault(require('tty')),fs=_interopDefault(require('fs')),net=_interopDefault(require('net')),buffer=_interopDefault(require('buffer')),string_decoder=_interopDefault(require('string_decoder')),stream=_interopDefault(require('stream')),zlib=_interopDefault(require('zlib')),querystring=_interopDefault(require('querystring')),url=_interopDefault(require('url')),crypto=_interopDefault(require('crypto')),cors=_interopDefault(require('cors')),reload=_interopDefault(require('reload')),React=require('react'),React__default=_interopDefault(React),server$1=require('react-dom/server'),reactRouterDom=require('react-router-dom'),styled=require('styled-components'),styled__default=_interopDefault(styled),serialize$1=_interopDefault(require('serialize-javascript')),fetch=_interopDefault(require('isomorphic-fetch'));/*! *****************************************************************************
+'use strict';function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}var path$2=_interopDefault(require('path')),http=_interopDefault(require('http')),events=_interopDefault(require('events')),util=_interopDefault(require('util')),tty=_interopDefault(require('tty')),fs=_interopDefault(require('fs')),net=_interopDefault(require('net')),buffer=_interopDefault(require('buffer')),string_decoder=_interopDefault(require('string_decoder')),stream=_interopDefault(require('stream')),zlib=_interopDefault(require('zlib')),querystring=_interopDefault(require('querystring')),url=_interopDefault(require('url')),crypto=_interopDefault(require('crypto')),cors=_interopDefault(require('cors')),reload=_interopDefault(require('reload')),React=require('react'),React__default=_interopDefault(React),server$1=require('react-dom/server'),reactRouterDom=require('react-router-dom'),styled=require('styled-components'),styled__default=_interopDefault(styled),serialize$1=_interopDefault(require('serialize-javascript')),fetch$1=_interopDefault(require('isomorphic-fetch'));/*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy of the
@@ -19898,1636 +19898,7 @@ function toBuffer (chunk, encoding) {
     ? Buffer$b.from(chunk, encoding)
     : chunk
 }
-compression_1.filter = filter;var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-router-dom":"^5.1.2",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-var REACT_ELEMENT_TYPE;
-
-function _jsx(type, props, key, children) {
-  if (!REACT_ELEMENT_TYPE) {
-    REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol["for"] && Symbol["for"]("react.element") || 0xeac7;
-  }
-
-  var defaultProps = type && type.defaultProps;
-  var childrenLength = arguments.length - 3;
-
-  if (!props && childrenLength !== 0) {
-    props = {
-      children: void 0
-    };
-  }
-
-  if (childrenLength === 1) {
-    props.children = children;
-  } else if (childrenLength > 1) {
-    var childArray = new Array(childrenLength);
-
-    for (var i = 0; i < childrenLength; i++) {
-      childArray[i] = arguments[i + 3];
-    }
-
-    props.children = childArray;
-  }
-
-  if (props && defaultProps) {
-    for (var propName in defaultProps) {
-      if (props[propName] === void 0) {
-        props[propName] = defaultProps[propName];
-      }
-    }
-  } else if (!props) {
-    props = defaultProps || {};
-  }
-
-  return {
-    $$typeof: REACT_ELEMENT_TYPE,
-    type: type,
-    key: key === undefined ? null : '' + key,
-    ref: null,
-    props: props,
-    _owner: null
-  };
-}
-
-function _asyncIterator(iterable) {
-  var method;
-
-  if (typeof Symbol !== "undefined") {
-    if (Symbol.asyncIterator) {
-      method = iterable[Symbol.asyncIterator];
-      if (method != null) return method.call(iterable);
-    }
-
-    if (Symbol.iterator) {
-      method = iterable[Symbol.iterator];
-      if (method != null) return method.call(iterable);
-    }
-  }
-
-  throw new TypeError("Object is not async iterable");
-}
-
-function _AwaitValue(value) {
-  this.wrapped = value;
-}
-
-function _AsyncGenerator(gen) {
-  var front, back;
-
-  function send(key, arg) {
-    return new Promise(function (resolve, reject) {
-      var request = {
-        key: key,
-        arg: arg,
-        resolve: resolve,
-        reject: reject,
-        next: null
-      };
-
-      if (back) {
-        back = back.next = request;
-      } else {
-        front = back = request;
-        resume(key, arg);
-      }
-    });
-  }
-
-  function resume(key, arg) {
-    try {
-      var result = gen[key](arg);
-      var value = result.value;
-      var wrappedAwait = value instanceof _AwaitValue;
-      Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) {
-        if (wrappedAwait) {
-          resume(key === "return" ? "return" : "next", arg);
-          return;
-        }
-
-        settle(result.done ? "return" : "normal", arg);
-      }, function (err) {
-        resume("throw", err);
-      });
-    } catch (err) {
-      settle("throw", err);
-    }
-  }
-
-  function settle(type, value) {
-    switch (type) {
-      case "return":
-        front.resolve({
-          value: value,
-          done: true
-        });
-        break;
-
-      case "throw":
-        front.reject(value);
-        break;
-
-      default:
-        front.resolve({
-          value: value,
-          done: false
-        });
-        break;
-    }
-
-    front = front.next;
-
-    if (front) {
-      resume(front.key, front.arg);
-    } else {
-      back = null;
-    }
-  }
-
-  this._invoke = send;
-
-  if (typeof gen.return !== "function") {
-    this.return = undefined;
-  }
-}
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) {
-  _AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
-    return this;
-  };
-}
-
-_AsyncGenerator.prototype.next = function (arg) {
-  return this._invoke("next", arg);
-};
-
-_AsyncGenerator.prototype.throw = function (arg) {
-  return this._invoke("throw", arg);
-};
-
-_AsyncGenerator.prototype.return = function (arg) {
-  return this._invoke("return", arg);
-};
-
-function _wrapAsyncGenerator(fn) {
-  return function () {
-    return new _AsyncGenerator(fn.apply(this, arguments));
-  };
-}
-
-function _awaitAsyncGenerator(value) {
-  return new _AwaitValue(value);
-}
-
-function _asyncGeneratorDelegate(inner, awaitWrap) {
-  var iter = {},
-      waiting = false;
-
-  function pump(key, value) {
-    waiting = true;
-    value = new Promise(function (resolve) {
-      resolve(inner[key](value));
-    });
-    return {
-      done: false,
-      value: awaitWrap(value)
-    };
-  }
-
-  ;
-
-  if (typeof Symbol === "function" && Symbol.iterator) {
-    iter[Symbol.iterator] = function () {
-      return this;
-    };
-  }
-
-  iter.next = function (value) {
-    if (waiting) {
-      waiting = false;
-      return value;
-    }
-
-    return pump("next", value);
-  };
-
-  if (typeof inner.throw === "function") {
-    iter.throw = function (value) {
-      if (waiting) {
-        waiting = false;
-        throw value;
-      }
-
-      return pump("throw", value);
-    };
-  }
-
-  if (typeof inner.return === "function") {
-    iter.return = function (value) {
-      if (waiting) {
-        waiting = false;
-        return value;
-      }
-
-      return pump("return", value);
-    };
-  }
-
-  return iter;
-}
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _defineEnumerableProperties(obj, descs) {
-  for (var key in descs) {
-    var desc = descs[key];
-    desc.configurable = desc.enumerable = true;
-    if ("value" in desc) desc.writable = true;
-    Object.defineProperty(obj, key, desc);
-  }
-
-  if (Object.getOwnPropertySymbols) {
-    var objectSymbols = Object.getOwnPropertySymbols(descs);
-
-    for (var i = 0; i < objectSymbols.length; i++) {
-      var sym = objectSymbols[i];
-      var desc = descs[sym];
-      desc.configurable = desc.enumerable = true;
-      if ("value" in desc) desc.writable = true;
-      Object.defineProperty(obj, sym, desc);
-    }
-  }
-
-  return obj;
-}
-
-function _defaults(obj, defaults) {
-  var keys = Object.getOwnPropertyNames(defaults);
-
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var value = Object.getOwnPropertyDescriptor(defaults, key);
-
-    if (value && value.configurable && obj[key] === undefined) {
-      Object.defineProperty(obj, key, value);
-    }
-  }
-
-  return obj;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? Object(arguments[i]) : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct()) {
-    _construct = Reflect.construct;
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-
-  return _construct.apply(null, arguments);
-}
-
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !_isNativeFunction(Class)) return Class;
-
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-
-      _cache.set(Class, Wrapper);
-    }
-
-    function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-    }
-
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    return _setPrototypeOf(Wrapper, Class);
-  };
-
-  return _wrapNativeSuper(Class);
-}
-
-function _instanceof(left, right) {
-  if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
-    return !!right[Symbol.hasInstance](left);
-  } else {
-    return left instanceof right;
-  }
-}
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _getRequireWildcardCache() {
-  if (typeof WeakMap !== "function") return null;
-  var cache = new WeakMap();
-
-  _getRequireWildcardCache = function () {
-    return cache;
-  };
-
-  return cache;
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  }
-
-  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
-    return {
-      default: obj
-    };
-  }
-
-  var cache = _getRequireWildcardCache();
-
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-
-  newObj.default = obj;
-
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-
-  return newObj;
-}
-
-function _newArrowCheck(innerThis, boundThis) {
-  if (innerThis !== boundThis) {
-    throw new TypeError("Cannot instantiate an arrow function");
-  }
-}
-
-function _objectDestructuringEmpty(obj) {
-  if (obj == null) throw new TypeError("Cannot destructure undefined");
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  return function () {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (_isNativeReflectConstruct()) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-
-  return object;
-}
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-
-      return desc.value;
-    };
-  }
-
-  return _get(target, property, receiver || target);
-}
-
-function set(target, property, value, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.set) {
-    set = Reflect.set;
-  } else {
-    set = function set(target, property, value, receiver) {
-      var base = _superPropBase(target, property);
-
-      var desc;
-
-      if (base) {
-        desc = Object.getOwnPropertyDescriptor(base, property);
-
-        if (desc.set) {
-          desc.set.call(receiver, value);
-          return true;
-        } else if (!desc.writable) {
-          return false;
-        }
-      }
-
-      desc = Object.getOwnPropertyDescriptor(receiver, property);
-
-      if (desc) {
-        if (!desc.writable) {
-          return false;
-        }
-
-        desc.value = value;
-        Object.defineProperty(receiver, property, desc);
-      } else {
-        _defineProperty(receiver, property, value);
-      }
-
-      return true;
-    };
-  }
-
-  return set(target, property, value, receiver);
-}
-
-function _set(target, property, value, receiver, isStrict) {
-  var s = set(target, property, value, receiver || target);
-
-  if (!s && isStrict) {
-    throw new Error('failed to set property');
-  }
-
-  return value;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-}
-
-function _taggedTemplateLiteralLoose(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  strings.raw = raw;
-  return strings;
-}
-
-function _readOnlyError(name) {
-  throw new Error("\"" + name + "\" is read-only");
-}
-
-function _classNameTDZError(name) {
-  throw new Error("Class \"" + name + "\" cannot be referenced in computed property keys.");
-}
-
-function _temporalUndefined() {}
-
-function _tdz(name) {
-  throw new ReferenceError(name + " is not defined - temporal dead zone");
-}
-
-function _temporalRef(val, name) {
-  return val === _temporalUndefined ? _tdz(name) : val;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _slicedToArrayLoose(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimitLoose(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _toArray(arr) {
-  return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _iterableToArrayLimitLoose(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-
-  for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) {
-    _arr.push(_step.value);
-
-    if (i && _arr.length === i) break;
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(n);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _createForOfIteratorHelper(o) {
-  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
-      var i = 0;
-
-      var F = function () {};
-
-      return {
-        s: F,
-        n: function () {
-          if (i >= o.length) return {
-            done: true
-          };
-          return {
-            done: false,
-            value: o[i++]
-          };
-        },
-        e: function (e) {
-          throw e;
-        },
-        f: F
-      };
-    }
-
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  var it,
-      normalCompletion = true,
-      didErr = false,
-      err;
-  return {
-    s: function () {
-      it = o[Symbol.iterator]();
-    },
-    n: function () {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function (e) {
-      didErr = true;
-      err = e;
-    },
-    f: function () {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    }
-  };
-}
-
-function _createForOfIteratorHelperLoose(o) {
-  var i = 0;
-
-  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) return function () {
-      if (i >= o.length) return {
-        done: true
-      };
-      return {
-        done: false,
-        value: o[i++]
-      };
-    };
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  i = o[Symbol.iterator]();
-  return i.next.bind(i);
-}
-
-function _skipFirstGeneratorNext(fn) {
-  return function () {
-    var it = fn.apply(this, arguments);
-    it.next();
-    return it;
-  };
-}
-
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-
-  return (hint === "string" ? String : Number)(input);
-}
-
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-
-  return typeof key === "symbol" ? key : String(key);
-}
-
-function _initializerWarningHelper(descriptor, context) {
-  throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.');
-}
-
-function _initializerDefineProperty(target, property, descriptor, context) {
-  if (!descriptor) return;
-  Object.defineProperty(target, property, {
-    enumerable: descriptor.enumerable,
-    configurable: descriptor.configurable,
-    writable: descriptor.writable,
-    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-  });
-}
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object.keys(descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object.defineProperty(target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
-var id = 0;
-
-function _classPrivateFieldLooseKey(name) {
-  return "__private_" + id++ + "_" + name;
-}
-
-function _classPrivateFieldLooseBase(receiver, privateKey) {
-  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
-    throw new TypeError("attempted to use private field on non-instance");
-  }
-
-  return receiver;
-}
-
-function _classPrivateFieldGet(receiver, privateMap) {
-  var descriptor = privateMap.get(receiver);
-
-  if (!descriptor) {
-    throw new TypeError("attempted to get private field on non-instance");
-  }
-
-  if (descriptor.get) {
-    return descriptor.get.call(receiver);
-  }
-
-  return descriptor.value;
-}
-
-function _classPrivateFieldSet(receiver, privateMap, value) {
-  var descriptor = privateMap.get(receiver);
-
-  if (!descriptor) {
-    throw new TypeError("attempted to set private field on non-instance");
-  }
-
-  if (descriptor.set) {
-    descriptor.set.call(receiver, value);
-  } else {
-    if (!descriptor.writable) {
-      throw new TypeError("attempted to set read only private field");
-    }
-
-    descriptor.value = value;
-  }
-
-  return value;
-}
-
-function _classPrivateFieldDestructureSet(receiver, privateMap) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to set private field on non-instance");
-  }
-
-  var descriptor = privateMap.get(receiver);
-
-  if (descriptor.set) {
-    if (!("__destrObj" in descriptor)) {
-      descriptor.__destrObj = {
-        set value(v) {
-          descriptor.set.call(receiver, v);
-        }
-
-      };
-    }
-
-    return descriptor.__destrObj;
-  } else {
-    if (!descriptor.writable) {
-      throw new TypeError("attempted to set read only private field");
-    }
-
-    return descriptor;
-  }
-}
-
-function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) {
-  if (receiver !== classConstructor) {
-    throw new TypeError("Private static access of wrong provenance");
-  }
-
-  if (descriptor.get) {
-    return descriptor.get.call(receiver);
-  }
-
-  return descriptor.value;
-}
-
-function _classStaticPrivateFieldSpecSet(receiver, classConstructor, descriptor, value) {
-  if (receiver !== classConstructor) {
-    throw new TypeError("Private static access of wrong provenance");
-  }
-
-  if (descriptor.set) {
-    descriptor.set.call(receiver, value);
-  } else {
-    if (!descriptor.writable) {
-      throw new TypeError("attempted to set read only private field");
-    }
-
-    descriptor.value = value;
-  }
-
-  return value;
-}
-
-function _classStaticPrivateMethodGet(receiver, classConstructor, method) {
-  if (receiver !== classConstructor) {
-    throw new TypeError("Private static access of wrong provenance");
-  }
-
-  return method;
-}
-
-function _classStaticPrivateMethodSet() {
-  throw new TypeError("attempted to set read only static private field");
-}
-
-function _decorate(decorators, factory, superClass, mixins) {
-  var api = _getDecoratorsApi();
-
-  if (mixins) {
-    for (var i = 0; i < mixins.length; i++) {
-      api = mixins[i](api);
-    }
-  }
-
-  var r = factory(function initialize(O) {
-    api.initializeInstanceElements(O, decorated.elements);
-  }, superClass);
-  var decorated = api.decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators);
-  api.initializeClassElements(r.F, decorated.elements);
-  return api.runClassFinishers(r.F, decorated.finishers);
-}
-
-function _getDecoratorsApi() {
-  _getDecoratorsApi = function () {
-    return api;
-  };
-
-  var api = {
-    elementsDefinitionOrder: [["method"], ["field"]],
-    initializeInstanceElements: function (O, elements) {
-      ["method", "field"].forEach(function (kind) {
-        elements.forEach(function (element) {
-          if (element.kind === kind && element.placement === "own") {
-            this.defineClassElement(O, element);
-          }
-        }, this);
-      }, this);
-    },
-    initializeClassElements: function (F, elements) {
-      var proto = F.prototype;
-      ["method", "field"].forEach(function (kind) {
-        elements.forEach(function (element) {
-          var placement = element.placement;
-
-          if (element.kind === kind && (placement === "static" || placement === "prototype")) {
-            var receiver = placement === "static" ? F : proto;
-            this.defineClassElement(receiver, element);
-          }
-        }, this);
-      }, this);
-    },
-    defineClassElement: function (receiver, element) {
-      var descriptor = element.descriptor;
-
-      if (element.kind === "field") {
-        var initializer = element.initializer;
-        descriptor = {
-          enumerable: descriptor.enumerable,
-          writable: descriptor.writable,
-          configurable: descriptor.configurable,
-          value: initializer === void 0 ? void 0 : initializer.call(receiver)
-        };
-      }
-
-      Object.defineProperty(receiver, element.key, descriptor);
-    },
-    decorateClass: function (elements, decorators) {
-      var newElements = [];
-      var finishers = [];
-      var placements = {
-        static: [],
-        prototype: [],
-        own: []
-      };
-      elements.forEach(function (element) {
-        this.addElementPlacement(element, placements);
-      }, this);
-      elements.forEach(function (element) {
-        if (!_hasDecorators(element)) return newElements.push(element);
-        var elementFinishersExtras = this.decorateElement(element, placements);
-        newElements.push(elementFinishersExtras.element);
-        newElements.push.apply(newElements, elementFinishersExtras.extras);
-        finishers.push.apply(finishers, elementFinishersExtras.finishers);
-      }, this);
-
-      if (!decorators) {
-        return {
-          elements: newElements,
-          finishers: finishers
-        };
-      }
-
-      var result = this.decorateConstructor(newElements, decorators);
-      finishers.push.apply(finishers, result.finishers);
-      result.finishers = finishers;
-      return result;
-    },
-    addElementPlacement: function (element, placements, silent) {
-      var keys = placements[element.placement];
-
-      if (!silent && keys.indexOf(element.key) !== -1) {
-        throw new TypeError("Duplicated element (" + element.key + ")");
-      }
-
-      keys.push(element.key);
-    },
-    decorateElement: function (element, placements) {
-      var extras = [];
-      var finishers = [];
-
-      for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) {
-        var keys = placements[element.placement];
-        keys.splice(keys.indexOf(element.key), 1);
-        var elementObject = this.fromElementDescriptor(element);
-        var elementFinisherExtras = this.toElementFinisherExtras((0, decorators[i])(elementObject) || elementObject);
-        element = elementFinisherExtras.element;
-        this.addElementPlacement(element, placements);
-
-        if (elementFinisherExtras.finisher) {
-          finishers.push(elementFinisherExtras.finisher);
-        }
-
-        var newExtras = elementFinisherExtras.extras;
-
-        if (newExtras) {
-          for (var j = 0; j < newExtras.length; j++) {
-            this.addElementPlacement(newExtras[j], placements);
-          }
-
-          extras.push.apply(extras, newExtras);
-        }
-      }
-
-      return {
-        element: element,
-        finishers: finishers,
-        extras: extras
-      };
-    },
-    decorateConstructor: function (elements, decorators) {
-      var finishers = [];
-
-      for (var i = decorators.length - 1; i >= 0; i--) {
-        var obj = this.fromClassDescriptor(elements);
-        var elementsAndFinisher = this.toClassDescriptor((0, decorators[i])(obj) || obj);
-
-        if (elementsAndFinisher.finisher !== undefined) {
-          finishers.push(elementsAndFinisher.finisher);
-        }
-
-        if (elementsAndFinisher.elements !== undefined) {
-          elements = elementsAndFinisher.elements;
-
-          for (var j = 0; j < elements.length - 1; j++) {
-            for (var k = j + 1; k < elements.length; k++) {
-              if (elements[j].key === elements[k].key && elements[j].placement === elements[k].placement) {
-                throw new TypeError("Duplicated element (" + elements[j].key + ")");
-              }
-            }
-          }
-        }
-      }
-
-      return {
-        elements: elements,
-        finishers: finishers
-      };
-    },
-    fromElementDescriptor: function (element) {
-      var obj = {
-        kind: element.kind,
-        key: element.key,
-        placement: element.placement,
-        descriptor: element.descriptor
-      };
-      var desc = {
-        value: "Descriptor",
-        configurable: true
-      };
-      Object.defineProperty(obj, Symbol.toStringTag, desc);
-      if (element.kind === "field") obj.initializer = element.initializer;
-      return obj;
-    },
-    toElementDescriptors: function (elementObjects) {
-      if (elementObjects === undefined) return;
-      return _toArray(elementObjects).map(function (elementObject) {
-        var element = this.toElementDescriptor(elementObject);
-        this.disallowProperty(elementObject, "finisher", "An element descriptor");
-        this.disallowProperty(elementObject, "extras", "An element descriptor");
-        return element;
-      }, this);
-    },
-    toElementDescriptor: function (elementObject) {
-      var kind = String(elementObject.kind);
-
-      if (kind !== "method" && kind !== "field") {
-        throw new TypeError('An element descriptor\'s .kind property must be either "method" or' + ' "field", but a decorator created an element descriptor with' + ' .kind "' + kind + '"');
-      }
-
-      var key = _toPropertyKey(elementObject.key);
-
-      var placement = String(elementObject.placement);
-
-      if (placement !== "static" && placement !== "prototype" && placement !== "own") {
-        throw new TypeError('An element descriptor\'s .placement property must be one of "static",' + ' "prototype" or "own", but a decorator created an element descriptor' + ' with .placement "' + placement + '"');
-      }
-
-      var descriptor = elementObject.descriptor;
-      this.disallowProperty(elementObject, "elements", "An element descriptor");
-      var element = {
-        kind: kind,
-        key: key,
-        placement: placement,
-        descriptor: Object.assign({}, descriptor)
-      };
-
-      if (kind !== "field") {
-        this.disallowProperty(elementObject, "initializer", "A method descriptor");
-      } else {
-        this.disallowProperty(descriptor, "get", "The property descriptor of a field descriptor");
-        this.disallowProperty(descriptor, "set", "The property descriptor of a field descriptor");
-        this.disallowProperty(descriptor, "value", "The property descriptor of a field descriptor");
-        element.initializer = elementObject.initializer;
-      }
-
-      return element;
-    },
-    toElementFinisherExtras: function (elementObject) {
-      var element = this.toElementDescriptor(elementObject);
-
-      var finisher = _optionalCallableProperty(elementObject, "finisher");
-
-      var extras = this.toElementDescriptors(elementObject.extras);
-      return {
-        element: element,
-        finisher: finisher,
-        extras: extras
-      };
-    },
-    fromClassDescriptor: function (elements) {
-      var obj = {
-        kind: "class",
-        elements: elements.map(this.fromElementDescriptor, this)
-      };
-      var desc = {
-        value: "Descriptor",
-        configurable: true
-      };
-      Object.defineProperty(obj, Symbol.toStringTag, desc);
-      return obj;
-    },
-    toClassDescriptor: function (obj) {
-      var kind = String(obj.kind);
-
-      if (kind !== "class") {
-        throw new TypeError('A class descriptor\'s .kind property must be "class", but a decorator' + ' created a class descriptor with .kind "' + kind + '"');
-      }
-
-      this.disallowProperty(obj, "key", "A class descriptor");
-      this.disallowProperty(obj, "placement", "A class descriptor");
-      this.disallowProperty(obj, "descriptor", "A class descriptor");
-      this.disallowProperty(obj, "initializer", "A class descriptor");
-      this.disallowProperty(obj, "extras", "A class descriptor");
-
-      var finisher = _optionalCallableProperty(obj, "finisher");
-
-      var elements = this.toElementDescriptors(obj.elements);
-      return {
-        elements: elements,
-        finisher: finisher
-      };
-    },
-    runClassFinishers: function (constructor, finishers) {
-      for (var i = 0; i < finishers.length; i++) {
-        var newConstructor = (0, finishers[i])(constructor);
-
-        if (newConstructor !== undefined) {
-          if (typeof newConstructor !== "function") {
-            throw new TypeError("Finishers must return a constructor.");
-          }
-
-          constructor = newConstructor;
-        }
-      }
-
-      return constructor;
-    },
-    disallowProperty: function (obj, name, objectType) {
-      if (obj[name] !== undefined) {
-        throw new TypeError(objectType + " can't have a ." + name + " property.");
-      }
-    }
-  };
-  return api;
-}
-
-function _createElementDescriptor(def) {
-  var key = _toPropertyKey(def.key);
-
-  var descriptor;
-
-  if (def.kind === "method") {
-    descriptor = {
-      value: def.value,
-      writable: true,
-      configurable: true,
-      enumerable: false
-    };
-  } else if (def.kind === "get") {
-    descriptor = {
-      get: def.value,
-      configurable: true,
-      enumerable: false
-    };
-  } else if (def.kind === "set") {
-    descriptor = {
-      set: def.value,
-      configurable: true,
-      enumerable: false
-    };
-  } else if (def.kind === "field") {
-    descriptor = {
-      configurable: true,
-      writable: true,
-      enumerable: true
-    };
-  }
-
-  var element = {
-    kind: def.kind === "field" ? "field" : "method",
-    key: key,
-    placement: def.static ? "static" : def.kind === "field" ? "own" : "prototype",
-    descriptor: descriptor
-  };
-  if (def.decorators) element.decorators = def.decorators;
-  if (def.kind === "field") element.initializer = def.value;
-  return element;
-}
-
-function _coalesceGetterSetter(element, other) {
-  if (element.descriptor.get !== undefined) {
-    other.descriptor.get = element.descriptor.get;
-  } else {
-    other.descriptor.set = element.descriptor.set;
-  }
-}
-
-function _coalesceClassElements(elements) {
-  var newElements = [];
-
-  var isSameElement = function (other) {
-    return other.kind === "method" && other.key === element.key && other.placement === element.placement;
-  };
-
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    var other;
-
-    if (element.kind === "method" && (other = newElements.find(isSameElement))) {
-      if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) {
-        if (_hasDecorators(element) || _hasDecorators(other)) {
-          throw new ReferenceError("Duplicated methods (" + element.key + ") can't be decorated.");
-        }
-
-        other.descriptor = element.descriptor;
-      } else {
-        if (_hasDecorators(element)) {
-          if (_hasDecorators(other)) {
-            throw new ReferenceError("Decorators can't be placed on different accessors with for " + "the same property (" + element.key + ").");
-          }
-
-          other.decorators = element.decorators;
-        }
-
-        _coalesceGetterSetter(element, other);
-      }
-    } else {
-      newElements.push(element);
-    }
-  }
-
-  return newElements;
-}
-
-function _hasDecorators(element) {
-  return element.decorators && element.decorators.length;
-}
-
-function _isDataDescriptor(desc) {
-  return desc !== undefined && !(desc.value === undefined && desc.writable === undefined);
-}
-
-function _optionalCallableProperty(obj, name) {
-  var value = obj[name];
-
-  if (value !== undefined && typeof value !== "function") {
-    throw new TypeError("Expected '" + name + "' to be a function");
-  }
-
-  return value;
-}
-
-function _classPrivateMethodGet(receiver, privateSet, fn) {
-  if (!privateSet.has(receiver)) {
-    throw new TypeError("attempted to get private field on non-instance");
-  }
-
-  return fn;
-}
-
-function _classPrivateMethodSet() {
-  throw new TypeError("attempted to reassign private method");
-}
-
-function _wrapRegExp(re, groups) {
-  _wrapRegExp = function (re, groups) {
-    return new BabelRegExp(re, undefined, groups);
-  };
-
-  var _RegExp = _wrapNativeSuper(RegExp);
-
-  var _super = RegExp.prototype;
-
-  var _groups = new WeakMap();
-
-  function BabelRegExp(re, flags, groups) {
-    var _this = _RegExp.call(this, re, flags);
-
-    _groups.set(_this, groups || _groups.get(re));
-
-    return _this;
-  }
-
-  _inherits(BabelRegExp, _RegExp);
-
-  BabelRegExp.prototype.exec = function (str) {
-    var result = _super.exec.call(this, str);
-
-    if (result) result.groups = buildGroups(result, this);
-    return result;
-  };
-
-  BabelRegExp.prototype[Symbol.replace] = function (str, substitution) {
-    if (typeof substitution === "string") {
-      var groups = _groups.get(this);
-
-      return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function (_, name) {
-        return "$" + groups[name];
-      }));
-    } else if (typeof substitution === "function") {
-      var _this = this;
-
-      return _super[Symbol.replace].call(this, str, function () {
-        var args = [];
-        args.push.apply(args, arguments);
-
-        if (typeof args[args.length - 1] !== "object") {
-          args.push(buildGroups(args, _this));
-        }
-
-        return substitution.apply(this, args);
-      });
-    } else {
-      return _super[Symbol.replace].call(this, str, substitution);
-    }
-  };
-
-  function buildGroups(result, re) {
-    var g = _groups.get(re);
-
-    return Object.keys(g).reduce(function (groups, name) {
-      groups[name] = result[g[name]];
-      return groups;
-    }, Object.create(null));
-  }
-
-  return _wrapRegExp.apply(this, arguments);
-}var nodejsCustomInspectSymbol_1 = createCommonjsModule(function (module, exports) {
+compression_1.filter = filter;var nodejsCustomInspectSymbol_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23377,1817 +21748,7 @@ function warnOnceInDevelopment(msg, type) {
 
 function stripSymbols(data) {
     return JSON.parse(JSON.stringify(data));
-}function queryFromPojo(obj) {
-    var op = {
-        kind: 'OperationDefinition',
-        operation: 'query',
-        name: {
-            kind: 'Name',
-            value: 'GeneratedClientQuery',
-        },
-        selectionSet: selectionSetFromObj(obj),
-    };
-    var out = {
-        kind: 'Document',
-        definitions: [op],
-    };
-    return out;
-}
-function fragmentFromPojo(obj, typename) {
-    var frag = {
-        kind: 'FragmentDefinition',
-        typeCondition: {
-            kind: 'NamedType',
-            name: {
-                kind: 'Name',
-                value: typename || '__FakeType',
-            },
-        },
-        name: {
-            kind: 'Name',
-            value: 'GeneratedClientQuery',
-        },
-        selectionSet: selectionSetFromObj(obj),
-    };
-    var out = {
-        kind: 'Document',
-        definitions: [frag],
-    };
-    return out;
-}
-function selectionSetFromObj(obj) {
-    if (typeof obj === 'number' ||
-        typeof obj === 'boolean' ||
-        typeof obj === 'string' ||
-        typeof obj === 'undefined' ||
-        obj === null) {
-        return null;
-    }
-    if (Array.isArray(obj)) {
-        return selectionSetFromObj(obj[0]);
-    }
-    var selections = [];
-    Object.keys(obj).forEach(function (key) {
-        var nestedSelSet = selectionSetFromObj(obj[key]);
-        var field = {
-            kind: 'Field',
-            name: {
-                kind: 'Name',
-                value: key,
-            },
-            selectionSet: nestedSelSet || undefined,
-        };
-        selections.push(field);
-    });
-    var selectionSet = {
-        kind: 'SelectionSet',
-        selections: selections,
-    };
-    return selectionSet;
-}
-var justTypenameQuery = {
-    kind: 'Document',
-    definitions: [
-        {
-            kind: 'OperationDefinition',
-            operation: 'query',
-            name: null,
-            variableDefinitions: null,
-            directives: [],
-            selectionSet: {
-                kind: 'SelectionSet',
-                selections: [
-                    {
-                        kind: 'Field',
-                        alias: null,
-                        name: {
-                            kind: 'Name',
-                            value: '__typename',
-                        },
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                    },
-                ],
-            },
-        },
-    ],
-};
-
-var ApolloCache = (function () {
-    function ApolloCache() {
-    }
-    ApolloCache.prototype.transformDocument = function (document) {
-        return document;
-    };
-    ApolloCache.prototype.transformForLink = function (document) {
-        return document;
-    };
-    ApolloCache.prototype.readQuery = function (options, optimistic) {
-        if (optimistic === void 0) { optimistic = false; }
-        return this.read({
-            query: options.query,
-            variables: options.variables,
-            optimistic: optimistic,
-        });
-    };
-    ApolloCache.prototype.readFragment = function (options, optimistic) {
-        if (optimistic === void 0) { optimistic = false; }
-        return this.read({
-            query: getFragmentQueryDocument(options.fragment, options.fragmentName),
-            variables: options.variables,
-            rootId: options.id,
-            optimistic: optimistic,
-        });
-    };
-    ApolloCache.prototype.writeQuery = function (options) {
-        this.write({
-            dataId: 'ROOT_QUERY',
-            result: options.data,
-            query: options.query,
-            variables: options.variables,
-        });
-    };
-    ApolloCache.prototype.writeFragment = function (options) {
-        this.write({
-            dataId: options.id,
-            result: options.data,
-            variables: options.variables,
-            query: getFragmentQueryDocument(options.fragment, options.fragmentName),
-        });
-    };
-    ApolloCache.prototype.writeData = function (_a) {
-        var id = _a.id, data = _a.data;
-        if (typeof id !== 'undefined') {
-            var typenameResult = null;
-            try {
-                typenameResult = this.read({
-                    rootId: id,
-                    optimistic: false,
-                    query: justTypenameQuery,
-                });
-            }
-            catch (e) {
-            }
-            var __typename = (typenameResult && typenameResult.__typename) || '__ClientData';
-            var dataToWrite = Object.assign({ __typename: __typename }, data);
-            this.writeFragment({
-                id: id,
-                fragment: fragmentFromPojo(dataToWrite, __typename),
-                data: dataToWrite,
-            });
-        }
-        else {
-            this.writeQuery({ query: queryFromPojo(data), data: data });
-        }
-    };
-    return ApolloCache;
-}());
-
-var Cache;
-(function (Cache) {
-})(Cache || (Cache = {}));// This currentContext variable will only be used if the makeSlotClass
-// function is called, which happens only if this is the first copy of the
-// @wry/context package to be imported.
-var currentContext = null;
-// This unique internal object is used to denote the absence of a value
-// for a given Slot, and is never exposed to outside code.
-var MISSING_VALUE = {};
-var idCounter = 1;
-// Although we can't do anything about the cost of duplicated code from
-// accidentally bundling multiple copies of the @wry/context package, we can
-// avoid creating the Slot class more than once using makeSlotClass.
-var makeSlotClass = function () { return /** @class */ (function () {
-    function Slot() {
-        // If you have a Slot object, you can find out its slot.id, but you cannot
-        // guess the slot.id of a Slot you don't have access to, thanks to the
-        // randomized suffix.
-        this.id = [
-            "slot",
-            idCounter++,
-            Date.now(),
-            Math.random().toString(36).slice(2),
-        ].join(":");
-    }
-    Slot.prototype.hasValue = function () {
-        for (var context_1 = currentContext; context_1; context_1 = context_1.parent) {
-            // We use the Slot object iself as a key to its value, which means the
-            // value cannot be obtained without a reference to the Slot object.
-            if (this.id in context_1.slots) {
-                var value = context_1.slots[this.id];
-                if (value === MISSING_VALUE)
-                    break;
-                if (context_1 !== currentContext) {
-                    // Cache the value in currentContext.slots so the next lookup will
-                    // be faster. This caching is safe because the tree of contexts and
-                    // the values of the slots are logically immutable.
-                    currentContext.slots[this.id] = value;
-                }
-                return true;
-            }
-        }
-        if (currentContext) {
-            // If a value was not found for this Slot, it's never going to be found
-            // no matter how many times we look it up, so we might as well cache
-            // the absence of the value, too.
-            currentContext.slots[this.id] = MISSING_VALUE;
-        }
-        return false;
-    };
-    Slot.prototype.getValue = function () {
-        if (this.hasValue()) {
-            return currentContext.slots[this.id];
-        }
-    };
-    Slot.prototype.withValue = function (value, callback, 
-    // Given the prevalence of arrow functions, specifying arguments is likely
-    // to be much more common than specifying `this`, hence this ordering:
-    args, thisArg) {
-        var _a;
-        var slots = (_a = {
-                __proto__: null
-            },
-            _a[this.id] = value,
-            _a);
-        var parent = currentContext;
-        currentContext = { parent: parent, slots: slots };
-        try {
-            // Function.prototype.apply allows the arguments array argument to be
-            // omitted or undefined, so args! is fine here.
-            return callback.apply(thisArg, args);
-        }
-        finally {
-            currentContext = parent;
-        }
-    };
-    // Capture the current context and wrap a callback function so that it
-    // reestablishes the captured context when called.
-    Slot.bind = function (callback) {
-        var context = currentContext;
-        return function () {
-            var saved = currentContext;
-            try {
-                currentContext = context;
-                return callback.apply(this, arguments);
-            }
-            finally {
-                currentContext = saved;
-            }
-        };
-    };
-    // Immediately run a callback function without any captured context.
-    Slot.noContext = function (callback, 
-    // Given the prevalence of arrow functions, specifying arguments is likely
-    // to be much more common than specifying `this`, hence this ordering:
-    args, thisArg) {
-        if (currentContext) {
-            var saved = currentContext;
-            try {
-                currentContext = null;
-                // Function.prototype.apply allows the arguments array argument to be
-                // omitted or undefined, so args! is fine here.
-                return callback.apply(thisArg, args);
-            }
-            finally {
-                currentContext = saved;
-            }
-        }
-        else {
-            return callback.apply(thisArg, args);
-        }
-    };
-    return Slot;
-}()); };
-// We store a single global implementation of the Slot class as a permanent
-// non-enumerable symbol property of the Array constructor. This obfuscation
-// does nothing to prevent access to the Slot class, but at least it ensures
-// the implementation (i.e. currentContext) cannot be tampered with, and all
-// copies of the @wry/context package (hopefully just one) will share the
-// same Slot implementation. Since the first copy of the @wry/context package
-// to be imported wins, this technique imposes a very high cost for any
-// future breaking changes to the Slot class.
-var globalKey = "@wry/context:Slot";
-var host = Array;
-var Slot = host[globalKey] || function () {
-    var Slot = makeSlotClass();
-    try {
-        Object.defineProperty(host, globalKey, {
-            value: host[globalKey] = Slot,
-            enumerable: false,
-            writable: false,
-            configurable: false,
-        });
-    }
-    finally {
-        return Slot;
-    }
-}();
-
-var bind = Slot.bind, noContext = Slot.noContext;
-function setTimeoutWithContext(callback, delay) {
-    return setTimeout(bind(callback), delay);
-}
-// Turn any generator function into an async function (using yield instead
-// of await), with context automatically preserved across yields.
-function asyncFromGen(genFn) {
-    return function () {
-        var gen = genFn.apply(this, arguments);
-        var boundNext = bind(gen.next);
-        var boundThrow = bind(gen.throw);
-        return new Promise(function (resolve, reject) {
-            function invoke(method, argument) {
-                try {
-                    var result = method.call(gen, argument);
-                }
-                catch (error) {
-                    return reject(error);
-                }
-                var next = result.done ? resolve : invokeNext;
-                if (isPromiseLike(result.value)) {
-                    result.value.then(next, result.done ? reject : invokeThrow);
-                }
-                else {
-                    next(result.value);
-                }
-            }
-            var invokeNext = function (value) { return invoke(boundNext, value); };
-            var invokeThrow = function (error) { return invoke(boundThrow, error); };
-            invokeNext();
-        });
-    };
-}
-function isPromiseLike(value) {
-    return value && typeof value.then === "function";
-}
-// If you use the fibers npm package to implement coroutines in Node.js,
-// you should call this function at least once to ensure context management
-// remains coherent across any yields.
-var wrappedFibers = [];
-function wrapYieldingFiberMethods(Fiber) {
-    // There can be only one implementation of Fiber per process, so this array
-    // should never grow longer than one element.
-    if (wrappedFibers.indexOf(Fiber) < 0) {
-        var wrap = function (obj, method) {
-            var fn = obj[method];
-            obj[method] = function () {
-                return noContext(fn, arguments, this);
-            };
-        };
-        // These methods can yield, according to
-        // https://github.com/laverdet/node-fibers/blob/ddebed9b8ae3883e57f822e2108e6943e5c8d2a8/fibers.js#L97-L100
-        wrap(Fiber, "yield");
-        wrap(Fiber.prototype, "run");
-        wrap(Fiber.prototype, "throwInto");
-        wrappedFibers.push(Fiber);
-    }
-    return Fiber;
-}function defaultDispose() { }
-var Cache$1 = /** @class */ (function () {
-    function Cache(max, dispose) {
-        if (max === void 0) { max = Infinity; }
-        if (dispose === void 0) { dispose = defaultDispose; }
-        this.max = max;
-        this.dispose = dispose;
-        this.map = new Map();
-        this.newest = null;
-        this.oldest = null;
-    }
-    Cache.prototype.has = function (key) {
-        return this.map.has(key);
-    };
-    Cache.prototype.get = function (key) {
-        var entry = this.getEntry(key);
-        return entry && entry.value;
-    };
-    Cache.prototype.getEntry = function (key) {
-        var entry = this.map.get(key);
-        if (entry && entry !== this.newest) {
-            var older = entry.older, newer = entry.newer;
-            if (newer) {
-                newer.older = older;
-            }
-            if (older) {
-                older.newer = newer;
-            }
-            entry.older = this.newest;
-            entry.older.newer = entry;
-            entry.newer = null;
-            this.newest = entry;
-            if (entry === this.oldest) {
-                this.oldest = newer;
-            }
-        }
-        return entry;
-    };
-    Cache.prototype.set = function (key, value) {
-        var entry = this.getEntry(key);
-        if (entry) {
-            return entry.value = value;
-        }
-        entry = {
-            key: key,
-            value: value,
-            newer: null,
-            older: this.newest
-        };
-        if (this.newest) {
-            this.newest.newer = entry;
-        }
-        this.newest = entry;
-        this.oldest = this.oldest || entry;
-        this.map.set(key, entry);
-        return entry.value;
-    };
-    Cache.prototype.clean = function () {
-        while (this.oldest && this.map.size > this.max) {
-            this.delete(this.oldest.key);
-        }
-    };
-    Cache.prototype.delete = function (key) {
-        var entry = this.map.get(key);
-        if (entry) {
-            if (entry === this.newest) {
-                this.newest = entry.older;
-            }
-            if (entry === this.oldest) {
-                this.oldest = entry.newer;
-            }
-            if (entry.newer) {
-                entry.newer.older = entry.older;
-            }
-            if (entry.older) {
-                entry.older.newer = entry.newer;
-            }
-            this.map.delete(key);
-            this.dispose(entry.value, key);
-            return true;
-        }
-        return false;
-    };
-    return Cache;
-}());
-
-var parentEntrySlot = new Slot();
-
-var reusableEmptyArray = [];
-var emptySetPool = [];
-var POOL_TARGET_SIZE = 100;
-// Since this package might be used browsers, we should avoid using the
-// Node built-in assert module.
-function assert(condition, optionalMessage) {
-    if (!condition) {
-        throw new Error(optionalMessage || "assertion failure");
-    }
-}
-function valueIs(a, b) {
-    var len = a.length;
-    return (
-    // Unknown values are not equal to each other.
-    len > 0 &&
-        // Both values must be ordinary (or both exceptional) to be equal.
-        len === b.length &&
-        // The underlying value or exception must be the same.
-        a[len - 1] === b[len - 1]);
-}
-function valueGet(value) {
-    switch (value.length) {
-        case 0: throw new Error("unknown value");
-        case 1: return value[0];
-        case 2: throw value[1];
-    }
-}
-function valueCopy(value) {
-    return value.slice(0);
-}
-var Entry = /** @class */ (function () {
-    function Entry(fn, args) {
-        this.fn = fn;
-        this.args = args;
-        this.parents = new Set();
-        this.childValues = new Map();
-        // When this Entry has children that are dirty, this property becomes
-        // a Set containing other Entry objects, borrowed from emptySetPool.
-        // When the set becomes empty, it gets recycled back to emptySetPool.
-        this.dirtyChildren = null;
-        this.dirty = true;
-        this.recomputing = false;
-        this.value = [];
-        ++Entry.count;
-    }
-    // This is the most important method of the Entry API, because it
-    // determines whether the cached this.value can be returned immediately,
-    // or must be recomputed. The overall performance of the caching system
-    // depends on the truth of the following observations: (1) this.dirty is
-    // usually false, (2) this.dirtyChildren is usually null/empty, and thus
-    // (3) valueGet(this.value) is usually returned without recomputation.
-    Entry.prototype.recompute = function () {
-        assert(!this.recomputing, "already recomputing");
-        if (!rememberParent(this) && maybeReportOrphan(this)) {
-            // The recipient of the entry.reportOrphan callback decided to dispose
-            // of this orphan entry by calling entry.dispose(), so we don't need to
-            // (and should not) proceed with the recomputation.
-            return void 0;
-        }
-        return mightBeDirty(this)
-            ? reallyRecompute(this)
-            : valueGet(this.value);
-    };
-    Entry.prototype.setDirty = function () {
-        if (this.dirty)
-            return;
-        this.dirty = true;
-        this.value.length = 0;
-        reportDirty(this);
-        // We can go ahead and unsubscribe here, since any further dirty
-        // notifications we receive will be redundant, and unsubscribing may
-        // free up some resources, e.g. file watchers.
-        maybeUnsubscribe(this);
-    };
-    Entry.prototype.dispose = function () {
-        var _this = this;
-        forgetChildren(this).forEach(maybeReportOrphan);
-        maybeUnsubscribe(this);
-        // Because this entry has been kicked out of the cache (in index.js),
-        // we've lost the ability to find out if/when this entry becomes dirty,
-        // whether that happens through a subscription, because of a direct call
-        // to entry.setDirty(), or because one of its children becomes dirty.
-        // Because of this loss of future information, we have to assume the
-        // worst (that this entry might have become dirty very soon), so we must
-        // immediately mark this entry's parents as dirty. Normally we could
-        // just call entry.setDirty() rather than calling parent.setDirty() for
-        // each parent, but that would leave this entry in parent.childValues
-        // and parent.dirtyChildren, which would prevent the child from being
-        // truly forgotten.
-        this.parents.forEach(function (parent) {
-            parent.setDirty();
-            forgetChild(parent, _this);
-        });
-    };
-    Entry.count = 0;
-    return Entry;
-}());
-function rememberParent(child) {
-    var parent = parentEntrySlot.getValue();
-    if (parent) {
-        child.parents.add(parent);
-        if (!parent.childValues.has(child)) {
-            parent.childValues.set(child, []);
-        }
-        if (mightBeDirty(child)) {
-            reportDirtyChild(parent, child);
-        }
-        else {
-            reportCleanChild(parent, child);
-        }
-        return parent;
-    }
-}
-function reallyRecompute(entry) {
-    // Since this recomputation is likely to re-remember some of this
-    // entry's children, we forget our children here but do not call
-    // maybeReportOrphan until after the recomputation finishes.
-    var originalChildren = forgetChildren(entry);
-    // Set entry as the parent entry while calling recomputeNewValue(entry).
-    parentEntrySlot.withValue(entry, recomputeNewValue, [entry]);
-    if (maybeSubscribe(entry)) {
-        // If we successfully recomputed entry.value and did not fail to
-        // (re)subscribe, then this Entry is no longer explicitly dirty.
-        setClean(entry);
-    }
-    // Now that we've had a chance to re-remember any children that were
-    // involved in the recomputation, we can safely report any orphan
-    // children that remain.
-    originalChildren.forEach(maybeReportOrphan);
-    return valueGet(entry.value);
-}
-function recomputeNewValue(entry) {
-    entry.recomputing = true;
-    // Set entry.value as unknown.
-    entry.value.length = 0;
-    try {
-        // If entry.fn succeeds, entry.value will become a normal Value.
-        entry.value[0] = entry.fn.apply(null, entry.args);
-    }
-    catch (e) {
-        // If entry.fn throws, entry.value will become exceptional.
-        entry.value[1] = e;
-    }
-    // Either way, this line is always reached.
-    entry.recomputing = false;
-}
-function mightBeDirty(entry) {
-    return entry.dirty || !!(entry.dirtyChildren && entry.dirtyChildren.size);
-}
-function setClean(entry) {
-    entry.dirty = false;
-    if (mightBeDirty(entry)) {
-        // This Entry may still have dirty children, in which case we can't
-        // let our parents know we're clean just yet.
-        return;
-    }
-    reportClean(entry);
-}
-function reportDirty(child) {
-    child.parents.forEach(function (parent) { return reportDirtyChild(parent, child); });
-}
-function reportClean(child) {
-    child.parents.forEach(function (parent) { return reportCleanChild(parent, child); });
-}
-// Let a parent Entry know that one of its children may be dirty.
-function reportDirtyChild(parent, child) {
-    // Must have called rememberParent(child) before calling
-    // reportDirtyChild(parent, child).
-    assert(parent.childValues.has(child));
-    assert(mightBeDirty(child));
-    if (!parent.dirtyChildren) {
-        parent.dirtyChildren = emptySetPool.pop() || new Set;
-    }
-    else if (parent.dirtyChildren.has(child)) {
-        // If we already know this child is dirty, then we must have already
-        // informed our own parents that we are dirty, so we can terminate
-        // the recursion early.
-        return;
-    }
-    parent.dirtyChildren.add(child);
-    reportDirty(parent);
-}
-// Let a parent Entry know that one of its children is no longer dirty.
-function reportCleanChild(parent, child) {
-    // Must have called rememberChild(child) before calling
-    // reportCleanChild(parent, child).
-    assert(parent.childValues.has(child));
-    assert(!mightBeDirty(child));
-    var childValue = parent.childValues.get(child);
-    if (childValue.length === 0) {
-        parent.childValues.set(child, valueCopy(child.value));
-    }
-    else if (!valueIs(childValue, child.value)) {
-        parent.setDirty();
-    }
-    removeDirtyChild(parent, child);
-    if (mightBeDirty(parent)) {
-        return;
-    }
-    reportClean(parent);
-}
-function removeDirtyChild(parent, child) {
-    var dc = parent.dirtyChildren;
-    if (dc) {
-        dc.delete(child);
-        if (dc.size === 0) {
-            if (emptySetPool.length < POOL_TARGET_SIZE) {
-                emptySetPool.push(dc);
-            }
-            parent.dirtyChildren = null;
-        }
-    }
-}
-// If the given entry has a reportOrphan method, and no remaining parents,
-// call entry.reportOrphan and return true iff it returns true. The
-// reportOrphan function should return true to indicate entry.dispose()
-// has been called, and the entry has been removed from any other caches
-// (see index.js for the only current example).
-function maybeReportOrphan(entry) {
-    return entry.parents.size === 0 &&
-        typeof entry.reportOrphan === "function" &&
-        entry.reportOrphan() === true;
-}
-// Removes all children from this entry and returns an array of the
-// removed children.
-function forgetChildren(parent) {
-    var children = reusableEmptyArray;
-    if (parent.childValues.size > 0) {
-        children = [];
-        parent.childValues.forEach(function (_value, child) {
-            forgetChild(parent, child);
-            children.push(child);
-        });
-    }
-    // After we forget all our children, this.dirtyChildren must be empty
-    // and therefore must have been reset to null.
-    assert(parent.dirtyChildren === null);
-    return children;
-}
-function forgetChild(parent, child) {
-    child.parents.delete(parent);
-    parent.childValues.delete(child);
-    removeDirtyChild(parent, child);
-}
-function maybeSubscribe(entry) {
-    if (typeof entry.subscribe === "function") {
-        try {
-            maybeUnsubscribe(entry); // Prevent double subscriptions.
-            entry.unsubscribe = entry.subscribe.apply(null, entry.args);
-        }
-        catch (e) {
-            // If this Entry has a subscribe function and it threw an exception
-            // (or an unsubscribe function it previously returned now throws),
-            // return false to indicate that we were not able to subscribe (or
-            // unsubscribe), and this Entry should remain dirty.
-            entry.setDirty();
-            return false;
-        }
-    }
-    // Returning true indicates either that there was no entry.subscribe
-    // function or that it succeeded.
-    return true;
-}
-function maybeUnsubscribe(entry) {
-    var unsubscribe = entry.unsubscribe;
-    if (typeof unsubscribe === "function") {
-        entry.unsubscribe = void 0;
-        unsubscribe();
-    }
-}
-
-// A trie data structure that holds object keys weakly, yet can also hold
-// non-object keys, unlike the native `WeakMap`.
-var KeyTrie = /** @class */ (function () {
-    function KeyTrie(weakness) {
-        this.weakness = weakness;
-    }
-    KeyTrie.prototype.lookup = function () {
-        var array = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            array[_i] = arguments[_i];
-        }
-        return this.lookupArray(array);
-    };
-    KeyTrie.prototype.lookupArray = function (array) {
-        var node = this;
-        array.forEach(function (key) { return node = node.getChildTrie(key); });
-        return node.data || (node.data = Object.create(null));
-    };
-    KeyTrie.prototype.getChildTrie = function (key) {
-        var map = this.weakness && isObjRef(key)
-            ? this.weak || (this.weak = new WeakMap())
-            : this.strong || (this.strong = new Map());
-        var child = map.get(key);
-        if (!child)
-            map.set(key, child = new KeyTrie(this.weakness));
-        return child;
-    };
-    return KeyTrie;
-}());
-function isObjRef(value) {
-    switch (typeof value) {
-        case "object":
-            if (value === null)
-                break;
-        // Fall through to return true...
-        case "function":
-            return true;
-    }
-    return false;
-}
-
-// The defaultMakeCacheKey function is remarkably powerful, because it gives
-// a unique object for any shallow-identical list of arguments. If you need
-// to implement a custom makeCacheKey function, you may find it helpful to
-// delegate the final work to defaultMakeCacheKey, which is why we export it
-// here. However, you may want to avoid defaultMakeCacheKey if your runtime
-// does not support WeakMap, or you have the ability to return a string key.
-// In those cases, just write your own custom makeCacheKey functions.
-var keyTrie = new KeyTrie(typeof WeakMap === "function");
-function defaultMakeCacheKey() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    return keyTrie.lookupArray(args);
-}
-var caches = new Set();
-function wrap(originalFunction, options) {
-    if (options === void 0) { options = Object.create(null); }
-    var cache = new Cache$1(options.max || Math.pow(2, 16), function (entry) { return entry.dispose(); });
-    var disposable = !!options.disposable;
-    var makeCacheKey = options.makeCacheKey || defaultMakeCacheKey;
-    function optimistic() {
-        if (disposable && !parentEntrySlot.hasValue()) {
-            // If there's no current parent computation, and this wrapped
-            // function is disposable (meaning we don't care about entry.value,
-            // just dependency tracking), then we can short-cut everything else
-            // in this function, because entry.recompute() is going to recycle
-            // the entry object without recomputing anything, anyway.
-            return void 0;
-        }
-        var key = makeCacheKey.apply(null, arguments);
-        if (key === void 0) {
-            return originalFunction.apply(null, arguments);
-        }
-        var args = Array.prototype.slice.call(arguments);
-        var entry = cache.get(key);
-        if (entry) {
-            entry.args = args;
-        }
-        else {
-            entry = new Entry(originalFunction, args);
-            cache.set(key, entry);
-            entry.subscribe = options.subscribe;
-            if (disposable) {
-                entry.reportOrphan = function () { return cache.delete(key); };
-            }
-        }
-        var value = entry.recompute();
-        // Move this entry to the front of the least-recently used queue,
-        // since we just finished computing its value.
-        cache.set(key, entry);
-        caches.add(cache);
-        // Clean up any excess entries in the cache, but only if there is no
-        // active parent entry, meaning we're not in the middle of a larger
-        // computation that might be flummoxed by the cleaning.
-        if (!parentEntrySlot.hasValue()) {
-            caches.forEach(function (cache) { return cache.clean(); });
-            caches.clear();
-        }
-        // If options.disposable is truthy, the caller of wrap is telling us
-        // they don't care about the result of entry.recompute(), so we should
-        // avoid returning the value, so it won't be accidentally used.
-        return disposable ? void 0 : value;
-    }
-    optimistic.dirty = function () {
-        var key = makeCacheKey.apply(null, arguments);
-        var child = key !== void 0 && cache.get(key);
-        if (child) {
-            child.setDirty();
-        }
-    };
-    return optimistic;
-}var haveWarned$1 = false;
-function shouldWarn() {
-    var answer = !haveWarned$1;
-    if (!isTest()) {
-        haveWarned$1 = true;
-    }
-    return answer;
-}
-var HeuristicFragmentMatcher = (function () {
-    function HeuristicFragmentMatcher() {
-    }
-    HeuristicFragmentMatcher.prototype.ensureReady = function () {
-        return Promise.resolve();
-    };
-    HeuristicFragmentMatcher.prototype.canBypassInit = function () {
-        return true;
-    };
-    HeuristicFragmentMatcher.prototype.match = function (idValue, typeCondition, context) {
-        var obj = context.store.get(idValue.id);
-        var isRootQuery = idValue.id === 'ROOT_QUERY';
-        if (!obj) {
-            return isRootQuery;
-        }
-        var _a = obj.__typename, __typename = _a === void 0 ? isRootQuery && 'Query' : _a;
-        if (!__typename) {
-            if (shouldWarn()) {
-                process.env.NODE_ENV === "production" || invariant.warn("You're using fragments in your queries, but either don't have the addTypename:\n  true option set in Apollo Client, or you are trying to write a fragment to the store without the __typename.\n   Please turn on the addTypename option and include __typename when writing fragments so that Apollo Client\n   can accurately match fragments.");
-                process.env.NODE_ENV === "production" || invariant.warn('Could not find __typename on Fragment ', typeCondition, obj);
-                process.env.NODE_ENV === "production" || invariant.warn("DEPRECATION WARNING: using fragments without __typename is unsupported behavior " +
-                    "and will be removed in future versions of Apollo client. You should fix this and set addTypename to true now.");
-            }
-            return 'heuristic';
-        }
-        if (__typename === typeCondition) {
-            return true;
-        }
-        if (shouldWarn()) {
-            process.env.NODE_ENV === "production" || invariant.error('You are using the simple (heuristic) fragment matcher, but your ' +
-                'queries contain union or interface types. Apollo Client will not be ' +
-                'able to accurately map fragments. To make this error go away, use ' +
-                'the `IntrospectionFragmentMatcher` as described in the docs: ' +
-                'https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher');
-        }
-        return 'heuristic';
-    };
-    return HeuristicFragmentMatcher;
-}());
-var IntrospectionFragmentMatcher = (function () {
-    function IntrospectionFragmentMatcher(options) {
-        if (options && options.introspectionQueryResultData) {
-            this.possibleTypesMap = this.parseIntrospectionResult(options.introspectionQueryResultData);
-            this.isReady = true;
-        }
-        else {
-            this.isReady = false;
-        }
-        this.match = this.match.bind(this);
-    }
-    IntrospectionFragmentMatcher.prototype.match = function (idValue, typeCondition, context) {
-        process.env.NODE_ENV === "production" ? invariant(this.isReady, 2) : invariant(this.isReady, 'FragmentMatcher.match() was called before FragmentMatcher.init()');
-        var obj = context.store.get(idValue.id);
-        var isRootQuery = idValue.id === 'ROOT_QUERY';
-        if (!obj) {
-            return isRootQuery;
-        }
-        var _a = obj.__typename, __typename = _a === void 0 ? isRootQuery && 'Query' : _a;
-        process.env.NODE_ENV === "production" ? invariant(__typename, 3) : invariant(__typename, "Cannot match fragment because __typename property is missing: " + JSON.stringify(obj));
-        if (__typename === typeCondition) {
-            return true;
-        }
-        var implementingTypes = this.possibleTypesMap[typeCondition];
-        if (__typename &&
-            implementingTypes &&
-            implementingTypes.indexOf(__typename) > -1) {
-            return true;
-        }
-        return false;
-    };
-    IntrospectionFragmentMatcher.prototype.parseIntrospectionResult = function (introspectionResultData) {
-        var typeMap = {};
-        introspectionResultData.__schema.types.forEach(function (type) {
-            if (type.kind === 'UNION' || type.kind === 'INTERFACE') {
-                typeMap[type.name] = type.possibleTypes.map(function (implementingType) { return implementingType.name; });
-            }
-        });
-        return typeMap;
-    };
-    return IntrospectionFragmentMatcher;
-}());
-
-var hasOwn = Object.prototype.hasOwnProperty;
-var DepTrackingCache = (function () {
-    function DepTrackingCache(data) {
-        var _this = this;
-        if (data === void 0) { data = Object.create(null); }
-        this.data = data;
-        this.depend = wrap(function (dataId) { return _this.data[dataId]; }, {
-            disposable: true,
-            makeCacheKey: function (dataId) {
-                return dataId;
-            },
-        });
-    }
-    DepTrackingCache.prototype.toObject = function () {
-        return this.data;
-    };
-    DepTrackingCache.prototype.get = function (dataId) {
-        this.depend(dataId);
-        return this.data[dataId];
-    };
-    DepTrackingCache.prototype.set = function (dataId, value) {
-        var oldValue = this.data[dataId];
-        if (value !== oldValue) {
-            this.data[dataId] = value;
-            this.depend.dirty(dataId);
-        }
-    };
-    DepTrackingCache.prototype.delete = function (dataId) {
-        if (hasOwn.call(this.data, dataId)) {
-            delete this.data[dataId];
-            this.depend.dirty(dataId);
-        }
-    };
-    DepTrackingCache.prototype.clear = function () {
-        this.replace(null);
-    };
-    DepTrackingCache.prototype.replace = function (newData) {
-        var _this = this;
-        if (newData) {
-            Object.keys(newData).forEach(function (dataId) {
-                _this.set(dataId, newData[dataId]);
-            });
-            Object.keys(this.data).forEach(function (dataId) {
-                if (!hasOwn.call(newData, dataId)) {
-                    _this.delete(dataId);
-                }
-            });
-        }
-        else {
-            Object.keys(this.data).forEach(function (dataId) {
-                _this.delete(dataId);
-            });
-        }
-    };
-    return DepTrackingCache;
-}());
-function defaultNormalizedCacheFactory(seed) {
-    return new DepTrackingCache(seed);
-}
-
-var StoreReader = (function () {
-    function StoreReader(_a) {
-        var _this = this;
-        var _b = _a === void 0 ? {} : _a, _c = _b.cacheKeyRoot, cacheKeyRoot = _c === void 0 ? new KeyTrie(canUseWeakMap) : _c, _d = _b.freezeResults, freezeResults = _d === void 0 ? false : _d;
-        var _e = this, executeStoreQuery = _e.executeStoreQuery, executeSelectionSet = _e.executeSelectionSet, executeSubSelectedArray = _e.executeSubSelectedArray;
-        this.freezeResults = freezeResults;
-        this.executeStoreQuery = wrap(function (options) {
-            return executeStoreQuery.call(_this, options);
-        }, {
-            makeCacheKey: function (_a) {
-                var query = _a.query, rootValue = _a.rootValue, contextValue = _a.contextValue, variableValues = _a.variableValues, fragmentMatcher = _a.fragmentMatcher;
-                if (contextValue.store instanceof DepTrackingCache) {
-                    return cacheKeyRoot.lookup(contextValue.store, query, fragmentMatcher, JSON.stringify(variableValues), rootValue.id);
-                }
-            }
-        });
-        this.executeSelectionSet = wrap(function (options) {
-            return executeSelectionSet.call(_this, options);
-        }, {
-            makeCacheKey: function (_a) {
-                var selectionSet = _a.selectionSet, rootValue = _a.rootValue, execContext = _a.execContext;
-                if (execContext.contextValue.store instanceof DepTrackingCache) {
-                    return cacheKeyRoot.lookup(execContext.contextValue.store, selectionSet, execContext.fragmentMatcher, JSON.stringify(execContext.variableValues), rootValue.id);
-                }
-            }
-        });
-        this.executeSubSelectedArray = wrap(function (options) {
-            return executeSubSelectedArray.call(_this, options);
-        }, {
-            makeCacheKey: function (_a) {
-                var field = _a.field, array = _a.array, execContext = _a.execContext;
-                if (execContext.contextValue.store instanceof DepTrackingCache) {
-                    return cacheKeyRoot.lookup(execContext.contextValue.store, field, array, JSON.stringify(execContext.variableValues));
-                }
-            }
-        });
-    }
-    StoreReader.prototype.readQueryFromStore = function (options) {
-        return this.diffQueryAgainstStore(__assign(__assign({}, options), { returnPartialData: false })).result;
-    };
-    StoreReader.prototype.diffQueryAgainstStore = function (_a) {
-        var store = _a.store, query = _a.query, variables = _a.variables, previousResult = _a.previousResult, _b = _a.returnPartialData, returnPartialData = _b === void 0 ? true : _b, _c = _a.rootId, rootId = _c === void 0 ? 'ROOT_QUERY' : _c, fragmentMatcherFunction = _a.fragmentMatcherFunction, config = _a.config;
-        var queryDefinition = getQueryDefinition(query);
-        variables = assign$1({}, getDefaultValues(queryDefinition), variables);
-        var context = {
-            store: store,
-            dataIdFromObject: config && config.dataIdFromObject,
-            cacheRedirects: (config && config.cacheRedirects) || {},
-        };
-        var execResult = this.executeStoreQuery({
-            query: query,
-            rootValue: {
-                type: 'id',
-                id: rootId,
-                generated: true,
-                typename: 'Query',
-            },
-            contextValue: context,
-            variableValues: variables,
-            fragmentMatcher: fragmentMatcherFunction,
-        });
-        var hasMissingFields = execResult.missing && execResult.missing.length > 0;
-        if (hasMissingFields && !returnPartialData) {
-            execResult.missing.forEach(function (info) {
-                if (info.tolerable)
-                    return;
-                throw process.env.NODE_ENV === "production" ? new InvariantError(8) : new InvariantError("Can't find field " + info.fieldName + " on object " + JSON.stringify(info.object, null, 2) + ".");
-            });
-        }
-        if (previousResult) {
-            if (equal(previousResult, execResult.result)) {
-                execResult.result = previousResult;
-            }
-        }
-        return {
-            result: execResult.result,
-            complete: !hasMissingFields,
-        };
-    };
-    StoreReader.prototype.executeStoreQuery = function (_a) {
-        var query = _a.query, rootValue = _a.rootValue, contextValue = _a.contextValue, variableValues = _a.variableValues, _b = _a.fragmentMatcher, fragmentMatcher = _b === void 0 ? defaultFragmentMatcher : _b;
-        var mainDefinition = getMainDefinition(query);
-        var fragments = getFragmentDefinitions(query);
-        var fragmentMap = createFragmentMap(fragments);
-        var execContext = {
-            query: query,
-            fragmentMap: fragmentMap,
-            contextValue: contextValue,
-            variableValues: variableValues,
-            fragmentMatcher: fragmentMatcher,
-        };
-        return this.executeSelectionSet({
-            selectionSet: mainDefinition.selectionSet,
-            rootValue: rootValue,
-            execContext: execContext,
-        });
-    };
-    StoreReader.prototype.executeSelectionSet = function (_a) {
-        var _this = this;
-        var selectionSet = _a.selectionSet, rootValue = _a.rootValue, execContext = _a.execContext;
-        var fragmentMap = execContext.fragmentMap, contextValue = execContext.contextValue, variables = execContext.variableValues;
-        var finalResult = { result: null };
-        var objectsToMerge = [];
-        var object = contextValue.store.get(rootValue.id);
-        var typename = (object && object.__typename) ||
-            (rootValue.id === 'ROOT_QUERY' && 'Query') ||
-            void 0;
-        function handleMissing(result) {
-            var _a;
-            if (result.missing) {
-                finalResult.missing = finalResult.missing || [];
-                (_a = finalResult.missing).push.apply(_a, result.missing);
-            }
-            return result.result;
-        }
-        selectionSet.selections.forEach(function (selection) {
-            var _a;
-            if (!shouldInclude(selection, variables)) {
-                return;
-            }
-            if (isField(selection)) {
-                var fieldResult = handleMissing(_this.executeField(object, typename, selection, execContext));
-                if (typeof fieldResult !== 'undefined') {
-                    objectsToMerge.push((_a = {},
-                        _a[resultKeyNameFromField(selection)] = fieldResult,
-                        _a));
-                }
-            }
-            else {
-                var fragment = void 0;
-                if (isInlineFragment(selection)) {
-                    fragment = selection;
-                }
-                else {
-                    fragment = fragmentMap[selection.name.value];
-                    if (!fragment) {
-                        throw process.env.NODE_ENV === "production" ? new InvariantError(9) : new InvariantError("No fragment named " + selection.name.value);
-                    }
-                }
-                var typeCondition = fragment.typeCondition && fragment.typeCondition.name.value;
-                var match = !typeCondition ||
-                    execContext.fragmentMatcher(rootValue, typeCondition, contextValue);
-                if (match) {
-                    var fragmentExecResult = _this.executeSelectionSet({
-                        selectionSet: fragment.selectionSet,
-                        rootValue: rootValue,
-                        execContext: execContext,
-                    });
-                    if (match === 'heuristic' && fragmentExecResult.missing) {
-                        fragmentExecResult = __assign(__assign({}, fragmentExecResult), { missing: fragmentExecResult.missing.map(function (info) {
-                                return __assign(__assign({}, info), { tolerable: true });
-                            }) });
-                    }
-                    objectsToMerge.push(handleMissing(fragmentExecResult));
-                }
-            }
-        });
-        finalResult.result = mergeDeepArray(objectsToMerge);
-        if (this.freezeResults && process.env.NODE_ENV !== 'production') {
-            Object.freeze(finalResult.result);
-        }
-        return finalResult;
-    };
-    StoreReader.prototype.executeField = function (object, typename, field, execContext) {
-        var variables = execContext.variableValues, contextValue = execContext.contextValue;
-        var fieldName = field.name.value;
-        var args = argumentsObjectFromField(field, variables);
-        var info = {
-            resultKey: resultKeyNameFromField(field),
-            directives: getDirectiveInfoFromField(field, variables),
-        };
-        var readStoreResult = readStoreResolver(object, typename, fieldName, args, contextValue, info);
-        if (Array.isArray(readStoreResult.result)) {
-            return this.combineExecResults(readStoreResult, this.executeSubSelectedArray({
-                field: field,
-                array: readStoreResult.result,
-                execContext: execContext,
-            }));
-        }
-        if (!field.selectionSet) {
-            assertSelectionSetForIdValue(field, readStoreResult.result);
-            if (this.freezeResults && process.env.NODE_ENV !== 'production') {
-                maybeDeepFreeze(readStoreResult);
-            }
-            return readStoreResult;
-        }
-        if (readStoreResult.result == null) {
-            return readStoreResult;
-        }
-        return this.combineExecResults(readStoreResult, this.executeSelectionSet({
-            selectionSet: field.selectionSet,
-            rootValue: readStoreResult.result,
-            execContext: execContext,
-        }));
-    };
-    StoreReader.prototype.combineExecResults = function () {
-        var execResults = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            execResults[_i] = arguments[_i];
-        }
-        var missing;
-        execResults.forEach(function (execResult) {
-            if (execResult.missing) {
-                missing = missing || [];
-                missing.push.apply(missing, execResult.missing);
-            }
-        });
-        return {
-            result: execResults.pop().result,
-            missing: missing,
-        };
-    };
-    StoreReader.prototype.executeSubSelectedArray = function (_a) {
-        var _this = this;
-        var field = _a.field, array = _a.array, execContext = _a.execContext;
-        var missing;
-        function handleMissing(childResult) {
-            if (childResult.missing) {
-                missing = missing || [];
-                missing.push.apply(missing, childResult.missing);
-            }
-            return childResult.result;
-        }
-        array = array.map(function (item) {
-            if (item === null) {
-                return null;
-            }
-            if (Array.isArray(item)) {
-                return handleMissing(_this.executeSubSelectedArray({
-                    field: field,
-                    array: item,
-                    execContext: execContext,
-                }));
-            }
-            if (field.selectionSet) {
-                return handleMissing(_this.executeSelectionSet({
-                    selectionSet: field.selectionSet,
-                    rootValue: item,
-                    execContext: execContext,
-                }));
-            }
-            assertSelectionSetForIdValue(field, item);
-            return item;
-        });
-        if (this.freezeResults && process.env.NODE_ENV !== 'production') {
-            Object.freeze(array);
-        }
-        return { result: array, missing: missing };
-    };
-    return StoreReader;
-}());
-function assertSelectionSetForIdValue(field, value) {
-    if (!field.selectionSet && isIdValue(value)) {
-        throw process.env.NODE_ENV === "production" ? new InvariantError(10) : new InvariantError("Missing selection set for object of type " + value.typename + " returned for query field " + field.name.value);
-    }
-}
-function defaultFragmentMatcher() {
-    return true;
-}
-function assertIdValue(idValue) {
-    process.env.NODE_ENV === "production" ? invariant(isIdValue(idValue), 11) : invariant(isIdValue(idValue), "Encountered a sub-selection on the query, but the store doesn't have an object reference. This should never happen during normal use unless you have custom code that is directly manipulating the store; please file an issue.");
-}
-function readStoreResolver(object, typename, fieldName, args, context, _a) {
-    var resultKey = _a.resultKey, directives = _a.directives;
-    var storeKeyName = fieldName;
-    if (args || directives) {
-        storeKeyName = getStoreKeyName(storeKeyName, args, directives);
-    }
-    var fieldValue = void 0;
-    if (object) {
-        fieldValue = object[storeKeyName];
-        if (typeof fieldValue === 'undefined' &&
-            context.cacheRedirects &&
-            typeof typename === 'string') {
-            var type = context.cacheRedirects[typename];
-            if (type) {
-                var resolver = type[fieldName];
-                if (resolver) {
-                    fieldValue = resolver(object, args, {
-                        getCacheKey: function (storeObj) {
-                            var id = context.dataIdFromObject(storeObj);
-                            return id && toIdValue({
-                                id: id,
-                                typename: storeObj.__typename,
-                            });
-                        },
-                    });
-                }
-            }
-        }
-    }
-    if (typeof fieldValue === 'undefined') {
-        return {
-            result: fieldValue,
-            missing: [{
-                    object: object,
-                    fieldName: storeKeyName,
-                    tolerable: false,
-                }],
-        };
-    }
-    if (isJsonValue(fieldValue)) {
-        fieldValue = fieldValue.json;
-    }
-    return {
-        result: fieldValue,
-    };
-}
-
-var ObjectCache = (function () {
-    function ObjectCache(data) {
-        if (data === void 0) { data = Object.create(null); }
-        this.data = data;
-    }
-    ObjectCache.prototype.toObject = function () {
-        return this.data;
-    };
-    ObjectCache.prototype.get = function (dataId) {
-        return this.data[dataId];
-    };
-    ObjectCache.prototype.set = function (dataId, value) {
-        this.data[dataId] = value;
-    };
-    ObjectCache.prototype.delete = function (dataId) {
-        this.data[dataId] = void 0;
-    };
-    ObjectCache.prototype.clear = function () {
-        this.data = Object.create(null);
-    };
-    ObjectCache.prototype.replace = function (newData) {
-        this.data = newData || Object.create(null);
-    };
-    return ObjectCache;
-}());
-function defaultNormalizedCacheFactory$1(seed) {
-    return new ObjectCache(seed);
-}
-
-var WriteError = (function (_super) {
-    __extends(WriteError, _super);
-    function WriteError() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.type = 'WriteError';
-        return _this;
-    }
-    return WriteError;
-}(Error));
-function enhanceErrorWithDocument(error, document) {
-    var enhancedError = new WriteError("Error writing result to store for query:\n " + JSON.stringify(document));
-    enhancedError.message += '\n' + error.message;
-    enhancedError.stack = error.stack;
-    return enhancedError;
-}
-var StoreWriter = (function () {
-    function StoreWriter() {
-    }
-    StoreWriter.prototype.writeQueryToStore = function (_a) {
-        var query = _a.query, result = _a.result, _b = _a.store, store = _b === void 0 ? defaultNormalizedCacheFactory() : _b, variables = _a.variables, dataIdFromObject = _a.dataIdFromObject, fragmentMatcherFunction = _a.fragmentMatcherFunction;
-        return this.writeResultToStore({
-            dataId: 'ROOT_QUERY',
-            result: result,
-            document: query,
-            store: store,
-            variables: variables,
-            dataIdFromObject: dataIdFromObject,
-            fragmentMatcherFunction: fragmentMatcherFunction,
-        });
-    };
-    StoreWriter.prototype.writeResultToStore = function (_a) {
-        var dataId = _a.dataId, result = _a.result, document = _a.document, _b = _a.store, store = _b === void 0 ? defaultNormalizedCacheFactory() : _b, variables = _a.variables, dataIdFromObject = _a.dataIdFromObject, fragmentMatcherFunction = _a.fragmentMatcherFunction;
-        var operationDefinition = getOperationDefinition(document);
-        try {
-            return this.writeSelectionSetToStore({
-                result: result,
-                dataId: dataId,
-                selectionSet: operationDefinition.selectionSet,
-                context: {
-                    store: store,
-                    processedData: {},
-                    variables: assign$1({}, getDefaultValues(operationDefinition), variables),
-                    dataIdFromObject: dataIdFromObject,
-                    fragmentMap: createFragmentMap(getFragmentDefinitions(document)),
-                    fragmentMatcherFunction: fragmentMatcherFunction,
-                },
-            });
-        }
-        catch (e) {
-            throw enhanceErrorWithDocument(e, document);
-        }
-    };
-    StoreWriter.prototype.writeSelectionSetToStore = function (_a) {
-        var _this = this;
-        var result = _a.result, dataId = _a.dataId, selectionSet = _a.selectionSet, context = _a.context;
-        var variables = context.variables, store = context.store, fragmentMap = context.fragmentMap;
-        selectionSet.selections.forEach(function (selection) {
-            var _a;
-            if (!shouldInclude(selection, variables)) {
-                return;
-            }
-            if (isField(selection)) {
-                var resultFieldKey = resultKeyNameFromField(selection);
-                var value = result[resultFieldKey];
-                if (typeof value !== 'undefined') {
-                    _this.writeFieldToStore({
-                        dataId: dataId,
-                        value: value,
-                        field: selection,
-                        context: context,
-                    });
-                }
-                else {
-                    var isDefered = false;
-                    var isClient = false;
-                    if (selection.directives && selection.directives.length) {
-                        isDefered = selection.directives.some(function (directive) { return directive.name && directive.name.value === 'defer'; });
-                        isClient = selection.directives.some(function (directive) { return directive.name && directive.name.value === 'client'; });
-                    }
-                    if (!isDefered && !isClient && context.fragmentMatcherFunction) {
-                        process.env.NODE_ENV === "production" || invariant.warn("Missing field " + resultFieldKey + " in " + JSON.stringify(result, null, 2).substring(0, 100));
-                    }
-                }
-            }
-            else {
-                var fragment = void 0;
-                if (isInlineFragment(selection)) {
-                    fragment = selection;
-                }
-                else {
-                    fragment = (fragmentMap || {})[selection.name.value];
-                    process.env.NODE_ENV === "production" ? invariant(fragment, 4) : invariant(fragment, "No fragment named " + selection.name.value + ".");
-                }
-                var matches = true;
-                if (context.fragmentMatcherFunction && fragment.typeCondition) {
-                    var id = dataId || 'self';
-                    var idValue = toIdValue({ id: id, typename: undefined });
-                    var fakeContext = {
-                        store: new ObjectCache((_a = {}, _a[id] = result, _a)),
-                        cacheRedirects: {},
-                    };
-                    var match = context.fragmentMatcherFunction(idValue, fragment.typeCondition.name.value, fakeContext);
-                    if (!isProduction() && match === 'heuristic') {
-                        process.env.NODE_ENV === "production" || invariant.error('WARNING: heuristic fragment matching going on!');
-                    }
-                    matches = !!match;
-                }
-                if (matches) {
-                    _this.writeSelectionSetToStore({
-                        result: result,
-                        selectionSet: fragment.selectionSet,
-                        dataId: dataId,
-                        context: context,
-                    });
-                }
-            }
-        });
-        return store;
-    };
-    StoreWriter.prototype.writeFieldToStore = function (_a) {
-        var _b;
-        var field = _a.field, value = _a.value, dataId = _a.dataId, context = _a.context;
-        var variables = context.variables, dataIdFromObject = context.dataIdFromObject, store = context.store;
-        var storeValue;
-        var storeObject;
-        var storeFieldName = storeKeyNameFromField(field, variables);
-        if (!field.selectionSet || value === null) {
-            storeValue =
-                value != null && typeof value === 'object'
-                    ?
-                        { type: 'json', json: value }
-                    :
-                        value;
-        }
-        else if (Array.isArray(value)) {
-            var generatedId = dataId + "." + storeFieldName;
-            storeValue = this.processArrayValue(value, generatedId, field.selectionSet, context);
-        }
-        else {
-            var valueDataId = dataId + "." + storeFieldName;
-            var generated = true;
-            if (!isGeneratedId(valueDataId)) {
-                valueDataId = '$' + valueDataId;
-            }
-            if (dataIdFromObject) {
-                var semanticId = dataIdFromObject(value);
-                process.env.NODE_ENV === "production" ? invariant(!semanticId || !isGeneratedId(semanticId), 5) : invariant(!semanticId || !isGeneratedId(semanticId), 'IDs returned by dataIdFromObject cannot begin with the "$" character.');
-                if (semanticId ||
-                    (typeof semanticId === 'number' && semanticId === 0)) {
-                    valueDataId = semanticId;
-                    generated = false;
-                }
-            }
-            if (!isDataProcessed(valueDataId, field, context.processedData)) {
-                this.writeSelectionSetToStore({
-                    dataId: valueDataId,
-                    result: value,
-                    selectionSet: field.selectionSet,
-                    context: context,
-                });
-            }
-            var typename = value.__typename;
-            storeValue = toIdValue({ id: valueDataId, typename: typename }, generated);
-            storeObject = store.get(dataId);
-            var escapedId = storeObject && storeObject[storeFieldName];
-            if (escapedId !== storeValue && isIdValue(escapedId)) {
-                var hadTypename = escapedId.typename !== undefined;
-                var hasTypename = typename !== undefined;
-                var typenameChanged = hadTypename && hasTypename && escapedId.typename !== typename;
-                process.env.NODE_ENV === "production" ? invariant(!generated || escapedId.generated || typenameChanged, 6) : invariant(!generated || escapedId.generated || typenameChanged, "Store error: the application attempted to write an object with no provided id but the store already contains an id of " + escapedId.id + " for this object. The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
-                process.env.NODE_ENV === "production" ? invariant(!hadTypename || hasTypename, 7) : invariant(!hadTypename || hasTypename, "Store error: the application attempted to write an object with no provided typename but the store already contains an object with typename of " + escapedId.typename + " for the object of id " + escapedId.id + ". The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
-                if (escapedId.generated) {
-                    if (typenameChanged) {
-                        if (!generated) {
-                            store.delete(escapedId.id);
-                        }
-                    }
-                    else {
-                        mergeWithGenerated(escapedId.id, storeValue.id, store);
-                    }
-                }
-            }
-        }
-        storeObject = store.get(dataId);
-        if (!storeObject || !equal(storeValue, storeObject[storeFieldName])) {
-            store.set(dataId, __assign(__assign({}, storeObject), (_b = {}, _b[storeFieldName] = storeValue, _b)));
-        }
-    };
-    StoreWriter.prototype.processArrayValue = function (value, generatedId, selectionSet, context) {
-        var _this = this;
-        return value.map(function (item, index) {
-            if (item === null) {
-                return null;
-            }
-            var itemDataId = generatedId + "." + index;
-            if (Array.isArray(item)) {
-                return _this.processArrayValue(item, itemDataId, selectionSet, context);
-            }
-            var generated = true;
-            if (context.dataIdFromObject) {
-                var semanticId = context.dataIdFromObject(item);
-                if (semanticId) {
-                    itemDataId = semanticId;
-                    generated = false;
-                }
-            }
-            if (!isDataProcessed(itemDataId, selectionSet, context.processedData)) {
-                _this.writeSelectionSetToStore({
-                    dataId: itemDataId,
-                    result: item,
-                    selectionSet: selectionSet,
-                    context: context,
-                });
-            }
-            return toIdValue({ id: itemDataId, typename: item.__typename }, generated);
-        });
-    };
-    return StoreWriter;
-}());
-function isGeneratedId(id) {
-    return id[0] === '$';
-}
-function mergeWithGenerated(generatedKey, realKey, cache) {
-    if (generatedKey === realKey) {
-        return false;
-    }
-    var generated = cache.get(generatedKey);
-    var real = cache.get(realKey);
-    var madeChanges = false;
-    Object.keys(generated).forEach(function (key) {
-        var value = generated[key];
-        var realValue = real[key];
-        if (isIdValue(value) &&
-            isGeneratedId(value.id) &&
-            isIdValue(realValue) &&
-            !equal(value, realValue) &&
-            mergeWithGenerated(value.id, realValue.id, cache)) {
-            madeChanges = true;
-        }
-    });
-    cache.delete(generatedKey);
-    var newRealValue = __assign(__assign({}, generated), real);
-    if (equal(newRealValue, real)) {
-        return madeChanges;
-    }
-    cache.set(realKey, newRealValue);
-    return true;
-}
-function isDataProcessed(dataId, field, processedData) {
-    if (!processedData) {
-        return false;
-    }
-    if (processedData[dataId]) {
-        if (processedData[dataId].indexOf(field) >= 0) {
-            return true;
-        }
-        else {
-            processedData[dataId].push(field);
-        }
-    }
-    else {
-        processedData[dataId] = [field];
-    }
-    return false;
-}
-
-var defaultConfig = {
-    fragmentMatcher: new HeuristicFragmentMatcher(),
-    dataIdFromObject: defaultDataIdFromObject,
-    addTypename: true,
-    resultCaching: true,
-    freezeResults: false,
-};
-function defaultDataIdFromObject(result) {
-    if (result.__typename) {
-        if (result.id !== undefined) {
-            return result.__typename + ":" + result.id;
-        }
-        if (result._id !== undefined) {
-            return result.__typename + ":" + result._id;
-        }
-    }
-    return null;
-}
-var hasOwn$1 = Object.prototype.hasOwnProperty;
-var OptimisticCacheLayer = (function (_super) {
-    __extends(OptimisticCacheLayer, _super);
-    function OptimisticCacheLayer(optimisticId, parent, transaction) {
-        var _this = _super.call(this, Object.create(null)) || this;
-        _this.optimisticId = optimisticId;
-        _this.parent = parent;
-        _this.transaction = transaction;
-        return _this;
-    }
-    OptimisticCacheLayer.prototype.toObject = function () {
-        return __assign(__assign({}, this.parent.toObject()), this.data);
-    };
-    OptimisticCacheLayer.prototype.get = function (dataId) {
-        return hasOwn$1.call(this.data, dataId)
-            ? this.data[dataId]
-            : this.parent.get(dataId);
-    };
-    return OptimisticCacheLayer;
-}(ObjectCache));
-var InMemoryCache = (function (_super) {
-    __extends(InMemoryCache, _super);
-    function InMemoryCache(config) {
-        if (config === void 0) { config = {}; }
-        var _this = _super.call(this) || this;
-        _this.watches = new Set();
-        _this.typenameDocumentCache = new Map();
-        _this.cacheKeyRoot = new KeyTrie(canUseWeakMap);
-        _this.silenceBroadcast = false;
-        _this.config = __assign(__assign({}, defaultConfig), config);
-        if (_this.config.customResolvers) {
-            process.env.NODE_ENV === "production" || invariant.warn('customResolvers have been renamed to cacheRedirects. Please update your config as we will be deprecating customResolvers in the next major version.');
-            _this.config.cacheRedirects = _this.config.customResolvers;
-        }
-        if (_this.config.cacheResolvers) {
-            process.env.NODE_ENV === "production" || invariant.warn('cacheResolvers have been renamed to cacheRedirects. Please update your config as we will be deprecating cacheResolvers in the next major version.');
-            _this.config.cacheRedirects = _this.config.cacheResolvers;
-        }
-        _this.addTypename = !!_this.config.addTypename;
-        _this.data = _this.config.resultCaching
-            ? new DepTrackingCache()
-            : new ObjectCache();
-        _this.optimisticData = _this.data;
-        _this.storeWriter = new StoreWriter();
-        _this.storeReader = new StoreReader({
-            cacheKeyRoot: _this.cacheKeyRoot,
-            freezeResults: config.freezeResults,
-        });
-        var cache = _this;
-        var maybeBroadcastWatch = cache.maybeBroadcastWatch;
-        _this.maybeBroadcastWatch = wrap(function (c) {
-            return maybeBroadcastWatch.call(_this, c);
-        }, {
-            makeCacheKey: function (c) {
-                if (c.optimistic) {
-                    return;
-                }
-                if (c.previousResult) {
-                    return;
-                }
-                if (cache.data instanceof DepTrackingCache) {
-                    return cache.cacheKeyRoot.lookup(c.query, JSON.stringify(c.variables));
-                }
-            }
-        });
-        return _this;
-    }
-    InMemoryCache.prototype.restore = function (data) {
-        if (data)
-            this.data.replace(data);
-        return this;
-    };
-    InMemoryCache.prototype.extract = function (optimistic) {
-        if (optimistic === void 0) { optimistic = false; }
-        return (optimistic ? this.optimisticData : this.data).toObject();
-    };
-    InMemoryCache.prototype.read = function (options) {
-        if (typeof options.rootId === 'string' &&
-            typeof this.data.get(options.rootId) === 'undefined') {
-            return null;
-        }
-        var fragmentMatcher = this.config.fragmentMatcher;
-        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
-        return this.storeReader.readQueryFromStore({
-            store: options.optimistic ? this.optimisticData : this.data,
-            query: this.transformDocument(options.query),
-            variables: options.variables,
-            rootId: options.rootId,
-            fragmentMatcherFunction: fragmentMatcherFunction,
-            previousResult: options.previousResult,
-            config: this.config,
-        }) || null;
-    };
-    InMemoryCache.prototype.write = function (write) {
-        var fragmentMatcher = this.config.fragmentMatcher;
-        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
-        this.storeWriter.writeResultToStore({
-            dataId: write.dataId,
-            result: write.result,
-            variables: write.variables,
-            document: this.transformDocument(write.query),
-            store: this.data,
-            dataIdFromObject: this.config.dataIdFromObject,
-            fragmentMatcherFunction: fragmentMatcherFunction,
-        });
-        this.broadcastWatches();
-    };
-    InMemoryCache.prototype.diff = function (query) {
-        var fragmentMatcher = this.config.fragmentMatcher;
-        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
-        return this.storeReader.diffQueryAgainstStore({
-            store: query.optimistic ? this.optimisticData : this.data,
-            query: this.transformDocument(query.query),
-            variables: query.variables,
-            returnPartialData: query.returnPartialData,
-            previousResult: query.previousResult,
-            fragmentMatcherFunction: fragmentMatcherFunction,
-            config: this.config,
-        });
-    };
-    InMemoryCache.prototype.watch = function (watch) {
-        var _this = this;
-        this.watches.add(watch);
-        return function () {
-            _this.watches.delete(watch);
-        };
-    };
-    InMemoryCache.prototype.evict = function (query) {
-        throw process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError("eviction is not implemented on InMemory Cache");
-    };
-    InMemoryCache.prototype.reset = function () {
-        this.data.clear();
-        this.broadcastWatches();
-        return Promise.resolve();
-    };
-    InMemoryCache.prototype.removeOptimistic = function (idToRemove) {
-        var toReapply = [];
-        var removedCount = 0;
-        var layer = this.optimisticData;
-        while (layer instanceof OptimisticCacheLayer) {
-            if (layer.optimisticId === idToRemove) {
-                ++removedCount;
-            }
-            else {
-                toReapply.push(layer);
-            }
-            layer = layer.parent;
-        }
-        if (removedCount > 0) {
-            this.optimisticData = layer;
-            while (toReapply.length > 0) {
-                var layer_1 = toReapply.pop();
-                this.performTransaction(layer_1.transaction, layer_1.optimisticId);
-            }
-            this.broadcastWatches();
-        }
-    };
-    InMemoryCache.prototype.performTransaction = function (transaction, optimisticId) {
-        var _a = this, data = _a.data, silenceBroadcast = _a.silenceBroadcast;
-        this.silenceBroadcast = true;
-        if (typeof optimisticId === 'string') {
-            this.data = this.optimisticData = new OptimisticCacheLayer(optimisticId, this.optimisticData, transaction);
-        }
-        try {
-            transaction(this);
-        }
-        finally {
-            this.silenceBroadcast = silenceBroadcast;
-            this.data = data;
-        }
-        this.broadcastWatches();
-    };
-    InMemoryCache.prototype.recordOptimisticTransaction = function (transaction, id) {
-        return this.performTransaction(transaction, id);
-    };
-    InMemoryCache.prototype.transformDocument = function (document) {
-        if (this.addTypename) {
-            var result = this.typenameDocumentCache.get(document);
-            if (!result) {
-                result = addTypenameToDocument(document);
-                this.typenameDocumentCache.set(document, result);
-                this.typenameDocumentCache.set(result, result);
-            }
-            return result;
-        }
-        return document;
-    };
-    InMemoryCache.prototype.broadcastWatches = function () {
-        var _this = this;
-        if (!this.silenceBroadcast) {
-            this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c); });
-        }
-    };
-    InMemoryCache.prototype.maybeBroadcastWatch = function (c) {
-        c.callback(this.diff({
-            query: c.query,
-            variables: c.variables,
-            previousResult: c.previousResult && c.previousResult(),
-            optimistic: c.optimistic,
-        }));
-    };
-    return InMemoryCache;
-}(ApolloCache));var Observable_1 = createCommonjsModule(function (module, exports) {
+}var Observable_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28116,7 +24677,4999 @@ var ApolloClient = (function () {
         this.localState.setFragmentMatcher(fragmentMatcher);
     };
     return ApolloClient;
-}());var devAssert_1 = createCommonjsModule(function (module, exports) {
+}());var blockString = createCommonjsModule(function (module, exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dedentBlockStringValue = dedentBlockStringValue;
+exports.getBlockStringIndentation = getBlockStringIndentation;
+exports.printBlockString = printBlockString;
+
+/**
+ * Produces the value of a block string from its parsed raw value, similar to
+ * CoffeeScript's block string, Python's docstring trim or Ruby's strip_heredoc.
+ *
+ * This implements the GraphQL spec's BlockStringValue() static algorithm.
+ *
+ * @internal
+ */
+function dedentBlockStringValue(rawString) {
+  // Expand a block string's raw value into independent lines.
+  var lines = rawString.split(/\r\n|[\n\r]/g); // Remove common indentation from all lines but first.
+
+  var commonIndent = getBlockStringIndentation(lines);
+
+  if (commonIndent !== 0) {
+    for (var i = 1; i < lines.length; i++) {
+      lines[i] = lines[i].slice(commonIndent);
+    }
+  } // Remove leading and trailing blank lines.
+
+
+  while (lines.length > 0 && isBlank(lines[0])) {
+    lines.shift();
+  }
+
+  while (lines.length > 0 && isBlank(lines[lines.length - 1])) {
+    lines.pop();
+  } // Return a string of the lines joined with U+000A.
+
+
+  return lines.join('\n');
+}
+/**
+ * @internal
+ */
+
+
+function getBlockStringIndentation(lines) {
+  var commonIndent = null;
+
+  for (var i = 1; i < lines.length; i++) {
+    var line = lines[i];
+    var indent = leadingWhitespace(line);
+
+    if (indent === line.length) {
+      continue; // skip empty lines
+    }
+
+    if (commonIndent === null || indent < commonIndent) {
+      commonIndent = indent;
+
+      if (commonIndent === 0) {
+        break;
+      }
+    }
+  }
+
+  return commonIndent === null ? 0 : commonIndent;
+}
+
+function leadingWhitespace(str) {
+  var i = 0;
+
+  while (i < str.length && (str[i] === ' ' || str[i] === '\t')) {
+    i++;
+  }
+
+  return i;
+}
+
+function isBlank(str) {
+  return leadingWhitespace(str) === str.length;
+}
+/**
+ * Print a block string in the indented block form by adding a leading and
+ * trailing blank line. However, if a block string starts with whitespace and is
+ * a single-line, adding a leading blank line would strip that whitespace.
+ *
+ * @internal
+ */
+
+
+function printBlockString(value) {
+  var indentation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var preferMultipleLines = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isSingleLine = value.indexOf('\n') === -1;
+  var hasLeadingSpace = value[0] === ' ' || value[0] === '\t';
+  var hasTrailingQuote = value[value.length - 1] === '"';
+  var printAsMultipleLines = !isSingleLine || hasTrailingQuote || preferMultipleLines;
+  var result = ''; // Format a multi-line block quote to account for leading space.
+
+  if (printAsMultipleLines && !(isSingleLine && hasLeadingSpace)) {
+    result += '\n' + indentation;
+  }
+
+  result += indentation ? value.replace(/\n/g, '\n' + indentation) : value;
+
+  if (printAsMultipleLines) {
+    result += '\n';
+  }
+
+  return '"""' + result.replace(/"""/g, '\\"""') + '"""';
+}
+});
+
+var blockString$1 = unwrapExports(blockString);
+var blockString_1 = blockString.dedentBlockStringValue;
+var blockString_2 = blockString.getBlockStringIndentation;
+var blockString_3 = blockString.printBlockString;var printer = createCommonjsModule(function (module, exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.print = print;
+
+
+
+
+
+/**
+ * Converts an AST into a string, using one set of reasonable
+ * formatting rules.
+ */
+function print(ast) {
+  return (0, visitor.visit)(ast, {
+    leave: printDocASTReducer
+  });
+} // TODO: provide better type coverage in future
+
+
+var printDocASTReducer = {
+  Name: function Name(node) {
+    return node.value;
+  },
+  Variable: function Variable(node) {
+    return '$' + node.name;
+  },
+  // Document
+  Document: function Document(node) {
+    return join(node.definitions, '\n\n') + '\n';
+  },
+  OperationDefinition: function OperationDefinition(node) {
+    var op = node.operation;
+    var name = node.name;
+    var varDefs = wrap('(', join(node.variableDefinitions, ', '), ')');
+    var directives = join(node.directives, ' ');
+    var selectionSet = node.selectionSet; // Anonymous queries with no directives or variable definitions can use
+    // the query short form.
+
+    return !name && !directives && !varDefs && op === 'query' ? selectionSet : join([op, join([name, varDefs]), directives, selectionSet], ' ');
+  },
+  VariableDefinition: function VariableDefinition(_ref) {
+    var variable = _ref.variable,
+        type = _ref.type,
+        defaultValue = _ref.defaultValue,
+        directives = _ref.directives;
+    return variable + ': ' + type + wrap(' = ', defaultValue) + wrap(' ', join(directives, ' '));
+  },
+  SelectionSet: function SelectionSet(_ref2) {
+    var selections = _ref2.selections;
+    return block(selections);
+  },
+  Field: function Field(_ref3) {
+    var alias = _ref3.alias,
+        name = _ref3.name,
+        args = _ref3.arguments,
+        directives = _ref3.directives,
+        selectionSet = _ref3.selectionSet;
+    return join([wrap('', alias, ': ') + name + wrap('(', join(args, ', '), ')'), join(directives, ' '), selectionSet], ' ');
+  },
+  Argument: function Argument(_ref4) {
+    var name = _ref4.name,
+        value = _ref4.value;
+    return name + ': ' + value;
+  },
+  // Fragments
+  FragmentSpread: function FragmentSpread(_ref5) {
+    var name = _ref5.name,
+        directives = _ref5.directives;
+    return '...' + name + wrap(' ', join(directives, ' '));
+  },
+  InlineFragment: function InlineFragment(_ref6) {
+    var typeCondition = _ref6.typeCondition,
+        directives = _ref6.directives,
+        selectionSet = _ref6.selectionSet;
+    return join(['...', wrap('on ', typeCondition), join(directives, ' '), selectionSet], ' ');
+  },
+  FragmentDefinition: function FragmentDefinition(_ref7) {
+    var name = _ref7.name,
+        typeCondition = _ref7.typeCondition,
+        variableDefinitions = _ref7.variableDefinitions,
+        directives = _ref7.directives,
+        selectionSet = _ref7.selectionSet;
+    return (// Note: fragment variable definitions are experimental and may be changed
+      // or removed in the future.
+      "fragment ".concat(name).concat(wrap('(', join(variableDefinitions, ', '), ')'), " ") + "on ".concat(typeCondition, " ").concat(wrap('', join(directives, ' '), ' ')) + selectionSet
+    );
+  },
+  // Value
+  IntValue: function IntValue(_ref8) {
+    var value = _ref8.value;
+    return value;
+  },
+  FloatValue: function FloatValue(_ref9) {
+    var value = _ref9.value;
+    return value;
+  },
+  StringValue: function StringValue(_ref10, key) {
+    var value = _ref10.value,
+        isBlockString = _ref10.block;
+    return isBlockString ? (0, blockString.printBlockString)(value, key === 'description' ? '' : '  ') : JSON.stringify(value);
+  },
+  BooleanValue: function BooleanValue(_ref11) {
+    var value = _ref11.value;
+    return value ? 'true' : 'false';
+  },
+  NullValue: function NullValue() {
+    return 'null';
+  },
+  EnumValue: function EnumValue(_ref12) {
+    var value = _ref12.value;
+    return value;
+  },
+  ListValue: function ListValue(_ref13) {
+    var values = _ref13.values;
+    return '[' + join(values, ', ') + ']';
+  },
+  ObjectValue: function ObjectValue(_ref14) {
+    var fields = _ref14.fields;
+    return '{' + join(fields, ', ') + '}';
+  },
+  ObjectField: function ObjectField(_ref15) {
+    var name = _ref15.name,
+        value = _ref15.value;
+    return name + ': ' + value;
+  },
+  // Directive
+  Directive: function Directive(_ref16) {
+    var name = _ref16.name,
+        args = _ref16.arguments;
+    return '@' + name + wrap('(', join(args, ', '), ')');
+  },
+  // Type
+  NamedType: function NamedType(_ref17) {
+    var name = _ref17.name;
+    return name;
+  },
+  ListType: function ListType(_ref18) {
+    var type = _ref18.type;
+    return '[' + type + ']';
+  },
+  NonNullType: function NonNullType(_ref19) {
+    var type = _ref19.type;
+    return type + '!';
+  },
+  // Type System Definitions
+  SchemaDefinition: addDescription(function (_ref20) {
+    var directives = _ref20.directives,
+        operationTypes = _ref20.operationTypes;
+    return join(['schema', join(directives, ' '), block(operationTypes)], ' ');
+  }),
+  OperationTypeDefinition: function OperationTypeDefinition(_ref21) {
+    var operation = _ref21.operation,
+        type = _ref21.type;
+    return operation + ': ' + type;
+  },
+  ScalarTypeDefinition: addDescription(function (_ref22) {
+    var name = _ref22.name,
+        directives = _ref22.directives;
+    return join(['scalar', name, join(directives, ' ')], ' ');
+  }),
+  ObjectTypeDefinition: addDescription(function (_ref23) {
+    var name = _ref23.name,
+        interfaces = _ref23.interfaces,
+        directives = _ref23.directives,
+        fields = _ref23.fields;
+    return join(['type', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+  }),
+  FieldDefinition: addDescription(function (_ref24) {
+    var name = _ref24.name,
+        args = _ref24.arguments,
+        type = _ref24.type,
+        directives = _ref24.directives;
+    return name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + ': ' + type + wrap(' ', join(directives, ' '));
+  }),
+  InputValueDefinition: addDescription(function (_ref25) {
+    var name = _ref25.name,
+        type = _ref25.type,
+        defaultValue = _ref25.defaultValue,
+        directives = _ref25.directives;
+    return join([name + ': ' + type, wrap('= ', defaultValue), join(directives, ' ')], ' ');
+  }),
+  InterfaceTypeDefinition: addDescription(function (_ref26) {
+    var name = _ref26.name,
+        interfaces = _ref26.interfaces,
+        directives = _ref26.directives,
+        fields = _ref26.fields;
+    return join(['interface', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+  }),
+  UnionTypeDefinition: addDescription(function (_ref27) {
+    var name = _ref27.name,
+        directives = _ref27.directives,
+        types = _ref27.types;
+    return join(['union', name, join(directives, ' '), types && types.length !== 0 ? '= ' + join(types, ' | ') : ''], ' ');
+  }),
+  EnumTypeDefinition: addDescription(function (_ref28) {
+    var name = _ref28.name,
+        directives = _ref28.directives,
+        values = _ref28.values;
+    return join(['enum', name, join(directives, ' '), block(values)], ' ');
+  }),
+  EnumValueDefinition: addDescription(function (_ref29) {
+    var name = _ref29.name,
+        directives = _ref29.directives;
+    return join([name, join(directives, ' ')], ' ');
+  }),
+  InputObjectTypeDefinition: addDescription(function (_ref30) {
+    var name = _ref30.name,
+        directives = _ref30.directives,
+        fields = _ref30.fields;
+    return join(['input', name, join(directives, ' '), block(fields)], ' ');
+  }),
+  DirectiveDefinition: addDescription(function (_ref31) {
+    var name = _ref31.name,
+        args = _ref31.arguments,
+        repeatable = _ref31.repeatable,
+        locations = _ref31.locations;
+    return 'directive @' + name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + (repeatable ? ' repeatable' : '') + ' on ' + join(locations, ' | ');
+  }),
+  SchemaExtension: function SchemaExtension(_ref32) {
+    var directives = _ref32.directives,
+        operationTypes = _ref32.operationTypes;
+    return join(['extend schema', join(directives, ' '), block(operationTypes)], ' ');
+  },
+  ScalarTypeExtension: function ScalarTypeExtension(_ref33) {
+    var name = _ref33.name,
+        directives = _ref33.directives;
+    return join(['extend scalar', name, join(directives, ' ')], ' ');
+  },
+  ObjectTypeExtension: function ObjectTypeExtension(_ref34) {
+    var name = _ref34.name,
+        interfaces = _ref34.interfaces,
+        directives = _ref34.directives,
+        fields = _ref34.fields;
+    return join(['extend type', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+  },
+  InterfaceTypeExtension: function InterfaceTypeExtension(_ref35) {
+    var name = _ref35.name,
+        interfaces = _ref35.interfaces,
+        directives = _ref35.directives,
+        fields = _ref35.fields;
+    return join(['extend interface', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+  },
+  UnionTypeExtension: function UnionTypeExtension(_ref36) {
+    var name = _ref36.name,
+        directives = _ref36.directives,
+        types = _ref36.types;
+    return join(['extend union', name, join(directives, ' '), types && types.length !== 0 ? '= ' + join(types, ' | ') : ''], ' ');
+  },
+  EnumTypeExtension: function EnumTypeExtension(_ref37) {
+    var name = _ref37.name,
+        directives = _ref37.directives,
+        values = _ref37.values;
+    return join(['extend enum', name, join(directives, ' '), block(values)], ' ');
+  },
+  InputObjectTypeExtension: function InputObjectTypeExtension(_ref38) {
+    var name = _ref38.name,
+        directives = _ref38.directives,
+        fields = _ref38.fields;
+    return join(['extend input', name, join(directives, ' '), block(fields)], ' ');
+  }
+};
+
+function addDescription(cb) {
+  return function (node) {
+    return join([node.description, cb(node)], '\n');
+  };
+}
+/**
+ * Given maybeArray, print an empty string if it is null or empty, otherwise
+ * print all items together separated by separator if provided
+ */
+
+
+function join(maybeArray) {
+  var _maybeArray$filter$jo;
+
+  var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return (_maybeArray$filter$jo = maybeArray === null || maybeArray === void 0 ? void 0 : maybeArray.filter(function (x) {
+    return x;
+  }).join(separator)) !== null && _maybeArray$filter$jo !== void 0 ? _maybeArray$filter$jo : '';
+}
+/**
+ * Given array, print each item on its own line, wrapped in an
+ * indented "{ }" block.
+ */
+
+
+function block(array) {
+  return array && array.length !== 0 ? '{\n' + indent(join(array, '\n')) + '\n}' : '';
+}
+/**
+ * If maybeString is not null or empty, then wrap with start and end, otherwise
+ * print an empty string.
+ */
+
+
+function wrap(start, maybeString) {
+  var end = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  return maybeString ? start + maybeString + end : '';
+}
+
+function indent(maybeString) {
+  return maybeString && '  ' + maybeString.replace(/\n/g, '\n  ');
+}
+
+function isMultiline(string) {
+  return string.indexOf('\n') !== -1;
+}
+
+function hasMultilineItems(maybeArray) {
+  return maybeArray && maybeArray.some(isMultiline);
+}
+});
+
+var printer$1 = unwrapExports(printer);
+var printer_1 = printer.print;var defaultHttpOptions = {
+    includeQuery: true,
+    includeExtensions: false,
+};
+var defaultHeaders = {
+    accept: '*/*',
+    'content-type': 'application/json',
+};
+var defaultOptions = {
+    method: 'POST',
+};
+var fallbackHttpConfig = {
+    http: defaultHttpOptions,
+    headers: defaultHeaders,
+    options: defaultOptions,
+};
+var throwServerError = function (response, result, message) {
+    var error = new Error(message);
+    error.name = 'ServerError';
+    error.response = response;
+    error.statusCode = response.status;
+    error.result = result;
+    throw error;
+};
+var parseAndCheckHttpResponse = function (operations) { return function (response) {
+    return (response
+        .text()
+        .then(function (bodyText) {
+        try {
+            return JSON.parse(bodyText);
+        }
+        catch (err) {
+            var parseError = err;
+            parseError.name = 'ServerParseError';
+            parseError.response = response;
+            parseError.statusCode = response.status;
+            parseError.bodyText = bodyText;
+            return Promise.reject(parseError);
+        }
+    })
+        .then(function (result) {
+        if (response.status >= 300) {
+            throwServerError(response, result, "Response not successful: Received status code " + response.status);
+        }
+        if (!Array.isArray(result) &&
+            !result.hasOwnProperty('data') &&
+            !result.hasOwnProperty('errors')) {
+            throwServerError(response, result, "Server response was missing for query '" + (Array.isArray(operations)
+                ? operations.map(function (op) { return op.operationName; })
+                : operations.operationName) + "'.");
+        }
+        return result;
+    }));
+}; };
+var checkFetcher = function (fetcher) {
+    if (!fetcher && typeof fetch === 'undefined') {
+        var library = 'unfetch';
+        if (typeof window === 'undefined')
+            library = 'node-fetch';
+        throw process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError("\nfetch is not found globally and no fetcher passed, to fix pass a fetch for\nyour environment like https://www.npmjs.com/package/" + library + ".\n\nFor example:\nimport fetch from '" + library + "';\nimport { createHttpLink } from 'apollo-link-http';\n\nconst link = createHttpLink({ uri: '/graphql', fetch: fetch });");
+    }
+};
+var createSignalIfSupported = function () {
+    if (typeof AbortController === 'undefined')
+        return { controller: false, signal: false };
+    var controller = new AbortController();
+    var signal = controller.signal;
+    return { controller: controller, signal: signal };
+};
+var selectHttpOptionsAndBody = function (operation, fallbackConfig) {
+    var configs = [];
+    for (var _i = 2; _i < arguments.length; _i++) {
+        configs[_i - 2] = arguments[_i];
+    }
+    var options = __assign({}, fallbackConfig.options, { headers: fallbackConfig.headers, credentials: fallbackConfig.credentials });
+    var http = fallbackConfig.http;
+    configs.forEach(function (config) {
+        options = __assign({}, options, config.options, { headers: __assign({}, options.headers, config.headers) });
+        if (config.credentials)
+            options.credentials = config.credentials;
+        http = __assign({}, http, config.http);
+    });
+    var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;
+    var body = { operationName: operationName, variables: variables };
+    if (http.includeExtensions)
+        body.extensions = extensions;
+    if (http.includeQuery)
+        body.query = printer_1(query);
+    return {
+        options: options,
+        body: body,
+    };
+};
+var serializeFetchParameter = function (p, label) {
+    var serialized;
+    try {
+        serialized = JSON.stringify(p);
+    }
+    catch (e) {
+        var parseError = process.env.NODE_ENV === "production" ? new InvariantError(2) : new InvariantError("Network request failed. " + label + " is not serializable: " + e.message);
+        parseError.parseError = e;
+        throw parseError;
+    }
+    return serialized;
+};
+var selectURI = function (operation, fallbackURI) {
+    var context = operation.getContext();
+    var contextURI = context.uri;
+    if (contextURI) {
+        return contextURI;
+    }
+    else if (typeof fallbackURI === 'function') {
+        return fallbackURI(operation);
+    }
+    else {
+        return fallbackURI || '/graphql';
+    }
+};var createHttpLink = function (linkOptions) {
+    if (linkOptions === void 0) { linkOptions = {}; }
+    var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, fetcher = linkOptions.fetch, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, requestOptions = __rest(linkOptions, ["uri", "fetch", "includeExtensions", "useGETForQueries"]);
+    checkFetcher(fetcher);
+    if (!fetcher) {
+        fetcher = fetch;
+    }
+    var linkConfig = {
+        http: { includeExtensions: includeExtensions },
+        options: requestOptions.fetchOptions,
+        credentials: requestOptions.credentials,
+        headers: requestOptions.headers,
+    };
+    return new ApolloLink(function (operation) {
+        var chosenURI = selectURI(operation, uri);
+        var context = operation.getContext();
+        var clientAwarenessHeaders = {};
+        if (context.clientAwareness) {
+            var _a = context.clientAwareness, name_1 = _a.name, version = _a.version;
+            if (name_1) {
+                clientAwarenessHeaders['apollographql-client-name'] = name_1;
+            }
+            if (version) {
+                clientAwarenessHeaders['apollographql-client-version'] = version;
+            }
+        }
+        var contextHeaders = __assign({}, clientAwarenessHeaders, context.headers);
+        var contextConfig = {
+            http: context.http,
+            options: context.fetchOptions,
+            credentials: context.credentials,
+            headers: contextHeaders,
+        };
+        var _b = selectHttpOptionsAndBody(operation, fallbackHttpConfig, linkConfig, contextConfig), options = _b.options, body = _b.body;
+        var controller;
+        if (!options.signal) {
+            var _c = createSignalIfSupported(), _controller = _c.controller, signal = _c.signal;
+            controller = _controller;
+            if (controller)
+                options.signal = signal;
+        }
+        var definitionIsMutation = function (d) {
+            return d.kind === 'OperationDefinition' && d.operation === 'mutation';
+        };
+        if (useGETForQueries &&
+            !operation.query.definitions.some(definitionIsMutation)) {
+            options.method = 'GET';
+        }
+        if (options.method === 'GET') {
+            var _d = rewriteURIForGET(chosenURI, body), newURI = _d.newURI, parseError = _d.parseError;
+            if (parseError) {
+                return fromError(parseError);
+            }
+            chosenURI = newURI;
+        }
+        else {
+            try {
+                options.body = serializeFetchParameter(body, 'Payload');
+            }
+            catch (parseError) {
+                return fromError(parseError);
+            }
+        }
+        return new Observable$1(function (observer) {
+            fetcher(chosenURI, options)
+                .then(function (response) {
+                operation.setContext({ response: response });
+                return response;
+            })
+                .then(parseAndCheckHttpResponse(operation))
+                .then(function (result) {
+                observer.next(result);
+                observer.complete();
+                return result;
+            })
+                .catch(function (err) {
+                if (err.name === 'AbortError')
+                    return;
+                if (err.result && err.result.errors && err.result.data) {
+                    observer.next(err.result);
+                }
+                observer.error(err);
+            });
+            return function () {
+                if (controller)
+                    controller.abort();
+            };
+        });
+    });
+};
+function rewriteURIForGET(chosenURI, body) {
+    var queryParams = [];
+    var addQueryParam = function (key, value) {
+        queryParams.push(key + "=" + encodeURIComponent(value));
+    };
+    if ('query' in body) {
+        addQueryParam('query', body.query);
+    }
+    if (body.operationName) {
+        addQueryParam('operationName', body.operationName);
+    }
+    if (body.variables) {
+        var serializedVariables = void 0;
+        try {
+            serializedVariables = serializeFetchParameter(body.variables, 'Variables map');
+        }
+        catch (parseError) {
+            return { parseError: parseError };
+        }
+        addQueryParam('variables', serializedVariables);
+    }
+    if (body.extensions) {
+        var serializedExtensions = void 0;
+        try {
+            serializedExtensions = serializeFetchParameter(body.extensions, 'Extensions map');
+        }
+        catch (parseError) {
+            return { parseError: parseError };
+        }
+        addQueryParam('extensions', serializedExtensions);
+    }
+    var fragment = '', preFragment = chosenURI;
+    var fragmentStart = chosenURI.indexOf('#');
+    if (fragmentStart !== -1) {
+        fragment = chosenURI.substr(fragmentStart);
+        preFragment = chosenURI.substr(0, fragmentStart);
+    }
+    var queryParamsPrefix = preFragment.indexOf('?') === -1 ? '?' : '&';
+    var newURI = preFragment + queryParamsPrefix + queryParams.join('&') + fragment;
+    return { newURI: newURI };
+}
+var HttpLink = (function (_super) {
+    __extends(HttpLink, _super);
+    function HttpLink(opts) {
+        return _super.call(this, createHttpLink(opts).request) || this;
+    }
+    return HttpLink;
+}(ApolloLink));function queryFromPojo(obj) {
+    var op = {
+        kind: 'OperationDefinition',
+        operation: 'query',
+        name: {
+            kind: 'Name',
+            value: 'GeneratedClientQuery',
+        },
+        selectionSet: selectionSetFromObj(obj),
+    };
+    var out = {
+        kind: 'Document',
+        definitions: [op],
+    };
+    return out;
+}
+function fragmentFromPojo(obj, typename) {
+    var frag = {
+        kind: 'FragmentDefinition',
+        typeCondition: {
+            kind: 'NamedType',
+            name: {
+                kind: 'Name',
+                value: typename || '__FakeType',
+            },
+        },
+        name: {
+            kind: 'Name',
+            value: 'GeneratedClientQuery',
+        },
+        selectionSet: selectionSetFromObj(obj),
+    };
+    var out = {
+        kind: 'Document',
+        definitions: [frag],
+    };
+    return out;
+}
+function selectionSetFromObj(obj) {
+    if (typeof obj === 'number' ||
+        typeof obj === 'boolean' ||
+        typeof obj === 'string' ||
+        typeof obj === 'undefined' ||
+        obj === null) {
+        return null;
+    }
+    if (Array.isArray(obj)) {
+        return selectionSetFromObj(obj[0]);
+    }
+    var selections = [];
+    Object.keys(obj).forEach(function (key) {
+        var nestedSelSet = selectionSetFromObj(obj[key]);
+        var field = {
+            kind: 'Field',
+            name: {
+                kind: 'Name',
+                value: key,
+            },
+            selectionSet: nestedSelSet || undefined,
+        };
+        selections.push(field);
+    });
+    var selectionSet = {
+        kind: 'SelectionSet',
+        selections: selections,
+    };
+    return selectionSet;
+}
+var justTypenameQuery = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: null,
+            variableDefinitions: null,
+            directives: [],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        alias: null,
+                        name: {
+                            kind: 'Name',
+                            value: '__typename',
+                        },
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                    },
+                ],
+            },
+        },
+    ],
+};
+
+var ApolloCache = (function () {
+    function ApolloCache() {
+    }
+    ApolloCache.prototype.transformDocument = function (document) {
+        return document;
+    };
+    ApolloCache.prototype.transformForLink = function (document) {
+        return document;
+    };
+    ApolloCache.prototype.readQuery = function (options, optimistic) {
+        if (optimistic === void 0) { optimistic = false; }
+        return this.read({
+            query: options.query,
+            variables: options.variables,
+            optimistic: optimistic,
+        });
+    };
+    ApolloCache.prototype.readFragment = function (options, optimistic) {
+        if (optimistic === void 0) { optimistic = false; }
+        return this.read({
+            query: getFragmentQueryDocument(options.fragment, options.fragmentName),
+            variables: options.variables,
+            rootId: options.id,
+            optimistic: optimistic,
+        });
+    };
+    ApolloCache.prototype.writeQuery = function (options) {
+        this.write({
+            dataId: 'ROOT_QUERY',
+            result: options.data,
+            query: options.query,
+            variables: options.variables,
+        });
+    };
+    ApolloCache.prototype.writeFragment = function (options) {
+        this.write({
+            dataId: options.id,
+            result: options.data,
+            variables: options.variables,
+            query: getFragmentQueryDocument(options.fragment, options.fragmentName),
+        });
+    };
+    ApolloCache.prototype.writeData = function (_a) {
+        var id = _a.id, data = _a.data;
+        if (typeof id !== 'undefined') {
+            var typenameResult = null;
+            try {
+                typenameResult = this.read({
+                    rootId: id,
+                    optimistic: false,
+                    query: justTypenameQuery,
+                });
+            }
+            catch (e) {
+            }
+            var __typename = (typenameResult && typenameResult.__typename) || '__ClientData';
+            var dataToWrite = Object.assign({ __typename: __typename }, data);
+            this.writeFragment({
+                id: id,
+                fragment: fragmentFromPojo(dataToWrite, __typename),
+                data: dataToWrite,
+            });
+        }
+        else {
+            this.writeQuery({ query: queryFromPojo(data), data: data });
+        }
+    };
+    return ApolloCache;
+}());
+
+var Cache;
+(function (Cache) {
+})(Cache || (Cache = {}));// This currentContext variable will only be used if the makeSlotClass
+// function is called, which happens only if this is the first copy of the
+// @wry/context package to be imported.
+var currentContext = null;
+// This unique internal object is used to denote the absence of a value
+// for a given Slot, and is never exposed to outside code.
+var MISSING_VALUE = {};
+var idCounter = 1;
+// Although we can't do anything about the cost of duplicated code from
+// accidentally bundling multiple copies of the @wry/context package, we can
+// avoid creating the Slot class more than once using makeSlotClass.
+var makeSlotClass = function () { return /** @class */ (function () {
+    function Slot() {
+        // If you have a Slot object, you can find out its slot.id, but you cannot
+        // guess the slot.id of a Slot you don't have access to, thanks to the
+        // randomized suffix.
+        this.id = [
+            "slot",
+            idCounter++,
+            Date.now(),
+            Math.random().toString(36).slice(2),
+        ].join(":");
+    }
+    Slot.prototype.hasValue = function () {
+        for (var context_1 = currentContext; context_1; context_1 = context_1.parent) {
+            // We use the Slot object iself as a key to its value, which means the
+            // value cannot be obtained without a reference to the Slot object.
+            if (this.id in context_1.slots) {
+                var value = context_1.slots[this.id];
+                if (value === MISSING_VALUE)
+                    break;
+                if (context_1 !== currentContext) {
+                    // Cache the value in currentContext.slots so the next lookup will
+                    // be faster. This caching is safe because the tree of contexts and
+                    // the values of the slots are logically immutable.
+                    currentContext.slots[this.id] = value;
+                }
+                return true;
+            }
+        }
+        if (currentContext) {
+            // If a value was not found for this Slot, it's never going to be found
+            // no matter how many times we look it up, so we might as well cache
+            // the absence of the value, too.
+            currentContext.slots[this.id] = MISSING_VALUE;
+        }
+        return false;
+    };
+    Slot.prototype.getValue = function () {
+        if (this.hasValue()) {
+            return currentContext.slots[this.id];
+        }
+    };
+    Slot.prototype.withValue = function (value, callback, 
+    // Given the prevalence of arrow functions, specifying arguments is likely
+    // to be much more common than specifying `this`, hence this ordering:
+    args, thisArg) {
+        var _a;
+        var slots = (_a = {
+                __proto__: null
+            },
+            _a[this.id] = value,
+            _a);
+        var parent = currentContext;
+        currentContext = { parent: parent, slots: slots };
+        try {
+            // Function.prototype.apply allows the arguments array argument to be
+            // omitted or undefined, so args! is fine here.
+            return callback.apply(thisArg, args);
+        }
+        finally {
+            currentContext = parent;
+        }
+    };
+    // Capture the current context and wrap a callback function so that it
+    // reestablishes the captured context when called.
+    Slot.bind = function (callback) {
+        var context = currentContext;
+        return function () {
+            var saved = currentContext;
+            try {
+                currentContext = context;
+                return callback.apply(this, arguments);
+            }
+            finally {
+                currentContext = saved;
+            }
+        };
+    };
+    // Immediately run a callback function without any captured context.
+    Slot.noContext = function (callback, 
+    // Given the prevalence of arrow functions, specifying arguments is likely
+    // to be much more common than specifying `this`, hence this ordering:
+    args, thisArg) {
+        if (currentContext) {
+            var saved = currentContext;
+            try {
+                currentContext = null;
+                // Function.prototype.apply allows the arguments array argument to be
+                // omitted or undefined, so args! is fine here.
+                return callback.apply(thisArg, args);
+            }
+            finally {
+                currentContext = saved;
+            }
+        }
+        else {
+            return callback.apply(thisArg, args);
+        }
+    };
+    return Slot;
+}()); };
+// We store a single global implementation of the Slot class as a permanent
+// non-enumerable symbol property of the Array constructor. This obfuscation
+// does nothing to prevent access to the Slot class, but at least it ensures
+// the implementation (i.e. currentContext) cannot be tampered with, and all
+// copies of the @wry/context package (hopefully just one) will share the
+// same Slot implementation. Since the first copy of the @wry/context package
+// to be imported wins, this technique imposes a very high cost for any
+// future breaking changes to the Slot class.
+var globalKey = "@wry/context:Slot";
+var host = Array;
+var Slot = host[globalKey] || function () {
+    var Slot = makeSlotClass();
+    try {
+        Object.defineProperty(host, globalKey, {
+            value: host[globalKey] = Slot,
+            enumerable: false,
+            writable: false,
+            configurable: false,
+        });
+    }
+    finally {
+        return Slot;
+    }
+}();
+
+var bind = Slot.bind, noContext = Slot.noContext;
+function setTimeoutWithContext(callback, delay) {
+    return setTimeout(bind(callback), delay);
+}
+// Turn any generator function into an async function (using yield instead
+// of await), with context automatically preserved across yields.
+function asyncFromGen(genFn) {
+    return function () {
+        var gen = genFn.apply(this, arguments);
+        var boundNext = bind(gen.next);
+        var boundThrow = bind(gen.throw);
+        return new Promise(function (resolve, reject) {
+            function invoke(method, argument) {
+                try {
+                    var result = method.call(gen, argument);
+                }
+                catch (error) {
+                    return reject(error);
+                }
+                var next = result.done ? resolve : invokeNext;
+                if (isPromiseLike(result.value)) {
+                    result.value.then(next, result.done ? reject : invokeThrow);
+                }
+                else {
+                    next(result.value);
+                }
+            }
+            var invokeNext = function (value) { return invoke(boundNext, value); };
+            var invokeThrow = function (error) { return invoke(boundThrow, error); };
+            invokeNext();
+        });
+    };
+}
+function isPromiseLike(value) {
+    return value && typeof value.then === "function";
+}
+// If you use the fibers npm package to implement coroutines in Node.js,
+// you should call this function at least once to ensure context management
+// remains coherent across any yields.
+var wrappedFibers = [];
+function wrapYieldingFiberMethods(Fiber) {
+    // There can be only one implementation of Fiber per process, so this array
+    // should never grow longer than one element.
+    if (wrappedFibers.indexOf(Fiber) < 0) {
+        var wrap = function (obj, method) {
+            var fn = obj[method];
+            obj[method] = function () {
+                return noContext(fn, arguments, this);
+            };
+        };
+        // These methods can yield, according to
+        // https://github.com/laverdet/node-fibers/blob/ddebed9b8ae3883e57f822e2108e6943e5c8d2a8/fibers.js#L97-L100
+        wrap(Fiber, "yield");
+        wrap(Fiber.prototype, "run");
+        wrap(Fiber.prototype, "throwInto");
+        wrappedFibers.push(Fiber);
+    }
+    return Fiber;
+}function defaultDispose() { }
+var Cache$1 = /** @class */ (function () {
+    function Cache(max, dispose) {
+        if (max === void 0) { max = Infinity; }
+        if (dispose === void 0) { dispose = defaultDispose; }
+        this.max = max;
+        this.dispose = dispose;
+        this.map = new Map();
+        this.newest = null;
+        this.oldest = null;
+    }
+    Cache.prototype.has = function (key) {
+        return this.map.has(key);
+    };
+    Cache.prototype.get = function (key) {
+        var entry = this.getEntry(key);
+        return entry && entry.value;
+    };
+    Cache.prototype.getEntry = function (key) {
+        var entry = this.map.get(key);
+        if (entry && entry !== this.newest) {
+            var older = entry.older, newer = entry.newer;
+            if (newer) {
+                newer.older = older;
+            }
+            if (older) {
+                older.newer = newer;
+            }
+            entry.older = this.newest;
+            entry.older.newer = entry;
+            entry.newer = null;
+            this.newest = entry;
+            if (entry === this.oldest) {
+                this.oldest = newer;
+            }
+        }
+        return entry;
+    };
+    Cache.prototype.set = function (key, value) {
+        var entry = this.getEntry(key);
+        if (entry) {
+            return entry.value = value;
+        }
+        entry = {
+            key: key,
+            value: value,
+            newer: null,
+            older: this.newest
+        };
+        if (this.newest) {
+            this.newest.newer = entry;
+        }
+        this.newest = entry;
+        this.oldest = this.oldest || entry;
+        this.map.set(key, entry);
+        return entry.value;
+    };
+    Cache.prototype.clean = function () {
+        while (this.oldest && this.map.size > this.max) {
+            this.delete(this.oldest.key);
+        }
+    };
+    Cache.prototype.delete = function (key) {
+        var entry = this.map.get(key);
+        if (entry) {
+            if (entry === this.newest) {
+                this.newest = entry.older;
+            }
+            if (entry === this.oldest) {
+                this.oldest = entry.newer;
+            }
+            if (entry.newer) {
+                entry.newer.older = entry.older;
+            }
+            if (entry.older) {
+                entry.older.newer = entry.newer;
+            }
+            this.map.delete(key);
+            this.dispose(entry.value, key);
+            return true;
+        }
+        return false;
+    };
+    return Cache;
+}());
+
+var parentEntrySlot = new Slot();
+
+var reusableEmptyArray = [];
+var emptySetPool = [];
+var POOL_TARGET_SIZE = 100;
+// Since this package might be used browsers, we should avoid using the
+// Node built-in assert module.
+function assert(condition, optionalMessage) {
+    if (!condition) {
+        throw new Error(optionalMessage || "assertion failure");
+    }
+}
+function valueIs(a, b) {
+    var len = a.length;
+    return (
+    // Unknown values are not equal to each other.
+    len > 0 &&
+        // Both values must be ordinary (or both exceptional) to be equal.
+        len === b.length &&
+        // The underlying value or exception must be the same.
+        a[len - 1] === b[len - 1]);
+}
+function valueGet(value) {
+    switch (value.length) {
+        case 0: throw new Error("unknown value");
+        case 1: return value[0];
+        case 2: throw value[1];
+    }
+}
+function valueCopy(value) {
+    return value.slice(0);
+}
+var Entry = /** @class */ (function () {
+    function Entry(fn, args) {
+        this.fn = fn;
+        this.args = args;
+        this.parents = new Set();
+        this.childValues = new Map();
+        // When this Entry has children that are dirty, this property becomes
+        // a Set containing other Entry objects, borrowed from emptySetPool.
+        // When the set becomes empty, it gets recycled back to emptySetPool.
+        this.dirtyChildren = null;
+        this.dirty = true;
+        this.recomputing = false;
+        this.value = [];
+        ++Entry.count;
+    }
+    // This is the most important method of the Entry API, because it
+    // determines whether the cached this.value can be returned immediately,
+    // or must be recomputed. The overall performance of the caching system
+    // depends on the truth of the following observations: (1) this.dirty is
+    // usually false, (2) this.dirtyChildren is usually null/empty, and thus
+    // (3) valueGet(this.value) is usually returned without recomputation.
+    Entry.prototype.recompute = function () {
+        assert(!this.recomputing, "already recomputing");
+        if (!rememberParent(this) && maybeReportOrphan(this)) {
+            // The recipient of the entry.reportOrphan callback decided to dispose
+            // of this orphan entry by calling entry.dispose(), so we don't need to
+            // (and should not) proceed with the recomputation.
+            return void 0;
+        }
+        return mightBeDirty(this)
+            ? reallyRecompute(this)
+            : valueGet(this.value);
+    };
+    Entry.prototype.setDirty = function () {
+        if (this.dirty)
+            return;
+        this.dirty = true;
+        this.value.length = 0;
+        reportDirty(this);
+        // We can go ahead and unsubscribe here, since any further dirty
+        // notifications we receive will be redundant, and unsubscribing may
+        // free up some resources, e.g. file watchers.
+        maybeUnsubscribe(this);
+    };
+    Entry.prototype.dispose = function () {
+        var _this = this;
+        forgetChildren(this).forEach(maybeReportOrphan);
+        maybeUnsubscribe(this);
+        // Because this entry has been kicked out of the cache (in index.js),
+        // we've lost the ability to find out if/when this entry becomes dirty,
+        // whether that happens through a subscription, because of a direct call
+        // to entry.setDirty(), or because one of its children becomes dirty.
+        // Because of this loss of future information, we have to assume the
+        // worst (that this entry might have become dirty very soon), so we must
+        // immediately mark this entry's parents as dirty. Normally we could
+        // just call entry.setDirty() rather than calling parent.setDirty() for
+        // each parent, but that would leave this entry in parent.childValues
+        // and parent.dirtyChildren, which would prevent the child from being
+        // truly forgotten.
+        this.parents.forEach(function (parent) {
+            parent.setDirty();
+            forgetChild(parent, _this);
+        });
+    };
+    Entry.count = 0;
+    return Entry;
+}());
+function rememberParent(child) {
+    var parent = parentEntrySlot.getValue();
+    if (parent) {
+        child.parents.add(parent);
+        if (!parent.childValues.has(child)) {
+            parent.childValues.set(child, []);
+        }
+        if (mightBeDirty(child)) {
+            reportDirtyChild(parent, child);
+        }
+        else {
+            reportCleanChild(parent, child);
+        }
+        return parent;
+    }
+}
+function reallyRecompute(entry) {
+    // Since this recomputation is likely to re-remember some of this
+    // entry's children, we forget our children here but do not call
+    // maybeReportOrphan until after the recomputation finishes.
+    var originalChildren = forgetChildren(entry);
+    // Set entry as the parent entry while calling recomputeNewValue(entry).
+    parentEntrySlot.withValue(entry, recomputeNewValue, [entry]);
+    if (maybeSubscribe(entry)) {
+        // If we successfully recomputed entry.value and did not fail to
+        // (re)subscribe, then this Entry is no longer explicitly dirty.
+        setClean(entry);
+    }
+    // Now that we've had a chance to re-remember any children that were
+    // involved in the recomputation, we can safely report any orphan
+    // children that remain.
+    originalChildren.forEach(maybeReportOrphan);
+    return valueGet(entry.value);
+}
+function recomputeNewValue(entry) {
+    entry.recomputing = true;
+    // Set entry.value as unknown.
+    entry.value.length = 0;
+    try {
+        // If entry.fn succeeds, entry.value will become a normal Value.
+        entry.value[0] = entry.fn.apply(null, entry.args);
+    }
+    catch (e) {
+        // If entry.fn throws, entry.value will become exceptional.
+        entry.value[1] = e;
+    }
+    // Either way, this line is always reached.
+    entry.recomputing = false;
+}
+function mightBeDirty(entry) {
+    return entry.dirty || !!(entry.dirtyChildren && entry.dirtyChildren.size);
+}
+function setClean(entry) {
+    entry.dirty = false;
+    if (mightBeDirty(entry)) {
+        // This Entry may still have dirty children, in which case we can't
+        // let our parents know we're clean just yet.
+        return;
+    }
+    reportClean(entry);
+}
+function reportDirty(child) {
+    child.parents.forEach(function (parent) { return reportDirtyChild(parent, child); });
+}
+function reportClean(child) {
+    child.parents.forEach(function (parent) { return reportCleanChild(parent, child); });
+}
+// Let a parent Entry know that one of its children may be dirty.
+function reportDirtyChild(parent, child) {
+    // Must have called rememberParent(child) before calling
+    // reportDirtyChild(parent, child).
+    assert(parent.childValues.has(child));
+    assert(mightBeDirty(child));
+    if (!parent.dirtyChildren) {
+        parent.dirtyChildren = emptySetPool.pop() || new Set;
+    }
+    else if (parent.dirtyChildren.has(child)) {
+        // If we already know this child is dirty, then we must have already
+        // informed our own parents that we are dirty, so we can terminate
+        // the recursion early.
+        return;
+    }
+    parent.dirtyChildren.add(child);
+    reportDirty(parent);
+}
+// Let a parent Entry know that one of its children is no longer dirty.
+function reportCleanChild(parent, child) {
+    // Must have called rememberChild(child) before calling
+    // reportCleanChild(parent, child).
+    assert(parent.childValues.has(child));
+    assert(!mightBeDirty(child));
+    var childValue = parent.childValues.get(child);
+    if (childValue.length === 0) {
+        parent.childValues.set(child, valueCopy(child.value));
+    }
+    else if (!valueIs(childValue, child.value)) {
+        parent.setDirty();
+    }
+    removeDirtyChild(parent, child);
+    if (mightBeDirty(parent)) {
+        return;
+    }
+    reportClean(parent);
+}
+function removeDirtyChild(parent, child) {
+    var dc = parent.dirtyChildren;
+    if (dc) {
+        dc.delete(child);
+        if (dc.size === 0) {
+            if (emptySetPool.length < POOL_TARGET_SIZE) {
+                emptySetPool.push(dc);
+            }
+            parent.dirtyChildren = null;
+        }
+    }
+}
+// If the given entry has a reportOrphan method, and no remaining parents,
+// call entry.reportOrphan and return true iff it returns true. The
+// reportOrphan function should return true to indicate entry.dispose()
+// has been called, and the entry has been removed from any other caches
+// (see index.js for the only current example).
+function maybeReportOrphan(entry) {
+    return entry.parents.size === 0 &&
+        typeof entry.reportOrphan === "function" &&
+        entry.reportOrphan() === true;
+}
+// Removes all children from this entry and returns an array of the
+// removed children.
+function forgetChildren(parent) {
+    var children = reusableEmptyArray;
+    if (parent.childValues.size > 0) {
+        children = [];
+        parent.childValues.forEach(function (_value, child) {
+            forgetChild(parent, child);
+            children.push(child);
+        });
+    }
+    // After we forget all our children, this.dirtyChildren must be empty
+    // and therefore must have been reset to null.
+    assert(parent.dirtyChildren === null);
+    return children;
+}
+function forgetChild(parent, child) {
+    child.parents.delete(parent);
+    parent.childValues.delete(child);
+    removeDirtyChild(parent, child);
+}
+function maybeSubscribe(entry) {
+    if (typeof entry.subscribe === "function") {
+        try {
+            maybeUnsubscribe(entry); // Prevent double subscriptions.
+            entry.unsubscribe = entry.subscribe.apply(null, entry.args);
+        }
+        catch (e) {
+            // If this Entry has a subscribe function and it threw an exception
+            // (or an unsubscribe function it previously returned now throws),
+            // return false to indicate that we were not able to subscribe (or
+            // unsubscribe), and this Entry should remain dirty.
+            entry.setDirty();
+            return false;
+        }
+    }
+    // Returning true indicates either that there was no entry.subscribe
+    // function or that it succeeded.
+    return true;
+}
+function maybeUnsubscribe(entry) {
+    var unsubscribe = entry.unsubscribe;
+    if (typeof unsubscribe === "function") {
+        entry.unsubscribe = void 0;
+        unsubscribe();
+    }
+}
+
+// A trie data structure that holds object keys weakly, yet can also hold
+// non-object keys, unlike the native `WeakMap`.
+var KeyTrie = /** @class */ (function () {
+    function KeyTrie(weakness) {
+        this.weakness = weakness;
+    }
+    KeyTrie.prototype.lookup = function () {
+        var array = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            array[_i] = arguments[_i];
+        }
+        return this.lookupArray(array);
+    };
+    KeyTrie.prototype.lookupArray = function (array) {
+        var node = this;
+        array.forEach(function (key) { return node = node.getChildTrie(key); });
+        return node.data || (node.data = Object.create(null));
+    };
+    KeyTrie.prototype.getChildTrie = function (key) {
+        var map = this.weakness && isObjRef(key)
+            ? this.weak || (this.weak = new WeakMap())
+            : this.strong || (this.strong = new Map());
+        var child = map.get(key);
+        if (!child)
+            map.set(key, child = new KeyTrie(this.weakness));
+        return child;
+    };
+    return KeyTrie;
+}());
+function isObjRef(value) {
+    switch (typeof value) {
+        case "object":
+            if (value === null)
+                break;
+        // Fall through to return true...
+        case "function":
+            return true;
+    }
+    return false;
+}
+
+// The defaultMakeCacheKey function is remarkably powerful, because it gives
+// a unique object for any shallow-identical list of arguments. If you need
+// to implement a custom makeCacheKey function, you may find it helpful to
+// delegate the final work to defaultMakeCacheKey, which is why we export it
+// here. However, you may want to avoid defaultMakeCacheKey if your runtime
+// does not support WeakMap, or you have the ability to return a string key.
+// In those cases, just write your own custom makeCacheKey functions.
+var keyTrie = new KeyTrie(typeof WeakMap === "function");
+function defaultMakeCacheKey() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return keyTrie.lookupArray(args);
+}
+var caches = new Set();
+function wrap(originalFunction, options) {
+    if (options === void 0) { options = Object.create(null); }
+    var cache = new Cache$1(options.max || Math.pow(2, 16), function (entry) { return entry.dispose(); });
+    var disposable = !!options.disposable;
+    var makeCacheKey = options.makeCacheKey || defaultMakeCacheKey;
+    function optimistic() {
+        if (disposable && !parentEntrySlot.hasValue()) {
+            // If there's no current parent computation, and this wrapped
+            // function is disposable (meaning we don't care about entry.value,
+            // just dependency tracking), then we can short-cut everything else
+            // in this function, because entry.recompute() is going to recycle
+            // the entry object without recomputing anything, anyway.
+            return void 0;
+        }
+        var key = makeCacheKey.apply(null, arguments);
+        if (key === void 0) {
+            return originalFunction.apply(null, arguments);
+        }
+        var args = Array.prototype.slice.call(arguments);
+        var entry = cache.get(key);
+        if (entry) {
+            entry.args = args;
+        }
+        else {
+            entry = new Entry(originalFunction, args);
+            cache.set(key, entry);
+            entry.subscribe = options.subscribe;
+            if (disposable) {
+                entry.reportOrphan = function () { return cache.delete(key); };
+            }
+        }
+        var value = entry.recompute();
+        // Move this entry to the front of the least-recently used queue,
+        // since we just finished computing its value.
+        cache.set(key, entry);
+        caches.add(cache);
+        // Clean up any excess entries in the cache, but only if there is no
+        // active parent entry, meaning we're not in the middle of a larger
+        // computation that might be flummoxed by the cleaning.
+        if (!parentEntrySlot.hasValue()) {
+            caches.forEach(function (cache) { return cache.clean(); });
+            caches.clear();
+        }
+        // If options.disposable is truthy, the caller of wrap is telling us
+        // they don't care about the result of entry.recompute(), so we should
+        // avoid returning the value, so it won't be accidentally used.
+        return disposable ? void 0 : value;
+    }
+    optimistic.dirty = function () {
+        var key = makeCacheKey.apply(null, arguments);
+        var child = key !== void 0 && cache.get(key);
+        if (child) {
+            child.setDirty();
+        }
+    };
+    return optimistic;
+}var haveWarned$1 = false;
+function shouldWarn() {
+    var answer = !haveWarned$1;
+    if (!isTest()) {
+        haveWarned$1 = true;
+    }
+    return answer;
+}
+var HeuristicFragmentMatcher = (function () {
+    function HeuristicFragmentMatcher() {
+    }
+    HeuristicFragmentMatcher.prototype.ensureReady = function () {
+        return Promise.resolve();
+    };
+    HeuristicFragmentMatcher.prototype.canBypassInit = function () {
+        return true;
+    };
+    HeuristicFragmentMatcher.prototype.match = function (idValue, typeCondition, context) {
+        var obj = context.store.get(idValue.id);
+        var isRootQuery = idValue.id === 'ROOT_QUERY';
+        if (!obj) {
+            return isRootQuery;
+        }
+        var _a = obj.__typename, __typename = _a === void 0 ? isRootQuery && 'Query' : _a;
+        if (!__typename) {
+            if (shouldWarn()) {
+                process.env.NODE_ENV === "production" || invariant.warn("You're using fragments in your queries, but either don't have the addTypename:\n  true option set in Apollo Client, or you are trying to write a fragment to the store without the __typename.\n   Please turn on the addTypename option and include __typename when writing fragments so that Apollo Client\n   can accurately match fragments.");
+                process.env.NODE_ENV === "production" || invariant.warn('Could not find __typename on Fragment ', typeCondition, obj);
+                process.env.NODE_ENV === "production" || invariant.warn("DEPRECATION WARNING: using fragments without __typename is unsupported behavior " +
+                    "and will be removed in future versions of Apollo client. You should fix this and set addTypename to true now.");
+            }
+            return 'heuristic';
+        }
+        if (__typename === typeCondition) {
+            return true;
+        }
+        if (shouldWarn()) {
+            process.env.NODE_ENV === "production" || invariant.error('You are using the simple (heuristic) fragment matcher, but your ' +
+                'queries contain union or interface types. Apollo Client will not be ' +
+                'able to accurately map fragments. To make this error go away, use ' +
+                'the `IntrospectionFragmentMatcher` as described in the docs: ' +
+                'https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher');
+        }
+        return 'heuristic';
+    };
+    return HeuristicFragmentMatcher;
+}());
+var IntrospectionFragmentMatcher = (function () {
+    function IntrospectionFragmentMatcher(options) {
+        if (options && options.introspectionQueryResultData) {
+            this.possibleTypesMap = this.parseIntrospectionResult(options.introspectionQueryResultData);
+            this.isReady = true;
+        }
+        else {
+            this.isReady = false;
+        }
+        this.match = this.match.bind(this);
+    }
+    IntrospectionFragmentMatcher.prototype.match = function (idValue, typeCondition, context) {
+        process.env.NODE_ENV === "production" ? invariant(this.isReady, 2) : invariant(this.isReady, 'FragmentMatcher.match() was called before FragmentMatcher.init()');
+        var obj = context.store.get(idValue.id);
+        var isRootQuery = idValue.id === 'ROOT_QUERY';
+        if (!obj) {
+            return isRootQuery;
+        }
+        var _a = obj.__typename, __typename = _a === void 0 ? isRootQuery && 'Query' : _a;
+        process.env.NODE_ENV === "production" ? invariant(__typename, 3) : invariant(__typename, "Cannot match fragment because __typename property is missing: " + JSON.stringify(obj));
+        if (__typename === typeCondition) {
+            return true;
+        }
+        var implementingTypes = this.possibleTypesMap[typeCondition];
+        if (__typename &&
+            implementingTypes &&
+            implementingTypes.indexOf(__typename) > -1) {
+            return true;
+        }
+        return false;
+    };
+    IntrospectionFragmentMatcher.prototype.parseIntrospectionResult = function (introspectionResultData) {
+        var typeMap = {};
+        introspectionResultData.__schema.types.forEach(function (type) {
+            if (type.kind === 'UNION' || type.kind === 'INTERFACE') {
+                typeMap[type.name] = type.possibleTypes.map(function (implementingType) { return implementingType.name; });
+            }
+        });
+        return typeMap;
+    };
+    return IntrospectionFragmentMatcher;
+}());
+
+var hasOwn = Object.prototype.hasOwnProperty;
+var DepTrackingCache = (function () {
+    function DepTrackingCache(data) {
+        var _this = this;
+        if (data === void 0) { data = Object.create(null); }
+        this.data = data;
+        this.depend = wrap(function (dataId) { return _this.data[dataId]; }, {
+            disposable: true,
+            makeCacheKey: function (dataId) {
+                return dataId;
+            },
+        });
+    }
+    DepTrackingCache.prototype.toObject = function () {
+        return this.data;
+    };
+    DepTrackingCache.prototype.get = function (dataId) {
+        this.depend(dataId);
+        return this.data[dataId];
+    };
+    DepTrackingCache.prototype.set = function (dataId, value) {
+        var oldValue = this.data[dataId];
+        if (value !== oldValue) {
+            this.data[dataId] = value;
+            this.depend.dirty(dataId);
+        }
+    };
+    DepTrackingCache.prototype.delete = function (dataId) {
+        if (hasOwn.call(this.data, dataId)) {
+            delete this.data[dataId];
+            this.depend.dirty(dataId);
+        }
+    };
+    DepTrackingCache.prototype.clear = function () {
+        this.replace(null);
+    };
+    DepTrackingCache.prototype.replace = function (newData) {
+        var _this = this;
+        if (newData) {
+            Object.keys(newData).forEach(function (dataId) {
+                _this.set(dataId, newData[dataId]);
+            });
+            Object.keys(this.data).forEach(function (dataId) {
+                if (!hasOwn.call(newData, dataId)) {
+                    _this.delete(dataId);
+                }
+            });
+        }
+        else {
+            Object.keys(this.data).forEach(function (dataId) {
+                _this.delete(dataId);
+            });
+        }
+    };
+    return DepTrackingCache;
+}());
+function defaultNormalizedCacheFactory(seed) {
+    return new DepTrackingCache(seed);
+}
+
+var StoreReader = (function () {
+    function StoreReader(_a) {
+        var _this = this;
+        var _b = _a === void 0 ? {} : _a, _c = _b.cacheKeyRoot, cacheKeyRoot = _c === void 0 ? new KeyTrie(canUseWeakMap) : _c, _d = _b.freezeResults, freezeResults = _d === void 0 ? false : _d;
+        var _e = this, executeStoreQuery = _e.executeStoreQuery, executeSelectionSet = _e.executeSelectionSet, executeSubSelectedArray = _e.executeSubSelectedArray;
+        this.freezeResults = freezeResults;
+        this.executeStoreQuery = wrap(function (options) {
+            return executeStoreQuery.call(_this, options);
+        }, {
+            makeCacheKey: function (_a) {
+                var query = _a.query, rootValue = _a.rootValue, contextValue = _a.contextValue, variableValues = _a.variableValues, fragmentMatcher = _a.fragmentMatcher;
+                if (contextValue.store instanceof DepTrackingCache) {
+                    return cacheKeyRoot.lookup(contextValue.store, query, fragmentMatcher, JSON.stringify(variableValues), rootValue.id);
+                }
+            }
+        });
+        this.executeSelectionSet = wrap(function (options) {
+            return executeSelectionSet.call(_this, options);
+        }, {
+            makeCacheKey: function (_a) {
+                var selectionSet = _a.selectionSet, rootValue = _a.rootValue, execContext = _a.execContext;
+                if (execContext.contextValue.store instanceof DepTrackingCache) {
+                    return cacheKeyRoot.lookup(execContext.contextValue.store, selectionSet, execContext.fragmentMatcher, JSON.stringify(execContext.variableValues), rootValue.id);
+                }
+            }
+        });
+        this.executeSubSelectedArray = wrap(function (options) {
+            return executeSubSelectedArray.call(_this, options);
+        }, {
+            makeCacheKey: function (_a) {
+                var field = _a.field, array = _a.array, execContext = _a.execContext;
+                if (execContext.contextValue.store instanceof DepTrackingCache) {
+                    return cacheKeyRoot.lookup(execContext.contextValue.store, field, array, JSON.stringify(execContext.variableValues));
+                }
+            }
+        });
+    }
+    StoreReader.prototype.readQueryFromStore = function (options) {
+        return this.diffQueryAgainstStore(__assign(__assign({}, options), { returnPartialData: false })).result;
+    };
+    StoreReader.prototype.diffQueryAgainstStore = function (_a) {
+        var store = _a.store, query = _a.query, variables = _a.variables, previousResult = _a.previousResult, _b = _a.returnPartialData, returnPartialData = _b === void 0 ? true : _b, _c = _a.rootId, rootId = _c === void 0 ? 'ROOT_QUERY' : _c, fragmentMatcherFunction = _a.fragmentMatcherFunction, config = _a.config;
+        var queryDefinition = getQueryDefinition(query);
+        variables = assign$1({}, getDefaultValues(queryDefinition), variables);
+        var context = {
+            store: store,
+            dataIdFromObject: config && config.dataIdFromObject,
+            cacheRedirects: (config && config.cacheRedirects) || {},
+        };
+        var execResult = this.executeStoreQuery({
+            query: query,
+            rootValue: {
+                type: 'id',
+                id: rootId,
+                generated: true,
+                typename: 'Query',
+            },
+            contextValue: context,
+            variableValues: variables,
+            fragmentMatcher: fragmentMatcherFunction,
+        });
+        var hasMissingFields = execResult.missing && execResult.missing.length > 0;
+        if (hasMissingFields && !returnPartialData) {
+            execResult.missing.forEach(function (info) {
+                if (info.tolerable)
+                    return;
+                throw process.env.NODE_ENV === "production" ? new InvariantError(8) : new InvariantError("Can't find field " + info.fieldName + " on object " + JSON.stringify(info.object, null, 2) + ".");
+            });
+        }
+        if (previousResult) {
+            if (equal(previousResult, execResult.result)) {
+                execResult.result = previousResult;
+            }
+        }
+        return {
+            result: execResult.result,
+            complete: !hasMissingFields,
+        };
+    };
+    StoreReader.prototype.executeStoreQuery = function (_a) {
+        var query = _a.query, rootValue = _a.rootValue, contextValue = _a.contextValue, variableValues = _a.variableValues, _b = _a.fragmentMatcher, fragmentMatcher = _b === void 0 ? defaultFragmentMatcher : _b;
+        var mainDefinition = getMainDefinition(query);
+        var fragments = getFragmentDefinitions(query);
+        var fragmentMap = createFragmentMap(fragments);
+        var execContext = {
+            query: query,
+            fragmentMap: fragmentMap,
+            contextValue: contextValue,
+            variableValues: variableValues,
+            fragmentMatcher: fragmentMatcher,
+        };
+        return this.executeSelectionSet({
+            selectionSet: mainDefinition.selectionSet,
+            rootValue: rootValue,
+            execContext: execContext,
+        });
+    };
+    StoreReader.prototype.executeSelectionSet = function (_a) {
+        var _this = this;
+        var selectionSet = _a.selectionSet, rootValue = _a.rootValue, execContext = _a.execContext;
+        var fragmentMap = execContext.fragmentMap, contextValue = execContext.contextValue, variables = execContext.variableValues;
+        var finalResult = { result: null };
+        var objectsToMerge = [];
+        var object = contextValue.store.get(rootValue.id);
+        var typename = (object && object.__typename) ||
+            (rootValue.id === 'ROOT_QUERY' && 'Query') ||
+            void 0;
+        function handleMissing(result) {
+            var _a;
+            if (result.missing) {
+                finalResult.missing = finalResult.missing || [];
+                (_a = finalResult.missing).push.apply(_a, result.missing);
+            }
+            return result.result;
+        }
+        selectionSet.selections.forEach(function (selection) {
+            var _a;
+            if (!shouldInclude(selection, variables)) {
+                return;
+            }
+            if (isField(selection)) {
+                var fieldResult = handleMissing(_this.executeField(object, typename, selection, execContext));
+                if (typeof fieldResult !== 'undefined') {
+                    objectsToMerge.push((_a = {},
+                        _a[resultKeyNameFromField(selection)] = fieldResult,
+                        _a));
+                }
+            }
+            else {
+                var fragment = void 0;
+                if (isInlineFragment(selection)) {
+                    fragment = selection;
+                }
+                else {
+                    fragment = fragmentMap[selection.name.value];
+                    if (!fragment) {
+                        throw process.env.NODE_ENV === "production" ? new InvariantError(9) : new InvariantError("No fragment named " + selection.name.value);
+                    }
+                }
+                var typeCondition = fragment.typeCondition && fragment.typeCondition.name.value;
+                var match = !typeCondition ||
+                    execContext.fragmentMatcher(rootValue, typeCondition, contextValue);
+                if (match) {
+                    var fragmentExecResult = _this.executeSelectionSet({
+                        selectionSet: fragment.selectionSet,
+                        rootValue: rootValue,
+                        execContext: execContext,
+                    });
+                    if (match === 'heuristic' && fragmentExecResult.missing) {
+                        fragmentExecResult = __assign(__assign({}, fragmentExecResult), { missing: fragmentExecResult.missing.map(function (info) {
+                                return __assign(__assign({}, info), { tolerable: true });
+                            }) });
+                    }
+                    objectsToMerge.push(handleMissing(fragmentExecResult));
+                }
+            }
+        });
+        finalResult.result = mergeDeepArray(objectsToMerge);
+        if (this.freezeResults && process.env.NODE_ENV !== 'production') {
+            Object.freeze(finalResult.result);
+        }
+        return finalResult;
+    };
+    StoreReader.prototype.executeField = function (object, typename, field, execContext) {
+        var variables = execContext.variableValues, contextValue = execContext.contextValue;
+        var fieldName = field.name.value;
+        var args = argumentsObjectFromField(field, variables);
+        var info = {
+            resultKey: resultKeyNameFromField(field),
+            directives: getDirectiveInfoFromField(field, variables),
+        };
+        var readStoreResult = readStoreResolver(object, typename, fieldName, args, contextValue, info);
+        if (Array.isArray(readStoreResult.result)) {
+            return this.combineExecResults(readStoreResult, this.executeSubSelectedArray({
+                field: field,
+                array: readStoreResult.result,
+                execContext: execContext,
+            }));
+        }
+        if (!field.selectionSet) {
+            assertSelectionSetForIdValue(field, readStoreResult.result);
+            if (this.freezeResults && process.env.NODE_ENV !== 'production') {
+                maybeDeepFreeze(readStoreResult);
+            }
+            return readStoreResult;
+        }
+        if (readStoreResult.result == null) {
+            return readStoreResult;
+        }
+        return this.combineExecResults(readStoreResult, this.executeSelectionSet({
+            selectionSet: field.selectionSet,
+            rootValue: readStoreResult.result,
+            execContext: execContext,
+        }));
+    };
+    StoreReader.prototype.combineExecResults = function () {
+        var execResults = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            execResults[_i] = arguments[_i];
+        }
+        var missing;
+        execResults.forEach(function (execResult) {
+            if (execResult.missing) {
+                missing = missing || [];
+                missing.push.apply(missing, execResult.missing);
+            }
+        });
+        return {
+            result: execResults.pop().result,
+            missing: missing,
+        };
+    };
+    StoreReader.prototype.executeSubSelectedArray = function (_a) {
+        var _this = this;
+        var field = _a.field, array = _a.array, execContext = _a.execContext;
+        var missing;
+        function handleMissing(childResult) {
+            if (childResult.missing) {
+                missing = missing || [];
+                missing.push.apply(missing, childResult.missing);
+            }
+            return childResult.result;
+        }
+        array = array.map(function (item) {
+            if (item === null) {
+                return null;
+            }
+            if (Array.isArray(item)) {
+                return handleMissing(_this.executeSubSelectedArray({
+                    field: field,
+                    array: item,
+                    execContext: execContext,
+                }));
+            }
+            if (field.selectionSet) {
+                return handleMissing(_this.executeSelectionSet({
+                    selectionSet: field.selectionSet,
+                    rootValue: item,
+                    execContext: execContext,
+                }));
+            }
+            assertSelectionSetForIdValue(field, item);
+            return item;
+        });
+        if (this.freezeResults && process.env.NODE_ENV !== 'production') {
+            Object.freeze(array);
+        }
+        return { result: array, missing: missing };
+    };
+    return StoreReader;
+}());
+function assertSelectionSetForIdValue(field, value) {
+    if (!field.selectionSet && isIdValue(value)) {
+        throw process.env.NODE_ENV === "production" ? new InvariantError(10) : new InvariantError("Missing selection set for object of type " + value.typename + " returned for query field " + field.name.value);
+    }
+}
+function defaultFragmentMatcher() {
+    return true;
+}
+function assertIdValue(idValue) {
+    process.env.NODE_ENV === "production" ? invariant(isIdValue(idValue), 11) : invariant(isIdValue(idValue), "Encountered a sub-selection on the query, but the store doesn't have an object reference. This should never happen during normal use unless you have custom code that is directly manipulating the store; please file an issue.");
+}
+function readStoreResolver(object, typename, fieldName, args, context, _a) {
+    var resultKey = _a.resultKey, directives = _a.directives;
+    var storeKeyName = fieldName;
+    if (args || directives) {
+        storeKeyName = getStoreKeyName(storeKeyName, args, directives);
+    }
+    var fieldValue = void 0;
+    if (object) {
+        fieldValue = object[storeKeyName];
+        if (typeof fieldValue === 'undefined' &&
+            context.cacheRedirects &&
+            typeof typename === 'string') {
+            var type = context.cacheRedirects[typename];
+            if (type) {
+                var resolver = type[fieldName];
+                if (resolver) {
+                    fieldValue = resolver(object, args, {
+                        getCacheKey: function (storeObj) {
+                            var id = context.dataIdFromObject(storeObj);
+                            return id && toIdValue({
+                                id: id,
+                                typename: storeObj.__typename,
+                            });
+                        },
+                    });
+                }
+            }
+        }
+    }
+    if (typeof fieldValue === 'undefined') {
+        return {
+            result: fieldValue,
+            missing: [{
+                    object: object,
+                    fieldName: storeKeyName,
+                    tolerable: false,
+                }],
+        };
+    }
+    if (isJsonValue(fieldValue)) {
+        fieldValue = fieldValue.json;
+    }
+    return {
+        result: fieldValue,
+    };
+}
+
+var ObjectCache = (function () {
+    function ObjectCache(data) {
+        if (data === void 0) { data = Object.create(null); }
+        this.data = data;
+    }
+    ObjectCache.prototype.toObject = function () {
+        return this.data;
+    };
+    ObjectCache.prototype.get = function (dataId) {
+        return this.data[dataId];
+    };
+    ObjectCache.prototype.set = function (dataId, value) {
+        this.data[dataId] = value;
+    };
+    ObjectCache.prototype.delete = function (dataId) {
+        this.data[dataId] = void 0;
+    };
+    ObjectCache.prototype.clear = function () {
+        this.data = Object.create(null);
+    };
+    ObjectCache.prototype.replace = function (newData) {
+        this.data = newData || Object.create(null);
+    };
+    return ObjectCache;
+}());
+function defaultNormalizedCacheFactory$1(seed) {
+    return new ObjectCache(seed);
+}
+
+var WriteError = (function (_super) {
+    __extends(WriteError, _super);
+    function WriteError() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = 'WriteError';
+        return _this;
+    }
+    return WriteError;
+}(Error));
+function enhanceErrorWithDocument(error, document) {
+    var enhancedError = new WriteError("Error writing result to store for query:\n " + JSON.stringify(document));
+    enhancedError.message += '\n' + error.message;
+    enhancedError.stack = error.stack;
+    return enhancedError;
+}
+var StoreWriter = (function () {
+    function StoreWriter() {
+    }
+    StoreWriter.prototype.writeQueryToStore = function (_a) {
+        var query = _a.query, result = _a.result, _b = _a.store, store = _b === void 0 ? defaultNormalizedCacheFactory() : _b, variables = _a.variables, dataIdFromObject = _a.dataIdFromObject, fragmentMatcherFunction = _a.fragmentMatcherFunction;
+        return this.writeResultToStore({
+            dataId: 'ROOT_QUERY',
+            result: result,
+            document: query,
+            store: store,
+            variables: variables,
+            dataIdFromObject: dataIdFromObject,
+            fragmentMatcherFunction: fragmentMatcherFunction,
+        });
+    };
+    StoreWriter.prototype.writeResultToStore = function (_a) {
+        var dataId = _a.dataId, result = _a.result, document = _a.document, _b = _a.store, store = _b === void 0 ? defaultNormalizedCacheFactory() : _b, variables = _a.variables, dataIdFromObject = _a.dataIdFromObject, fragmentMatcherFunction = _a.fragmentMatcherFunction;
+        var operationDefinition = getOperationDefinition(document);
+        try {
+            return this.writeSelectionSetToStore({
+                result: result,
+                dataId: dataId,
+                selectionSet: operationDefinition.selectionSet,
+                context: {
+                    store: store,
+                    processedData: {},
+                    variables: assign$1({}, getDefaultValues(operationDefinition), variables),
+                    dataIdFromObject: dataIdFromObject,
+                    fragmentMap: createFragmentMap(getFragmentDefinitions(document)),
+                    fragmentMatcherFunction: fragmentMatcherFunction,
+                },
+            });
+        }
+        catch (e) {
+            throw enhanceErrorWithDocument(e, document);
+        }
+    };
+    StoreWriter.prototype.writeSelectionSetToStore = function (_a) {
+        var _this = this;
+        var result = _a.result, dataId = _a.dataId, selectionSet = _a.selectionSet, context = _a.context;
+        var variables = context.variables, store = context.store, fragmentMap = context.fragmentMap;
+        selectionSet.selections.forEach(function (selection) {
+            var _a;
+            if (!shouldInclude(selection, variables)) {
+                return;
+            }
+            if (isField(selection)) {
+                var resultFieldKey = resultKeyNameFromField(selection);
+                var value = result[resultFieldKey];
+                if (typeof value !== 'undefined') {
+                    _this.writeFieldToStore({
+                        dataId: dataId,
+                        value: value,
+                        field: selection,
+                        context: context,
+                    });
+                }
+                else {
+                    var isDefered = false;
+                    var isClient = false;
+                    if (selection.directives && selection.directives.length) {
+                        isDefered = selection.directives.some(function (directive) { return directive.name && directive.name.value === 'defer'; });
+                        isClient = selection.directives.some(function (directive) { return directive.name && directive.name.value === 'client'; });
+                    }
+                    if (!isDefered && !isClient && context.fragmentMatcherFunction) {
+                        process.env.NODE_ENV === "production" || invariant.warn("Missing field " + resultFieldKey + " in " + JSON.stringify(result, null, 2).substring(0, 100));
+                    }
+                }
+            }
+            else {
+                var fragment = void 0;
+                if (isInlineFragment(selection)) {
+                    fragment = selection;
+                }
+                else {
+                    fragment = (fragmentMap || {})[selection.name.value];
+                    process.env.NODE_ENV === "production" ? invariant(fragment, 4) : invariant(fragment, "No fragment named " + selection.name.value + ".");
+                }
+                var matches = true;
+                if (context.fragmentMatcherFunction && fragment.typeCondition) {
+                    var id = dataId || 'self';
+                    var idValue = toIdValue({ id: id, typename: undefined });
+                    var fakeContext = {
+                        store: new ObjectCache((_a = {}, _a[id] = result, _a)),
+                        cacheRedirects: {},
+                    };
+                    var match = context.fragmentMatcherFunction(idValue, fragment.typeCondition.name.value, fakeContext);
+                    if (!isProduction() && match === 'heuristic') {
+                        process.env.NODE_ENV === "production" || invariant.error('WARNING: heuristic fragment matching going on!');
+                    }
+                    matches = !!match;
+                }
+                if (matches) {
+                    _this.writeSelectionSetToStore({
+                        result: result,
+                        selectionSet: fragment.selectionSet,
+                        dataId: dataId,
+                        context: context,
+                    });
+                }
+            }
+        });
+        return store;
+    };
+    StoreWriter.prototype.writeFieldToStore = function (_a) {
+        var _b;
+        var field = _a.field, value = _a.value, dataId = _a.dataId, context = _a.context;
+        var variables = context.variables, dataIdFromObject = context.dataIdFromObject, store = context.store;
+        var storeValue;
+        var storeObject;
+        var storeFieldName = storeKeyNameFromField(field, variables);
+        if (!field.selectionSet || value === null) {
+            storeValue =
+                value != null && typeof value === 'object'
+                    ?
+                        { type: 'json', json: value }
+                    :
+                        value;
+        }
+        else if (Array.isArray(value)) {
+            var generatedId = dataId + "." + storeFieldName;
+            storeValue = this.processArrayValue(value, generatedId, field.selectionSet, context);
+        }
+        else {
+            var valueDataId = dataId + "." + storeFieldName;
+            var generated = true;
+            if (!isGeneratedId(valueDataId)) {
+                valueDataId = '$' + valueDataId;
+            }
+            if (dataIdFromObject) {
+                var semanticId = dataIdFromObject(value);
+                process.env.NODE_ENV === "production" ? invariant(!semanticId || !isGeneratedId(semanticId), 5) : invariant(!semanticId || !isGeneratedId(semanticId), 'IDs returned by dataIdFromObject cannot begin with the "$" character.');
+                if (semanticId ||
+                    (typeof semanticId === 'number' && semanticId === 0)) {
+                    valueDataId = semanticId;
+                    generated = false;
+                }
+            }
+            if (!isDataProcessed(valueDataId, field, context.processedData)) {
+                this.writeSelectionSetToStore({
+                    dataId: valueDataId,
+                    result: value,
+                    selectionSet: field.selectionSet,
+                    context: context,
+                });
+            }
+            var typename = value.__typename;
+            storeValue = toIdValue({ id: valueDataId, typename: typename }, generated);
+            storeObject = store.get(dataId);
+            var escapedId = storeObject && storeObject[storeFieldName];
+            if (escapedId !== storeValue && isIdValue(escapedId)) {
+                var hadTypename = escapedId.typename !== undefined;
+                var hasTypename = typename !== undefined;
+                var typenameChanged = hadTypename && hasTypename && escapedId.typename !== typename;
+                process.env.NODE_ENV === "production" ? invariant(!generated || escapedId.generated || typenameChanged, 6) : invariant(!generated || escapedId.generated || typenameChanged, "Store error: the application attempted to write an object with no provided id but the store already contains an id of " + escapedId.id + " for this object. The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
+                process.env.NODE_ENV === "production" ? invariant(!hadTypename || hasTypename, 7) : invariant(!hadTypename || hasTypename, "Store error: the application attempted to write an object with no provided typename but the store already contains an object with typename of " + escapedId.typename + " for the object of id " + escapedId.id + ". The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
+                if (escapedId.generated) {
+                    if (typenameChanged) {
+                        if (!generated) {
+                            store.delete(escapedId.id);
+                        }
+                    }
+                    else {
+                        mergeWithGenerated(escapedId.id, storeValue.id, store);
+                    }
+                }
+            }
+        }
+        storeObject = store.get(dataId);
+        if (!storeObject || !equal(storeValue, storeObject[storeFieldName])) {
+            store.set(dataId, __assign(__assign({}, storeObject), (_b = {}, _b[storeFieldName] = storeValue, _b)));
+        }
+    };
+    StoreWriter.prototype.processArrayValue = function (value, generatedId, selectionSet, context) {
+        var _this = this;
+        return value.map(function (item, index) {
+            if (item === null) {
+                return null;
+            }
+            var itemDataId = generatedId + "." + index;
+            if (Array.isArray(item)) {
+                return _this.processArrayValue(item, itemDataId, selectionSet, context);
+            }
+            var generated = true;
+            if (context.dataIdFromObject) {
+                var semanticId = context.dataIdFromObject(item);
+                if (semanticId) {
+                    itemDataId = semanticId;
+                    generated = false;
+                }
+            }
+            if (!isDataProcessed(itemDataId, selectionSet, context.processedData)) {
+                _this.writeSelectionSetToStore({
+                    dataId: itemDataId,
+                    result: item,
+                    selectionSet: selectionSet,
+                    context: context,
+                });
+            }
+            return toIdValue({ id: itemDataId, typename: item.__typename }, generated);
+        });
+    };
+    return StoreWriter;
+}());
+function isGeneratedId(id) {
+    return id[0] === '$';
+}
+function mergeWithGenerated(generatedKey, realKey, cache) {
+    if (generatedKey === realKey) {
+        return false;
+    }
+    var generated = cache.get(generatedKey);
+    var real = cache.get(realKey);
+    var madeChanges = false;
+    Object.keys(generated).forEach(function (key) {
+        var value = generated[key];
+        var realValue = real[key];
+        if (isIdValue(value) &&
+            isGeneratedId(value.id) &&
+            isIdValue(realValue) &&
+            !equal(value, realValue) &&
+            mergeWithGenerated(value.id, realValue.id, cache)) {
+            madeChanges = true;
+        }
+    });
+    cache.delete(generatedKey);
+    var newRealValue = __assign(__assign({}, generated), real);
+    if (equal(newRealValue, real)) {
+        return madeChanges;
+    }
+    cache.set(realKey, newRealValue);
+    return true;
+}
+function isDataProcessed(dataId, field, processedData) {
+    if (!processedData) {
+        return false;
+    }
+    if (processedData[dataId]) {
+        if (processedData[dataId].indexOf(field) >= 0) {
+            return true;
+        }
+        else {
+            processedData[dataId].push(field);
+        }
+    }
+    else {
+        processedData[dataId] = [field];
+    }
+    return false;
+}
+
+var defaultConfig = {
+    fragmentMatcher: new HeuristicFragmentMatcher(),
+    dataIdFromObject: defaultDataIdFromObject,
+    addTypename: true,
+    resultCaching: true,
+    freezeResults: false,
+};
+function defaultDataIdFromObject(result) {
+    if (result.__typename) {
+        if (result.id !== undefined) {
+            return result.__typename + ":" + result.id;
+        }
+        if (result._id !== undefined) {
+            return result.__typename + ":" + result._id;
+        }
+    }
+    return null;
+}
+var hasOwn$1 = Object.prototype.hasOwnProperty;
+var OptimisticCacheLayer = (function (_super) {
+    __extends(OptimisticCacheLayer, _super);
+    function OptimisticCacheLayer(optimisticId, parent, transaction) {
+        var _this = _super.call(this, Object.create(null)) || this;
+        _this.optimisticId = optimisticId;
+        _this.parent = parent;
+        _this.transaction = transaction;
+        return _this;
+    }
+    OptimisticCacheLayer.prototype.toObject = function () {
+        return __assign(__assign({}, this.parent.toObject()), this.data);
+    };
+    OptimisticCacheLayer.prototype.get = function (dataId) {
+        return hasOwn$1.call(this.data, dataId)
+            ? this.data[dataId]
+            : this.parent.get(dataId);
+    };
+    return OptimisticCacheLayer;
+}(ObjectCache));
+var InMemoryCache = (function (_super) {
+    __extends(InMemoryCache, _super);
+    function InMemoryCache(config) {
+        if (config === void 0) { config = {}; }
+        var _this = _super.call(this) || this;
+        _this.watches = new Set();
+        _this.typenameDocumentCache = new Map();
+        _this.cacheKeyRoot = new KeyTrie(canUseWeakMap);
+        _this.silenceBroadcast = false;
+        _this.config = __assign(__assign({}, defaultConfig), config);
+        if (_this.config.customResolvers) {
+            process.env.NODE_ENV === "production" || invariant.warn('customResolvers have been renamed to cacheRedirects. Please update your config as we will be deprecating customResolvers in the next major version.');
+            _this.config.cacheRedirects = _this.config.customResolvers;
+        }
+        if (_this.config.cacheResolvers) {
+            process.env.NODE_ENV === "production" || invariant.warn('cacheResolvers have been renamed to cacheRedirects. Please update your config as we will be deprecating cacheResolvers in the next major version.');
+            _this.config.cacheRedirects = _this.config.cacheResolvers;
+        }
+        _this.addTypename = !!_this.config.addTypename;
+        _this.data = _this.config.resultCaching
+            ? new DepTrackingCache()
+            : new ObjectCache();
+        _this.optimisticData = _this.data;
+        _this.storeWriter = new StoreWriter();
+        _this.storeReader = new StoreReader({
+            cacheKeyRoot: _this.cacheKeyRoot,
+            freezeResults: config.freezeResults,
+        });
+        var cache = _this;
+        var maybeBroadcastWatch = cache.maybeBroadcastWatch;
+        _this.maybeBroadcastWatch = wrap(function (c) {
+            return maybeBroadcastWatch.call(_this, c);
+        }, {
+            makeCacheKey: function (c) {
+                if (c.optimistic) {
+                    return;
+                }
+                if (c.previousResult) {
+                    return;
+                }
+                if (cache.data instanceof DepTrackingCache) {
+                    return cache.cacheKeyRoot.lookup(c.query, JSON.stringify(c.variables));
+                }
+            }
+        });
+        return _this;
+    }
+    InMemoryCache.prototype.restore = function (data) {
+        if (data)
+            this.data.replace(data);
+        return this;
+    };
+    InMemoryCache.prototype.extract = function (optimistic) {
+        if (optimistic === void 0) { optimistic = false; }
+        return (optimistic ? this.optimisticData : this.data).toObject();
+    };
+    InMemoryCache.prototype.read = function (options) {
+        if (typeof options.rootId === 'string' &&
+            typeof this.data.get(options.rootId) === 'undefined') {
+            return null;
+        }
+        var fragmentMatcher = this.config.fragmentMatcher;
+        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
+        return this.storeReader.readQueryFromStore({
+            store: options.optimistic ? this.optimisticData : this.data,
+            query: this.transformDocument(options.query),
+            variables: options.variables,
+            rootId: options.rootId,
+            fragmentMatcherFunction: fragmentMatcherFunction,
+            previousResult: options.previousResult,
+            config: this.config,
+        }) || null;
+    };
+    InMemoryCache.prototype.write = function (write) {
+        var fragmentMatcher = this.config.fragmentMatcher;
+        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
+        this.storeWriter.writeResultToStore({
+            dataId: write.dataId,
+            result: write.result,
+            variables: write.variables,
+            document: this.transformDocument(write.query),
+            store: this.data,
+            dataIdFromObject: this.config.dataIdFromObject,
+            fragmentMatcherFunction: fragmentMatcherFunction,
+        });
+        this.broadcastWatches();
+    };
+    InMemoryCache.prototype.diff = function (query) {
+        var fragmentMatcher = this.config.fragmentMatcher;
+        var fragmentMatcherFunction = fragmentMatcher && fragmentMatcher.match;
+        return this.storeReader.diffQueryAgainstStore({
+            store: query.optimistic ? this.optimisticData : this.data,
+            query: this.transformDocument(query.query),
+            variables: query.variables,
+            returnPartialData: query.returnPartialData,
+            previousResult: query.previousResult,
+            fragmentMatcherFunction: fragmentMatcherFunction,
+            config: this.config,
+        });
+    };
+    InMemoryCache.prototype.watch = function (watch) {
+        var _this = this;
+        this.watches.add(watch);
+        return function () {
+            _this.watches.delete(watch);
+        };
+    };
+    InMemoryCache.prototype.evict = function (query) {
+        throw process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError("eviction is not implemented on InMemory Cache");
+    };
+    InMemoryCache.prototype.reset = function () {
+        this.data.clear();
+        this.broadcastWatches();
+        return Promise.resolve();
+    };
+    InMemoryCache.prototype.removeOptimistic = function (idToRemove) {
+        var toReapply = [];
+        var removedCount = 0;
+        var layer = this.optimisticData;
+        while (layer instanceof OptimisticCacheLayer) {
+            if (layer.optimisticId === idToRemove) {
+                ++removedCount;
+            }
+            else {
+                toReapply.push(layer);
+            }
+            layer = layer.parent;
+        }
+        if (removedCount > 0) {
+            this.optimisticData = layer;
+            while (toReapply.length > 0) {
+                var layer_1 = toReapply.pop();
+                this.performTransaction(layer_1.transaction, layer_1.optimisticId);
+            }
+            this.broadcastWatches();
+        }
+    };
+    InMemoryCache.prototype.performTransaction = function (transaction, optimisticId) {
+        var _a = this, data = _a.data, silenceBroadcast = _a.silenceBroadcast;
+        this.silenceBroadcast = true;
+        if (typeof optimisticId === 'string') {
+            this.data = this.optimisticData = new OptimisticCacheLayer(optimisticId, this.optimisticData, transaction);
+        }
+        try {
+            transaction(this);
+        }
+        finally {
+            this.silenceBroadcast = silenceBroadcast;
+            this.data = data;
+        }
+        this.broadcastWatches();
+    };
+    InMemoryCache.prototype.recordOptimisticTransaction = function (transaction, id) {
+        return this.performTransaction(transaction, id);
+    };
+    InMemoryCache.prototype.transformDocument = function (document) {
+        if (this.addTypename) {
+            var result = this.typenameDocumentCache.get(document);
+            if (!result) {
+                result = addTypenameToDocument(document);
+                this.typenameDocumentCache.set(document, result);
+                this.typenameDocumentCache.set(result, result);
+            }
+            return result;
+        }
+        return document;
+    };
+    InMemoryCache.prototype.broadcastWatches = function () {
+        var _this = this;
+        if (!this.silenceBroadcast) {
+            this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c); });
+        }
+    };
+    InMemoryCache.prototype.maybeBroadcastWatch = function (c) {
+        c.callback(this.diff({
+            query: c.query,
+            variables: c.variables,
+            previousResult: c.previousResult && c.previousResult(),
+            optimistic: c.optimistic,
+        }));
+    };
+    return InMemoryCache;
+}(ApolloCache));var apolloContext;
+function getApolloContext() {
+    if (!apolloContext) {
+        apolloContext = React__default.createContext({});
+    }
+    return apolloContext;
+}
+function resetApolloContext() {
+    apolloContext = React__default.createContext({});
+}
+
+var ApolloProvider = function (_a) {
+    var client = _a.client, children = _a.children;
+    var ApolloContext = getApolloContext();
+    return React__default.createElement(ApolloContext.Consumer, null, function (context) {
+        if (context === void 0) { context = {}; }
+        if (client && context.client !== client) {
+            context = Object.assign({}, context, { client: client });
+        }
+        process.env.NODE_ENV === "production" ? invariant(context.client, 5) : invariant(context.client, 'ApolloProvider was not passed a client instance. Make ' +
+            'sure you pass in your client via the "client" prop.');
+        return (React__default.createElement(ApolloContext.Provider, { value: context }, children));
+    });
+};
+
+var ApolloConsumer = function (props) {
+    var ApolloContext = getApolloContext();
+    return React__default.createElement(ApolloContext.Consumer, null, function (context) {
+        process.env.NODE_ENV === "production" ? invariant(context && context.client, 6) : invariant(context && context.client, 'Could not find "client" in the context of ApolloConsumer. ' +
+            'Wrap the root component in an <ApolloProvider>.');
+        return props.children(context.client);
+    });
+};
+
+var DocumentType;
+(function (DocumentType) {
+    DocumentType[DocumentType["Query"] = 0] = "Query";
+    DocumentType[DocumentType["Mutation"] = 1] = "Mutation";
+    DocumentType[DocumentType["Subscription"] = 2] = "Subscription";
+})(DocumentType || (DocumentType = {}));
+var cache = new Map();
+function operationName(type) {
+    var name;
+    switch (type) {
+        case DocumentType.Query:
+            name = 'Query';
+            break;
+        case DocumentType.Mutation:
+            name = 'Mutation';
+            break;
+        case DocumentType.Subscription:
+            name = 'Subscription';
+            break;
+    }
+    return name;
+}
+function parser$1(document) {
+    var cached = cache.get(document);
+    if (cached)
+        return cached;
+    var variables, type, name;
+    process.env.NODE_ENV === "production" ? invariant(!!document && !!document.kind, 1) : invariant(!!document && !!document.kind, "Argument of " + document + " passed to parser was not a valid GraphQL " +
+        "DocumentNode. You may need to use 'graphql-tag' or another method " +
+        "to convert your operation into a document");
+    var fragments = document.definitions.filter(function (x) { return x.kind === 'FragmentDefinition'; });
+    var queries = document.definitions.filter(function (x) {
+        return x.kind === 'OperationDefinition' && x.operation === 'query';
+    });
+    var mutations = document.definitions.filter(function (x) {
+        return x.kind === 'OperationDefinition' && x.operation === 'mutation';
+    });
+    var subscriptions = document.definitions.filter(function (x) {
+        return x.kind === 'OperationDefinition' && x.operation === 'subscription';
+    });
+    process.env.NODE_ENV === "production" ? invariant(!fragments.length ||
+        (queries.length || mutations.length || subscriptions.length), 2) : invariant(!fragments.length ||
+        (queries.length || mutations.length || subscriptions.length), "Passing only a fragment to 'graphql' is not yet supported. " +
+        "You must include a query, subscription or mutation as well");
+    process.env.NODE_ENV === "production" ? invariant(queries.length + mutations.length + subscriptions.length <= 1, 3) : invariant(queries.length + mutations.length + subscriptions.length <= 1, "react-apollo only supports a query, subscription, or a mutation per HOC. " +
+        (document + " had " + queries.length + " queries, " + subscriptions.length + " ") +
+        ("subscriptions and " + mutations.length + " mutations. ") +
+        "You can use 'compose' to join multiple operation types to a component");
+    type = queries.length ? DocumentType.Query : DocumentType.Mutation;
+    if (!queries.length && !mutations.length)
+        type = DocumentType.Subscription;
+    var definitions = queries.length
+        ? queries
+        : mutations.length
+            ? mutations
+            : subscriptions;
+    process.env.NODE_ENV === "production" ? invariant(definitions.length === 1, 4) : invariant(definitions.length === 1, "react-apollo only supports one definition per HOC. " + document + " had " +
+        (definitions.length + " definitions. ") +
+        "You can use 'compose' to join multiple operation types to a component");
+    var definition = definitions[0];
+    variables = definition.variableDefinitions || [];
+    if (definition.name && definition.name.kind === 'Name') {
+        name = definition.name.value;
+    }
+    else {
+        name = 'data';
+    }
+    var payload = { name: name, type: type, variables: variables };
+    cache.set(document, payload);
+    return payload;
+}var OperationData = (function () {
+    function OperationData(options, context) {
+        this.isMounted = false;
+        this.previousOptions = {};
+        this.context = {};
+        this.options = {};
+        this.options = options || {};
+        this.context = context || {};
+    }
+    OperationData.prototype.getOptions = function () {
+        return this.options;
+    };
+    OperationData.prototype.setOptions = function (newOptions, storePrevious) {
+        if (storePrevious === void 0) { storePrevious = false; }
+        if (storePrevious && !equal(this.options, newOptions)) {
+            this.previousOptions = this.options;
+        }
+        this.options = newOptions;
+    };
+    OperationData.prototype.unmount = function () {
+        this.isMounted = false;
+    };
+    OperationData.prototype.refreshClient = function () {
+        var client = (this.options && this.options.client) ||
+            (this.context && this.context.client);
+        process.env.NODE_ENV === "production" ? invariant(!!client, 2) : invariant(!!client, 'Could not find "client" in the context or passed in as an option. ' +
+            'Wrap the root component in an <ApolloProvider>, or pass an ' +
+            'ApolloClient instance in via options.');
+        var isNew = false;
+        if (client !== this.client) {
+            isNew = true;
+            this.client = client;
+            this.cleanup();
+        }
+        return {
+            client: this.client,
+            isNew: isNew
+        };
+    };
+    OperationData.prototype.verifyDocumentType = function (document, type) {
+        var operation = parser$1(document);
+        var requiredOperationName = operationName(type);
+        var usedOperationName = operationName(operation.type);
+        process.env.NODE_ENV === "production" ? invariant(operation.type === type, 3) : invariant(operation.type === type, "Running a " + requiredOperationName + " requires a graphql " +
+            (requiredOperationName + ", but a " + usedOperationName + " was used instead."));
+    };
+    return OperationData;
+}());
+
+var QueryData = (function (_super) {
+    __extends(QueryData, _super);
+    function QueryData(_a) {
+        var options = _a.options, context = _a.context, onNewData = _a.onNewData;
+        var _this = _super.call(this, options, context) || this;
+        _this.previousData = {};
+        _this.currentObservable = {};
+        _this.runLazy = false;
+        _this.runLazyQuery = function (options) {
+            _this.cleanup();
+            _this.runLazy = true;
+            _this.lazyOptions = options;
+            _this.onNewData();
+        };
+        _this.getExecuteResult = function () {
+            var result = _this.getQueryResult();
+            _this.startQuerySubscription();
+            return result;
+        };
+        _this.obsRefetch = function (variables) {
+            return _this.currentObservable.query.refetch(variables);
+        };
+        _this.obsFetchMore = function (fetchMoreOptions) { return _this.currentObservable.query.fetchMore(fetchMoreOptions); };
+        _this.obsUpdateQuery = function (mapFn) { return _this.currentObservable.query.updateQuery(mapFn); };
+        _this.obsStartPolling = function (pollInterval) {
+            _this.currentObservable &&
+                _this.currentObservable.query &&
+                _this.currentObservable.query.startPolling(pollInterval);
+        };
+        _this.obsStopPolling = function () {
+            _this.currentObservable &&
+                _this.currentObservable.query &&
+                _this.currentObservable.query.stopPolling();
+        };
+        _this.obsSubscribeToMore = function (options) { return _this.currentObservable.query.subscribeToMore(options); };
+        _this.onNewData = onNewData;
+        return _this;
+    }
+    QueryData.prototype.execute = function () {
+        this.refreshClient();
+        var _a = this.getOptions(), skip = _a.skip, query = _a.query;
+        if (skip || query !== this.previousData.query) {
+            this.removeQuerySubscription();
+            this.previousData.query = query;
+        }
+        this.updateObservableQuery();
+        if (this.isMounted)
+            this.startQuerySubscription();
+        return this.getExecuteSsrResult() || this.getExecuteResult();
+    };
+    QueryData.prototype.executeLazy = function () {
+        return !this.runLazy
+            ? [
+                this.runLazyQuery,
+                {
+                    loading: false,
+                    networkStatus: NetworkStatus.ready,
+                    called: false,
+                    data: undefined,
+                },
+            ]
+            : [this.runLazyQuery, this.execute()];
+    };
+    QueryData.prototype.fetchData = function () {
+        var options = this.getOptions();
+        if (options.skip || options.ssr === false)
+            return false;
+        var obs = this.currentObservable.query;
+        var currentResult = obs.getCurrentResult();
+        return currentResult.loading ? obs.result() : false;
+    };
+    QueryData.prototype.afterExecute = function (_a) {
+        var _b = (_a === void 0 ? {} : _a).lazy, lazy = _b === void 0 ? false : _b;
+        this.isMounted = true;
+        if (!lazy || this.runLazy) {
+            this.handleErrorOrCompleted();
+        }
+        this.previousOptions = this.getOptions();
+        return this.unmount.bind(this);
+    };
+    QueryData.prototype.cleanup = function () {
+        this.removeQuerySubscription();
+        delete this.currentObservable.query;
+        delete this.previousData.result;
+    };
+    QueryData.prototype.getOptions = function () {
+        var options = _super.prototype.getOptions.call(this);
+        if (this.lazyOptions) {
+            options.variables = __assign(__assign({}, options.variables), this.lazyOptions.variables);
+            options.context = __assign(__assign({}, options.context), this.lazyOptions.context);
+        }
+        if (this.runLazy) {
+            delete options.skip;
+        }
+        return options;
+    };
+    QueryData.prototype.ssrInitiated = function () {
+        return this.context && this.context.renderPromises;
+    };
+    QueryData.prototype.getExecuteSsrResult = function () {
+        var ssrDisabled = this.getOptions().ssr === false;
+        var fetchDisabled = this.refreshClient().client.disableNetworkFetches;
+        var ssrLoading = __assign({ loading: true, networkStatus: NetworkStatus.loading, called: true, data: undefined, stale: false, client: this.client }, this.observableQueryFields());
+        if (ssrDisabled && (this.ssrInitiated() || fetchDisabled)) {
+            this.previousData.result = ssrLoading;
+            return ssrLoading;
+        }
+        var result;
+        if (this.ssrInitiated()) {
+            result =
+                this.context.renderPromises.addQueryPromise(this, this.getExecuteResult) || ssrLoading;
+        }
+        return result;
+    };
+    QueryData.prototype.prepareObservableQueryOptions = function () {
+        var options = this.getOptions();
+        this.verifyDocumentType(options.query, DocumentType.Query);
+        var displayName = options.displayName || 'Query';
+        if (this.ssrInitiated() &&
+            (options.fetchPolicy === 'network-only' ||
+                options.fetchPolicy === 'cache-and-network')) {
+            options.fetchPolicy = 'cache-first';
+        }
+        return __assign(__assign({}, options), { displayName: displayName, context: options.context, metadata: { reactComponent: { displayName: displayName } } });
+    };
+    QueryData.prototype.initializeObservableQuery = function () {
+        var _a, _b;
+        if (this.ssrInitiated()) {
+            this.currentObservable.query = this.context.renderPromises.getSSRObservable(this.getOptions());
+        }
+        if (!this.currentObservable.query) {
+            var observableQueryOptions = this.prepareObservableQueryOptions();
+            this.previousData.observableQueryOptions = __assign(__assign({}, observableQueryOptions), { children: null });
+            this.currentObservable.query = this.refreshClient().client.watchQuery(__assign({}, observableQueryOptions));
+            if (this.ssrInitiated()) {
+                (_b = (_a = this.context) === null || _a === void 0 ? void 0 : _a.renderPromises) === null || _b === void 0 ? void 0 : _b.registerSSRObservable(this.currentObservable.query, observableQueryOptions);
+            }
+        }
+    };
+    QueryData.prototype.updateObservableQuery = function () {
+        if (!this.currentObservable.query) {
+            this.initializeObservableQuery();
+            return;
+        }
+        var newObservableQueryOptions = __assign(__assign({}, this.prepareObservableQueryOptions()), { children: null });
+        if (!equal(newObservableQueryOptions, this.previousData.observableQueryOptions)) {
+            this.previousData.observableQueryOptions = newObservableQueryOptions;
+            this.currentObservable
+                .query.setOptions(newObservableQueryOptions)
+                .catch(function () { });
+        }
+    };
+    QueryData.prototype.startQuerySubscription = function () {
+        var _this = this;
+        if (this.currentObservable.subscription || this.getOptions().skip)
+            return;
+        var obsQuery = this.currentObservable.query;
+        this.currentObservable.subscription = obsQuery.subscribe({
+            next: function (_a) {
+                var loading = _a.loading, networkStatus = _a.networkStatus, data = _a.data;
+                var previousResult = _this.previousData.result;
+                if (previousResult &&
+                    previousResult.loading === loading &&
+                    previousResult.networkStatus === networkStatus &&
+                    equal(previousResult.data, data)) {
+                    return;
+                }
+                _this.onNewData();
+            },
+            error: function (error) {
+                _this.resubscribeToQuery();
+                if (!error.hasOwnProperty('graphQLErrors'))
+                    throw error;
+                var previousResult = _this.previousData.result;
+                if ((previousResult && previousResult.loading) ||
+                    !equal(error, _this.previousData.error)) {
+                    _this.previousData.error = error;
+                    _this.onNewData();
+                }
+            },
+        });
+    };
+    QueryData.prototype.resubscribeToQuery = function () {
+        this.removeQuerySubscription();
+        var lastError = this.currentObservable.query.getLastError();
+        var lastResult = this.currentObservable.query.getLastResult();
+        this.currentObservable.query.resetLastResults();
+        this.startQuerySubscription();
+        Object.assign(this.currentObservable.query, {
+            lastError: lastError,
+            lastResult: lastResult,
+        });
+    };
+    QueryData.prototype.getQueryResult = function () {
+        var result = this.observableQueryFields();
+        var options = this.getOptions();
+        if (options.skip) {
+            result = __assign(__assign({}, result), { data: undefined, error: undefined, loading: false, called: true });
+        }
+        else {
+            var currentResult = this.currentObservable.query.getCurrentResult();
+            var loading = currentResult.loading, partial = currentResult.partial, networkStatus = currentResult.networkStatus, errors = currentResult.errors;
+            var error = currentResult.error, data = currentResult.data;
+            if (errors && errors.length > 0) {
+                error = new ApolloError({ graphQLErrors: errors });
+            }
+            result = __assign(__assign({}, result), { loading: loading,
+                networkStatus: networkStatus,
+                error: error, called: true });
+            if (loading) {
+                var previousData = this.previousData.result && this.previousData.result.data;
+                result.data =
+                    previousData && data
+                        ? __assign(__assign({}, previousData), data) : previousData || data;
+            }
+            else if (error) {
+                Object.assign(result, {
+                    data: (this.currentObservable.query.getLastResult() || {})
+                        .data,
+                });
+            }
+            else {
+                var fetchPolicy = this.currentObservable.query.options.fetchPolicy;
+                var partialRefetch = options.partialRefetch;
+                if (partialRefetch &&
+                    !data &&
+                    partial &&
+                    fetchPolicy !== 'cache-only') {
+                    Object.assign(result, {
+                        loading: true,
+                        networkStatus: NetworkStatus.loading,
+                    });
+                    result.refetch();
+                    return result;
+                }
+                result.data = data;
+            }
+        }
+        result.client = this.client;
+        this.previousData.loading =
+            (this.previousData.result && this.previousData.result.loading) || false;
+        this.previousData.result = result;
+        this.currentObservable.query &&
+            this.currentObservable.query.resetQueryStoreErrors();
+        return result;
+    };
+    QueryData.prototype.handleErrorOrCompleted = function () {
+        var obsQuery = this.currentObservable.query;
+        if (!obsQuery || !this.previousData.result)
+            return;
+        var _a = this.previousData.result, data = _a.data, loading = _a.loading, error = _a.error;
+        if (!loading) {
+            var _b = this.getOptions(), query = _b.query, variables = _b.variables, onCompleted = _b.onCompleted, onError = _b.onError;
+            if (this.previousOptions &&
+                !this.previousData.loading &&
+                equal(this.previousOptions.query, query) &&
+                equal(this.previousOptions.variables, variables)) {
+                return;
+            }
+            if (onCompleted && !error) {
+                onCompleted(data);
+            }
+            else if (onError && error) {
+                onError(error);
+            }
+        }
+    };
+    QueryData.prototype.removeQuerySubscription = function () {
+        if (this.currentObservable.subscription) {
+            this.currentObservable.subscription.unsubscribe();
+            delete this.currentObservable.subscription;
+        }
+    };
+    QueryData.prototype.observableQueryFields = function () {
+        var observable = this.currentObservable.query;
+        return {
+            variables: observable.variables,
+            refetch: this.obsRefetch,
+            fetchMore: this.obsFetchMore,
+            updateQuery: this.obsUpdateQuery,
+            startPolling: this.obsStartPolling,
+            stopPolling: this.obsStopPolling,
+            subscribeToMore: this.obsSubscribeToMore,
+        };
+    };
+    return QueryData;
+}(OperationData));
+
+function useDeepMemo(memoFn, key) {
+    var ref = React.useRef();
+    if (!ref.current || !equal(key, ref.current.key)) {
+        ref.current = { key: key, value: memoFn() };
+    }
+    return ref.current.value;
+}
+
+function useBaseQuery(query, options, lazy) {
+    if (lazy === void 0) { lazy = false; }
+    var context = React.useContext(getApolloContext());
+    var _a = React.useReducer(function (x) { return x + 1; }, 0), tick = _a[0], forceUpdate = _a[1];
+    var updatedOptions = options ? __assign(__assign({}, options), { query: query }) : { query: query };
+    var queryDataRef = React.useRef();
+    var queryData = queryDataRef.current ||
+        new QueryData({
+            options: updatedOptions,
+            context: context,
+            onNewData: function () {
+                if (!queryData.ssrInitiated()) {
+                    Promise.resolve().then(forceUpdate);
+                }
+                else {
+                    forceUpdate();
+                }
+            },
+        });
+    queryData.setOptions(updatedOptions);
+    queryData.context = context;
+    if (queryData.ssrInitiated() && !queryDataRef.current) {
+        queryDataRef.current = queryData;
+    }
+    var memo = {
+        options: __assign(__assign({}, updatedOptions), { onError: undefined, onCompleted: undefined }),
+        context: context,
+        tick: tick,
+    };
+    var result = useDeepMemo(function () { return (lazy ? queryData.executeLazy() : queryData.execute()); }, memo);
+    var queryResult = lazy
+        ? result[1]
+        : result;
+    React.useEffect(function () {
+        if (!queryDataRef.current) {
+            queryDataRef.current = queryData;
+        }
+        return function () { return queryData.cleanup(); };
+    }, []);
+    React.useEffect(function () { return queryData.afterExecute({ lazy: lazy }); }, [
+        queryResult.loading,
+        queryResult.networkStatus,
+        queryResult.error,
+        queryResult.data,
+    ]);
+    return result;
+}
+
+function useQuery(query, options) {
+    return useBaseQuery(query, options, false);
+}
+
+function useLazyQuery(query, options) {
+    return useBaseQuery(query, options, true);
+}
+
+var MutationData = (function (_super) {
+    __extends(MutationData, _super);
+    function MutationData(_a) {
+        var options = _a.options, context = _a.context, result = _a.result, setResult = _a.setResult;
+        var _this = _super.call(this, options, context) || this;
+        _this.runMutation = function (mutationFunctionOptions) {
+            if (mutationFunctionOptions === void 0) { mutationFunctionOptions = {}; }
+            _this.onMutationStart();
+            var mutationId = _this.generateNewMutationId();
+            return _this.mutate(mutationFunctionOptions)
+                .then(function (response) {
+                _this.onMutationCompleted(response, mutationId);
+                return response;
+            })
+                .catch(function (error) {
+                _this.onMutationError(error, mutationId);
+                if (!_this.getOptions().onError)
+                    throw error;
+            });
+        };
+        _this.verifyDocumentType(options.mutation, DocumentType.Mutation);
+        _this.result = result;
+        _this.setResult = setResult;
+        _this.mostRecentMutationId = 0;
+        return _this;
+    }
+    MutationData.prototype.execute = function (result) {
+        this.isMounted = true;
+        this.verifyDocumentType(this.getOptions().mutation, DocumentType.Mutation);
+        result.client = this.refreshClient().client;
+        return [this.runMutation, result];
+    };
+    MutationData.prototype.afterExecute = function () {
+        this.isMounted = true;
+        return this.unmount.bind(this);
+    };
+    MutationData.prototype.cleanup = function () {
+    };
+    MutationData.prototype.mutate = function (mutationFunctionOptions) {
+        var _a = this.getOptions(), mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, update = _a.update, _b = _a.context, mutationContext = _b === void 0 ? {} : _b, _c = _a.awaitRefetchQueries, awaitRefetchQueries = _c === void 0 ? false : _c, fetchPolicy = _a.fetchPolicy;
+        var mutateOptions = __assign({}, mutationFunctionOptions);
+        var mutateVariables = Object.assign({}, variables, mutateOptions.variables);
+        delete mutateOptions.variables;
+        return this.refreshClient().client.mutate(__assign({ mutation: mutation,
+            optimisticResponse: optimisticResponse, refetchQueries: mutateOptions.refetchQueries || this.getOptions().refetchQueries, awaitRefetchQueries: awaitRefetchQueries,
+            update: update, context: mutationContext, fetchPolicy: fetchPolicy, variables: mutateVariables }, mutateOptions));
+    };
+    MutationData.prototype.onMutationStart = function () {
+        if (!this.result.loading && !this.getOptions().ignoreResults) {
+            this.updateResult({
+                loading: true,
+                error: undefined,
+                data: undefined,
+                called: true
+            });
+        }
+    };
+    MutationData.prototype.onMutationCompleted = function (response, mutationId) {
+        var _a = this.getOptions(), onCompleted = _a.onCompleted, ignoreResults = _a.ignoreResults;
+        var data = response.data, errors = response.errors;
+        var error = errors && errors.length > 0
+            ? new ApolloError({ graphQLErrors: errors })
+            : undefined;
+        var callOncomplete = function () {
+            return onCompleted ? onCompleted(data) : null;
+        };
+        if (this.isMostRecentMutation(mutationId) && !ignoreResults) {
+            this.updateResult({
+                called: true,
+                loading: false,
+                data: data,
+                error: error
+            });
+        }
+        callOncomplete();
+    };
+    MutationData.prototype.onMutationError = function (error, mutationId) {
+        var onError = this.getOptions().onError;
+        if (this.isMostRecentMutation(mutationId)) {
+            this.updateResult({
+                loading: false,
+                error: error,
+                data: undefined,
+                called: true
+            });
+        }
+        if (onError) {
+            onError(error);
+        }
+    };
+    MutationData.prototype.generateNewMutationId = function () {
+        return ++this.mostRecentMutationId;
+    };
+    MutationData.prototype.isMostRecentMutation = function (mutationId) {
+        return this.mostRecentMutationId === mutationId;
+    };
+    MutationData.prototype.updateResult = function (result) {
+        if (this.isMounted &&
+            (!this.previousResult || !equal(this.previousResult, result))) {
+            this.setResult(result);
+            this.previousResult = result;
+        }
+    };
+    return MutationData;
+}(OperationData));
+
+function useMutation(mutation, options) {
+    var context = React.useContext(getApolloContext());
+    var _a = React.useState({ called: false, loading: false }), result = _a[0], setResult = _a[1];
+    var updatedOptions = options ? __assign(__assign({}, options), { mutation: mutation }) : { mutation: mutation };
+    var mutationDataRef = React.useRef();
+    function getMutationDataRef() {
+        if (!mutationDataRef.current) {
+            mutationDataRef.current = new MutationData({
+                options: updatedOptions,
+                context: context,
+                result: result,
+                setResult: setResult
+            });
+        }
+        return mutationDataRef.current;
+    }
+    var mutationData = getMutationDataRef();
+    mutationData.setOptions(updatedOptions);
+    mutationData.context = context;
+    React.useEffect(function () { return mutationData.afterExecute(); });
+    return mutationData.execute(result);
+}
+
+var SubscriptionData = (function (_super) {
+    __extends(SubscriptionData, _super);
+    function SubscriptionData(_a) {
+        var options = _a.options, context = _a.context, setResult = _a.setResult;
+        var _this = _super.call(this, options, context) || this;
+        _this.currentObservable = {};
+        _this.setResult = setResult;
+        _this.initialize(options);
+        return _this;
+    }
+    SubscriptionData.prototype.execute = function (result) {
+        if (this.getOptions().skip === true) {
+            this.cleanup();
+            return {
+                loading: false,
+                error: undefined,
+                data: undefined,
+                variables: this.getOptions().variables
+            };
+        }
+        var currentResult = result;
+        if (this.refreshClient().isNew) {
+            currentResult = this.getLoadingResult();
+        }
+        var shouldResubscribe = this.getOptions().shouldResubscribe;
+        if (typeof shouldResubscribe === 'function') {
+            shouldResubscribe = !!shouldResubscribe(this.getOptions());
+        }
+        if (shouldResubscribe !== false &&
+            this.previousOptions &&
+            Object.keys(this.previousOptions).length > 0 &&
+            (this.previousOptions.subscription !== this.getOptions().subscription ||
+                !equal(this.previousOptions.variables, this.getOptions().variables) ||
+                this.previousOptions.skip !== this.getOptions().skip)) {
+            this.cleanup();
+            currentResult = this.getLoadingResult();
+        }
+        this.initialize(this.getOptions());
+        this.startSubscription();
+        this.previousOptions = this.getOptions();
+        return __assign(__assign({}, currentResult), { variables: this.getOptions().variables });
+    };
+    SubscriptionData.prototype.afterExecute = function () {
+        this.isMounted = true;
+    };
+    SubscriptionData.prototype.cleanup = function () {
+        this.endSubscription();
+        delete this.currentObservable.query;
+    };
+    SubscriptionData.prototype.initialize = function (options) {
+        if (this.currentObservable.query || this.getOptions().skip === true)
+            return;
+        this.currentObservable.query = this.refreshClient().client.subscribe({
+            query: options.subscription,
+            variables: options.variables,
+            fetchPolicy: options.fetchPolicy
+        });
+    };
+    SubscriptionData.prototype.startSubscription = function () {
+        if (this.currentObservable.subscription)
+            return;
+        this.currentObservable.subscription = this.currentObservable.query.subscribe({
+            next: this.updateCurrentData.bind(this),
+            error: this.updateError.bind(this),
+            complete: this.completeSubscription.bind(this)
+        });
+    };
+    SubscriptionData.prototype.getLoadingResult = function () {
+        return {
+            loading: true,
+            error: undefined,
+            data: undefined
+        };
+    };
+    SubscriptionData.prototype.updateResult = function (result) {
+        if (this.isMounted) {
+            this.setResult(result);
+        }
+    };
+    SubscriptionData.prototype.updateCurrentData = function (result) {
+        var onSubscriptionData = this.getOptions().onSubscriptionData;
+        this.updateResult({
+            data: result.data,
+            loading: false,
+            error: undefined
+        });
+        if (onSubscriptionData) {
+            onSubscriptionData({
+                client: this.refreshClient().client,
+                subscriptionData: result
+            });
+        }
+    };
+    SubscriptionData.prototype.updateError = function (error) {
+        this.updateResult({
+            error: error,
+            loading: false
+        });
+    };
+    SubscriptionData.prototype.completeSubscription = function () {
+        var onSubscriptionComplete = this.getOptions().onSubscriptionComplete;
+        if (onSubscriptionComplete)
+            onSubscriptionComplete();
+        this.endSubscription();
+    };
+    SubscriptionData.prototype.endSubscription = function () {
+        if (this.currentObservable.subscription) {
+            this.currentObservable.subscription.unsubscribe();
+            delete this.currentObservable.subscription;
+        }
+    };
+    return SubscriptionData;
+}(OperationData));
+
+function useSubscription(subscription, options) {
+    var context = React.useContext(getApolloContext());
+    var updatedOptions = options
+        ? __assign(__assign({}, options), { subscription: subscription }) : { subscription: subscription };
+    var _a = React.useState({
+        loading: !updatedOptions.skip,
+        error: undefined,
+        data: undefined
+    }), result = _a[0], setResult = _a[1];
+    var subscriptionDataRef = React.useRef();
+    function getSubscriptionDataRef() {
+        if (!subscriptionDataRef.current) {
+            subscriptionDataRef.current = new SubscriptionData({
+                options: updatedOptions,
+                context: context,
+                setResult: setResult
+            });
+        }
+        return subscriptionDataRef.current;
+    }
+    var subscriptionData = getSubscriptionDataRef();
+    subscriptionData.setOptions(updatedOptions, true);
+    subscriptionData.context = context;
+    React.useEffect(function () { return subscriptionData.afterExecute(); });
+    React.useEffect(function () { return subscriptionData.cleanup.bind(subscriptionData); }, []);
+    return subscriptionData.execute(result);
+}
+
+function useApolloClient() {
+    var client = React__default.useContext(getApolloContext()).client;
+    process.env.NODE_ENV === "production" ? invariant(client, 1) : invariant(client, 'No Apollo Client instance can be found. Please ensure that you ' +
+        'have called `ApolloProvider` higher up in your tree.');
+    return client;
+}
+
+function makeDefaultQueryInfo() {
+    return {
+        seen: false,
+        observable: null
+    };
+}
+var RenderPromises = (function () {
+    function RenderPromises() {
+        this.queryPromises = new Map();
+        this.queryInfoTrie = new Map();
+    }
+    RenderPromises.prototype.registerSSRObservable = function (observable, props) {
+        this.lookupQueryInfo(props).observable = observable;
+    };
+    RenderPromises.prototype.getSSRObservable = function (props) {
+        return this.lookupQueryInfo(props).observable;
+    };
+    RenderPromises.prototype.addQueryPromise = function (queryInstance, finish) {
+        var info = this.lookupQueryInfo(queryInstance.getOptions());
+        if (!info.seen) {
+            this.queryPromises.set(queryInstance.getOptions(), new Promise(function (resolve) {
+                resolve(queryInstance.fetchData());
+            }));
+            return null;
+        }
+        return finish();
+    };
+    RenderPromises.prototype.hasPromises = function () {
+        return this.queryPromises.size > 0;
+    };
+    RenderPromises.prototype.consumeAndAwaitPromises = function () {
+        var _this = this;
+        var promises = [];
+        this.queryPromises.forEach(function (promise, queryInstance) {
+            _this.lookupQueryInfo(queryInstance).seen = true;
+            promises.push(promise);
+        });
+        this.queryPromises.clear();
+        return Promise.all(promises);
+    };
+    RenderPromises.prototype.lookupQueryInfo = function (props) {
+        var queryInfoTrie = this.queryInfoTrie;
+        var query = props.query, variables = props.variables;
+        var varMap = queryInfoTrie.get(query) || new Map();
+        if (!queryInfoTrie.has(query))
+            queryInfoTrie.set(query, varMap);
+        var variablesString = JSON.stringify(variables);
+        var info = varMap.get(variablesString) || makeDefaultQueryInfo();
+        if (!varMap.has(variablesString))
+            varMap.set(variablesString, info);
+        return info;
+    };
+    return RenderPromises;
+}());function getDataFromTree(tree, context) {
+    if (context === void 0) { context = {}; }
+    return getMarkupFromTree({
+        tree: tree,
+        context: context,
+        renderFunction: require('react-dom/server').renderToStaticMarkup
+    });
+}
+function getMarkupFromTree(_a) {
+    var tree = _a.tree, _b = _a.context, context = _b === void 0 ? {} : _b, _c = _a.renderFunction, renderFunction = _c === void 0 ? require('react-dom/server').renderToStaticMarkup : _c;
+    var renderPromises = new RenderPromises();
+    function process() {
+        var ApolloContext = getApolloContext();
+        var html = renderFunction(React__default.createElement(ApolloContext.Provider, { value: __assign(__assign({}, context), { renderPromises: renderPromises }) }, tree));
+        return renderPromises.hasPromises()
+            ? renderPromises.consumeAndAwaitPromises().then(process)
+            : html;
+    }
+    return Promise.resolve().then(process);
+}
+
+function renderToStringWithData(component) {
+    return getMarkupFromTree({
+        tree: component,
+        renderFunction: require('react-dom/server').renderToString
+    });
+}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-router-dom":"^5.1.2",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+var REACT_ELEMENT_TYPE;
+
+function _jsx(type, props, key, children) {
+  if (!REACT_ELEMENT_TYPE) {
+    REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol["for"] && Symbol["for"]("react.element") || 0xeac7;
+  }
+
+  var defaultProps = type && type.defaultProps;
+  var childrenLength = arguments.length - 3;
+
+  if (!props && childrenLength !== 0) {
+    props = {
+      children: void 0
+    };
+  }
+
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = new Array(childrenLength);
+
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 3];
+    }
+
+    props.children = childArray;
+  }
+
+  if (props && defaultProps) {
+    for (var propName in defaultProps) {
+      if (props[propName] === void 0) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  } else if (!props) {
+    props = defaultProps || {};
+  }
+
+  return {
+    $$typeof: REACT_ELEMENT_TYPE,
+    type: type,
+    key: key === undefined ? null : '' + key,
+    ref: null,
+    props: props,
+    _owner: null
+  };
+}
+
+function _asyncIterator(iterable) {
+  var method;
+
+  if (typeof Symbol !== "undefined") {
+    if (Symbol.asyncIterator) {
+      method = iterable[Symbol.asyncIterator];
+      if (method != null) return method.call(iterable);
+    }
+
+    if (Symbol.iterator) {
+      method = iterable[Symbol.iterator];
+      if (method != null) return method.call(iterable);
+    }
+  }
+
+  throw new TypeError("Object is not async iterable");
+}
+
+function _AwaitValue(value) {
+  this.wrapped = value;
+}
+
+function _AsyncGenerator(gen) {
+  var front, back;
+
+  function send(key, arg) {
+    return new Promise(function (resolve, reject) {
+      var request = {
+        key: key,
+        arg: arg,
+        resolve: resolve,
+        reject: reject,
+        next: null
+      };
+
+      if (back) {
+        back = back.next = request;
+      } else {
+        front = back = request;
+        resume(key, arg);
+      }
+    });
+  }
+
+  function resume(key, arg) {
+    try {
+      var result = gen[key](arg);
+      var value = result.value;
+      var wrappedAwait = value instanceof _AwaitValue;
+      Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) {
+        if (wrappedAwait) {
+          resume(key === "return" ? "return" : "next", arg);
+          return;
+        }
+
+        settle(result.done ? "return" : "normal", arg);
+      }, function (err) {
+        resume("throw", err);
+      });
+    } catch (err) {
+      settle("throw", err);
+    }
+  }
+
+  function settle(type, value) {
+    switch (type) {
+      case "return":
+        front.resolve({
+          value: value,
+          done: true
+        });
+        break;
+
+      case "throw":
+        front.reject(value);
+        break;
+
+      default:
+        front.resolve({
+          value: value,
+          done: false
+        });
+        break;
+    }
+
+    front = front.next;
+
+    if (front) {
+      resume(front.key, front.arg);
+    } else {
+      back = null;
+    }
+  }
+
+  this._invoke = send;
+
+  if (typeof gen.return !== "function") {
+    this.return = undefined;
+  }
+}
+
+if (typeof Symbol === "function" && Symbol.asyncIterator) {
+  _AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+    return this;
+  };
+}
+
+_AsyncGenerator.prototype.next = function (arg) {
+  return this._invoke("next", arg);
+};
+
+_AsyncGenerator.prototype.throw = function (arg) {
+  return this._invoke("throw", arg);
+};
+
+_AsyncGenerator.prototype.return = function (arg) {
+  return this._invoke("return", arg);
+};
+
+function _wrapAsyncGenerator(fn) {
+  return function () {
+    return new _AsyncGenerator(fn.apply(this, arguments));
+  };
+}
+
+function _awaitAsyncGenerator(value) {
+  return new _AwaitValue(value);
+}
+
+function _asyncGeneratorDelegate(inner, awaitWrap) {
+  var iter = {},
+      waiting = false;
+
+  function pump(key, value) {
+    waiting = true;
+    value = new Promise(function (resolve) {
+      resolve(inner[key](value));
+    });
+    return {
+      done: false,
+      value: awaitWrap(value)
+    };
+  }
+
+  ;
+
+  if (typeof Symbol === "function" && Symbol.iterator) {
+    iter[Symbol.iterator] = function () {
+      return this;
+    };
+  }
+
+  iter.next = function (value) {
+    if (waiting) {
+      waiting = false;
+      return value;
+    }
+
+    return pump("next", value);
+  };
+
+  if (typeof inner.throw === "function") {
+    iter.throw = function (value) {
+      if (waiting) {
+        waiting = false;
+        throw value;
+      }
+
+      return pump("throw", value);
+    };
+  }
+
+  if (typeof inner.return === "function") {
+    iter.return = function (value) {
+      if (waiting) {
+        waiting = false;
+        return value;
+      }
+
+      return pump("return", value);
+    };
+  }
+
+  return iter;
+}
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineEnumerableProperties(obj, descs) {
+  for (var key in descs) {
+    var desc = descs[key];
+    desc.configurable = desc.enumerable = true;
+    if ("value" in desc) desc.writable = true;
+    Object.defineProperty(obj, key, desc);
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    var objectSymbols = Object.getOwnPropertySymbols(descs);
+
+    for (var i = 0; i < objectSymbols.length; i++) {
+      var sym = objectSymbols[i];
+      var desc = descs[sym];
+      desc.configurable = desc.enumerable = true;
+      if ("value" in desc) desc.writable = true;
+      Object.defineProperty(obj, sym, desc);
+    }
+  }
+
+  return obj;
+}
+
+function _defaults(obj, defaults) {
+  var keys = Object.getOwnPropertyNames(defaults);
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var value = Object.getOwnPropertyDescriptor(defaults, key);
+
+    if (value && value.configurable && obj[key] === undefined) {
+      Object.defineProperty(obj, key, value);
+    }
+  }
+
+  return obj;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? Object(arguments[i]) : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _construct(Parent, args, Class) {
+  if (_isNativeReflectConstruct()) {
+    _construct = Reflect.construct;
+  } else {
+    _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return _construct.apply(null, arguments);
+}
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+
+  _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrapNativeSuper(Class);
+}
+
+function _instanceof(left, right) {
+  if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+    return !!right[Symbol.hasInstance](left);
+  } else {
+    return left instanceof right;
+  }
+}
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _getRequireWildcardCache() {
+  if (typeof WeakMap !== "function") return null;
+  var cache = new WeakMap();
+
+  _getRequireWildcardCache = function () {
+    return cache;
+  };
+
+  return cache;
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+
+  var cache = _getRequireWildcardCache();
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+
+  newObj.default = obj;
+
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+
+  return newObj;
+}
+
+function _newArrowCheck(innerThis, boundThis) {
+  if (innerThis !== boundThis) {
+    throw new TypeError("Cannot instantiate an arrow function");
+  }
+}
+
+function _objectDestructuringEmpty(obj) {
+  if (obj == null) throw new TypeError("Cannot destructure undefined");
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _createSuper(Derived) {
+  return function () {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (_isNativeReflectConstruct()) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return _get(target, property, receiver || target);
+}
+
+function set(target, property, value, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.set) {
+    set = Reflect.set;
+  } else {
+    set = function set(target, property, value, receiver) {
+      var base = _superPropBase(target, property);
+
+      var desc;
+
+      if (base) {
+        desc = Object.getOwnPropertyDescriptor(base, property);
+
+        if (desc.set) {
+          desc.set.call(receiver, value);
+          return true;
+        } else if (!desc.writable) {
+          return false;
+        }
+      }
+
+      desc = Object.getOwnPropertyDescriptor(receiver, property);
+
+      if (desc) {
+        if (!desc.writable) {
+          return false;
+        }
+
+        desc.value = value;
+        Object.defineProperty(receiver, property, desc);
+      } else {
+        _defineProperty(receiver, property, value);
+      }
+
+      return true;
+    };
+  }
+
+  return set(target, property, value, receiver);
+}
+
+function _set(target, property, value, receiver, isStrict) {
+  var s = set(target, property, value, receiver || target);
+
+  if (!s && isStrict) {
+    throw new Error('failed to set property');
+  }
+
+  return value;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+function _taggedTemplateLiteralLoose(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  strings.raw = raw;
+  return strings;
+}
+
+function _readOnlyError(name) {
+  throw new Error("\"" + name + "\" is read-only");
+}
+
+function _classNameTDZError(name) {
+  throw new Error("Class \"" + name + "\" cannot be referenced in computed property keys.");
+}
+
+function _temporalUndefined() {}
+
+function _tdz(name) {
+  throw new ReferenceError(name + " is not defined - temporal dead zone");
+}
+
+function _temporalRef(val, name) {
+  return val === _temporalUndefined ? _tdz(name) : val;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _slicedToArrayLoose(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimitLoose(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _toArray(arr) {
+  return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _iterableToArrayLimitLoose(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+
+  for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) {
+    _arr.push(_step.value);
+
+    if (i && _arr.length === i) break;
+  }
+
+  return _arr;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(n);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _createForOfIteratorHelper(o) {
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
+      var i = 0;
+
+      var F = function () {};
+
+      return {
+        s: F,
+        n: function () {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function (e) {
+          throw e;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var it,
+      normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function () {
+      it = o[Symbol.iterator]();
+    },
+    n: function () {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function (e) {
+      didErr = true;
+      err = e;
+    },
+    f: function () {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
+function _createForOfIteratorHelperLoose(o) {
+  var i = 0;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) return function () {
+      if (i >= o.length) return {
+        done: true
+      };
+      return {
+        done: false,
+        value: o[i++]
+      };
+    };
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  i = o[Symbol.iterator]();
+  return i.next.bind(i);
+}
+
+function _skipFirstGeneratorNext(fn) {
+  return function () {
+    var it = fn.apply(this, arguments);
+    it.next();
+    return it;
+  };
+}
+
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+
+  return (hint === "string" ? String : Number)(input);
+}
+
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+
+  return typeof key === "symbol" ? key : String(key);
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.');
+}
+
+function _initializerDefineProperty(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object.keys(descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object.defineProperty(target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+var id = 0;
+
+function _classPrivateFieldLooseKey(name) {
+  return "__private_" + id++ + "_" + name;
+}
+
+function _classPrivateFieldLooseBase(receiver, privateKey) {
+  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
+    throw new TypeError("attempted to use private field on non-instance");
+  }
+
+  return receiver;
+}
+
+function _classPrivateFieldGet(receiver, privateMap) {
+  var descriptor = privateMap.get(receiver);
+
+  if (!descriptor) {
+    throw new TypeError("attempted to get private field on non-instance");
+  }
+
+  if (descriptor.get) {
+    return descriptor.get.call(receiver);
+  }
+
+  return descriptor.value;
+}
+
+function _classPrivateFieldSet(receiver, privateMap, value) {
+  var descriptor = privateMap.get(receiver);
+
+  if (!descriptor) {
+    throw new TypeError("attempted to set private field on non-instance");
+  }
+
+  if (descriptor.set) {
+    descriptor.set.call(receiver, value);
+  } else {
+    if (!descriptor.writable) {
+      throw new TypeError("attempted to set read only private field");
+    }
+
+    descriptor.value = value;
+  }
+
+  return value;
+}
+
+function _classPrivateFieldDestructureSet(receiver, privateMap) {
+  if (!privateMap.has(receiver)) {
+    throw new TypeError("attempted to set private field on non-instance");
+  }
+
+  var descriptor = privateMap.get(receiver);
+
+  if (descriptor.set) {
+    if (!("__destrObj" in descriptor)) {
+      descriptor.__destrObj = {
+        set value(v) {
+          descriptor.set.call(receiver, v);
+        }
+
+      };
+    }
+
+    return descriptor.__destrObj;
+  } else {
+    if (!descriptor.writable) {
+      throw new TypeError("attempted to set read only private field");
+    }
+
+    return descriptor;
+  }
+}
+
+function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) {
+  if (receiver !== classConstructor) {
+    throw new TypeError("Private static access of wrong provenance");
+  }
+
+  if (descriptor.get) {
+    return descriptor.get.call(receiver);
+  }
+
+  return descriptor.value;
+}
+
+function _classStaticPrivateFieldSpecSet(receiver, classConstructor, descriptor, value) {
+  if (receiver !== classConstructor) {
+    throw new TypeError("Private static access of wrong provenance");
+  }
+
+  if (descriptor.set) {
+    descriptor.set.call(receiver, value);
+  } else {
+    if (!descriptor.writable) {
+      throw new TypeError("attempted to set read only private field");
+    }
+
+    descriptor.value = value;
+  }
+
+  return value;
+}
+
+function _classStaticPrivateMethodGet(receiver, classConstructor, method) {
+  if (receiver !== classConstructor) {
+    throw new TypeError("Private static access of wrong provenance");
+  }
+
+  return method;
+}
+
+function _classStaticPrivateMethodSet() {
+  throw new TypeError("attempted to set read only static private field");
+}
+
+function _decorate(decorators, factory, superClass, mixins) {
+  var api = _getDecoratorsApi();
+
+  if (mixins) {
+    for (var i = 0; i < mixins.length; i++) {
+      api = mixins[i](api);
+    }
+  }
+
+  var r = factory(function initialize(O) {
+    api.initializeInstanceElements(O, decorated.elements);
+  }, superClass);
+  var decorated = api.decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators);
+  api.initializeClassElements(r.F, decorated.elements);
+  return api.runClassFinishers(r.F, decorated.finishers);
+}
+
+function _getDecoratorsApi() {
+  _getDecoratorsApi = function () {
+    return api;
+  };
+
+  var api = {
+    elementsDefinitionOrder: [["method"], ["field"]],
+    initializeInstanceElements: function (O, elements) {
+      ["method", "field"].forEach(function (kind) {
+        elements.forEach(function (element) {
+          if (element.kind === kind && element.placement === "own") {
+            this.defineClassElement(O, element);
+          }
+        }, this);
+      }, this);
+    },
+    initializeClassElements: function (F, elements) {
+      var proto = F.prototype;
+      ["method", "field"].forEach(function (kind) {
+        elements.forEach(function (element) {
+          var placement = element.placement;
+
+          if (element.kind === kind && (placement === "static" || placement === "prototype")) {
+            var receiver = placement === "static" ? F : proto;
+            this.defineClassElement(receiver, element);
+          }
+        }, this);
+      }, this);
+    },
+    defineClassElement: function (receiver, element) {
+      var descriptor = element.descriptor;
+
+      if (element.kind === "field") {
+        var initializer = element.initializer;
+        descriptor = {
+          enumerable: descriptor.enumerable,
+          writable: descriptor.writable,
+          configurable: descriptor.configurable,
+          value: initializer === void 0 ? void 0 : initializer.call(receiver)
+        };
+      }
+
+      Object.defineProperty(receiver, element.key, descriptor);
+    },
+    decorateClass: function (elements, decorators) {
+      var newElements = [];
+      var finishers = [];
+      var placements = {
+        static: [],
+        prototype: [],
+        own: []
+      };
+      elements.forEach(function (element) {
+        this.addElementPlacement(element, placements);
+      }, this);
+      elements.forEach(function (element) {
+        if (!_hasDecorators(element)) return newElements.push(element);
+        var elementFinishersExtras = this.decorateElement(element, placements);
+        newElements.push(elementFinishersExtras.element);
+        newElements.push.apply(newElements, elementFinishersExtras.extras);
+        finishers.push.apply(finishers, elementFinishersExtras.finishers);
+      }, this);
+
+      if (!decorators) {
+        return {
+          elements: newElements,
+          finishers: finishers
+        };
+      }
+
+      var result = this.decorateConstructor(newElements, decorators);
+      finishers.push.apply(finishers, result.finishers);
+      result.finishers = finishers;
+      return result;
+    },
+    addElementPlacement: function (element, placements, silent) {
+      var keys = placements[element.placement];
+
+      if (!silent && keys.indexOf(element.key) !== -1) {
+        throw new TypeError("Duplicated element (" + element.key + ")");
+      }
+
+      keys.push(element.key);
+    },
+    decorateElement: function (element, placements) {
+      var extras = [];
+      var finishers = [];
+
+      for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) {
+        var keys = placements[element.placement];
+        keys.splice(keys.indexOf(element.key), 1);
+        var elementObject = this.fromElementDescriptor(element);
+        var elementFinisherExtras = this.toElementFinisherExtras((0, decorators[i])(elementObject) || elementObject);
+        element = elementFinisherExtras.element;
+        this.addElementPlacement(element, placements);
+
+        if (elementFinisherExtras.finisher) {
+          finishers.push(elementFinisherExtras.finisher);
+        }
+
+        var newExtras = elementFinisherExtras.extras;
+
+        if (newExtras) {
+          for (var j = 0; j < newExtras.length; j++) {
+            this.addElementPlacement(newExtras[j], placements);
+          }
+
+          extras.push.apply(extras, newExtras);
+        }
+      }
+
+      return {
+        element: element,
+        finishers: finishers,
+        extras: extras
+      };
+    },
+    decorateConstructor: function (elements, decorators) {
+      var finishers = [];
+
+      for (var i = decorators.length - 1; i >= 0; i--) {
+        var obj = this.fromClassDescriptor(elements);
+        var elementsAndFinisher = this.toClassDescriptor((0, decorators[i])(obj) || obj);
+
+        if (elementsAndFinisher.finisher !== undefined) {
+          finishers.push(elementsAndFinisher.finisher);
+        }
+
+        if (elementsAndFinisher.elements !== undefined) {
+          elements = elementsAndFinisher.elements;
+
+          for (var j = 0; j < elements.length - 1; j++) {
+            for (var k = j + 1; k < elements.length; k++) {
+              if (elements[j].key === elements[k].key && elements[j].placement === elements[k].placement) {
+                throw new TypeError("Duplicated element (" + elements[j].key + ")");
+              }
+            }
+          }
+        }
+      }
+
+      return {
+        elements: elements,
+        finishers: finishers
+      };
+    },
+    fromElementDescriptor: function (element) {
+      var obj = {
+        kind: element.kind,
+        key: element.key,
+        placement: element.placement,
+        descriptor: element.descriptor
+      };
+      var desc = {
+        value: "Descriptor",
+        configurable: true
+      };
+      Object.defineProperty(obj, Symbol.toStringTag, desc);
+      if (element.kind === "field") obj.initializer = element.initializer;
+      return obj;
+    },
+    toElementDescriptors: function (elementObjects) {
+      if (elementObjects === undefined) return;
+      return _toArray(elementObjects).map(function (elementObject) {
+        var element = this.toElementDescriptor(elementObject);
+        this.disallowProperty(elementObject, "finisher", "An element descriptor");
+        this.disallowProperty(elementObject, "extras", "An element descriptor");
+        return element;
+      }, this);
+    },
+    toElementDescriptor: function (elementObject) {
+      var kind = String(elementObject.kind);
+
+      if (kind !== "method" && kind !== "field") {
+        throw new TypeError('An element descriptor\'s .kind property must be either "method" or' + ' "field", but a decorator created an element descriptor with' + ' .kind "' + kind + '"');
+      }
+
+      var key = _toPropertyKey(elementObject.key);
+
+      var placement = String(elementObject.placement);
+
+      if (placement !== "static" && placement !== "prototype" && placement !== "own") {
+        throw new TypeError('An element descriptor\'s .placement property must be one of "static",' + ' "prototype" or "own", but a decorator created an element descriptor' + ' with .placement "' + placement + '"');
+      }
+
+      var descriptor = elementObject.descriptor;
+      this.disallowProperty(elementObject, "elements", "An element descriptor");
+      var element = {
+        kind: kind,
+        key: key,
+        placement: placement,
+        descriptor: Object.assign({}, descriptor)
+      };
+
+      if (kind !== "field") {
+        this.disallowProperty(elementObject, "initializer", "A method descriptor");
+      } else {
+        this.disallowProperty(descriptor, "get", "The property descriptor of a field descriptor");
+        this.disallowProperty(descriptor, "set", "The property descriptor of a field descriptor");
+        this.disallowProperty(descriptor, "value", "The property descriptor of a field descriptor");
+        element.initializer = elementObject.initializer;
+      }
+
+      return element;
+    },
+    toElementFinisherExtras: function (elementObject) {
+      var element = this.toElementDescriptor(elementObject);
+
+      var finisher = _optionalCallableProperty(elementObject, "finisher");
+
+      var extras = this.toElementDescriptors(elementObject.extras);
+      return {
+        element: element,
+        finisher: finisher,
+        extras: extras
+      };
+    },
+    fromClassDescriptor: function (elements) {
+      var obj = {
+        kind: "class",
+        elements: elements.map(this.fromElementDescriptor, this)
+      };
+      var desc = {
+        value: "Descriptor",
+        configurable: true
+      };
+      Object.defineProperty(obj, Symbol.toStringTag, desc);
+      return obj;
+    },
+    toClassDescriptor: function (obj) {
+      var kind = String(obj.kind);
+
+      if (kind !== "class") {
+        throw new TypeError('A class descriptor\'s .kind property must be "class", but a decorator' + ' created a class descriptor with .kind "' + kind + '"');
+      }
+
+      this.disallowProperty(obj, "key", "A class descriptor");
+      this.disallowProperty(obj, "placement", "A class descriptor");
+      this.disallowProperty(obj, "descriptor", "A class descriptor");
+      this.disallowProperty(obj, "initializer", "A class descriptor");
+      this.disallowProperty(obj, "extras", "A class descriptor");
+
+      var finisher = _optionalCallableProperty(obj, "finisher");
+
+      var elements = this.toElementDescriptors(obj.elements);
+      return {
+        elements: elements,
+        finisher: finisher
+      };
+    },
+    runClassFinishers: function (constructor, finishers) {
+      for (var i = 0; i < finishers.length; i++) {
+        var newConstructor = (0, finishers[i])(constructor);
+
+        if (newConstructor !== undefined) {
+          if (typeof newConstructor !== "function") {
+            throw new TypeError("Finishers must return a constructor.");
+          }
+
+          constructor = newConstructor;
+        }
+      }
+
+      return constructor;
+    },
+    disallowProperty: function (obj, name, objectType) {
+      if (obj[name] !== undefined) {
+        throw new TypeError(objectType + " can't have a ." + name + " property.");
+      }
+    }
+  };
+  return api;
+}
+
+function _createElementDescriptor(def) {
+  var key = _toPropertyKey(def.key);
+
+  var descriptor;
+
+  if (def.kind === "method") {
+    descriptor = {
+      value: def.value,
+      writable: true,
+      configurable: true,
+      enumerable: false
+    };
+  } else if (def.kind === "get") {
+    descriptor = {
+      get: def.value,
+      configurable: true,
+      enumerable: false
+    };
+  } else if (def.kind === "set") {
+    descriptor = {
+      set: def.value,
+      configurable: true,
+      enumerable: false
+    };
+  } else if (def.kind === "field") {
+    descriptor = {
+      configurable: true,
+      writable: true,
+      enumerable: true
+    };
+  }
+
+  var element = {
+    kind: def.kind === "field" ? "field" : "method",
+    key: key,
+    placement: def.static ? "static" : def.kind === "field" ? "own" : "prototype",
+    descriptor: descriptor
+  };
+  if (def.decorators) element.decorators = def.decorators;
+  if (def.kind === "field") element.initializer = def.value;
+  return element;
+}
+
+function _coalesceGetterSetter(element, other) {
+  if (element.descriptor.get !== undefined) {
+    other.descriptor.get = element.descriptor.get;
+  } else {
+    other.descriptor.set = element.descriptor.set;
+  }
+}
+
+function _coalesceClassElements(elements) {
+  var newElements = [];
+
+  var isSameElement = function (other) {
+    return other.kind === "method" && other.key === element.key && other.placement === element.placement;
+  };
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    var other;
+
+    if (element.kind === "method" && (other = newElements.find(isSameElement))) {
+      if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) {
+        if (_hasDecorators(element) || _hasDecorators(other)) {
+          throw new ReferenceError("Duplicated methods (" + element.key + ") can't be decorated.");
+        }
+
+        other.descriptor = element.descriptor;
+      } else {
+        if (_hasDecorators(element)) {
+          if (_hasDecorators(other)) {
+            throw new ReferenceError("Decorators can't be placed on different accessors with for " + "the same property (" + element.key + ").");
+          }
+
+          other.decorators = element.decorators;
+        }
+
+        _coalesceGetterSetter(element, other);
+      }
+    } else {
+      newElements.push(element);
+    }
+  }
+
+  return newElements;
+}
+
+function _hasDecorators(element) {
+  return element.decorators && element.decorators.length;
+}
+
+function _isDataDescriptor(desc) {
+  return desc !== undefined && !(desc.value === undefined && desc.writable === undefined);
+}
+
+function _optionalCallableProperty(obj, name) {
+  var value = obj[name];
+
+  if (value !== undefined && typeof value !== "function") {
+    throw new TypeError("Expected '" + name + "' to be a function");
+  }
+
+  return value;
+}
+
+function _classPrivateMethodGet(receiver, privateSet, fn) {
+  if (!privateSet.has(receiver)) {
+    throw new TypeError("attempted to get private field on non-instance");
+  }
+
+  return fn;
+}
+
+function _classPrivateMethodSet() {
+  throw new TypeError("attempted to reassign private method");
+}
+
+function _wrapRegExp(re, groups) {
+  _wrapRegExp = function (re, groups) {
+    return new BabelRegExp(re, undefined, groups);
+  };
+
+  var _RegExp = _wrapNativeSuper(RegExp);
+
+  var _super = RegExp.prototype;
+
+  var _groups = new WeakMap();
+
+  function BabelRegExp(re, flags, groups) {
+    var _this = _RegExp.call(this, re, flags);
+
+    _groups.set(_this, groups || _groups.get(re));
+
+    return _this;
+  }
+
+  _inherits(BabelRegExp, _RegExp);
+
+  BabelRegExp.prototype.exec = function (str) {
+    var result = _super.exec.call(this, str);
+
+    if (result) result.groups = buildGroups(result, this);
+    return result;
+  };
+
+  BabelRegExp.prototype[Symbol.replace] = function (str, substitution) {
+    if (typeof substitution === "string") {
+      var groups = _groups.get(this);
+
+      return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function (_, name) {
+        return "$" + groups[name];
+      }));
+    } else if (typeof substitution === "function") {
+      var _this = this;
+
+      return _super[Symbol.replace].call(this, str, function () {
+        var args = [];
+        args.push.apply(args, arguments);
+
+        if (typeof args[args.length - 1] !== "object") {
+          args.push(buildGroups(args, _this));
+        }
+
+        return substitution.apply(this, args);
+      });
+    } else {
+      return _super[Symbol.replace].call(this, str, substitution);
+    }
+  };
+
+  function buildGroups(result, re) {
+    var g = _groups.get(re);
+
+    return Object.keys(g).reduce(function (groups, name) {
+      groups[name] = result[g[name]];
+      return groups;
+    }, Object.create(null));
+  }
+
+  return _wrapRegExp.apply(this, arguments);
+}var devAssert_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28826,125 +30379,7 @@ exports.TokenKind = TokenKind;
 });
 
 var tokenKind$1 = unwrapExports(tokenKind);
-var tokenKind_1 = tokenKind.TokenKind;var blockString = createCommonjsModule(function (module, exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.dedentBlockStringValue = dedentBlockStringValue;
-exports.getBlockStringIndentation = getBlockStringIndentation;
-exports.printBlockString = printBlockString;
-
-/**
- * Produces the value of a block string from its parsed raw value, similar to
- * CoffeeScript's block string, Python's docstring trim or Ruby's strip_heredoc.
- *
- * This implements the GraphQL spec's BlockStringValue() static algorithm.
- *
- * @internal
- */
-function dedentBlockStringValue(rawString) {
-  // Expand a block string's raw value into independent lines.
-  var lines = rawString.split(/\r\n|[\n\r]/g); // Remove common indentation from all lines but first.
-
-  var commonIndent = getBlockStringIndentation(lines);
-
-  if (commonIndent !== 0) {
-    for (var i = 1; i < lines.length; i++) {
-      lines[i] = lines[i].slice(commonIndent);
-    }
-  } // Remove leading and trailing blank lines.
-
-
-  while (lines.length > 0 && isBlank(lines[0])) {
-    lines.shift();
-  }
-
-  while (lines.length > 0 && isBlank(lines[lines.length - 1])) {
-    lines.pop();
-  } // Return a string of the lines joined with U+000A.
-
-
-  return lines.join('\n');
-}
-/**
- * @internal
- */
-
-
-function getBlockStringIndentation(lines) {
-  var commonIndent = null;
-
-  for (var i = 1; i < lines.length; i++) {
-    var line = lines[i];
-    var indent = leadingWhitespace(line);
-
-    if (indent === line.length) {
-      continue; // skip empty lines
-    }
-
-    if (commonIndent === null || indent < commonIndent) {
-      commonIndent = indent;
-
-      if (commonIndent === 0) {
-        break;
-      }
-    }
-  }
-
-  return commonIndent === null ? 0 : commonIndent;
-}
-
-function leadingWhitespace(str) {
-  var i = 0;
-
-  while (i < str.length && (str[i] === ' ' || str[i] === '\t')) {
-    i++;
-  }
-
-  return i;
-}
-
-function isBlank(str) {
-  return leadingWhitespace(str) === str.length;
-}
-/**
- * Print a block string in the indented block form by adding a leading and
- * trailing blank line. However, if a block string starts with whitespace and is
- * a single-line, adding a leading blank line would strip that whitespace.
- *
- * @internal
- */
-
-
-function printBlockString(value) {
-  var indentation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  var preferMultipleLines = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  var isSingleLine = value.indexOf('\n') === -1;
-  var hasLeadingSpace = value[0] === ' ' || value[0] === '\t';
-  var hasTrailingQuote = value[value.length - 1] === '"';
-  var printAsMultipleLines = !isSingleLine || hasTrailingQuote || preferMultipleLines;
-  var result = ''; // Format a multi-line block quote to account for leading space.
-
-  if (printAsMultipleLines && !(isSingleLine && hasLeadingSpace)) {
-    result += '\n' + indentation;
-  }
-
-  result += indentation ? value.replace(/\n/g, '\n' + indentation) : value;
-
-  if (printAsMultipleLines) {
-    result += '\n';
-  }
-
-  return '"""' + result.replace(/"""/g, '\\"""') + '"""';
-}
-});
-
-var blockString$1 = unwrapExports(blockString);
-var blockString_1 = blockString.dedentBlockStringValue;
-var blockString_2 = blockString.getBlockStringIndentation;
-var blockString_3 = blockString.printBlockString;var lexer = createCommonjsModule(function (module, exports) {
+var tokenKind_1 = tokenKind.TokenKind;var lexer = createCommonjsModule(function (module, exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29580,7 +31015,7 @@ function isNameStart(code) {
 
 var lexer$1 = unwrapExports(lexer);
 var lexer_1 = lexer.isPunctuatorTokenKind;
-var lexer_2 = lexer.Lexer;var parser$1 = createCommonjsModule(function (module, exports) {
+var lexer_2 = lexer.Lexer;var parser$2 = createCommonjsModule(function (module, exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31144,10 +32579,10 @@ function getTokenKindDesc(kind) {
 }
 });
 
-var parser$2 = unwrapExports(parser$1);
-var parser_1 = parser$1.parse;
-var parser_2 = parser$1.parseValue;
-var parser_3 = parser$1.parseType;var parse$c = parser$1.parse;
+var parser$3 = unwrapExports(parser$2);
+var parser_1 = parser$2.parse;
+var parser_2 = parser$2.parseValue;
+var parser_3 = parser$2.parseType;var parse$c = parser$2.parse;
 
 // Strip insignificant whitespace
 // Note that this could do a lot more, such as reorder fields etc.
@@ -31324,843 +32759,7 @@ gql.disableFragmentWarnings = disableFragmentWarnings;
 gql.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
 gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
 
-var src$1 = gql;var apolloContext;
-function getApolloContext() {
-    if (!apolloContext) {
-        apolloContext = React__default.createContext({});
-    }
-    return apolloContext;
-}
-function resetApolloContext() {
-    apolloContext = React__default.createContext({});
-}
-
-var ApolloProvider = function (_a) {
-    var client = _a.client, children = _a.children;
-    var ApolloContext = getApolloContext();
-    return React__default.createElement(ApolloContext.Consumer, null, function (context) {
-        if (context === void 0) { context = {}; }
-        if (client && context.client !== client) {
-            context = Object.assign({}, context, { client: client });
-        }
-        process.env.NODE_ENV === "production" ? invariant(context.client, 5) : invariant(context.client, 'ApolloProvider was not passed a client instance. Make ' +
-            'sure you pass in your client via the "client" prop.');
-        return (React__default.createElement(ApolloContext.Provider, { value: context }, children));
-    });
-};
-
-var ApolloConsumer = function (props) {
-    var ApolloContext = getApolloContext();
-    return React__default.createElement(ApolloContext.Consumer, null, function (context) {
-        process.env.NODE_ENV === "production" ? invariant(context && context.client, 6) : invariant(context && context.client, 'Could not find "client" in the context of ApolloConsumer. ' +
-            'Wrap the root component in an <ApolloProvider>.');
-        return props.children(context.client);
-    });
-};
-
-var DocumentType;
-(function (DocumentType) {
-    DocumentType[DocumentType["Query"] = 0] = "Query";
-    DocumentType[DocumentType["Mutation"] = 1] = "Mutation";
-    DocumentType[DocumentType["Subscription"] = 2] = "Subscription";
-})(DocumentType || (DocumentType = {}));
-var cache = new Map();
-function operationName(type) {
-    var name;
-    switch (type) {
-        case DocumentType.Query:
-            name = 'Query';
-            break;
-        case DocumentType.Mutation:
-            name = 'Mutation';
-            break;
-        case DocumentType.Subscription:
-            name = 'Subscription';
-            break;
-    }
-    return name;
-}
-function parser$3(document) {
-    var cached = cache.get(document);
-    if (cached)
-        return cached;
-    var variables, type, name;
-    process.env.NODE_ENV === "production" ? invariant(!!document && !!document.kind, 1) : invariant(!!document && !!document.kind, "Argument of " + document + " passed to parser was not a valid GraphQL " +
-        "DocumentNode. You may need to use 'graphql-tag' or another method " +
-        "to convert your operation into a document");
-    var fragments = document.definitions.filter(function (x) { return x.kind === 'FragmentDefinition'; });
-    var queries = document.definitions.filter(function (x) {
-        return x.kind === 'OperationDefinition' && x.operation === 'query';
-    });
-    var mutations = document.definitions.filter(function (x) {
-        return x.kind === 'OperationDefinition' && x.operation === 'mutation';
-    });
-    var subscriptions = document.definitions.filter(function (x) {
-        return x.kind === 'OperationDefinition' && x.operation === 'subscription';
-    });
-    process.env.NODE_ENV === "production" ? invariant(!fragments.length ||
-        (queries.length || mutations.length || subscriptions.length), 2) : invariant(!fragments.length ||
-        (queries.length || mutations.length || subscriptions.length), "Passing only a fragment to 'graphql' is not yet supported. " +
-        "You must include a query, subscription or mutation as well");
-    process.env.NODE_ENV === "production" ? invariant(queries.length + mutations.length + subscriptions.length <= 1, 3) : invariant(queries.length + mutations.length + subscriptions.length <= 1, "react-apollo only supports a query, subscription, or a mutation per HOC. " +
-        (document + " had " + queries.length + " queries, " + subscriptions.length + " ") +
-        ("subscriptions and " + mutations.length + " mutations. ") +
-        "You can use 'compose' to join multiple operation types to a component");
-    type = queries.length ? DocumentType.Query : DocumentType.Mutation;
-    if (!queries.length && !mutations.length)
-        type = DocumentType.Subscription;
-    var definitions = queries.length
-        ? queries
-        : mutations.length
-            ? mutations
-            : subscriptions;
-    process.env.NODE_ENV === "production" ? invariant(definitions.length === 1, 4) : invariant(definitions.length === 1, "react-apollo only supports one definition per HOC. " + document + " had " +
-        (definitions.length + " definitions. ") +
-        "You can use 'compose' to join multiple operation types to a component");
-    var definition = definitions[0];
-    variables = definition.variableDefinitions || [];
-    if (definition.name && definition.name.kind === 'Name') {
-        name = definition.name.value;
-    }
-    else {
-        name = 'data';
-    }
-    var payload = { name: name, type: type, variables: variables };
-    cache.set(document, payload);
-    return payload;
-}var OperationData = (function () {
-    function OperationData(options, context) {
-        this.isMounted = false;
-        this.previousOptions = {};
-        this.context = {};
-        this.options = {};
-        this.options = options || {};
-        this.context = context || {};
-    }
-    OperationData.prototype.getOptions = function () {
-        return this.options;
-    };
-    OperationData.prototype.setOptions = function (newOptions, storePrevious) {
-        if (storePrevious === void 0) { storePrevious = false; }
-        if (storePrevious && !equal(this.options, newOptions)) {
-            this.previousOptions = this.options;
-        }
-        this.options = newOptions;
-    };
-    OperationData.prototype.unmount = function () {
-        this.isMounted = false;
-    };
-    OperationData.prototype.refreshClient = function () {
-        var client = (this.options && this.options.client) ||
-            (this.context && this.context.client);
-        process.env.NODE_ENV === "production" ? invariant(!!client, 2) : invariant(!!client, 'Could not find "client" in the context or passed in as an option. ' +
-            'Wrap the root component in an <ApolloProvider>, or pass an ' +
-            'ApolloClient instance in via options.');
-        var isNew = false;
-        if (client !== this.client) {
-            isNew = true;
-            this.client = client;
-            this.cleanup();
-        }
-        return {
-            client: this.client,
-            isNew: isNew
-        };
-    };
-    OperationData.prototype.verifyDocumentType = function (document, type) {
-        var operation = parser$3(document);
-        var requiredOperationName = operationName(type);
-        var usedOperationName = operationName(operation.type);
-        process.env.NODE_ENV === "production" ? invariant(operation.type === type, 3) : invariant(operation.type === type, "Running a " + requiredOperationName + " requires a graphql " +
-            (requiredOperationName + ", but a " + usedOperationName + " was used instead."));
-    };
-    return OperationData;
-}());
-
-var QueryData = (function (_super) {
-    __extends(QueryData, _super);
-    function QueryData(_a) {
-        var options = _a.options, context = _a.context, onNewData = _a.onNewData;
-        var _this = _super.call(this, options, context) || this;
-        _this.previousData = {};
-        _this.currentObservable = {};
-        _this.runLazy = false;
-        _this.runLazyQuery = function (options) {
-            _this.cleanup();
-            _this.runLazy = true;
-            _this.lazyOptions = options;
-            _this.onNewData();
-        };
-        _this.getExecuteResult = function () {
-            var result = _this.getQueryResult();
-            _this.startQuerySubscription();
-            return result;
-        };
-        _this.obsRefetch = function (variables) {
-            return _this.currentObservable.query.refetch(variables);
-        };
-        _this.obsFetchMore = function (fetchMoreOptions) { return _this.currentObservable.query.fetchMore(fetchMoreOptions); };
-        _this.obsUpdateQuery = function (mapFn) { return _this.currentObservable.query.updateQuery(mapFn); };
-        _this.obsStartPolling = function (pollInterval) {
-            _this.currentObservable &&
-                _this.currentObservable.query &&
-                _this.currentObservable.query.startPolling(pollInterval);
-        };
-        _this.obsStopPolling = function () {
-            _this.currentObservable &&
-                _this.currentObservable.query &&
-                _this.currentObservable.query.stopPolling();
-        };
-        _this.obsSubscribeToMore = function (options) { return _this.currentObservable.query.subscribeToMore(options); };
-        _this.onNewData = onNewData;
-        return _this;
-    }
-    QueryData.prototype.execute = function () {
-        this.refreshClient();
-        var _a = this.getOptions(), skip = _a.skip, query = _a.query;
-        if (skip || query !== this.previousData.query) {
-            this.removeQuerySubscription();
-            this.previousData.query = query;
-        }
-        this.updateObservableQuery();
-        if (this.isMounted)
-            this.startQuerySubscription();
-        return this.getExecuteSsrResult() || this.getExecuteResult();
-    };
-    QueryData.prototype.executeLazy = function () {
-        return !this.runLazy
-            ? [
-                this.runLazyQuery,
-                {
-                    loading: false,
-                    networkStatus: NetworkStatus.ready,
-                    called: false,
-                    data: undefined,
-                },
-            ]
-            : [this.runLazyQuery, this.execute()];
-    };
-    QueryData.prototype.fetchData = function () {
-        var options = this.getOptions();
-        if (options.skip || options.ssr === false)
-            return false;
-        var obs = this.currentObservable.query;
-        var currentResult = obs.getCurrentResult();
-        return currentResult.loading ? obs.result() : false;
-    };
-    QueryData.prototype.afterExecute = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).lazy, lazy = _b === void 0 ? false : _b;
-        this.isMounted = true;
-        if (!lazy || this.runLazy) {
-            this.handleErrorOrCompleted();
-        }
-        this.previousOptions = this.getOptions();
-        return this.unmount.bind(this);
-    };
-    QueryData.prototype.cleanup = function () {
-        this.removeQuerySubscription();
-        delete this.currentObservable.query;
-        delete this.previousData.result;
-    };
-    QueryData.prototype.getOptions = function () {
-        var options = _super.prototype.getOptions.call(this);
-        if (this.lazyOptions) {
-            options.variables = __assign(__assign({}, options.variables), this.lazyOptions.variables);
-            options.context = __assign(__assign({}, options.context), this.lazyOptions.context);
-        }
-        if (this.runLazy) {
-            delete options.skip;
-        }
-        return options;
-    };
-    QueryData.prototype.ssrInitiated = function () {
-        return this.context && this.context.renderPromises;
-    };
-    QueryData.prototype.getExecuteSsrResult = function () {
-        var ssrDisabled = this.getOptions().ssr === false;
-        var fetchDisabled = this.refreshClient().client.disableNetworkFetches;
-        var ssrLoading = __assign({ loading: true, networkStatus: NetworkStatus.loading, called: true, data: undefined, stale: false, client: this.client }, this.observableQueryFields());
-        if (ssrDisabled && (this.ssrInitiated() || fetchDisabled)) {
-            this.previousData.result = ssrLoading;
-            return ssrLoading;
-        }
-        var result;
-        if (this.ssrInitiated()) {
-            result =
-                this.context.renderPromises.addQueryPromise(this, this.getExecuteResult) || ssrLoading;
-        }
-        return result;
-    };
-    QueryData.prototype.prepareObservableQueryOptions = function () {
-        var options = this.getOptions();
-        this.verifyDocumentType(options.query, DocumentType.Query);
-        var displayName = options.displayName || 'Query';
-        if (this.ssrInitiated() &&
-            (options.fetchPolicy === 'network-only' ||
-                options.fetchPolicy === 'cache-and-network')) {
-            options.fetchPolicy = 'cache-first';
-        }
-        return __assign(__assign({}, options), { displayName: displayName, context: options.context, metadata: { reactComponent: { displayName: displayName } } });
-    };
-    QueryData.prototype.initializeObservableQuery = function () {
-        var _a, _b;
-        if (this.ssrInitiated()) {
-            this.currentObservable.query = this.context.renderPromises.getSSRObservable(this.getOptions());
-        }
-        if (!this.currentObservable.query) {
-            var observableQueryOptions = this.prepareObservableQueryOptions();
-            this.previousData.observableQueryOptions = __assign(__assign({}, observableQueryOptions), { children: null });
-            this.currentObservable.query = this.refreshClient().client.watchQuery(__assign({}, observableQueryOptions));
-            if (this.ssrInitiated()) {
-                (_b = (_a = this.context) === null || _a === void 0 ? void 0 : _a.renderPromises) === null || _b === void 0 ? void 0 : _b.registerSSRObservable(this.currentObservable.query, observableQueryOptions);
-            }
-        }
-    };
-    QueryData.prototype.updateObservableQuery = function () {
-        if (!this.currentObservable.query) {
-            this.initializeObservableQuery();
-            return;
-        }
-        var newObservableQueryOptions = __assign(__assign({}, this.prepareObservableQueryOptions()), { children: null });
-        if (!equal(newObservableQueryOptions, this.previousData.observableQueryOptions)) {
-            this.previousData.observableQueryOptions = newObservableQueryOptions;
-            this.currentObservable
-                .query.setOptions(newObservableQueryOptions)
-                .catch(function () { });
-        }
-    };
-    QueryData.prototype.startQuerySubscription = function () {
-        var _this = this;
-        if (this.currentObservable.subscription || this.getOptions().skip)
-            return;
-        var obsQuery = this.currentObservable.query;
-        this.currentObservable.subscription = obsQuery.subscribe({
-            next: function (_a) {
-                var loading = _a.loading, networkStatus = _a.networkStatus, data = _a.data;
-                var previousResult = _this.previousData.result;
-                if (previousResult &&
-                    previousResult.loading === loading &&
-                    previousResult.networkStatus === networkStatus &&
-                    equal(previousResult.data, data)) {
-                    return;
-                }
-                _this.onNewData();
-            },
-            error: function (error) {
-                _this.resubscribeToQuery();
-                if (!error.hasOwnProperty('graphQLErrors'))
-                    throw error;
-                var previousResult = _this.previousData.result;
-                if ((previousResult && previousResult.loading) ||
-                    !equal(error, _this.previousData.error)) {
-                    _this.previousData.error = error;
-                    _this.onNewData();
-                }
-            },
-        });
-    };
-    QueryData.prototype.resubscribeToQuery = function () {
-        this.removeQuerySubscription();
-        var lastError = this.currentObservable.query.getLastError();
-        var lastResult = this.currentObservable.query.getLastResult();
-        this.currentObservable.query.resetLastResults();
-        this.startQuerySubscription();
-        Object.assign(this.currentObservable.query, {
-            lastError: lastError,
-            lastResult: lastResult,
-        });
-    };
-    QueryData.prototype.getQueryResult = function () {
-        var result = this.observableQueryFields();
-        var options = this.getOptions();
-        if (options.skip) {
-            result = __assign(__assign({}, result), { data: undefined, error: undefined, loading: false, called: true });
-        }
-        else {
-            var currentResult = this.currentObservable.query.getCurrentResult();
-            var loading = currentResult.loading, partial = currentResult.partial, networkStatus = currentResult.networkStatus, errors = currentResult.errors;
-            var error = currentResult.error, data = currentResult.data;
-            if (errors && errors.length > 0) {
-                error = new ApolloError({ graphQLErrors: errors });
-            }
-            result = __assign(__assign({}, result), { loading: loading,
-                networkStatus: networkStatus,
-                error: error, called: true });
-            if (loading) {
-                var previousData = this.previousData.result && this.previousData.result.data;
-                result.data =
-                    previousData && data
-                        ? __assign(__assign({}, previousData), data) : previousData || data;
-            }
-            else if (error) {
-                Object.assign(result, {
-                    data: (this.currentObservable.query.getLastResult() || {})
-                        .data,
-                });
-            }
-            else {
-                var fetchPolicy = this.currentObservable.query.options.fetchPolicy;
-                var partialRefetch = options.partialRefetch;
-                if (partialRefetch &&
-                    !data &&
-                    partial &&
-                    fetchPolicy !== 'cache-only') {
-                    Object.assign(result, {
-                        loading: true,
-                        networkStatus: NetworkStatus.loading,
-                    });
-                    result.refetch();
-                    return result;
-                }
-                result.data = data;
-            }
-        }
-        result.client = this.client;
-        this.previousData.loading =
-            (this.previousData.result && this.previousData.result.loading) || false;
-        this.previousData.result = result;
-        this.currentObservable.query &&
-            this.currentObservable.query.resetQueryStoreErrors();
-        return result;
-    };
-    QueryData.prototype.handleErrorOrCompleted = function () {
-        var obsQuery = this.currentObservable.query;
-        if (!obsQuery || !this.previousData.result)
-            return;
-        var _a = this.previousData.result, data = _a.data, loading = _a.loading, error = _a.error;
-        if (!loading) {
-            var _b = this.getOptions(), query = _b.query, variables = _b.variables, onCompleted = _b.onCompleted, onError = _b.onError;
-            if (this.previousOptions &&
-                !this.previousData.loading &&
-                equal(this.previousOptions.query, query) &&
-                equal(this.previousOptions.variables, variables)) {
-                return;
-            }
-            if (onCompleted && !error) {
-                onCompleted(data);
-            }
-            else if (onError && error) {
-                onError(error);
-            }
-        }
-    };
-    QueryData.prototype.removeQuerySubscription = function () {
-        if (this.currentObservable.subscription) {
-            this.currentObservable.subscription.unsubscribe();
-            delete this.currentObservable.subscription;
-        }
-    };
-    QueryData.prototype.observableQueryFields = function () {
-        var observable = this.currentObservable.query;
-        return {
-            variables: observable.variables,
-            refetch: this.obsRefetch,
-            fetchMore: this.obsFetchMore,
-            updateQuery: this.obsUpdateQuery,
-            startPolling: this.obsStartPolling,
-            stopPolling: this.obsStopPolling,
-            subscribeToMore: this.obsSubscribeToMore,
-        };
-    };
-    return QueryData;
-}(OperationData));
-
-function useDeepMemo(memoFn, key) {
-    var ref = React.useRef();
-    if (!ref.current || !equal(key, ref.current.key)) {
-        ref.current = { key: key, value: memoFn() };
-    }
-    return ref.current.value;
-}
-
-function useBaseQuery(query, options, lazy) {
-    if (lazy === void 0) { lazy = false; }
-    var context = React.useContext(getApolloContext());
-    var _a = React.useReducer(function (x) { return x + 1; }, 0), tick = _a[0], forceUpdate = _a[1];
-    var updatedOptions = options ? __assign(__assign({}, options), { query: query }) : { query: query };
-    var queryDataRef = React.useRef();
-    var queryData = queryDataRef.current ||
-        new QueryData({
-            options: updatedOptions,
-            context: context,
-            onNewData: function () {
-                if (!queryData.ssrInitiated()) {
-                    Promise.resolve().then(forceUpdate);
-                }
-                else {
-                    forceUpdate();
-                }
-            },
-        });
-    queryData.setOptions(updatedOptions);
-    queryData.context = context;
-    if (queryData.ssrInitiated() && !queryDataRef.current) {
-        queryDataRef.current = queryData;
-    }
-    var memo = {
-        options: __assign(__assign({}, updatedOptions), { onError: undefined, onCompleted: undefined }),
-        context: context,
-        tick: tick,
-    };
-    var result = useDeepMemo(function () { return (lazy ? queryData.executeLazy() : queryData.execute()); }, memo);
-    var queryResult = lazy
-        ? result[1]
-        : result;
-    React.useEffect(function () {
-        if (!queryDataRef.current) {
-            queryDataRef.current = queryData;
-        }
-        return function () { return queryData.cleanup(); };
-    }, []);
-    React.useEffect(function () { return queryData.afterExecute({ lazy: lazy }); }, [
-        queryResult.loading,
-        queryResult.networkStatus,
-        queryResult.error,
-        queryResult.data,
-    ]);
-    return result;
-}
-
-function useQuery(query, options) {
-    return useBaseQuery(query, options, false);
-}
-
-function useLazyQuery(query, options) {
-    return useBaseQuery(query, options, true);
-}
-
-var MutationData = (function (_super) {
-    __extends(MutationData, _super);
-    function MutationData(_a) {
-        var options = _a.options, context = _a.context, result = _a.result, setResult = _a.setResult;
-        var _this = _super.call(this, options, context) || this;
-        _this.runMutation = function (mutationFunctionOptions) {
-            if (mutationFunctionOptions === void 0) { mutationFunctionOptions = {}; }
-            _this.onMutationStart();
-            var mutationId = _this.generateNewMutationId();
-            return _this.mutate(mutationFunctionOptions)
-                .then(function (response) {
-                _this.onMutationCompleted(response, mutationId);
-                return response;
-            })
-                .catch(function (error) {
-                _this.onMutationError(error, mutationId);
-                if (!_this.getOptions().onError)
-                    throw error;
-            });
-        };
-        _this.verifyDocumentType(options.mutation, DocumentType.Mutation);
-        _this.result = result;
-        _this.setResult = setResult;
-        _this.mostRecentMutationId = 0;
-        return _this;
-    }
-    MutationData.prototype.execute = function (result) {
-        this.isMounted = true;
-        this.verifyDocumentType(this.getOptions().mutation, DocumentType.Mutation);
-        result.client = this.refreshClient().client;
-        return [this.runMutation, result];
-    };
-    MutationData.prototype.afterExecute = function () {
-        this.isMounted = true;
-        return this.unmount.bind(this);
-    };
-    MutationData.prototype.cleanup = function () {
-    };
-    MutationData.prototype.mutate = function (mutationFunctionOptions) {
-        var _a = this.getOptions(), mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, update = _a.update, _b = _a.context, mutationContext = _b === void 0 ? {} : _b, _c = _a.awaitRefetchQueries, awaitRefetchQueries = _c === void 0 ? false : _c, fetchPolicy = _a.fetchPolicy;
-        var mutateOptions = __assign({}, mutationFunctionOptions);
-        var mutateVariables = Object.assign({}, variables, mutateOptions.variables);
-        delete mutateOptions.variables;
-        return this.refreshClient().client.mutate(__assign({ mutation: mutation,
-            optimisticResponse: optimisticResponse, refetchQueries: mutateOptions.refetchQueries || this.getOptions().refetchQueries, awaitRefetchQueries: awaitRefetchQueries,
-            update: update, context: mutationContext, fetchPolicy: fetchPolicy, variables: mutateVariables }, mutateOptions));
-    };
-    MutationData.prototype.onMutationStart = function () {
-        if (!this.result.loading && !this.getOptions().ignoreResults) {
-            this.updateResult({
-                loading: true,
-                error: undefined,
-                data: undefined,
-                called: true
-            });
-        }
-    };
-    MutationData.prototype.onMutationCompleted = function (response, mutationId) {
-        var _a = this.getOptions(), onCompleted = _a.onCompleted, ignoreResults = _a.ignoreResults;
-        var data = response.data, errors = response.errors;
-        var error = errors && errors.length > 0
-            ? new ApolloError({ graphQLErrors: errors })
-            : undefined;
-        var callOncomplete = function () {
-            return onCompleted ? onCompleted(data) : null;
-        };
-        if (this.isMostRecentMutation(mutationId) && !ignoreResults) {
-            this.updateResult({
-                called: true,
-                loading: false,
-                data: data,
-                error: error
-            });
-        }
-        callOncomplete();
-    };
-    MutationData.prototype.onMutationError = function (error, mutationId) {
-        var onError = this.getOptions().onError;
-        if (this.isMostRecentMutation(mutationId)) {
-            this.updateResult({
-                loading: false,
-                error: error,
-                data: undefined,
-                called: true
-            });
-        }
-        if (onError) {
-            onError(error);
-        }
-    };
-    MutationData.prototype.generateNewMutationId = function () {
-        return ++this.mostRecentMutationId;
-    };
-    MutationData.prototype.isMostRecentMutation = function (mutationId) {
-        return this.mostRecentMutationId === mutationId;
-    };
-    MutationData.prototype.updateResult = function (result) {
-        if (this.isMounted &&
-            (!this.previousResult || !equal(this.previousResult, result))) {
-            this.setResult(result);
-            this.previousResult = result;
-        }
-    };
-    return MutationData;
-}(OperationData));
-
-function useMutation(mutation, options) {
-    var context = React.useContext(getApolloContext());
-    var _a = React.useState({ called: false, loading: false }), result = _a[0], setResult = _a[1];
-    var updatedOptions = options ? __assign(__assign({}, options), { mutation: mutation }) : { mutation: mutation };
-    var mutationDataRef = React.useRef();
-    function getMutationDataRef() {
-        if (!mutationDataRef.current) {
-            mutationDataRef.current = new MutationData({
-                options: updatedOptions,
-                context: context,
-                result: result,
-                setResult: setResult
-            });
-        }
-        return mutationDataRef.current;
-    }
-    var mutationData = getMutationDataRef();
-    mutationData.setOptions(updatedOptions);
-    mutationData.context = context;
-    React.useEffect(function () { return mutationData.afterExecute(); });
-    return mutationData.execute(result);
-}
-
-var SubscriptionData = (function (_super) {
-    __extends(SubscriptionData, _super);
-    function SubscriptionData(_a) {
-        var options = _a.options, context = _a.context, setResult = _a.setResult;
-        var _this = _super.call(this, options, context) || this;
-        _this.currentObservable = {};
-        _this.setResult = setResult;
-        _this.initialize(options);
-        return _this;
-    }
-    SubscriptionData.prototype.execute = function (result) {
-        if (this.getOptions().skip === true) {
-            this.cleanup();
-            return {
-                loading: false,
-                error: undefined,
-                data: undefined,
-                variables: this.getOptions().variables
-            };
-        }
-        var currentResult = result;
-        if (this.refreshClient().isNew) {
-            currentResult = this.getLoadingResult();
-        }
-        var shouldResubscribe = this.getOptions().shouldResubscribe;
-        if (typeof shouldResubscribe === 'function') {
-            shouldResubscribe = !!shouldResubscribe(this.getOptions());
-        }
-        if (shouldResubscribe !== false &&
-            this.previousOptions &&
-            Object.keys(this.previousOptions).length > 0 &&
-            (this.previousOptions.subscription !== this.getOptions().subscription ||
-                !equal(this.previousOptions.variables, this.getOptions().variables) ||
-                this.previousOptions.skip !== this.getOptions().skip)) {
-            this.cleanup();
-            currentResult = this.getLoadingResult();
-        }
-        this.initialize(this.getOptions());
-        this.startSubscription();
-        this.previousOptions = this.getOptions();
-        return __assign(__assign({}, currentResult), { variables: this.getOptions().variables });
-    };
-    SubscriptionData.prototype.afterExecute = function () {
-        this.isMounted = true;
-    };
-    SubscriptionData.prototype.cleanup = function () {
-        this.endSubscription();
-        delete this.currentObservable.query;
-    };
-    SubscriptionData.prototype.initialize = function (options) {
-        if (this.currentObservable.query || this.getOptions().skip === true)
-            return;
-        this.currentObservable.query = this.refreshClient().client.subscribe({
-            query: options.subscription,
-            variables: options.variables,
-            fetchPolicy: options.fetchPolicy
-        });
-    };
-    SubscriptionData.prototype.startSubscription = function () {
-        if (this.currentObservable.subscription)
-            return;
-        this.currentObservable.subscription = this.currentObservable.query.subscribe({
-            next: this.updateCurrentData.bind(this),
-            error: this.updateError.bind(this),
-            complete: this.completeSubscription.bind(this)
-        });
-    };
-    SubscriptionData.prototype.getLoadingResult = function () {
-        return {
-            loading: true,
-            error: undefined,
-            data: undefined
-        };
-    };
-    SubscriptionData.prototype.updateResult = function (result) {
-        if (this.isMounted) {
-            this.setResult(result);
-        }
-    };
-    SubscriptionData.prototype.updateCurrentData = function (result) {
-        var onSubscriptionData = this.getOptions().onSubscriptionData;
-        this.updateResult({
-            data: result.data,
-            loading: false,
-            error: undefined
-        });
-        if (onSubscriptionData) {
-            onSubscriptionData({
-                client: this.refreshClient().client,
-                subscriptionData: result
-            });
-        }
-    };
-    SubscriptionData.prototype.updateError = function (error) {
-        this.updateResult({
-            error: error,
-            loading: false
-        });
-    };
-    SubscriptionData.prototype.completeSubscription = function () {
-        var onSubscriptionComplete = this.getOptions().onSubscriptionComplete;
-        if (onSubscriptionComplete)
-            onSubscriptionComplete();
-        this.endSubscription();
-    };
-    SubscriptionData.prototype.endSubscription = function () {
-        if (this.currentObservable.subscription) {
-            this.currentObservable.subscription.unsubscribe();
-            delete this.currentObservable.subscription;
-        }
-    };
-    return SubscriptionData;
-}(OperationData));
-
-function useSubscription(subscription, options) {
-    var context = React.useContext(getApolloContext());
-    var updatedOptions = options
-        ? __assign(__assign({}, options), { subscription: subscription }) : { subscription: subscription };
-    var _a = React.useState({
-        loading: !updatedOptions.skip,
-        error: undefined,
-        data: undefined
-    }), result = _a[0], setResult = _a[1];
-    var subscriptionDataRef = React.useRef();
-    function getSubscriptionDataRef() {
-        if (!subscriptionDataRef.current) {
-            subscriptionDataRef.current = new SubscriptionData({
-                options: updatedOptions,
-                context: context,
-                setResult: setResult
-            });
-        }
-        return subscriptionDataRef.current;
-    }
-    var subscriptionData = getSubscriptionDataRef();
-    subscriptionData.setOptions(updatedOptions, true);
-    subscriptionData.context = context;
-    React.useEffect(function () { return subscriptionData.afterExecute(); });
-    React.useEffect(function () { return subscriptionData.cleanup.bind(subscriptionData); }, []);
-    return subscriptionData.execute(result);
-}
-
-function useApolloClient() {
-    var client = React__default.useContext(getApolloContext()).client;
-    process.env.NODE_ENV === "production" ? invariant(client, 1) : invariant(client, 'No Apollo Client instance can be found. Please ensure that you ' +
-        'have called `ApolloProvider` higher up in your tree.');
-    return client;
-}
-
-function makeDefaultQueryInfo() {
-    return {
-        seen: false,
-        observable: null
-    };
-}
-var RenderPromises = (function () {
-    function RenderPromises() {
-        this.queryPromises = new Map();
-        this.queryInfoTrie = new Map();
-    }
-    RenderPromises.prototype.registerSSRObservable = function (observable, props) {
-        this.lookupQueryInfo(props).observable = observable;
-    };
-    RenderPromises.prototype.getSSRObservable = function (props) {
-        return this.lookupQueryInfo(props).observable;
-    };
-    RenderPromises.prototype.addQueryPromise = function (queryInstance, finish) {
-        var info = this.lookupQueryInfo(queryInstance.getOptions());
-        if (!info.seen) {
-            this.queryPromises.set(queryInstance.getOptions(), new Promise(function (resolve) {
-                resolve(queryInstance.fetchData());
-            }));
-            return null;
-        }
-        return finish();
-    };
-    RenderPromises.prototype.hasPromises = function () {
-        return this.queryPromises.size > 0;
-    };
-    RenderPromises.prototype.consumeAndAwaitPromises = function () {
-        var _this = this;
-        var promises = [];
-        this.queryPromises.forEach(function (promise, queryInstance) {
-            _this.lookupQueryInfo(queryInstance).seen = true;
-            promises.push(promise);
-        });
-        this.queryPromises.clear();
-        return Promise.all(promises);
-    };
-    RenderPromises.prototype.lookupQueryInfo = function (props) {
-        var queryInfoTrie = this.queryInfoTrie;
-        var query = props.query, variables = props.variables;
-        var varMap = queryInfoTrie.get(query) || new Map();
-        if (!queryInfoTrie.has(query))
-            queryInfoTrie.set(query, varMap);
-        var variablesString = JSON.stringify(variables);
-        var info = varMap.get(variablesString) || makeDefaultQueryInfo();
-        if (!varMap.has(variablesString))
-            varMap.set(variablesString, info);
-        return info;
-    };
-    return RenderPromises;
-}());// import gql from 'graphql-tag';
+var src$1 = gql;// import gql from 'graphql-tag';
 var GET_COUNTER = src$1(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query GetCounterValue {\n    counter @client\n  }\n"], ["\n  query GetCounterValue {\n    counter @client\n  }\n"])));
 var queries = (function () {
   return useQuery(GET_COUNTER);
@@ -32285,7 +32884,7 @@ cache$1.writeData({
 
           return [4
           /*yield*/
-          , fetch(encodedURI)];
+          , fetch$1(encodedURI)];
 
         case 2:
           data = _a.sent();
@@ -32345,7 +32944,7 @@ var templateObject_1$2;function CounterFlux() {
       offset: -1
     }
   })[0];
-  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("h1", null, "Counter: ", data.counter), /*#__PURE__*/React__default.createElement("div", {
+  return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("h1", null, "Counter: ", data ? data.counter : 0), /*#__PURE__*/React__default.createElement("div", {
     className: "controllers"
   }, /*#__PURE__*/React__default.createElement("button", {
     type: "button",
@@ -32531,7 +33130,7 @@ isProd ? app.get(paths, function (req, res, next) {
   });
 }) : app.get(paths, function (req, res, next) {
   return __awaiter(void 0, void 0, void 0, function () {
-    var activeRoute, data, _a, context, sheet, markup, bodyStream;
+    var activeRoute, data, _a, context, client_1, sheet_1, markup_1;
 
     return __generator(this, function (_b) {
       switch (_b.label) {
@@ -32568,23 +33167,63 @@ isProd ? app.get(paths, function (req, res, next) {
 
           try {
             context = data.context;
-            sheet = new styled.ServerStyleSheet();
-            markup = sheet.collectStyles( /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
+            client_1 = new ApolloClient({
+              ssrMode: true,
+              // Remember that this is the interface the SSR server will use to connect to the
+              // API server, so we need to ensure it isn't firewalled, etc
+              link: createHttpLink({
+                uri: 'http://localhost:81',
+                credentials: 'same-origin',
+                headers: {
+                  cookie: req.header('Cookie')
+                }
+              }),
+              cache: new InMemoryCache()
+            });
+            sheet_1 = new styled.ServerStyleSheet();
+            markup_1 = sheet_1.collectStyles( /*#__PURE__*/React__default.createElement(ApolloProvider, {
+              client: client_1
+            }, /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
               location: req.url,
               context: data.context
-            }, /*#__PURE__*/React__default.createElement(App, null)));
-            bodyStream = sheet.interleaveWithNodeStream(server$1.renderToNodeStream(markup));
-            res.write("<!DOCTYPE html>\n      <html>\n        <head>\n          <title>" + pkg.name + " v" + pkg.version + "</title>\n          <script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script>\n        </head>\n        <body>\n          <div id=\"root\">");
-            bodyStream.on('data', function (chunk) {
-              return res.write(chunk);
-            });
-            bodyStream.on('end', function () {
-              res.write("</div>\n          <script src=\"/reload/reload.js\"></script>\n          <script src=\"/" + pkg.name + ".js\"></script>\n        </body>\n      </html>");
-              res.end();
-            });
-            bodyStream.on('error', function (err) {
-              console.error('react render error:', err);
-            });
+            }, /*#__PURE__*/React__default.createElement(App, null))));
+            getDataFromTree(markup_1).then(function () {
+              // We are ready to render for real
+              var content = sheet_1.interleaveWithNodeStream(server$1.renderToNodeStream(markup_1));
+              var initialState = client_1.extract();
+              console.log('INITIALSTATE', initialState);
+              res.write("<!DOCTYPE html>\n       <html>\n         <head>\n           <title>" + pkg.name + " v" + pkg.version + "</title>\n           <script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script>\n      \n         </head>\n         <body>\n           <div id=\"root\">\n           <script dangerouslySetInnerHTML={{\n            __html: window.__APOLLO_STATE__=" + JSON.stringify(initialState).replace(/</g, "\\u003c") + ";,\n          }} />");
+              content.on('data', function (chunk) {
+                return res.write(chunk);
+              });
+              content.on('end', function () {
+                res.write("</div>\n          <script src=\"/reload/reload.js\"></script>\n          <script src=\"/" + pkg.name + ".js\"></script>\n        </body>\n      </html>");
+                res.end();
+              });
+              content.on('error', function (err) {
+                console.error('react render error:', err);
+              });
+            }); //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
+            //   res.write(`<!DOCTYPE html>
+            // <html>
+            //   <head>
+            //     <title>${pkg.name} v${pkg.version}</title>
+            //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+            //   </head>
+            //   <body>
+            //     <div id="root">`)
+            //   bodyStream.on('data', chunk => res.write(chunk))
+            //   bodyStream.on('end', () => {
+            //     res.write(`</div>
+            //     <script src="/reload/reload.js"></script>
+            //     <script src="/${pkg.name}.js"></script>
+            //   </body>
+            // </html>`)
+            //     res.end()
+            //   })
+            // bodyStream.on('error', err => {
+            //   console.error('react render error:', err)
+            // })
           } catch (error) {
             next(error);
           }

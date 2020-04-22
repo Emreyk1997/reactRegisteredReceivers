@@ -11,7 +11,7 @@ export default function CounterFlux() {
 
   return (
     <div>
-      <h1>Counter: {data.counter}</h1>
+      <h1>Counter: {data ? data.counter : 0}</h1>
       <div className="controllers">
         <button type='button' onClick={() => increment()}>Add</button>
         <button type='button' onClick={() => decrement()}>Remove</button>
