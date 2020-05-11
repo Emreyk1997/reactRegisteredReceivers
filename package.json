@@ -28,10 +28,12 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
+    "inversify": "^5.0.1",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
+    "reflect-metadata": "^0.1.13",
     "reload": "^3.0.4",
     "serialize-javascript": "^3.0.0",
     "styled-components": "^5.0.1"
