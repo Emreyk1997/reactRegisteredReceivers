@@ -28040,7 +28040,7 @@ function renderToStringWithData(component) {
         tree: component,
         renderFunction: require('react-dom/server').renderToString
     });
-}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
+}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1",winston:"^3.2.1","winston-daily-rotate-file":"^4.4.2","winston-transport-browserconsole":"^1.0.5"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -36329,8 +36329,73 @@ var Counter = function Counter() {
     }
   }, "-")));
 };
-var templateObject_1$2;function CounterFlux() {
+var templateObject_1$2;var logger = {
+  log: function log(_log) {
+    if (_log === void 0) {
+      _log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: _log,
+        type: 'log'
+      })
+    });
+  },
+  info: function info(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: log,
+        type: 'info'
+      })
+    });
+  },
+  error: function error(log) {
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: log,
+        type: 'error'
+      })
+    });
+  },
+  warn: function warn(log) {
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: log,
+        type: 'warn'
+      })
+    });
+  }
+};// const clientBundler = require('../../config/rollup.config.browser');
+// import { logger } from '../../index'
+// import {logger} from '../server/index'
+
+function CounterFlux() {
   var data = useQuery(GET_COUNTER).data;
+
+  var _a = React__default.useState(null),
+      setErrorCatch = _a[1];
+
   var increment = useMutation(UPDATE_COUNTER, {
     variables: {
       offset: 1
@@ -36342,12 +36407,31 @@ var templateObject_1$2;function CounterFlux() {
     }
   })[0];
   var provider = useInjection('nameProvider');
+
+  var newIncrement = function newIncrement() {
+    // console.log('clientBundler', clientBundler);
+    // logger.logger('HELLO');
+    // logger.log();
+    // logger.log();
+    logger.info();
+    logger.error('error');
+    increment();
+    console.log('data.counter', data.counter); //   if(data.counter > 2) {
+    //     setErrorCatch(() => {
+    //       throw new Error('error');
+    //     });
+    //  }
+    // setErrorCatch(() => {
+    //   throw new Error("This is an error");
+    // });
+  };
+
   return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("h1", null, "Counter: ", data ? data.counter : 5), /*#__PURE__*/React__default.createElement("p", null, "Provider:"), /*#__PURE__*/React__default.createElement("p", null, provider.provide()), /*#__PURE__*/React__default.createElement("div", {
     className: "controllers"
   }, /*#__PURE__*/React__default.createElement("button", {
     type: "button",
     onClick: function onClick() {
-      return increment();
+      return newIncrement();
     }
   }, "Add"), /*#__PURE__*/React__default.createElement("button", {
     type: "button",
@@ -36376,6 +36460,7 @@ var templateObject_1$2;function CounterFlux() {
 }, {
   path: '/counterFlux',
   component: CounterFlux,
+  // component: ClassCounter,
   exact: true
 }];var Navbar = function Navbar() {
   var languages = [{
@@ -36418,12 +36503,60 @@ var templateObject_1$2;function CounterFlux() {
   }, "Counter Flux")));
 };var NoMatch = function NoMatch() {
   return /*#__PURE__*/React__default.createElement("div", null, "Four Oh Four");
-};var App = function App(props) {
+};// import winston from 'winston';
+
+var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
+  _inherits(ErrorBoundary, _React$Component);
+
+  var _super = _createSuper(ErrorBoundary);
+
+  function ErrorBoundary(props) {
+    var _this;
+
+    _classCallCheck(this, ErrorBoundary);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hasError: false
+    };
+    return _this;
+  }
+
+  _createClass(ErrorBoundary, [{
+    key: "componentDidCatch",
+    value: function componentDidCatch(error, info) {
+      // You can also log the error to an error reporting service
+      //logErrorToMyService(error, info);
+      // logger.log('Error', error);
+      console.log('ComponentDidCatch', error, info);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.hasError) {
+        // You can render any custom fallback UI
+        return /*#__PURE__*/React__default.createElement("h1", null, "Something went wrong.");
+      }
+
+      return this.props.children;
+    }
+  }], [{
+    key: "getDerivedStateFromError",
+    value: function getDerivedStateFromError(error) {
+      // Update state so the next render will show the fallback UI.
+      return {
+        hasError: true
+      };
+    }
+  }]);
+
+  return ErrorBoundary;
+}(React__default.Component);var App = function App(props) {
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(Provider, {
     container: container$2
   }, /*#__PURE__*/React__default.createElement(ApolloProvider, {
     client: client
-  }, /*#__PURE__*/React__default.createElement(Navbar, null), /*#__PURE__*/React__default.createElement(reactRouterDom.Switch, null, routes.map(function (_a) {
+  }, /*#__PURE__*/React__default.createElement(ErrorBoundary, null, /*#__PURE__*/React__default.createElement(Navbar, null), /*#__PURE__*/React__default.createElement(reactRouterDom.Switch, null, routes.map(function (_a) {
     var path = _a.path,
         exact = _a.exact,
         Component = _a.component,
@@ -36441,200 +36574,268 @@ var templateObject_1$2;function CounterFlux() {
     render: function render(props) {
       return /*#__PURE__*/React__default.createElement(NoMatch, props);
     }
-  })))));
-};var app = express$1();
+  }))))));
+};var winston = require('winston');
+
+var app = express$1();
 var port = process.env.PORT || 81;
 var isProd = process.env.NODE_ENV === 'production';
 var publicPath = path$2.join(__dirname, 'public');
 var server = http.createServer(app);
+var logger$1 = winston.createLogger({
+  transports: [new winston.transports.Console()]
+}); // const logger = winston.createLogger({
+//   level: 'info',
+//   format: winston.format.json(),
+//   defaultMeta: { service: 'user-service' },
+//   transports: [
+//     //
+//     // - Write all logs with level `error` and below to `error.log`
+//     // - Write all logs with level `info` and below to `combined.log`
+//     //
+//     new winston.transports.File({ filename: 'error.log', level: 'error' }),
+//     new winston.transports.File({ filename: 'combined.log' })
+//   ]
+// });
+
+var level = "debug"; // const logger = winston.createLogger({
+//   // level: 'info',
+//   // format: winston.format.json(),
+//   // defaultMeta: { service: 'user-service' },
+//   transports: [
+//     //
+//     // - Write all logs with level `error` and below to `error.log`
+//     // - Write all logs with level `info` and below to `combined.log`
+//     //
+//     // new winston.transports.Console(),
+//     // new winston.transports.File({ filename: 'combined.log' }),
+//     new BrowserConsole(
+//       {
+//           format: winston.format.simple(),
+//           level,
+//       },
+//   ),
+//   ],
+// });
+// logger.info('YEEAAAAHHH');
+
 app.use(cors());
 isProd && app.use(compression_1());
 app.use(express$1["static"](publicPath));
+app.use(express$1.json());
 var paths = routes.map(function (_a) {
   var path = _a.path;
   return path;
 });
-isProd ? app.get(paths, function (req, res, next) {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var fragment, activeRoute, data, _a, sheet, markup, bodyStream;
 
-    return __generator(this, function (_b) {
-      switch (_b.label) {
-        case 0:
-          console.log('Req', req);
-          res.setHeader('Content-Type', 'application/json');
-          fragment = {
-            name: pkg.name,
-            version: pkg.version,
-            html: ''
-          };
-          activeRoute = routes.find(function (route) {
-            return reactRouterDom.matchPath(req.url, route);
-          }) || {};
-          if (!activeRoute.fetchInitialData) return [3
-          /*break*/
-          , 2];
-          return [4
-          /*yield*/
-          , activeRoute.fetchInitialData(req.path)];
+if (isProd) {
+  app.get(paths, function (req, res, next) {
+    return __awaiter(void 0, void 0, void 0, function () {
+      var fragment, activeRoute, data, _a, sheet, markup, bodyStream;
 
-        case 1:
-          _a = _b.sent();
-          return [3
-          /*break*/
-          , 4];
+      return __generator(this, function (_b) {
+        switch (_b.label) {
+          case 0:
+            console.log('Req', req);
+            res.setHeader('Content-Type', 'application/json');
+            fragment = {
+              name: pkg.name,
+              version: pkg.version,
+              html: ''
+            };
+            activeRoute = routes.find(function (route) {
+              return reactRouterDom.matchPath(req.url, route);
+            }) || {};
+            if (!activeRoute.fetchInitialData) return [3
+            /*break*/
+            , 2];
+            return [4
+            /*yield*/
+            , activeRoute.fetchInitialData(req.path)];
 
-        case 2:
-          return [4
-          /*yield*/
-          , Promise.resolve({})];
+          case 1:
+            _a = _b.sent();
+            return [3
+            /*break*/
+            , 4];
 
-        case 3:
-          _a = _b.sent();
-          _b.label = 4;
+          case 2:
+            return [4
+            /*yield*/
+            , Promise.resolve({})];
 
-        case 4:
-          data = _a;
+          case 3:
+            _a = _b.sent();
+            _b.label = 4;
 
-          try {
-            sheet = new styled.ServerStyleSheet();
-            markup = sheet.collectStyles( /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
-              location: req.url,
-              context: data && data.context
-            }, /*#__PURE__*/React__default.createElement(App, null)));
-            bodyStream = sheet.interleaveWithNodeStream(server$1.renderToNodeStream(markup));
-            fragment.html = "<script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script><div>";
-            res.write(JSON.stringify(fragment));
-            bodyStream.on('data', function (chunk) {
-              fragment.html = chunk;
+          case 4:
+            data = _a;
+
+            try {
+              sheet = new styled.ServerStyleSheet();
+              markup = sheet.collectStyles( /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
+                location: req.url,
+                context: data && data.context
+              }, /*#__PURE__*/React__default.createElement(App, null)));
+              bodyStream = sheet.interleaveWithNodeStream(server$1.renderToNodeStream(markup));
+              fragment.html = "<script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script><div>";
               res.write(JSON.stringify(fragment));
-            });
-            bodyStream.on('end', function () {
-              fragment.html = "</div>";
-              fragment.script = pkg.name + ".js";
-              res.write(JSON.stringify(fragment));
-              res.end();
-            });
-            bodyStream.on('error', function (err) {
-              console.error('react render error:', err);
-            });
-          } catch (error) {
-            next(error);
-          }
-
-          return [2
-          /*return*/
-          ];
-      }
-    });
-  });
-}) : app.get(paths, function (req, res, next) {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var activeRoute, data, _a, context, client_1, sheet_1, markup_1;
-
-    return __generator(this, function (_b) {
-      switch (_b.label) {
-        case 0:
-          console.log('REQ', paths);
-          res.setHeader('Content-Type', 'text/html; charset=utf-8');
-          activeRoute = routes.find(function (route) {
-            return reactRouterDom.matchPath(req.url, route);
-          }) || {};
-          if (!activeRoute.fetchInitialData) return [3
-          /*break*/
-          , 2];
-          return [4
-          /*yield*/
-          , activeRoute.fetchInitialData(req.path)];
-
-        case 1:
-          _a = _b.sent();
-          return [3
-          /*break*/
-          , 4];
-
-        case 2:
-          return [4
-          /*yield*/
-          , Promise.resolve({})];
-
-        case 3:
-          _a = _b.sent();
-          _b.label = 4;
-
-        case 4:
-          data = _a;
-
-          try {
-            context = data.context;
-            client_1 = new ApolloClient({
-              ssrMode: true,
-              // Remember that this is the interface the SSR server will use to connect to the
-              // API server, so we need to ensure it isn't firewalled, etc
-              link: createHttpLink({
-                uri: 'http://localhost:81',
-                credentials: 'same-origin',
-                headers: {
-                  cookie: req.header('Cookie')
-                }
-              }),
-              cache: new InMemoryCache()
-            });
-            sheet_1 = new styled.ServerStyleSheet();
-            markup_1 = sheet_1.collectStyles( /*#__PURE__*/React__default.createElement(ApolloProvider, {
-              client: client_1
-            }, /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
-              location: req.url,
-              context: data.context
-            }, /*#__PURE__*/React__default.createElement(App, null))));
-            getDataFromTree(markup_1).then(function () {
-              // We are ready to render for real
-              var content = sheet_1.interleaveWithNodeStream(server$1.renderToNodeStream(markup_1));
-              var initialState = client_1.extract();
-              console.log('INITIALSTATE', initialState);
-              res.write("<!DOCTYPE html>\n       <html>\n         <head>\n           <title>" + pkg.name + " v" + pkg.version + "</title>\n           <script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script>\n      \n         </head>\n         <body>\n           <div id=\"root\">\n           <script dangerouslySetInnerHTML={{\n            __html: window.__APOLLO_STATE__=" + JSON.stringify(initialState).replace(/</g, "\\u003c") + ";,\n          }} />");
-              content.on('data', function (chunk) {
-                return res.write(chunk);
+              bodyStream.on('data', function (chunk) {
+                fragment.html = chunk;
+                res.write(JSON.stringify(fragment));
               });
-              content.on('end', function () {
-                res.write("</div>\n          <script src=\"/reload/reload.js\"></script>\n          <script src=\"/" + pkg.name + ".js\"></script>\n        </body>\n      </html>");
+              bodyStream.on('end', function () {
+                fragment.html = "</div>";
+                fragment.script = pkg.name + ".js";
+                res.write(JSON.stringify(fragment));
                 res.end();
               });
-              content.on('error', function (err) {
+              bodyStream.on('error', function (err) {
                 console.error('react render error:', err);
               });
-            }); //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
-            //   res.write(`<!DOCTYPE html>
-            // <html>
-            //   <head>
-            //     <title>${pkg.name} v${pkg.version}</title>
-            //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
-            //   </head>
-            //   <body>
-            //     <div id="root">`)
-            //   bodyStream.on('data', chunk => res.write(chunk))
-            //   bodyStream.on('end', () => {
-            //     res.write(`</div>
-            //     <script src="/reload/reload.js"></script>
-            //     <script src="/${pkg.name}.js"></script>
-            //   </body>
-            // </html>`)
-            //     res.end()
-            //   })
-            // bodyStream.on('error', err => {
-            //   console.error('react render error:', err)
-            // })
-          } catch (error) {
-            next(error);
-          }
+            } catch (error) {
+              next(error);
+            }
 
-          return [2
-          /*return*/
-          ];
-      }
+            return [2
+            /*return*/
+            ];
+        }
+      });
     });
   });
-});
+} else {
+  app.get(paths, function (req, res, next) {
+    return __awaiter(void 0, void 0, void 0, function () {
+      var activeRoute, data, _a, context, client_1, sheet_1, markup_1;
+
+      return __generator(this, function (_b) {
+        switch (_b.label) {
+          case 0:
+            console.log('REQ', paths);
+            res.setHeader('Content-Type', 'text/html; charset=utf-8');
+            activeRoute = routes.find(function (route) {
+              return reactRouterDom.matchPath(req.url, route);
+            }) || {};
+            if (!activeRoute.fetchInitialData) return [3
+            /*break*/
+            , 2];
+            return [4
+            /*yield*/
+            , activeRoute.fetchInitialData(req.path)];
+
+          case 1:
+            _a = _b.sent();
+            return [3
+            /*break*/
+            , 4];
+
+          case 2:
+            return [4
+            /*yield*/
+            , Promise.resolve({})];
+
+          case 3:
+            _a = _b.sent();
+            _b.label = 4;
+
+          case 4:
+            data = _a;
+
+            try {
+              context = data.context;
+              client_1 = new ApolloClient({
+                ssrMode: true,
+                // Remember that this is the interface the SSR server will use to connect to the
+                // API server, so we need to ensure it isn't firewalled, etc
+                link: createHttpLink({
+                  uri: 'http://localhost:81',
+                  credentials: 'same-origin',
+                  headers: {
+                    cookie: req.header('Cookie')
+                  }
+                }),
+                cache: new InMemoryCache()
+              });
+              sheet_1 = new styled.ServerStyleSheet();
+              markup_1 = sheet_1.collectStyles( /*#__PURE__*/React__default.createElement(ApolloProvider, {
+                client: client_1
+              }, /*#__PURE__*/React__default.createElement(reactRouterDom.StaticRouter, {
+                location: req.url,
+                context: data.context
+              }, /*#__PURE__*/React__default.createElement(App, null))));
+              getDataFromTree(markup_1).then(function () {
+                // We are ready to render for real
+                var content = sheet_1.interleaveWithNodeStream(server$1.renderToNodeStream(markup_1));
+                var initialState = client_1.extract();
+                console.log('INITIALSTATE', initialState);
+                res.write("<!DOCTYPE html>\n       <html>\n         <head>\n           <title>" + pkg.name + " v" + pkg.version + "</title>\n           <script>window.__INITIAL_DATA__ = " + serialize$1(data) + "</script>\n      \n         </head>\n         <body>\n           <div id=\"root\">\n           <script dangerouslySetInnerHTML={{\n            __html: window.__APOLLO_STATE__=" + JSON.stringify(initialState).replace(/</g, "\\u003c") + ";,\n          }} />");
+                content.on('data', function (chunk) {
+                  return res.write(chunk);
+                });
+                content.on('end', function () {
+                  res.write("</div>\n          <script src=\"/reload/reload.js\"></script>\n          <script src=\"/" + pkg.name + ".js\"></script>\n        </body>\n      </html>");
+                  res.end();
+                });
+                content.on('error', function (err) {
+                  console.error('react render error:', err);
+                });
+              }); //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
+              //   res.write(`<!DOCTYPE html>
+              // <html>
+              //   <head>
+              //     <title>${pkg.name} v${pkg.version}</title>
+              //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+              //   </head>
+              //   <body>
+              //     <div id="root">`)
+              //   bodyStream.on('data', chunk => res.write(chunk))
+              //   bodyStream.on('end', () => {
+              //     res.write(`</div>
+              //     <script src="/reload/reload.js"></script>
+              //     <script src="/${pkg.name}.js"></script>
+              //   </body>
+              // </html>`)
+              //     res.end()
+              //   })
+              // bodyStream.on('error', err => {
+              //   console.error('react render error:', err)
+              // })
+            } catch (error) {
+              next(error);
+            }
+
+            return [2
+            /*return*/
+            ];
+        }
+      });
+    });
+  });
+  app.post('/logger', function (req, res) {
+    // res.send('Hello World!')
+    // logger.info('HELLO WORLD');
+    // console.log('REQ', req.body)
+    switch (req.body.type) {
+      case 'log':
+        logger$1.log(req.body.log);
+        break;
+
+      case 'info':
+        logger$1.info(req.body.log);
+        break;
+
+      case 'error':
+        logger$1.error(req.body.log);
+        break;
+
+      case 'warn':
+        logger$1.warn(req.body.log);
+        break;
+    }
+  });
+}
+
 app.get('*', function (req, res) {
   return res.send('');
 });
@@ -36677,4 +36878,5 @@ var runHttpServer = function runHttpServer() {
   });
 };
 
-runHttpServer();//# sourceMappingURL=server.js.map
+runHttpServer(); // module.exports = {logger};
+//# sourceMappingURL=server.js.map

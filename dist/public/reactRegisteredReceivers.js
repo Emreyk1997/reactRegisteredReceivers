@@ -49400,7 +49400,7 @@
 	  DOMException.prototype.constructor = DOMException;
 	}
 
-	function fetch(input, init) {
+	function fetch$1(input, init) {
 	  return new Promise(function(resolve, reject) {
 	    var request = new Request(input, init);
 
@@ -49468,22 +49468,22 @@
 	  })
 	}
 
-	fetch.polyfill = true;
+	fetch$1.polyfill = true;
 
 	if (!self.fetch) {
-	  self.fetch = fetch;
+	  self.fetch = fetch$1;
 	  self.Headers = Headers;
 	  self.Request = Request;
 	  self.Response = Response;
 	}
 
-	var fetch$1 = /*#__PURE__*/Object.freeze({
+	var fetch$2 = /*#__PURE__*/Object.freeze({
 		__proto__: null,
 		Headers: Headers,
 		Request: Request,
 		Response: Response,
 		get DOMException () { return DOMException; },
-		fetch: fetch
+		fetch: fetch$1
 	});
 
 	// the whatwg-fetch polyfill installs the fetch() function
@@ -52204,8 +52204,75 @@
 	};
 	var templateObject_1$2;
 
+	var logger = {
+	  log: function log(_log) {
+	    if (_log === void 0) {
+	      _log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: _log,
+	        type: 'log'
+	      })
+	    });
+	  },
+	  info: function info(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: log,
+	        type: 'info'
+	      })
+	    });
+	  },
+	  error: function error(log) {
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: log,
+	        type: 'error'
+	      })
+	    });
+	  },
+	  warn: function warn(log) {
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: log,
+	        type: 'warn'
+	      })
+	    });
+	  }
+	};
+
+	// const clientBundler = require('../../config/rollup.config.browser');
+	// import { logger } from '../../index'
+	// import {logger} from '../server/index'
+
 	function CounterFlux() {
 	  var data = useQuery(GET_COUNTER).data;
+
+	  var _a = react.useState(null),
+	      setErrorCatch = _a[1];
+
 	  var increment = useMutation(UPDATE_COUNTER, {
 	    variables: {
 	      offset: 1
@@ -52217,12 +52284,31 @@
 	    }
 	  })[0];
 	  var provider = useInjection('nameProvider');
+
+	  var newIncrement = function newIncrement() {
+	    // console.log('clientBundler', clientBundler);
+	    // logger.logger('HELLO');
+	    // logger.log();
+	    // logger.log();
+	    logger.info();
+	    logger.error('error');
+	    increment();
+	    console.log('data.counter', data.counter); //   if(data.counter > 2) {
+	    //     setErrorCatch(() => {
+	    //       throw new Error('error');
+	    //     });
+	    //  }
+	    // setErrorCatch(() => {
+	    //   throw new Error("This is an error");
+	    // });
+	  };
+
 	  return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("h1", null, "Counter: ", data ? data.counter : 5), /*#__PURE__*/react.createElement("p", null, "Provider:"), /*#__PURE__*/react.createElement("p", null, provider.provide()), /*#__PURE__*/react.createElement("div", {
 	    className: "controllers"
 	  }, /*#__PURE__*/react.createElement("button", {
 	    type: "button",
 	    onClick: function onClick() {
-	      return increment();
+	      return newIncrement();
 	    }
 	  }, "Add"), /*#__PURE__*/react.createElement("button", {
 	    type: "button",
@@ -52253,6 +52339,7 @@
 	}, {
 	  path: '/counterFlux',
 	  component: CounterFlux,
+	  // component: ClassCounter,
 	  exact: true
 	}];
 
@@ -52301,12 +52388,62 @@
 	  return /*#__PURE__*/react.createElement("div", null, "Four Oh Four");
 	};
 
+	// import winston from 'winston';
+
+	var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
+	  _inherits(ErrorBoundary, _React$Component);
+
+	  var _super = _createSuper(ErrorBoundary);
+
+	  function ErrorBoundary(props) {
+	    var _this;
+
+	    _classCallCheck(this, ErrorBoundary);
+
+	    _this = _super.call(this, props);
+	    _this.state = {
+	      hasError: false
+	    };
+	    return _this;
+	  }
+
+	  _createClass(ErrorBoundary, [{
+	    key: "componentDidCatch",
+	    value: function componentDidCatch(error, info) {
+	      // You can also log the error to an error reporting service
+	      //logErrorToMyService(error, info);
+	      // logger.log('Error', error);
+	      console.log('ComponentDidCatch', error, info);
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      if (this.state.hasError) {
+	        // You can render any custom fallback UI
+	        return /*#__PURE__*/react.createElement("h1", null, "Something went wrong.");
+	      }
+
+	      return this.props.children;
+	    }
+	  }], [{
+	    key: "getDerivedStateFromError",
+	    value: function getDerivedStateFromError(error) {
+	      // Update state so the next render will show the fallback UI.
+	      return {
+	        hasError: true
+	      };
+	    }
+	  }]);
+
+	  return ErrorBoundary;
+	}(react.Component);
+
 	var App = function App(props) {
 	  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Provider, {
 	    container: container$2
 	  }, /*#__PURE__*/react.createElement(ApolloProvider, {
 	    client: client
-	  }, /*#__PURE__*/react.createElement(Navbar, null), /*#__PURE__*/react.createElement(Switch, null, routes.map(function (_a) {
+	  }, /*#__PURE__*/react.createElement(ErrorBoundary, null, /*#__PURE__*/react.createElement(Navbar, null), /*#__PURE__*/react.createElement(Switch, null, routes.map(function (_a) {
 	    var path = _a.path,
 	        exact = _a.exact,
 	        Component = _a.component,
@@ -52324,7 +52461,7 @@
 	    render: function render(props) {
 	      return /*#__PURE__*/react.createElement(NoMatch, props);
 	    }
-	  })))));
+	  }))))));
 	};
 
 	reactDom_5( /*#__PURE__*/react.createElement(BrowserRouter, null, /*#__PURE__*/react.createElement(App, null)), document.getElementById('root'));

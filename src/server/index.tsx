@@ -13,7 +13,6 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from '@apollo/react-common';
-import ReactDOM from 'react-dom';
 
 import { getDataFromTree } from "@apollo/react-ssr";
 
@@ -22,22 +21,69 @@ import pkg from '../../package.json'
 import App from '../shared/App'
 import routes from '../shared/routes'
 
+// import * as winston from 'winston';
+const winston = require('winston');
+
+import BrowserConsole from 'winston-transport-browserconsole';
+
 const app: Application = express()
 const port = process.env.PORT || 81
 const isProd = process.env.NODE_ENV === 'production'
 const publicPath = path.join(__dirname, 'public')
 const server = http.createServer(app)
 
+
+const logger = winston.createLogger({  transports: [new winston.transports.Console()]}) 
+
+// const logger = winston.createLogger({
+//   level: 'info',
+//   format: winston.format.json(),
+//   defaultMeta: { service: 'user-service' },
+//   transports: [
+//     //
+//     // - Write all logs with level `error` and below to `error.log`
+//     // - Write all logs with level `info` and below to `combined.log`
+//     //
+//     new winston.transports.File({ filename: 'error.log', level: 'error' }),
+//     new winston.transports.File({ filename: 'combined.log' })
+//   ]
+// });
+const level = "debug";
+// const logger = winston.createLogger({
+//   // level: 'info',
+//   // format: winston.format.json(),
+//   // defaultMeta: { service: 'user-service' },
+//   transports: [
+//     //
+//     // - Write all logs with level `error` and below to `error.log`
+//     // - Write all logs with level `info` and below to `combined.log`
+//     //
+//     // new winston.transports.Console(),
+//     // new winston.transports.File({ filename: 'combined.log' }),
+//     new BrowserConsole(
+//       {
+//           format: winston.format.simple(),
+//           level,
+//       },
+//   ),
+//   ],
+// });
+
+// logger.info('YEEAAAAHHH');
+
+
+
 app.use(cors())
 
 isProd && app.use(compression())
 
 app.use(express.static(publicPath))
+app.use(express.json());
 
 const paths = routes.map(({ path }) => path)
 
-isProd
-  ? app.get(paths, async (req: Request, res: Response, next) => {
+if(isProd) {
+   app.get(paths, async (req: Request, res: Response, next) => {
     console.log('Req', req);
       res.setHeader('Content-Type', 'application/json')
 
@@ -74,7 +120,6 @@ isProd
         bodyStream.on('end', () => {
           fragment.html = `</div>`
           fragment.script = `${pkg.name}.js`
-
           res.write(JSON.stringify(fragment))
           res.end()
         })
@@ -85,8 +130,10 @@ isProd
       } catch (error) {
         next(error)
       }
-    })
-  : app.get(paths, async (req: Request, res: Response, next) => {
+    }) 
+  }
+  else {
+    app.get(paths, async (req: Request, res: Response, next) => {
     console.log('REQ', paths);
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
@@ -188,6 +235,27 @@ isProd
       }
     })
 
+    app.post('/logger', (req, res) => {
+      // res.send('Hello World!')
+      // logger.info('HELLO WORLD');
+      // console.log('REQ', req.body)
+      switch (req.body.type) {
+        case 'log':
+          logger.log(req.body.log)
+          break;
+        case 'info':
+          logger.info(req.body.log)
+          break;
+        case 'error':
+          logger.error(req.body.log)
+          break;
+        case 'warn':
+            logger.warn(req.body.log)
+          break;
+      }
+    })
+  }
+
 app.get('*', (req: Request, res: Response) => res.send(''))
 
 const runHttpServer = async (): Promise => {
@@ -202,3 +270,5 @@ const runHttpServer = async (): Promise => {
 }
 
 runHttpServer()
+
+// module.exports = {logger};

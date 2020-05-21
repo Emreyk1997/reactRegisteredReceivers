@@ -10,7 +10,12 @@ const rimraf = require('rimraf');
 const clientBundler = require('./config/rollup.config.browser');
 const serverBundler = require('./config/rollup.config.server');
 
+// const BrowserConsole = require('winston-transport-browserconsole');
+
+// import BrowserConsole from 'winston-transport-browserconsole';
+
 // Generate fragment json
+
 const build = async () => {
   await rimraf.sync('dist');
 

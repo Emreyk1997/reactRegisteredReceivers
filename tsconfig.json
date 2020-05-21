@@ -37,7 +37,7 @@
     ]
   },
   "include": [
-    "src"
+    "src", "logger.js"
   ],
   "exclude": [
     "node_modules",

@@ -36,7 +36,10 @@
     "reflect-metadata": "^0.1.13",
     "reload": "^3.0.4",
     "serialize-javascript": "^3.0.0",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2",
+    "winston-transport-browserconsole": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

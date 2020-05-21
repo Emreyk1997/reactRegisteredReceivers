@@ -47,7 +47,7 @@ const resolverPlugin = () => ({
 
 const commonPlugins = [
   commonjs({
-    include: 'node_modules/**',
+    include: ['node_modules/**', 'src/components/hello.js', 'src/components/requireImplement.js'],
     exclude: ['node_modules/process-es6/**'],
     extensions,
     namedExports: {

@@ -4,6 +4,8 @@ import Grid from './Grid'
 import { fetchPopularRepos } from './api'
 import Counter from '../components/counter'
 import CounterFlux from '../components/fluxCounter'
+import ClassCounter from '../components/classCounter'
+
 
 
 const routes = [
@@ -24,6 +26,7 @@ const routes = [
   }, {
     path: '/counterFlux',
     component: CounterFlux,
+    // component: ClassCounter,
     exact: true
 
   }
