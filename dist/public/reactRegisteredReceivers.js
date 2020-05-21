@@ -52205,22 +52205,13 @@
 	var templateObject_1$2;
 
 	var logger = {
-	  log: function log(_log) {
-	    if (_log === void 0) {
-	      _log = 'deneme';
-	    }
-
-	    fetch('http://localhost:81/logger', {
-	      method: 'POST',
-	      headers: {
-	        'Content-Type': 'application/json'
-	      },
-	      body: JSON.stringify({
-	        log: _log,
-	        type: 'log'
-	      })
-	    });
-	  },
+	  // log: (log='deneme') => {
+	  //     fetch('http://localhost:81/logger', {
+	  //   method: 'POST',
+	  //   headers: { 'Content-Type': 'application/json' },
+	  //   body: JSON.stringify({ log: log, type: 'info' }),
+	  // });
+	  // },
 	  info: function info(log) {
 	    if (log === void 0) {
 	      log = 'deneme';
@@ -52238,6 +52229,10 @@
 	    });
 	  },
 	  error: function error(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
 	    fetch('http://localhost:81/logger', {
 	      method: 'POST',
 	      headers: {
@@ -52250,6 +52245,10 @@
 	    });
 	  },
 	  warn: function warn(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
 	    fetch('http://localhost:81/logger', {
 	      method: 'POST',
 	      headers: {
@@ -52286,21 +52285,8 @@
 	  var provider = useInjection('nameProvider');
 
 	  var newIncrement = function newIncrement() {
-	    // console.log('clientBundler', clientBundler);
-	    // logger.logger('HELLO');
-	    // logger.log();
-	    // logger.log();
 	    logger.info();
-	    logger.error('error');
 	    increment();
-	    console.log('data.counter', data.counter); //   if(data.counter > 2) {
-	    //     setErrorCatch(() => {
-	    //       throw new Error('error');
-	    //     });
-	    //  }
-	    // setErrorCatch(() => {
-	    //   throw new Error("This is an error");
-	    // });
 	  };
 
 	  return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("h1", null, "Counter: ", data ? data.counter : 5), /*#__PURE__*/react.createElement("p", null, "Provider:"), /*#__PURE__*/react.createElement("p", null, provider.provide()), /*#__PURE__*/react.createElement("div", {

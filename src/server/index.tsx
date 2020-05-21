@@ -23,6 +23,7 @@ import routes from '../shared/routes'
 
 // import * as winston from 'winston';
 const winston = require('winston');
+const winstonDailyRotateFile = require('winston-daily-rotate-file');
 
 import BrowserConsole from 'winston-transport-browserconsole';
 
@@ -32,8 +33,26 @@ const isProd = process.env.NODE_ENV === 'production'
 const publicPath = path.join(__dirname, 'public')
 const server = http.createServer(app)
 
+const logFormat = winston.format.combine(
+  winston.format.colorize(),
+  winston.format.timestamp(),
+  winston.format.align(),
+  winston.format.printf(
+    info => `${info.timestamp} ${info.level}: ${info.message}`
+  )
+)
 
-const logger = winston.createLogger({  transports: [new winston.transports.Console()]}) 
+
+const logger = winston.createLogger({
+  format: logFormat,
+   transports: [
+    new winstonDailyRotateFile({
+     filename: './logs/custom-%DATE%.log',
+     dataPattern: 'YYYY-MM-DD',
+     level: 'info'
+    }), 
+     new winston.transports.Console({level: 'info'})]
+  }) 
 
 // const logger = winston.createLogger({
 //   level: 'info',
@@ -238,21 +257,8 @@ if(isProd) {
     app.post('/logger', (req, res) => {
       // res.send('Hello World!')
       // logger.info('HELLO WORLD');
-      // console.log('REQ', req.body)
-      switch (req.body.type) {
-        case 'log':
-          logger.log(req.body.log)
-          break;
-        case 'info':
-          logger.info(req.body.log)
-          break;
-        case 'error':
-          logger.error(req.body.log)
-          break;
-        case 'warn':
-            logger.warn(req.body.log)
-          break;
-      }
+      console.log('REQ', req.body)
+          logger.log(req.body.type, req.body.log)
     })
   }
 

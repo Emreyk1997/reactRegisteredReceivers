@@ -36330,22 +36330,13 @@ var Counter = function Counter() {
   }, "-")));
 };
 var templateObject_1$2;var logger = {
-  log: function log(_log) {
-    if (_log === void 0) {
-      _log = 'deneme';
-    }
-
-    fetch('http://localhost:81/logger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        log: _log,
-        type: 'log'
-      })
-    });
-  },
+  // log: (log='deneme') => {
+  //     fetch('http://localhost:81/logger', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ log: log, type: 'info' }),
+  // });
+  // },
   info: function info(log) {
     if (log === void 0) {
       log = 'deneme';
@@ -36363,6 +36354,10 @@ var templateObject_1$2;var logger = {
     });
   },
   error: function error(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
     fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: {
@@ -36375,6 +36370,10 @@ var templateObject_1$2;var logger = {
     });
   },
   warn: function warn(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
     fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: {
@@ -36409,21 +36408,8 @@ function CounterFlux() {
   var provider = useInjection('nameProvider');
 
   var newIncrement = function newIncrement() {
-    // console.log('clientBundler', clientBundler);
-    // logger.logger('HELLO');
-    // logger.log();
-    // logger.log();
     logger.info();
-    logger.error('error');
     increment();
-    console.log('data.counter', data.counter); //   if(data.counter > 2) {
-    //     setErrorCatch(() => {
-    //       throw new Error('error');
-    //     });
-    //  }
-    // setErrorCatch(() => {
-    //   throw new Error("This is an error");
-    // });
   };
 
   return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("h1", null, "Counter: ", data ? data.counter : 5), /*#__PURE__*/React__default.createElement("p", null, "Provider:"), /*#__PURE__*/React__default.createElement("p", null, provider.provide()), /*#__PURE__*/React__default.createElement("div", {
@@ -36577,13 +36563,25 @@ var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
   }))))));
 };var winston = require('winston');
 
+var winstonDailyRotateFile = require('winston-daily-rotate-file');
+
 var app = express$1();
 var port = process.env.PORT || 81;
 var isProd = process.env.NODE_ENV === 'production';
 var publicPath = path$2.join(__dirname, 'public');
 var server = http.createServer(app);
+var logFormat = winston.format.combine(winston.format.colorize(), winston.format.timestamp(), winston.format.align(), winston.format.printf(function (info) {
+  return info.timestamp + " " + info.level + ": " + info.message;
+}));
 var logger$1 = winston.createLogger({
-  transports: [new winston.transports.Console()]
+  format: logFormat,
+  transports: [new winstonDailyRotateFile({
+    filename: './logs/custom-%DATE%.log',
+    dataPattern: 'YYYY-MM-DD',
+    level: 'info'
+  }), new winston.transports.Console({
+    level: 'info'
+  })]
 }); // const logger = winston.createLogger({
 //   level: 'info',
 //   format: winston.format.json(),
@@ -36815,24 +36813,8 @@ if (isProd) {
   app.post('/logger', function (req, res) {
     // res.send('Hello World!')
     // logger.info('HELLO WORLD');
-    // console.log('REQ', req.body)
-    switch (req.body.type) {
-      case 'log':
-        logger$1.log(req.body.log);
-        break;
-
-      case 'info':
-        logger$1.info(req.body.log);
-        break;
-
-      case 'error':
-        logger$1.error(req.body.log);
-        break;
-
-      case 'warn':
-        logger$1.warn(req.body.log);
-        break;
-    }
+    console.log('REQ', req.body);
+    logger$1.log(req.body.type, req.body.log);
   });
 }
 

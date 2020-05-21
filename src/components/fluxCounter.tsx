@@ -19,24 +19,8 @@ export default function CounterFlux() {
   const [decrement] = useMutation(UPDATE_COUNTER, { variables: { offset: -1 } })
   const provider = useInjection<IProvider<string>>('nameProvider');
   let newIncrement = () => {
-    // console.log('clientBundler', clientBundler);
-    // logger.logger('HELLO');
-    // logger.log();
-    // logger.log();
     logger.info();
-    logger.error('error');
-    
-
     increment();
-      console.log('data.counter', data.counter)
-    //   if(data.counter > 2) {
-    //     setErrorCatch(() => {
-    //       throw new Error('error');
-    //     });
-    //  }
-    // setErrorCatch(() => {
-    //   throw new Error("This is an error");
-    // });
   };
 
   return (
