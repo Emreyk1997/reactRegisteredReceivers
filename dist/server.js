@@ -36570,14 +36570,26 @@ var port = process.env.PORT || 81;
 var isProd = process.env.NODE_ENV === 'production';
 var publicPath = path$2.join(__dirname, 'public');
 var server = http.createServer(app);
-var logFormat = winston.format.combine(winston.format.colorize(), winston.format.timestamp(), winston.format.align(), winston.format.printf(function (info) {
-  return info.timestamp + " " + info.level + ": " + info.message;
-}));
+
+var timezoned = function timezoned() {
+  return new Date().toLocaleString('en-US', {
+    timeZone: 'Europe/Moscow',
+    hour12: false
+  });
+};
+
+var logFormat = winston.format.combine(winston.format.colorize(), winston.format.timestamp({
+  format: timezoned
+}), winston.format.json(), winston.format.align());
 var logger$1 = winston.createLogger({
   format: logFormat,
-  transports: [new winstonDailyRotateFile({
-    filename: './logs/custom-%DATE%.log',
-    dataPattern: 'YYYY-MM-DD',
+  transports: [// new winstonDailyRotateFile({
+  //  filename: './logs/custom-%DATE%.log',
+  //  dataPattern: 'YYYY-MM-DD',
+  //  level: 'info'
+  // }), 
+  new winston.transports.File({
+    filename: 'combined.log',
     level: 'info'
   }), new winston.transports.Console({
     level: 'info'
@@ -36810,11 +36822,27 @@ if (isProd) {
       });
     });
   });
+  var options_1 = {
+    // from: new Date() - (24 * 60 * 60 * 1000),
+    // until: new Date(),
+    limit: 5,
+    start: 0,
+    order: 'desc',
+    fields: ['message']
+  };
   app.post('/logger', function (req, res) {
     // res.send('Hello World!')
     // logger.info('HELLO WORLD');
-    console.log('REQ', req.body);
     logger$1.log(req.body.type, req.body.log);
+    logger$1.query(options_1, function (err, results) {
+      if (err) {
+        /* TODO: handle me */
+        throw err;
+      }
+
+      console.log('results', results);
+    });
+    return res.status(200).send();
   });
 }
 

@@ -33,24 +33,38 @@ const isProd = process.env.NODE_ENV === 'production'
 const publicPath = path.join(__dirname, 'public')
 const server = http.createServer(app)
 
+const timezoned = () => {
+  return new Date().toLocaleString('en-US', {
+    timeZone: 'Europe/Moscow',
+    hour12: false
+  });
+};
+
 const logFormat = winston.format.combine(
   winston.format.colorize(),
-  winston.format.timestamp(),
+  winston.format.timestamp({
+    format: timezoned
+  }),
+  winston.format.json(),
   winston.format.align(),
-  winston.format.printf(
-    info => `${info.timestamp} ${info.level}: ${info.message}`
-  )
+  // winston.format.printf(
+  //   info => `${info.timestamp} ${info.level}: ${info.message}`
+  // )
 )
 
 
 const logger = winston.createLogger({
   format: logFormat,
    transports: [
-    new winstonDailyRotateFile({
-     filename: './logs/custom-%DATE%.log',
-     dataPattern: 'YYYY-MM-DD',
-     level: 'info'
-    }), 
+    // new winstonDailyRotateFile({
+    //  filename: './logs/custom-%DATE%.log',
+    //  dataPattern: 'YYYY-MM-DD',
+    //  level: 'info'
+    // }), 
+    new winston.transports.File({
+      filename: 'combined.log',
+      level: 'info'
+    }),
      new winston.transports.Console({level: 'info'})]
   }) 
 
@@ -254,11 +268,50 @@ if(isProd) {
       }
     })
 
+    const options = {
+      // from: new Date() - (24 * 60 * 60 * 1000),
+      // until: new Date(),
+      limit: 5,
+      start: 0,
+      order: 'desc',
+      fields: ['message']
+    };
+    
+    
+
     app.post('/logger', (req, res) => {
       // res.send('Hello World!')
       // logger.info('HELLO WORLD');
-      console.log('REQ', req.body)
           logger.log(req.body.type, req.body.log)
+          logger.query(options, function (err, results) {
+            if (err) {
+              /* TODO: handle me */
+              throw err;
+            }
+          
+            console.log('results', results);
+          });
+          return res.status(200).send();
+    })
+
+    app.post('/getLogs', (req, res) => {
+      // res.send('Hello World!')
+      // logger.info('HELLO WORLD');
+      const logger2 = winston.createLogger({
+        format: logFormat,
+         transports: [
+          // new winstonDailyRotateFile({
+          //  filename: './logs/custom-%DATE%.log',
+          //  dataPattern: 'YYYY-MM-DD',
+          //  level: 'info'
+          // }), 
+          new winston.transports.File({
+            filename: '22-05-2020-combined.log',
+            level: 'info'
+          }),
+           new winston.transports.Console({level: 'info'})]
+        }) 
+          return res.status(200).send();
     })
   }
 
