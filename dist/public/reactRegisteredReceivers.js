@@ -52304,6 +52304,959 @@
 	  }, "Remove")));
 	}
 
+	var r$2={data:""},t$2=function(t){try{var e=t?t.querySelector("#_goober"):self._goober;return e||((e=(t||document.head).appendChild(document.createElement("style"))).innerHTML=" ",e.id="_goober"),e.firstChild}catch(r){}return r$2},e$1=function(r){var e=t$2(r),n=e.data;return e.data="",n},n$2=/(?:([a-z0-9-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(})/gi,a=/\/\*.*?\*\/|\s{2,}|\n/gm,o=function(r,t,e){var n="",a="",c="";for(var i in r){var u=r[i];if("object"==typeof u){var s=t+" "+i;/&/g.test(i)&&(s=i.replace(/&/g,t)),"@"==i[0]&&(s=t,"f"==i[1]&&(s=i)),/@k/.test(i)?a+=i+"{"+o(u,"","")+"}":a+=o(u,s,s==t?i:e||"");}else /^@i/.test(i)?c=i+" "+u+";":n+=i.replace(/[A-Z]/g,"-$&").toLowerCase()+":"+u+";";}if(n.charCodeAt(0)){var f=t+"{"+n+"}";return e?a+e+"{"+f+"}":c+f+a}return c+a},c$1={},i=function(r,t,e,i){var u=JSON.stringify(r),s=c$1[u]||(c$1[u]=".go"+u.split("").reduce(function(r,t){return 101*r+t.charCodeAt(0)>>>0},11));return function(r,t,e){t.data.indexOf(r)<0&&(t.data=e?r+t.data:t.data+r);}(c$1[s]||(c$1[s]=o(r[0]?function(r){for(var t,e=[{}];t=n$2.exec(r.replace(a,""));)t[4]&&e.shift(),t[3]?e.unshift(e[0][t[3]]=e[0][t[3]]||{}):t[4]||(e[0][t[1]]=t[2]);return e[0]}(r):r,e?"":s)),t,i),s.slice(1)},u$2=function(r,t,e){return r.reduce(function(r,n,a){var o=t[a];if(o&&o.call){var c=o(e),i=c&&c.props&&c.props.className||/^go/.test(c)&&c;o=i?"."+i:c&&c.props?"":c;}return r+n+(null==o?"":o)},"")};function s(r){var e=this||{},n=r.call?r(e.p):r;return i(n.map?u$2(n,[].slice.call(arguments,1),e.p):n,t$2(e.target),e.g,e.o)}var f$1,l$1=s.bind({g:1}),d$1=function(r){return f$1=r};function p$2(r){var t=this||{};return function(){var e=arguments;return function(n){var a=t.p=Object.assign({},n),o=a.className;return t.o=/\s*go[0-9]+/g.test(o),a.className=s.apply(t,e)+(o?" "+o:""),f$1(r,a)}}}
+
+	/**
+	 *  useOutsideClick hook
+	 *
+	 * Checks if a click happened outside a Ref. Handy for dropdowns, modals and popups etc.
+	 *
+	 * @param ref Ref whose outside click needs to be listened to
+	 * @param handler Callback to fire on outside click
+	 * @param when A boolean which which activates the hook only when it is true. Useful for conditionally enable the outside click
+	 */
+	function useOutsideClick(ref, handler, when = true) {
+	    const savedHandler = react_26(handler);
+	    const memoizedCallback = react_18((e) => {
+	        if (ref && ref.current && !ref.current.contains(e.target)) {
+	            savedHandler.current(e);
+	        }
+	    }, []);
+	    react_21(() => {
+	        savedHandler.current = handler;
+	    });
+	    react_21(() => {
+	        if (when) {
+	            document.addEventListener("click", memoizedCallback);
+	            document.addEventListener("ontouchstart", memoizedCallback);
+	            return () => {
+	                document.removeEventListener("click", memoizedCallback);
+	                document.removeEventListener("ontouchstart", memoizedCallback);
+	            };
+	        }
+	    }, [ref, handler, when]);
+	}
+
+	/**
+	 * Filters React Select options and sorts by similarity to a search filter.
+	 * Handles partial matches, eg. searching for "Waberg High" will find "Raoul
+	 * Wallenberg Traditional High School". Case insensitive. Ignores
+	 * non-alphanumeric characters.
+	 *
+	 * @param  options  An unfiltered list of Options.
+	 * @param? filter  A string to compare against Option labels.
+	 * @param? substitutions  Strings with multiple spellings or variations that we
+	 *           expect to match, eg. accented characters or abbreviated words.
+	 *
+	 * @return A filtered and sorted array of Options.
+	 */
+	function filterOptions(options, filter, substitutions) {
+	  // If the filter is blank, return the full list of Options.
+	  if (!filter) {
+	    return options;
+	  }
+
+	  var cleanFilter = cleanUpText(filter, substitutions);
+	  return options // Filter out undefined or null Options.
+	  .filter(function (_ref) {
+	    var label = _ref.label,
+	        value = _ref.value;
+	    return label != null && value != null;
+	  }) // Create a {score, Option} pair for each Option based on its label's
+	  // similarity to the filter text.
+	  .map(function (option) {
+	    return {
+	      option: option,
+	      score: typeaheadSimilarity(cleanUpText(option.label, substitutions), cleanFilter)
+	    };
+	  }) // Only include matches of the entire substring, with a slight
+	  // affordance for transposition or extra characters.
+	  .filter(function (pair) {
+	    return pair.score >= cleanFilter.length - 2;
+	  }) // Sort 'em by order of their score.
+	  .sort(function (a, b) {
+	    return b.score - a.score;
+	  }) // …and grab the original Options back from their pairs.
+	  .map(function (pair) {
+	    return pair.option;
+	  });
+	}
+	/**
+	 * Scores the similarity between two strings by returning the length of the
+	 * longest common subsequence. Intended for comparing strings of different
+	 * lengths; eg. when matching a typeahead search input with a school name.
+
+	 * Meant for use in an instant search box where results are being fetched
+	 * as a user is typing.
+	 *
+	 * @param  a  The longer string (though, we flip them if it's shorter).
+	 * @param  b  The shorter string, eg. a typeahead search input.
+	 *
+	 * @return The length of the longest common subsequence. Higher scores indicate
+	 *           closer matches.
+	 */
+
+	function typeaheadSimilarity(a, b) {
+	  var aLength = a.length;
+	  var bLength = b.length;
+	  var table = [];
+
+	  if (!aLength || !bLength) {
+	    return 0;
+	  } // Ensure `a` isn't shorter than `b`.
+
+
+	  if (aLength < bLength) {
+	    var _ref2 = [b, a];
+	    a = _ref2[0];
+	    b = _ref2[1];
+	  } // Early exit if `a` includes `b`; these will be scored higher than any
+	  // other options with the same `b` (filter string), with a preference for
+	  // shorter `a` strings (option labels).
+
+
+	  if (a.indexOf(b) !== -1) {
+	    return bLength + 1 / aLength;
+	  } // Initialize the table axes:
+	  //
+	  //    0 0 0 0 ... bLength
+	  //    0
+	  //    0
+	  //
+	  //   ...
+	  //
+	  // aLength
+	  //
+
+
+	  for (var x = 0; x <= aLength; ++x) {
+	    table[x] = [0];
+	  }
+
+	  for (var y = 0; y <= bLength; ++y) {
+	    table[0][y] = 0;
+	  } // Populate the rest of the table with a dynamic programming algorithm.
+
+
+	  for (var _x = 1; _x <= aLength; ++_x) {
+	    for (var _y = 1; _y <= bLength; ++_y) {
+	      table[_x][_y] = a[_x - 1] === b[_y - 1] ? 1 + table[_x - 1][_y - 1] : Math.max(table[_x][_y - 1], table[_x - 1][_y]);
+	    }
+	  }
+
+	  return table[aLength][bLength];
+	}
+	/**
+	 * Apply string substitutions, remove non-alphanumeric characters, and convert
+	 * all letters to uppercase.
+	 *
+	 * eg. 'Scoil Bhríde Primary School' may become 'SCOILBHRIDEPRIMARYSCHOOL'.
+	 *
+	 * @param  input  An unsanitized input string.
+	 * @param  substitutions  Strings with multiple spellings or variations that we
+	 *          expect to match, for example accented characters or abbreviated
+	 *          words.
+	 *
+	 * @return The sanitized text.
+	 */
+
+	function cleanUpText(input, substitutions) {
+	  if (!input) {
+	    return "";
+	  } // Uppercase and remove all non-alphanumeric, non-accented characters.
+	  // Also remove underscores.
+
+
+	  input = input.toUpperCase().replace(/((?=[^\u00E0-\u00FC])\W)|_/g, "");
+
+	  if (!substitutions) {
+	    return input;
+	  }
+
+	  var safeSubstitutions = substitutions; // For Flow.
+	  // Replace all strings in `safeSubstitutions` with their standardized
+	  // counterparts.
+
+	  return Object.keys(safeSubstitutions).reduce(function (output, substitution) {
+	    var unsubbed = new RegExp(substitution, "g");
+	    return output.replace(unsubbed, safeSubstitutions[substitution]);
+	  }, input);
+	}
+
+	var strings = {
+	  selectSomeItems: "Select...",
+	  allItemsAreSelected: "All items are selected.",
+	  selectAll: "Select All",
+	  search: "Search"
+	};
+
+	function getString(key, overrideStrings) {
+	  if (overrideStrings && overrideStrings[key]) {
+	    return overrideStrings[key];
+	  }
+
+	  return strings[key];
+	}
+
+	var DefaultRenderer = /*#__PURE__*/s({
+	  "input,span": {
+	    verticalAalign: "middle",
+	    margin: 0
+	  },
+	  span: {
+	    display: "inline-block",
+	    paddingLeft: "5px"
+	  },
+	  "&.disabled": {
+	    opacity: 0.5
+	  }
+	});
+
+	var DefaultItemRenderer = function DefaultItemRenderer(_ref) {
+	  var checked = _ref.checked,
+	      option = _ref.option,
+	      onClick = _ref.onClick,
+	      disabled = _ref.disabled;
+	  return react.createElement("div", {
+	    className: DefaultRenderer + " item-renderer " + (disabled && "disabled")
+	  }, react.createElement("input", {
+	    type: "checkbox",
+	    onChange: onClick,
+	    checked: checked,
+	    tabIndex: -1,
+	    disabled: disabled
+	  }), react.createElement("span", null, option.label));
+	};
+
+	/**
+	 * This component represents an individual item in the multi-select drop-down
+	 */
+	var ItemContainer = /*#__PURE__*/s({
+	  boxSizing: "border-box",
+	  cursor: "pointer",
+	  display: "block",
+	  padding: "var(--rmsc-spacing)",
+	  outline: "0",
+	  "&:hover,&:focus": {
+	    background: "var(--rmsc-hover)"
+	  },
+	  "&.selected": {
+	    background: "var(--rmsc-selected)"
+	  }
+	});
+
+	var SelectItem = function SelectItem(_ref) {
+	  var _ref$itemRenderer = _ref.itemRenderer,
+	      ItemRenderer = _ref$itemRenderer === void 0 ? DefaultItemRenderer : _ref$itemRenderer,
+	      option = _ref.option,
+	      checked = _ref.checked,
+	      focused = _ref.focused,
+	      disabled = _ref.disabled,
+	      onSelectionChanged = _ref.onSelectionChanged,
+	      onClick = _ref.onClick;
+	  var itemRef = react_26();
+	  react_21(function () {
+	    updateFocus(); // eslint-disable-next-line
+	  }, [focused]);
+
+	  var toggleChecked = function toggleChecked() {
+	    onSelectionChanged(!checked);
+	  };
+
+	  var handleClick = function handleClick(e) {
+	    toggleChecked();
+	    onClick(e);
+	  };
+
+	  var updateFocus = function updateFocus() {
+	    if (focused && !disabled && itemRef) {
+	      itemRef.current.focus();
+	    }
+	  };
+
+	  var handleKeyDown = function handleKeyDown(e) {
+	    switch (e.which) {
+	      case 13: // Enter
+
+	      case 32:
+	        // Space
+	        toggleChecked();
+	        break;
+
+	      default:
+	        return;
+	    }
+
+	    e.preventDefault();
+	  };
+
+	  return react.createElement("label", {
+	    className: ItemContainer + " select-item " + (checked && "selected"),
+	    role: "option",
+	    "aria-selected": checked,
+	    tabIndex: -1,
+	    ref: itemRef,
+	    onKeyDown: handleKeyDown
+	  }, react.createElement(ItemRenderer, {
+	    option: option,
+	    checked: checked,
+	    onClick: handleClick,
+	    disabled: disabled
+	  }));
+	};
+
+	/**
+	 * This component represents an unadorned list of SelectItem (s).
+	 */
+	var SelectListUl = /*#__PURE__*/s({
+	  margin: 0,
+	  paddingLeft: 0,
+	  li: {
+	    listStyle: "none",
+	    margin: 0
+	  }
+	});
+
+	var SelectList = function SelectList(_ref) {
+	  var value = _ref.value,
+	      onChange = _ref.onChange,
+	      disabled = _ref.disabled,
+	      ItemRenderer = _ref.ItemRenderer,
+	      options = _ref.options,
+	      focusIndex = _ref.focusIndex,
+	      _onClick = _ref.onClick;
+
+	  var handleSelectionChanged = function handleSelectionChanged(option, checked) {
+	    if (disabled) {
+	      return;
+	    }
+
+	    onChange(checked ? [].concat(value, [option]) : value.filter(function (o) {
+	      return o.value !== option.value;
+	    }));
+	  };
+
+	  return react.createElement("ul", {
+	    className: SelectListUl
+	  }, options.map(function (o, i) {
+	    return react.createElement("li", {
+	      key: o.hasOwnProperty("key") ? o.key : i
+	    }, react.createElement(SelectItem, {
+	      focused: focusIndex === i,
+	      option: o,
+	      onSelectionChanged: function onSelectionChanged(c) {
+	        return handleSelectionChanged(o, c);
+	      },
+	      checked: value.find(function (s) {
+	        return s.value === o.value;
+	      }) ? true : false,
+	      onClick: function onClick(e) {
+	        return _onClick(e, i);
+	      },
+	      itemRenderer: ItemRenderer,
+	      disabled: o.disabled || disabled
+	    }));
+	  }));
+	};
+
+	/**
+	 * This component represents the entire panel which gets dropped down when the
+	 * user selects the component.  It encapsulates the search filter, the
+	 * Select-all item, and the list of options.
+	 */
+	var FocusType;
+
+	(function (FocusType) {
+	  FocusType[FocusType["SEARCH"] = -1] = "SEARCH";
+	  FocusType[FocusType["NONE"] = 0] = "NONE";
+	})(FocusType || (FocusType = {}));
+
+	var SelectSearchContainer = /*#__PURE__*/s({
+	  width: "100%",
+	  borderBottom: "1px solid var(--rmsc-border)",
+	  input: {
+	    height: "var(--rmsc-height)",
+	    padding: "0 var(--rmsc-spacing)",
+	    width: "100%",
+	    outline: "none",
+	    border: "0"
+	  }
+	});
+	var SelectPanel = function SelectPanel(props) {
+	  var onChange = props.onChange,
+	      options = props.options,
+	      value = props.value,
+	      customFilterOptions = props.filterOptions,
+	      selectAllLabel = props.selectAllLabel,
+	      ItemRenderer = props.ItemRenderer,
+	      disabled = props.disabled,
+	      disableSearch = props.disableSearch,
+	      focusSearchOnOpen = props.focusSearchOnOpen,
+	      hasSelectAll = props.hasSelectAll,
+	      overrideStrings = props.overrideStrings;
+
+	  var _useState = react_27(""),
+	      searchText = _useState[0],
+	      setSearchText = _useState[1];
+
+	  var _useState2 = react_27(focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE),
+	      focusIndex = _useState2[0],
+	      setFocusIndex = _useState2[1];
+
+	  var _useState3 = react_27(0),
+	      selectAllLength = _useState3[0],
+	      setSelectAllLength = _useState3[1];
+
+	  var selectAllOption = {
+	    label: selectAllLabel || getString("selectAll", overrideStrings),
+	    value: ""
+	  };
+	  react_21(function () {
+	    setSelectAllLength(selectAllValues(true).length); // eslint-disable-next-line
+	  }, [options]);
+
+	  var selectAllValues = function selectAllValues(checked) {
+	    var selectedValues = value.map(function (o) {
+	      return o.value;
+	    });
+	    return options.filter(function (_ref) {
+	      var disabled = _ref.disabled,
+	          value = _ref.value;
+
+	      if (checked) {
+	        return !disabled || selectedValues.includes(value);
+	      }
+
+	      return disabled && selectedValues.includes(value);
+	    });
+	  };
+
+	  var selectAllChanged = function selectAllChanged(checked) {
+	    var newOptions = selectAllValues(checked);
+	    onChange(newOptions);
+	  };
+
+	  var handleSearchChange = function handleSearchChange(e) {
+	    setSearchText(e.target.value);
+	    setFocusIndex(FocusType.SEARCH);
+	  };
+
+	  var handleItemClicked = function handleItemClicked(index) {
+	    return setFocusIndex(index);
+	  };
+
+	  var handleKeyDown = function handleKeyDown(e) {
+	    switch (e.which) {
+	      case 38:
+	        // Up Arrow
+	        if (e.altKey) {
+	          return;
+	        }
+
+	        updateFocus(-1);
+	        break;
+
+	      case 40:
+	        // Down Arrow
+	        if (e.altKey) {
+	          return;
+	        }
+
+	        updateFocus(1);
+	        break;
+
+	      default:
+	        return;
+	    }
+
+	    e.stopPropagation();
+	    e.preventDefault();
+	  };
+
+	  var handleSearchFocus = function handleSearchFocus() {
+	    setFocusIndex(FocusType.SEARCH);
+	  };
+
+	  var filteredOptions = function filteredOptions() {
+	    return customFilterOptions ? customFilterOptions(options, searchText) : filterOptions(options, searchText);
+	  };
+
+	  var updateFocus = function updateFocus(offset) {
+	    var newFocus = focusIndex + offset;
+	    newFocus = Math.max(0, newFocus);
+	    newFocus = Math.min(newFocus, options.length);
+	    setFocusIndex(newFocus);
+	  };
+
+	  return react.createElement("div", {
+	    className: "select-panel",
+	    role: "listbox",
+	    onKeyDown: handleKeyDown
+	  }, !disableSearch && react.createElement("div", {
+	    className: SelectSearchContainer
+	  }, react.createElement("input", {
+	    autoFocus: focusSearchOnOpen,
+	    placeholder: getString("search", overrideStrings),
+	    type: "search",
+	    "aria-describedby": getString("search", overrideStrings),
+	    onChange: handleSearchChange,
+	    onFocus: handleSearchFocus
+	  })), hasSelectAll && react.createElement(SelectItem, {
+	    focused: focusIndex === 0,
+	    checked: selectAllLength === value.length,
+	    option: selectAllOption,
+	    onSelectionChanged: selectAllChanged,
+	    onClick: function onClick() {
+	      return handleItemClicked(0);
+	    },
+	    itemRenderer: ItemRenderer,
+	    disabled: disabled
+	  }), react.createElement(SelectList, Object.assign({}, props, {
+	    options: filteredOptions(),
+	    focusIndex: focusIndex - 1,
+	    onClick: function onClick(_e, index) {
+	      return handleItemClicked(index + 1);
+	    },
+	    ItemRenderer: ItemRenderer,
+	    disabled: disabled
+	  })));
+	};
+
+	function Arrow(_ref) {
+	  var _ref$expanded = _ref.expanded,
+	      expanded = _ref$expanded === void 0 ? false : _ref$expanded;
+	  return react.createElement("span", {
+	    className: "dropdown-heading-dropdown-arrow gray",
+	    style: {
+	      paddingTop: "4px"
+	    }
+	  }, react.createElement("svg", {
+	    xmlns: "http://www.w3.org/2000/svg",
+	    width: "24",
+	    height: "24",
+	    fill: "none",
+	    stroke: "currentColor",
+	    strokeLinecap: "round",
+	    strokeLinejoin: "round",
+	    strokeWidth: "2",
+	    viewBox: "0 0 24 24"
+	  }, expanded ? react.createElement("polyline", {
+	    points: "18 15 12 9 6 15"
+	  }) : react.createElement("path", {
+	    d: "M6 9L12 15 18 9"
+	  })));
+	}
+
+	var Spinner = /*#__PURE__*/s({
+	  animation: "rotate 2s linear infinite",
+	  "& .path": {
+	    stroke: "var(--rmsc-border)",
+	    strokeWidth: "4px",
+	    strokeLinecap: "round",
+	    animation: "dash 1.5s ease-in-out infinite"
+	  },
+	  "@keyframes rotate": {
+	    "100%": {
+	      transform: "rotate(360deg)"
+	    }
+	  },
+	  "@keyframes dash": {
+	    "0%": {
+	      strokeDasharray: "1, 150",
+	      strokeDashoffset: "0"
+	    },
+	    "50%": {
+	      strokeDasharray: "90, 150",
+	      strokeDashoffset: "-35"
+	    },
+	    "100%": {
+	      strokeDasharray: "90, 150",
+	      strokeDashoffset: "-124"
+	    }
+	  }
+	});
+
+	function Loading(_ref) {
+	  var _ref$size = _ref.size,
+	      size = _ref$size === void 0 ? 26 : _ref$size;
+	  return react.createElement("div", {
+	    style: {
+	      cursor: "pointer",
+	      display: "table-cell",
+	      verticalAlign: "middle",
+	      width: size,
+	      marginRight: "0.2rem"
+	    }
+	  }, react.createElement("svg", {
+	    width: size,
+	    height: size,
+	    className: Spinner,
+	    viewBox: "0 0 50 50",
+	    style: {
+	      display: "inline-block",
+	      verticalAlign: "middle"
+	    }
+	  }, react.createElement("circle", {
+	    cx: "25",
+	    cy: "25",
+	    r: "20",
+	    fill: "none",
+	    className: "path"
+	  })));
+	}
+
+	/**
+	 * A generic dropdown component.  It takes the children of the component
+	 * and hosts it in the component.  When the component is selected, it
+	 * drops-down the contentComponent and applies the contentProps.
+	 */
+	var PanelContainer = /*#__PURE__*/s({
+	  position: "absolute",
+	  zIndex: 1,
+	  top: "100%",
+	  width: "100%",
+	  paddingTop: "8px",
+	  ".panel-content": {
+	    maxHeight: "300px",
+	    overflowY: "auto",
+	    borderRadius: "var(--rmsc-border-radius)",
+	    backgroundColor: "var(--rmsc-background)",
+	    boxShadow: "0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1)"
+	  }
+	});
+	var DropdownContainer = /*#__PURE__*/s({
+	  position: "relative",
+	  outline: "none",
+	  backgroundColor: "var(--rmsc-background)",
+	  border: "1px solid var(--rmsc-border)",
+	  borderRadius: "var(--rmsc-border-radius)",
+	  "&:focus-within": {
+	    boxShadow: "var(--rmsc-primary) 0px 0px 0px 1px",
+	    borderColor: "var(--rmsc-primary)"
+	  }
+	});
+	var DropdownHeading = /*#__PURE__*/s({
+	  position: "relative",
+	  padding: "0 var(--rmsc-spacing)",
+	  display: "flex",
+	  alignItems: "center",
+	  justifyContent: "flex-end",
+	  overflow: "hidden",
+	  width: "100%",
+	  height: "var(--rmsc-height)",
+	  cursor: "default",
+	  outline: "none",
+	  ".dropdown-heading-value": {
+	    overflow: "hidden",
+	    textOverflow: "ellipsis",
+	    whiteSpace: "nowrap",
+	    flex: "1"
+	  }
+	});
+
+	var Dropdown = function Dropdown(_ref) {
+	  var children = _ref.children,
+	      ContentComponent = _ref.contentComponent,
+	      contentProps = _ref.contentProps,
+	      isLoading = _ref.isLoading,
+	      disabled = _ref.disabled,
+	      shouldToggleOnHover = _ref.shouldToggleOnHover,
+	      labelledBy = _ref.labelledBy,
+	      onMenuToggle = _ref.onMenuToggle,
+	      ArrowRenderer = _ref.ArrowRenderer;
+
+	  var _useState = react_27(false),
+	      expanded = _useState[0],
+	      setExpanded = _useState[1];
+
+	  var _useState2 = react_27(false),
+	      hasFocus = _useState2[0],
+	      setHasFocus = _useState2[1];
+
+	  var FinalArrow = ArrowRenderer || Arrow;
+	  var wrapper = react_26();
+	  useOutsideClick(wrapper, function () {
+	    return setExpanded(false);
+	  });
+	  /* eslint-disable react-hooks/exhaustive-deps */
+
+	  react_21(function () {
+	    onMenuToggle && onMenuToggle(expanded);
+	  }, [expanded]);
+
+	  var handleKeyDown = function handleKeyDown(e) {
+	    switch (e.which) {
+	      case 27: // Escape
+
+	      case 38:
+	        // Up Arrow
+	        setExpanded(false);
+	        break;
+
+	      case 13: // Enter Key
+
+	      case 40:
+	        // Down Arrow
+	        setExpanded(true);
+	        break;
+
+	      default:
+	        return;
+	    }
+
+	    e.preventDefault();
+	  };
+
+	  var handleHover = function handleHover(iexpanded) {
+	    shouldToggleOnHover && setExpanded(iexpanded);
+	  };
+
+	  var handleFocus = function handleFocus(e) {
+	    e.target === wrapper && !hasFocus && setHasFocus(true);
+	  };
+
+	  var handleBlur = function handleBlur() {
+	    return hasFocus && setHasFocus(false);
+	  };
+
+	  var handleMouseEnter = function handleMouseEnter() {
+	    return handleHover(true);
+	  };
+
+	  var handleMouseLeave = function handleMouseLeave() {
+	    return handleHover(false);
+	  };
+
+	  var toggleExpanded = function toggleExpanded() {
+	    return setExpanded(isLoading ? false : !expanded);
+	  };
+
+	  return react.createElement("div", {
+	    tabIndex: 0,
+	    className: DropdownContainer + " dropdown-container",
+	    "aria-labelledby": labelledBy,
+	    "aria-expanded": expanded,
+	    "aria-readonly": "true",
+	    "aria-disabled": disabled,
+	    ref: wrapper,
+	    onKeyDown: handleKeyDown,
+	    onFocus: handleFocus,
+	    onBlur: handleBlur,
+	    onMouseEnter: handleMouseEnter,
+	    onMouseLeave: handleMouseLeave
+	  }, react.createElement("div", {
+	    className: DropdownHeading + " dropdown-heading",
+	    onClick: toggleExpanded
+	  }, react.createElement("div", {
+	    className: "dropdown-heading-value"
+	  }, children), isLoading && react.createElement(Loading, null), react.createElement(FinalArrow, {
+	    expanded: expanded
+	  })), expanded && react.createElement("div", {
+	    className: PanelContainer + " dropdown-content"
+	  }, react.createElement("div", {
+	    className: "panel-content"
+	  }, react.createElement(ContentComponent, Object.assign({}, contentProps)))));
+	};
+
+	var DropdownHeader = function DropdownHeader(_ref) {
+	  var value = _ref.value,
+	      options = _ref.options,
+	      valueRenderer = _ref.valueRenderer,
+	      overrideStrings = _ref.overrideStrings;
+	  var noneSelected = value.length === 0;
+	  var allSelected = value.length === options.length;
+	  var customText = valueRenderer && valueRenderer(value, options);
+
+	  var getSelectedText = function getSelectedText() {
+	    return value.map(function (s) {
+	      return s.label;
+	    }).join(", ");
+	  };
+
+	  if (noneSelected) {
+	    return react.createElement("span", {
+	      className: "gray"
+	    }, customText || getString("selectSomeItems", overrideStrings));
+	  }
+
+	  return react.createElement("span", null, customText ? customText : allSelected ? getString("allItemsAreSelected", overrideStrings) : getSelectedText());
+	};
+
+	var MultiSelectBox = /*#__PURE__*/s({
+	  "--rmscPrimary": "#4285f4",
+	  "--rmscHover": "#f1f3f5",
+	  "--rmscSelected": "#e2e6ea",
+	  "--rmscBorder": "#ccc",
+	  "--rmscGray": "#aaa",
+	  "--rmscBackground": "#fff",
+	  "--rmscSpacing": "10px",
+	  "--rmscBorderRadius": "4px",
+	  "--rmscHeight": "38px",
+	  "*": {
+	    boxSizing: "border-box",
+	    transition: "all 0.2s ease"
+	  },
+	  ".gray": {
+	    color: "var(--rmsc-gray)"
+	  }
+	});
+
+	var MultiSelect = function MultiSelect(_ref) {
+	  var _ref$focusSearchOnOpe = _ref.focusSearchOnOpen,
+	      focusSearchOnOpen = _ref$focusSearchOnOpe === void 0 ? true : _ref$focusSearchOnOpe,
+	      _ref$hasSelectAll = _ref.hasSelectAll,
+	      hasSelectAll = _ref$hasSelectAll === void 0 ? true : _ref$hasSelectAll,
+	      _ref$shouldToggleOnHo = _ref.shouldToggleOnHover,
+	      shouldToggleOnHover = _ref$shouldToggleOnHo === void 0 ? false : _ref$shouldToggleOnHo,
+	      _ref$className = _ref.className,
+	      className = _ref$className === void 0 ? "multi-select" : _ref$className,
+	      options = _ref.options,
+	      value = _ref.value,
+	      valueRenderer = _ref.valueRenderer,
+	      overrideStrings = _ref.overrideStrings,
+	      onChange = _ref.onChange,
+	      disabled = _ref.disabled,
+	      ItemRenderer = _ref.ItemRenderer,
+	      ArrowRenderer = _ref.ArrowRenderer,
+	      selectAllLabel = _ref.selectAllLabel,
+	      isLoading = _ref.isLoading,
+	      disableSearch = _ref.disableSearch,
+	      filterOptions = _ref.filterOptions,
+	      labelledBy = _ref.labelledBy,
+	      onMenuToggle = _ref.onMenuToggle;
+	  var nvalue = value || [];
+	  return react.createElement("div", {
+	    className: MultiSelectBox + " " + className
+	  }, react.createElement(Dropdown, {
+	    isLoading: isLoading,
+	    contentComponent: SelectPanel,
+	    shouldToggleOnHover: shouldToggleOnHover,
+	    contentProps: {
+	      ItemRenderer: ItemRenderer,
+	      options: options,
+	      value: nvalue,
+	      hasSelectAll: hasSelectAll,
+	      selectAllLabel: selectAllLabel,
+	      onChange: onChange,
+	      disabled: disabled,
+	      disableSearch: disableSearch,
+	      focusSearchOnOpen: focusSearchOnOpen,
+	      filterOptions: filterOptions,
+	      overrideStrings: overrideStrings
+	    },
+	    disabled: disabled,
+	    labelledBy: labelledBy,
+	    onMenuToggle: onMenuToggle,
+	    ArrowRenderer: ArrowRenderer
+	  }, react.createElement(DropdownHeader, {
+	    value: nvalue,
+	    options: options,
+	    valueRenderer: valueRenderer,
+	    overrideStrings: overrideStrings
+	  })));
+	};
+
+	var Container = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
+	var SubContainer = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"])));
+	var LoggerContainer = styled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"])));
+	var SubTitle = styled.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"])));
+	var Input = styled.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"], ["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"])));
+	var Button = styled.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"], ["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"])));
+
+	var SearchLog = function SearchLog() {
+	  var options = [{
+	    label: 'Info',
+	    value: 'info'
+	  }, {
+	    label: 'Warn',
+	    value: 'warn'
+	  }, {
+	    label: 'Error',
+	    value: 'error'
+	  }];
+
+	  var _a = react_27(''),
+	      message = _a[0],
+	      setMessage = _a[1];
+
+	  var _b = react_27(''),
+	      date = _b[0],
+	      setDate = _b[1];
+
+	  var _c = react_27([]),
+	      selected = _c[0],
+	      setSelected = _c[1];
+
+	  var _d = react_27({
+	    message: null,
+	    level: null,
+	    date: null
+	  }),
+	      logsInfo = _d[0],
+	      setLogsInfo = _d[1];
+
+	  var _e = react_27(''),
+	      allLogs = _e[0],
+	      changeLogs = _e[1];
+
+	  var submit = function submit() {
+	    setLogsInfo({
+	      message: message === '' ? null : message,
+	      level: selected.length === 0 ? null : selected.map(function (item) {
+	        return item.value;
+	      }),
+	      date: date === '' ? null : date
+	    }); // console.log(logsInfo);
+	  };
+
+	  var getLogs = function getLogs() {
+	    fetch('http://localhost:81/getLogs', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify(logsInfo)
+	    }).then(function (data) {
+	      return data.text().then(function (textData) {
+	        return changeLogs(textData);
+	      });
+	    }); // console.log('Logs1', log.text());
+	    // return log;
+	  };
+
+	  react_21(function () {
+	    getLogs(); // console.log('Logs', logs);
+	  }, [logsInfo]);
+	  return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(SubContainer, null, /*#__PURE__*/react.createElement("h1", null, "Log Search"), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Message: "), /*#__PURE__*/react.createElement(Input, {
+	    type: "text",
+	    onChange: function onChange(event) {
+	      return setMessage(event.target.value);
+	    }
+	  })), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Level: "), /*#__PURE__*/react.createElement(MultiSelect, {
+	    options: options,
+	    disableSearch: true,
+	    value: selected,
+	    onChange: setSelected,
+	    labelledBy: 'Select'
+	  })), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Date: "), /*#__PURE__*/react.createElement(Input, {
+	    placeholder: "DD/MM/YYYY",
+	    type: "date",
+	    max: "2200-12-31",
+	    onChange: function onChange(event) {
+	      var year = event.target.value.substring(0, 4);
+	      var month = event.target.value.substring(5, 7);
+	      var day = event.target.value.substring(8, 10);
+	      setDate(month + '/' + day + '/' + year);
+	    }
+	  })), /*#__PURE__*/react.createElement(Button, {
+	    type: "button",
+	    onClick: function onClick() {
+	      return submit();
+	    }
+	  }, "Submit"), /*#__PURE__*/react.createElement("p", null, allLogs)), /*#__PURE__*/react.createElement(SubContainer, null, "LOGSS"));
+	};
+	var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
+
 	var routes = [{
 	  path: '/',
 	  exact: true,
@@ -52325,6 +53278,11 @@
 	}, {
 	  path: '/counterFlux',
 	  component: CounterFlux,
+	  // component: ClassCounter,
+	  exact: true
+	}, {
+	  path: '/logs',
+	  component: SearchLog,
 	  // component: ClassCounter,
 	  exact: true
 	}];

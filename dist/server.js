@@ -1,4 +1,4 @@
-'use strict';function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}var path$2=_interopDefault(require('path')),http=_interopDefault(require('http')),events=_interopDefault(require('events')),util=_interopDefault(require('util')),tty=_interopDefault(require('tty')),fs=_interopDefault(require('fs')),net=_interopDefault(require('net')),buffer=_interopDefault(require('buffer')),string_decoder=_interopDefault(require('string_decoder')),stream=_interopDefault(require('stream')),zlib=_interopDefault(require('zlib')),querystring=_interopDefault(require('querystring')),url=_interopDefault(require('url')),crypto$1=_interopDefault(require('crypto')),cors=_interopDefault(require('cors')),reload=_interopDefault(require('reload')),React=require('react'),React__default=_interopDefault(React),server$1=require('react-dom/server'),reactRouterDom=require('react-router-dom'),styled=require('styled-components'),styled__default=_interopDefault(styled),serialize$1=_interopDefault(require('serialize-javascript')),fetch$1=_interopDefault(require('isomorphic-fetch'));/*! *****************************************************************************
+'use strict';function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}var path$2=_interopDefault(require('path')),http=_interopDefault(require('http')),events=_interopDefault(require('events')),util=_interopDefault(require('util')),tty=_interopDefault(require('tty')),fs$1=_interopDefault(require('fs')),net=_interopDefault(require('net')),buffer=_interopDefault(require('buffer')),string_decoder=_interopDefault(require('string_decoder')),stream=_interopDefault(require('stream')),zlib=_interopDefault(require('zlib')),querystring=_interopDefault(require('querystring')),url=_interopDefault(require('url')),crypto$1=_interopDefault(require('crypto')),cors=_interopDefault(require('cors')),reload=_interopDefault(require('reload')),React=require('react'),React__default=_interopDefault(React),server$1=require('react-dom/server'),reactRouterDom=require('react-router-dom'),styled=require('styled-components'),styled__default=_interopDefault(styled),serialize$1=_interopDefault(require('serialize-javascript')),fetch$1=_interopDefault(require('isomorphic-fetch'));/*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy of the
@@ -2536,8 +2536,8 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs$1 = fs;
-      stream = new fs$1.SyncWriteStream(fd, { autoClose: false });
+      var fs = fs$1;
+      stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
 
@@ -10891,7 +10891,7 @@ function tryStat(path) {
   debug$8('stat "%s"', path);
 
   try {
-    return fs.statSync(path);
+    return fs$1.statSync(path);
   } catch (e) {
     return undefined;
   }
@@ -11736,7 +11736,7 @@ var httpErrors_1$1 = httpErrors$1.HttpError;/*!
  * @private
  */
 
-var ReadStream = fs.ReadStream;
+var ReadStream = fs$1.ReadStream;
 
 
 /**
@@ -11818,7 +11818,7 @@ var etag_1 = etag;
  */
 
 
-var Stats = fs.Stats;
+var Stats = fs$1.Stats;
 
 /**
  * Module variables.
@@ -12111,7 +12111,7 @@ Mime.prototype.load = function(file) {
   this._loading = file;
   // Read file and split into lines
   var map = {},
-      content = fs.readFileSync(file, 'ascii'),
+      content = fs$1.readFileSync(file, 'ascii'),
       lines = content.split(/[\r\n]+/);
 
   lines.forEach(function(line) {
@@ -13209,7 +13209,7 @@ SendStream.prototype.sendFile = function sendFile (path) {
   var self = this;
 
   debug$9('stat "%s"', path);
-  fs.stat(path, function onstat (err, stat) {
+  fs$1.stat(path, function onstat (err, stat) {
     if (err && err.code === 'ENOENT' && !extname$1(path) && path[path.length - 1] !== sep) {
       // not found, check extensions
       return next(err)
@@ -13230,7 +13230,7 @@ SendStream.prototype.sendFile = function sendFile (path) {
     var p = path + '.' + self._extensions[i++];
 
     debug$9('stat "%s"', p);
-    fs.stat(p, function (err, stat) {
+    fs$1.stat(p, function (err, stat) {
       if (err) return next(err)
       if (stat.isDirectory()) return next()
       self.emit('file', p, stat);
@@ -13258,7 +13258,7 @@ SendStream.prototype.sendIndex = function sendIndex (path) {
     var p = join$1(path, self._index[i]);
 
     debug$9('stat "%s"', p);
-    fs.stat(p, function (err, stat) {
+    fs$1.stat(p, function (err, stat) {
       if (err) return next(err)
       if (stat.isDirectory()) return next()
       self.emit('file', p, stat);
@@ -13284,7 +13284,7 @@ SendStream.prototype.stream = function stream (path, options) {
   var res = this.res;
 
   // pipe
-  var stream = fs.createReadStream(path, options);
+  var stream = fs$1.createReadStream(path, options);
   this.emit('stream', stream);
   stream.pipe(res);
 
@@ -28040,7 +28040,7 @@ function renderToStringWithData(component) {
         tree: component,
         renderFunction: require('react-dom/server').renderToString
     });
-}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1",winston:"^3.2.1","winston-daily-rotate-file":"^4.4.2","winston-transport-browserconsole":"^1.0.5"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
+}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-multi-select-component":"^2.0.8","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1",winston:"^3.2.1","winston-daily-rotate-file":"^4.4.2","winston-transport-browserconsole":"^1.0.5"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -36425,7 +36425,952 @@ function CounterFlux() {
       return decrement();
     }
   }, "Remove")));
-}var routes = [{
+}var r={data:""},t=function(t){try{var e=t?t.querySelector("#_goober"):self._goober;return e||((e=(t||document.head).appendChild(document.createElement("style"))).innerHTML=" ",e.id="_goober"),e.firstChild}catch(r){}return r},e=function(r){var e=t(r),n=e.data;return e.data="",n},n=/(?:([a-z0-9-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(})/gi,a=/\/\*.*?\*\/|\s{2,}|\n/gm,o=function(r,t,e){var n="",a="",c="";for(var i in r){var u=r[i];if("object"==typeof u){var s=t+" "+i;/&/g.test(i)&&(s=i.replace(/&/g,t)),"@"==i[0]&&(s=t,"f"==i[1]&&(s=i)),/@k/.test(i)?a+=i+"{"+o(u,"","")+"}":a+=o(u,s,s==t?i:e||"");}else /^@i/.test(i)?c=i+" "+u+";":n+=i.replace(/[A-Z]/g,"-$&").toLowerCase()+":"+u+";";}if(n.charCodeAt(0)){var f=t+"{"+n+"}";return e?a+e+"{"+f+"}":c+f+a}return c+a},c={},i$2=function(r,t,e,i){var u=JSON.stringify(r),s=c[u]||(c[u]=".go"+u.split("").reduce(function(r,t){return 101*r+t.charCodeAt(0)>>>0},11));return function(r,t,e){t.data.indexOf(r)<0&&(t.data=e?r+t.data:t.data+r);}(c[s]||(c[s]=o(r[0]?function(r){for(var t,e=[{}];t=n.exec(r.replace(a,""));)t[4]&&e.shift(),t[3]?e.unshift(e[0][t[3]]=e[0][t[3]]||{}):t[4]||(e[0][t[1]]=t[2]);return e[0]}(r):r,e?"":s)),t,i),s.slice(1)},u=function(r,t,e){return r.reduce(function(r,n,a){var o=t[a];if(o&&o.call){var c=o(e),i=c&&c.props&&c.props.className||/^go/.test(c)&&c;o=i?"."+i:c&&c.props?"":c;}return r+n+(null==o?"":o)},"")};function s$2(r){var e=this||{},n=r.call?r(e.p):r;return i$2(n.map?u(n,[].slice.call(arguments,1),e.p):n,t(e.target),e.g,e.o)}var f,l=s$2.bind({g:1}),d$2=function(r){return f=r};function p(r){var t=this||{};return function(){var e=arguments;return function(n){var a=t.p=Object.assign({},n),o=a.className;return t.o=/\s*go[0-9]+/g.test(o),a.className=s$2.apply(t,e)+(o?" "+o:""),f(r,a)}}}/**
+ *  useOutsideClick hook
+ *
+ * Checks if a click happened outside a Ref. Handy for dropdowns, modals and popups etc.
+ *
+ * @param ref Ref whose outside click needs to be listened to
+ * @param handler Callback to fire on outside click
+ * @param when A boolean which which activates the hook only when it is true. Useful for conditionally enable the outside click
+ */
+function useOutsideClick(ref, handler, when = true) {
+    const savedHandler = React.useRef(handler);
+    const memoizedCallback = React.useCallback((e) => {
+        if (ref && ref.current && !ref.current.contains(e.target)) {
+            savedHandler.current(e);
+        }
+    }, []);
+    React.useEffect(() => {
+        savedHandler.current = handler;
+    });
+    React.useEffect(() => {
+        if (when) {
+            document.addEventListener("click", memoizedCallback);
+            document.addEventListener("ontouchstart", memoizedCallback);
+            return () => {
+                document.removeEventListener("click", memoizedCallback);
+                document.removeEventListener("ontouchstart", memoizedCallback);
+            };
+        }
+    }, [ref, handler, when]);
+}/**
+ * Filters React Select options and sorts by similarity to a search filter.
+ * Handles partial matches, eg. searching for "Waberg High" will find "Raoul
+ * Wallenberg Traditional High School". Case insensitive. Ignores
+ * non-alphanumeric characters.
+ *
+ * @param  options  An unfiltered list of Options.
+ * @param? filter  A string to compare against Option labels.
+ * @param? substitutions  Strings with multiple spellings or variations that we
+ *           expect to match, eg. accented characters or abbreviated words.
+ *
+ * @return A filtered and sorted array of Options.
+ */
+function filterOptions(options, filter, substitutions) {
+  // If the filter is blank, return the full list of Options.
+  if (!filter) {
+    return options;
+  }
+
+  var cleanFilter = cleanUpText(filter, substitutions);
+  return options // Filter out undefined or null Options.
+  .filter(function (_ref) {
+    var label = _ref.label,
+        value = _ref.value;
+    return label != null && value != null;
+  }) // Create a {score, Option} pair for each Option based on its label's
+  // similarity to the filter text.
+  .map(function (option) {
+    return {
+      option: option,
+      score: typeaheadSimilarity(cleanUpText(option.label, substitutions), cleanFilter)
+    };
+  }) // Only include matches of the entire substring, with a slight
+  // affordance for transposition or extra characters.
+  .filter(function (pair) {
+    return pair.score >= cleanFilter.length - 2;
+  }) // Sort 'em by order of their score.
+  .sort(function (a, b) {
+    return b.score - a.score;
+  }) // …and grab the original Options back from their pairs.
+  .map(function (pair) {
+    return pair.option;
+  });
+}
+/**
+ * Scores the similarity between two strings by returning the length of the
+ * longest common subsequence. Intended for comparing strings of different
+ * lengths; eg. when matching a typeahead search input with a school name.
+
+ * Meant for use in an instant search box where results are being fetched
+ * as a user is typing.
+ *
+ * @param  a  The longer string (though, we flip them if it's shorter).
+ * @param  b  The shorter string, eg. a typeahead search input.
+ *
+ * @return The length of the longest common subsequence. Higher scores indicate
+ *           closer matches.
+ */
+
+function typeaheadSimilarity(a, b) {
+  var aLength = a.length;
+  var bLength = b.length;
+  var table = [];
+
+  if (!aLength || !bLength) {
+    return 0;
+  } // Ensure `a` isn't shorter than `b`.
+
+
+  if (aLength < bLength) {
+    var _ref2 = [b, a];
+    a = _ref2[0];
+    b = _ref2[1];
+  } // Early exit if `a` includes `b`; these will be scored higher than any
+  // other options with the same `b` (filter string), with a preference for
+  // shorter `a` strings (option labels).
+
+
+  if (a.indexOf(b) !== -1) {
+    return bLength + 1 / aLength;
+  } // Initialize the table axes:
+  //
+  //    0 0 0 0 ... bLength
+  //    0
+  //    0
+  //
+  //   ...
+  //
+  // aLength
+  //
+
+
+  for (var x = 0; x <= aLength; ++x) {
+    table[x] = [0];
+  }
+
+  for (var y = 0; y <= bLength; ++y) {
+    table[0][y] = 0;
+  } // Populate the rest of the table with a dynamic programming algorithm.
+
+
+  for (var _x = 1; _x <= aLength; ++_x) {
+    for (var _y = 1; _y <= bLength; ++_y) {
+      table[_x][_y] = a[_x - 1] === b[_y - 1] ? 1 + table[_x - 1][_y - 1] : Math.max(table[_x][_y - 1], table[_x - 1][_y]);
+    }
+  }
+
+  return table[aLength][bLength];
+}
+/**
+ * Apply string substitutions, remove non-alphanumeric characters, and convert
+ * all letters to uppercase.
+ *
+ * eg. 'Scoil Bhríde Primary School' may become 'SCOILBHRIDEPRIMARYSCHOOL'.
+ *
+ * @param  input  An unsanitized input string.
+ * @param  substitutions  Strings with multiple spellings or variations that we
+ *          expect to match, for example accented characters or abbreviated
+ *          words.
+ *
+ * @return The sanitized text.
+ */
+
+function cleanUpText(input, substitutions) {
+  if (!input) {
+    return "";
+  } // Uppercase and remove all non-alphanumeric, non-accented characters.
+  // Also remove underscores.
+
+
+  input = input.toUpperCase().replace(/((?=[^\u00E0-\u00FC])\W)|_/g, "");
+
+  if (!substitutions) {
+    return input;
+  }
+
+  var safeSubstitutions = substitutions; // For Flow.
+  // Replace all strings in `safeSubstitutions` with their standardized
+  // counterparts.
+
+  return Object.keys(safeSubstitutions).reduce(function (output, substitution) {
+    var unsubbed = new RegExp(substitution, "g");
+    return output.replace(unsubbed, safeSubstitutions[substitution]);
+  }, input);
+}
+
+var strings = {
+  selectSomeItems: "Select...",
+  allItemsAreSelected: "All items are selected.",
+  selectAll: "Select All",
+  search: "Search"
+};
+
+function getString(key, overrideStrings) {
+  if (overrideStrings && overrideStrings[key]) {
+    return overrideStrings[key];
+  }
+
+  return strings[key];
+}
+
+var DefaultRenderer = /*#__PURE__*/s$2({
+  "input,span": {
+    verticalAalign: "middle",
+    margin: 0
+  },
+  span: {
+    display: "inline-block",
+    paddingLeft: "5px"
+  },
+  "&.disabled": {
+    opacity: 0.5
+  }
+});
+
+var DefaultItemRenderer = function DefaultItemRenderer(_ref) {
+  var checked = _ref.checked,
+      option = _ref.option,
+      onClick = _ref.onClick,
+      disabled = _ref.disabled;
+  return React__default.createElement("div", {
+    className: DefaultRenderer + " item-renderer " + (disabled && "disabled")
+  }, React__default.createElement("input", {
+    type: "checkbox",
+    onChange: onClick,
+    checked: checked,
+    tabIndex: -1,
+    disabled: disabled
+  }), React__default.createElement("span", null, option.label));
+};
+
+/**
+ * This component represents an individual item in the multi-select drop-down
+ */
+var ItemContainer = /*#__PURE__*/s$2({
+  boxSizing: "border-box",
+  cursor: "pointer",
+  display: "block",
+  padding: "var(--rmsc-spacing)",
+  outline: "0",
+  "&:hover,&:focus": {
+    background: "var(--rmsc-hover)"
+  },
+  "&.selected": {
+    background: "var(--rmsc-selected)"
+  }
+});
+
+var SelectItem = function SelectItem(_ref) {
+  var _ref$itemRenderer = _ref.itemRenderer,
+      ItemRenderer = _ref$itemRenderer === void 0 ? DefaultItemRenderer : _ref$itemRenderer,
+      option = _ref.option,
+      checked = _ref.checked,
+      focused = _ref.focused,
+      disabled = _ref.disabled,
+      onSelectionChanged = _ref.onSelectionChanged,
+      onClick = _ref.onClick;
+  var itemRef = React.useRef();
+  React.useEffect(function () {
+    updateFocus(); // eslint-disable-next-line
+  }, [focused]);
+
+  var toggleChecked = function toggleChecked() {
+    onSelectionChanged(!checked);
+  };
+
+  var handleClick = function handleClick(e) {
+    toggleChecked();
+    onClick(e);
+  };
+
+  var updateFocus = function updateFocus() {
+    if (focused && !disabled && itemRef) {
+      itemRef.current.focus();
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(e) {
+    switch (e.which) {
+      case 13: // Enter
+
+      case 32:
+        // Space
+        toggleChecked();
+        break;
+
+      default:
+        return;
+    }
+
+    e.preventDefault();
+  };
+
+  return React__default.createElement("label", {
+    className: ItemContainer + " select-item " + (checked && "selected"),
+    role: "option",
+    "aria-selected": checked,
+    tabIndex: -1,
+    ref: itemRef,
+    onKeyDown: handleKeyDown
+  }, React__default.createElement(ItemRenderer, {
+    option: option,
+    checked: checked,
+    onClick: handleClick,
+    disabled: disabled
+  }));
+};
+
+/**
+ * This component represents an unadorned list of SelectItem (s).
+ */
+var SelectListUl = /*#__PURE__*/s$2({
+  margin: 0,
+  paddingLeft: 0,
+  li: {
+    listStyle: "none",
+    margin: 0
+  }
+});
+
+var SelectList = function SelectList(_ref) {
+  var value = _ref.value,
+      onChange = _ref.onChange,
+      disabled = _ref.disabled,
+      ItemRenderer = _ref.ItemRenderer,
+      options = _ref.options,
+      focusIndex = _ref.focusIndex,
+      _onClick = _ref.onClick;
+
+  var handleSelectionChanged = function handleSelectionChanged(option, checked) {
+    if (disabled) {
+      return;
+    }
+
+    onChange(checked ? [].concat(value, [option]) : value.filter(function (o) {
+      return o.value !== option.value;
+    }));
+  };
+
+  return React__default.createElement("ul", {
+    className: SelectListUl
+  }, options.map(function (o, i) {
+    return React__default.createElement("li", {
+      key: o.hasOwnProperty("key") ? o.key : i
+    }, React__default.createElement(SelectItem, {
+      focused: focusIndex === i,
+      option: o,
+      onSelectionChanged: function onSelectionChanged(c) {
+        return handleSelectionChanged(o, c);
+      },
+      checked: value.find(function (s) {
+        return s.value === o.value;
+      }) ? true : false,
+      onClick: function onClick(e) {
+        return _onClick(e, i);
+      },
+      itemRenderer: ItemRenderer,
+      disabled: o.disabled || disabled
+    }));
+  }));
+};
+
+/**
+ * This component represents the entire panel which gets dropped down when the
+ * user selects the component.  It encapsulates the search filter, the
+ * Select-all item, and the list of options.
+ */
+var FocusType;
+
+(function (FocusType) {
+  FocusType[FocusType["SEARCH"] = -1] = "SEARCH";
+  FocusType[FocusType["NONE"] = 0] = "NONE";
+})(FocusType || (FocusType = {}));
+
+var SelectSearchContainer = /*#__PURE__*/s$2({
+  width: "100%",
+  borderBottom: "1px solid var(--rmsc-border)",
+  input: {
+    height: "var(--rmsc-height)",
+    padding: "0 var(--rmsc-spacing)",
+    width: "100%",
+    outline: "none",
+    border: "0"
+  }
+});
+var SelectPanel = function SelectPanel(props) {
+  var onChange = props.onChange,
+      options = props.options,
+      value = props.value,
+      customFilterOptions = props.filterOptions,
+      selectAllLabel = props.selectAllLabel,
+      ItemRenderer = props.ItemRenderer,
+      disabled = props.disabled,
+      disableSearch = props.disableSearch,
+      focusSearchOnOpen = props.focusSearchOnOpen,
+      hasSelectAll = props.hasSelectAll,
+      overrideStrings = props.overrideStrings;
+
+  var _useState = React.useState(""),
+      searchText = _useState[0],
+      setSearchText = _useState[1];
+
+  var _useState2 = React.useState(focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE),
+      focusIndex = _useState2[0],
+      setFocusIndex = _useState2[1];
+
+  var _useState3 = React.useState(0),
+      selectAllLength = _useState3[0],
+      setSelectAllLength = _useState3[1];
+
+  var selectAllOption = {
+    label: selectAllLabel || getString("selectAll", overrideStrings),
+    value: ""
+  };
+  React.useEffect(function () {
+    setSelectAllLength(selectAllValues(true).length); // eslint-disable-next-line
+  }, [options]);
+
+  var selectAllValues = function selectAllValues(checked) {
+    var selectedValues = value.map(function (o) {
+      return o.value;
+    });
+    return options.filter(function (_ref) {
+      var disabled = _ref.disabled,
+          value = _ref.value;
+
+      if (checked) {
+        return !disabled || selectedValues.includes(value);
+      }
+
+      return disabled && selectedValues.includes(value);
+    });
+  };
+
+  var selectAllChanged = function selectAllChanged(checked) {
+    var newOptions = selectAllValues(checked);
+    onChange(newOptions);
+  };
+
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchText(e.target.value);
+    setFocusIndex(FocusType.SEARCH);
+  };
+
+  var handleItemClicked = function handleItemClicked(index) {
+    return setFocusIndex(index);
+  };
+
+  var handleKeyDown = function handleKeyDown(e) {
+    switch (e.which) {
+      case 38:
+        // Up Arrow
+        if (e.altKey) {
+          return;
+        }
+
+        updateFocus(-1);
+        break;
+
+      case 40:
+        // Down Arrow
+        if (e.altKey) {
+          return;
+        }
+
+        updateFocus(1);
+        break;
+
+      default:
+        return;
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
+  var handleSearchFocus = function handleSearchFocus() {
+    setFocusIndex(FocusType.SEARCH);
+  };
+
+  var filteredOptions = function filteredOptions() {
+    return customFilterOptions ? customFilterOptions(options, searchText) : filterOptions(options, searchText);
+  };
+
+  var updateFocus = function updateFocus(offset) {
+    var newFocus = focusIndex + offset;
+    newFocus = Math.max(0, newFocus);
+    newFocus = Math.min(newFocus, options.length);
+    setFocusIndex(newFocus);
+  };
+
+  return React__default.createElement("div", {
+    className: "select-panel",
+    role: "listbox",
+    onKeyDown: handleKeyDown
+  }, !disableSearch && React__default.createElement("div", {
+    className: SelectSearchContainer
+  }, React__default.createElement("input", {
+    autoFocus: focusSearchOnOpen,
+    placeholder: getString("search", overrideStrings),
+    type: "search",
+    "aria-describedby": getString("search", overrideStrings),
+    onChange: handleSearchChange,
+    onFocus: handleSearchFocus
+  })), hasSelectAll && React__default.createElement(SelectItem, {
+    focused: focusIndex === 0,
+    checked: selectAllLength === value.length,
+    option: selectAllOption,
+    onSelectionChanged: selectAllChanged,
+    onClick: function onClick() {
+      return handleItemClicked(0);
+    },
+    itemRenderer: ItemRenderer,
+    disabled: disabled
+  }), React__default.createElement(SelectList, Object.assign({}, props, {
+    options: filteredOptions(),
+    focusIndex: focusIndex - 1,
+    onClick: function onClick(_e, index) {
+      return handleItemClicked(index + 1);
+    },
+    ItemRenderer: ItemRenderer,
+    disabled: disabled
+  })));
+};
+
+function Arrow(_ref) {
+  var _ref$expanded = _ref.expanded,
+      expanded = _ref$expanded === void 0 ? false : _ref$expanded;
+  return React__default.createElement("span", {
+    className: "dropdown-heading-dropdown-arrow gray",
+    style: {
+      paddingTop: "4px"
+    }
+  }, React__default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    viewBox: "0 0 24 24"
+  }, expanded ? React__default.createElement("polyline", {
+    points: "18 15 12 9 6 15"
+  }) : React__default.createElement("path", {
+    d: "M6 9L12 15 18 9"
+  })));
+}
+
+var Spinner = /*#__PURE__*/s$2({
+  animation: "rotate 2s linear infinite",
+  "& .path": {
+    stroke: "var(--rmsc-border)",
+    strokeWidth: "4px",
+    strokeLinecap: "round",
+    animation: "dash 1.5s ease-in-out infinite"
+  },
+  "@keyframes rotate": {
+    "100%": {
+      transform: "rotate(360deg)"
+    }
+  },
+  "@keyframes dash": {
+    "0%": {
+      strokeDasharray: "1, 150",
+      strokeDashoffset: "0"
+    },
+    "50%": {
+      strokeDasharray: "90, 150",
+      strokeDashoffset: "-35"
+    },
+    "100%": {
+      strokeDasharray: "90, 150",
+      strokeDashoffset: "-124"
+    }
+  }
+});
+
+function Loading(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 26 : _ref$size;
+  return React__default.createElement("div", {
+    style: {
+      cursor: "pointer",
+      display: "table-cell",
+      verticalAlign: "middle",
+      width: size,
+      marginRight: "0.2rem"
+    }
+  }, React__default.createElement("svg", {
+    width: size,
+    height: size,
+    className: Spinner,
+    viewBox: "0 0 50 50",
+    style: {
+      display: "inline-block",
+      verticalAlign: "middle"
+    }
+  }, React__default.createElement("circle", {
+    cx: "25",
+    cy: "25",
+    r: "20",
+    fill: "none",
+    className: "path"
+  })));
+}
+
+/**
+ * A generic dropdown component.  It takes the children of the component
+ * and hosts it in the component.  When the component is selected, it
+ * drops-down the contentComponent and applies the contentProps.
+ */
+var PanelContainer = /*#__PURE__*/s$2({
+  position: "absolute",
+  zIndex: 1,
+  top: "100%",
+  width: "100%",
+  paddingTop: "8px",
+  ".panel-content": {
+    maxHeight: "300px",
+    overflowY: "auto",
+    borderRadius: "var(--rmsc-border-radius)",
+    backgroundColor: "var(--rmsc-background)",
+    boxShadow: "0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1)"
+  }
+});
+var DropdownContainer = /*#__PURE__*/s$2({
+  position: "relative",
+  outline: "none",
+  backgroundColor: "var(--rmsc-background)",
+  border: "1px solid var(--rmsc-border)",
+  borderRadius: "var(--rmsc-border-radius)",
+  "&:focus-within": {
+    boxShadow: "var(--rmsc-primary) 0px 0px 0px 1px",
+    borderColor: "var(--rmsc-primary)"
+  }
+});
+var DropdownHeading = /*#__PURE__*/s$2({
+  position: "relative",
+  padding: "0 var(--rmsc-spacing)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  overflow: "hidden",
+  width: "100%",
+  height: "var(--rmsc-height)",
+  cursor: "default",
+  outline: "none",
+  ".dropdown-heading-value": {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    flex: "1"
+  }
+});
+
+var Dropdown = function Dropdown(_ref) {
+  var children = _ref.children,
+      ContentComponent = _ref.contentComponent,
+      contentProps = _ref.contentProps,
+      isLoading = _ref.isLoading,
+      disabled = _ref.disabled,
+      shouldToggleOnHover = _ref.shouldToggleOnHover,
+      labelledBy = _ref.labelledBy,
+      onMenuToggle = _ref.onMenuToggle,
+      ArrowRenderer = _ref.ArrowRenderer;
+
+  var _useState = React.useState(false),
+      expanded = _useState[0],
+      setExpanded = _useState[1];
+
+  var _useState2 = React.useState(false),
+      hasFocus = _useState2[0],
+      setHasFocus = _useState2[1];
+
+  var FinalArrow = ArrowRenderer || Arrow;
+  var wrapper = React.useRef();
+  useOutsideClick(wrapper, function () {
+    return setExpanded(false);
+  });
+  /* eslint-disable react-hooks/exhaustive-deps */
+
+  React.useEffect(function () {
+    onMenuToggle && onMenuToggle(expanded);
+  }, [expanded]);
+
+  var handleKeyDown = function handleKeyDown(e) {
+    switch (e.which) {
+      case 27: // Escape
+
+      case 38:
+        // Up Arrow
+        setExpanded(false);
+        break;
+
+      case 13: // Enter Key
+
+      case 40:
+        // Down Arrow
+        setExpanded(true);
+        break;
+
+      default:
+        return;
+    }
+
+    e.preventDefault();
+  };
+
+  var handleHover = function handleHover(iexpanded) {
+    shouldToggleOnHover && setExpanded(iexpanded);
+  };
+
+  var handleFocus = function handleFocus(e) {
+    e.target === wrapper && !hasFocus && setHasFocus(true);
+  };
+
+  var handleBlur = function handleBlur() {
+    return hasFocus && setHasFocus(false);
+  };
+
+  var handleMouseEnter = function handleMouseEnter() {
+    return handleHover(true);
+  };
+
+  var handleMouseLeave = function handleMouseLeave() {
+    return handleHover(false);
+  };
+
+  var toggleExpanded = function toggleExpanded() {
+    return setExpanded(isLoading ? false : !expanded);
+  };
+
+  return React__default.createElement("div", {
+    tabIndex: 0,
+    className: DropdownContainer + " dropdown-container",
+    "aria-labelledby": labelledBy,
+    "aria-expanded": expanded,
+    "aria-readonly": "true",
+    "aria-disabled": disabled,
+    ref: wrapper,
+    onKeyDown: handleKeyDown,
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave
+  }, React__default.createElement("div", {
+    className: DropdownHeading + " dropdown-heading",
+    onClick: toggleExpanded
+  }, React__default.createElement("div", {
+    className: "dropdown-heading-value"
+  }, children), isLoading && React__default.createElement(Loading, null), React__default.createElement(FinalArrow, {
+    expanded: expanded
+  })), expanded && React__default.createElement("div", {
+    className: PanelContainer + " dropdown-content"
+  }, React__default.createElement("div", {
+    className: "panel-content"
+  }, React__default.createElement(ContentComponent, Object.assign({}, contentProps)))));
+};
+
+var DropdownHeader = function DropdownHeader(_ref) {
+  var value = _ref.value,
+      options = _ref.options,
+      valueRenderer = _ref.valueRenderer,
+      overrideStrings = _ref.overrideStrings;
+  var noneSelected = value.length === 0;
+  var allSelected = value.length === options.length;
+  var customText = valueRenderer && valueRenderer(value, options);
+
+  var getSelectedText = function getSelectedText() {
+    return value.map(function (s) {
+      return s.label;
+    }).join(", ");
+  };
+
+  if (noneSelected) {
+    return React__default.createElement("span", {
+      className: "gray"
+    }, customText || getString("selectSomeItems", overrideStrings));
+  }
+
+  return React__default.createElement("span", null, customText ? customText : allSelected ? getString("allItemsAreSelected", overrideStrings) : getSelectedText());
+};
+
+var MultiSelectBox = /*#__PURE__*/s$2({
+  "--rmscPrimary": "#4285f4",
+  "--rmscHover": "#f1f3f5",
+  "--rmscSelected": "#e2e6ea",
+  "--rmscBorder": "#ccc",
+  "--rmscGray": "#aaa",
+  "--rmscBackground": "#fff",
+  "--rmscSpacing": "10px",
+  "--rmscBorderRadius": "4px",
+  "--rmscHeight": "38px",
+  "*": {
+    boxSizing: "border-box",
+    transition: "all 0.2s ease"
+  },
+  ".gray": {
+    color: "var(--rmsc-gray)"
+  }
+});
+
+var MultiSelect = function MultiSelect(_ref) {
+  var _ref$focusSearchOnOpe = _ref.focusSearchOnOpen,
+      focusSearchOnOpen = _ref$focusSearchOnOpe === void 0 ? true : _ref$focusSearchOnOpe,
+      _ref$hasSelectAll = _ref.hasSelectAll,
+      hasSelectAll = _ref$hasSelectAll === void 0 ? true : _ref$hasSelectAll,
+      _ref$shouldToggleOnHo = _ref.shouldToggleOnHover,
+      shouldToggleOnHover = _ref$shouldToggleOnHo === void 0 ? false : _ref$shouldToggleOnHo,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? "multi-select" : _ref$className,
+      options = _ref.options,
+      value = _ref.value,
+      valueRenderer = _ref.valueRenderer,
+      overrideStrings = _ref.overrideStrings,
+      onChange = _ref.onChange,
+      disabled = _ref.disabled,
+      ItemRenderer = _ref.ItemRenderer,
+      ArrowRenderer = _ref.ArrowRenderer,
+      selectAllLabel = _ref.selectAllLabel,
+      isLoading = _ref.isLoading,
+      disableSearch = _ref.disableSearch,
+      filterOptions = _ref.filterOptions,
+      labelledBy = _ref.labelledBy,
+      onMenuToggle = _ref.onMenuToggle;
+  var nvalue = value || [];
+  return React__default.createElement("div", {
+    className: MultiSelectBox + " " + className
+  }, React__default.createElement(Dropdown, {
+    isLoading: isLoading,
+    contentComponent: SelectPanel,
+    shouldToggleOnHover: shouldToggleOnHover,
+    contentProps: {
+      ItemRenderer: ItemRenderer,
+      options: options,
+      value: nvalue,
+      hasSelectAll: hasSelectAll,
+      selectAllLabel: selectAllLabel,
+      onChange: onChange,
+      disabled: disabled,
+      disableSearch: disableSearch,
+      focusSearchOnOpen: focusSearchOnOpen,
+      filterOptions: filterOptions,
+      overrideStrings: overrideStrings
+    },
+    disabled: disabled,
+    labelledBy: labelledBy,
+    onMenuToggle: onMenuToggle,
+    ArrowRenderer: ArrowRenderer
+  }, React__default.createElement(DropdownHeader, {
+    value: nvalue,
+    options: options,
+    valueRenderer: valueRenderer,
+    overrideStrings: overrideStrings
+  })));
+};var Container = styled__default.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
+var SubContainer = styled__default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"])));
+var LoggerContainer = styled__default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"])));
+var SubTitle = styled__default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"])));
+var Input = styled__default.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"], ["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"])));
+var Button = styled__default.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"], ["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"])));
+
+var SearchLog = function SearchLog() {
+  var options = [{
+    label: 'Info',
+    value: 'info'
+  }, {
+    label: 'Warn',
+    value: 'warn'
+  }, {
+    label: 'Error',
+    value: 'error'
+  }];
+
+  var _a = React.useState(''),
+      message = _a[0],
+      setMessage = _a[1];
+
+  var _b = React.useState(''),
+      date = _b[0],
+      setDate = _b[1];
+
+  var _c = React.useState([]),
+      selected = _c[0],
+      setSelected = _c[1];
+
+  var _d = React.useState({
+    message: null,
+    level: null,
+    date: null
+  }),
+      logsInfo = _d[0],
+      setLogsInfo = _d[1];
+
+  var _e = React.useState(''),
+      allLogs = _e[0],
+      changeLogs = _e[1];
+
+  var submit = function submit() {
+    setLogsInfo({
+      message: message === '' ? null : message,
+      level: selected.length === 0 ? null : selected.map(function (item) {
+        return item.value;
+      }),
+      date: date === '' ? null : date
+    }); // console.log(logsInfo);
+  };
+
+  var getLogs = function getLogs() {
+    fetch('http://localhost:81/getLogs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(logsInfo)
+    }).then(function (data) {
+      return data.text().then(function (textData) {
+        return changeLogs(textData);
+      });
+    }); // console.log('Logs1', log.text());
+    // return log;
+  };
+
+  React.useEffect(function () {
+    getLogs(); // console.log('Logs', logs);
+  }, [logsInfo]);
+  return /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(SubContainer, null, /*#__PURE__*/React__default.createElement("h1", null, "Log Search"), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Message: "), /*#__PURE__*/React__default.createElement(Input, {
+    type: "text",
+    onChange: function onChange(event) {
+      return setMessage(event.target.value);
+    }
+  })), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Level: "), /*#__PURE__*/React__default.createElement(MultiSelect, {
+    options: options,
+    disableSearch: true,
+    value: selected,
+    onChange: setSelected,
+    labelledBy: 'Select'
+  })), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Date: "), /*#__PURE__*/React__default.createElement(Input, {
+    placeholder: "DD/MM/YYYY",
+    type: "date",
+    max: "2200-12-31",
+    onChange: function onChange(event) {
+      var year = event.target.value.substring(0, 4);
+      var month = event.target.value.substring(5, 7);
+      var day = event.target.value.substring(8, 10);
+      setDate(month + '/' + day + '/' + year);
+    }
+  })), /*#__PURE__*/React__default.createElement(Button, {
+    type: "button",
+    onClick: function onClick() {
+      return submit();
+    }
+  }, "Submit"), /*#__PURE__*/React__default.createElement("p", null, allLogs)), /*#__PURE__*/React__default.createElement(SubContainer, null, "LOGSS"));
+};
+var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;var routes = [{
   path: '/',
   exact: true,
   component: Home
@@ -36446,6 +37391,11 @@ function CounterFlux() {
 }, {
   path: '/counterFlux',
   component: CounterFlux,
+  // component: ClassCounter,
+  exact: true
+}, {
+  path: '/logs',
+  component: SearchLog,
   // component: ClassCounter,
   exact: true
 }];var Navbar = function Navbar() {
@@ -36569,7 +37519,128 @@ var app = express$1();
 var port = process.env.PORT || 81;
 var isProd = process.env.NODE_ENV === 'production';
 var publicPath = path$2.join(__dirname, 'public');
-var server = http.createServer(app);
+var server = http.createServer(app); //Get Todays Date
+
+var getTodaysDate = function getTodaysDate() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+  if (mm.charAt(0) === '0') {
+    // to suit the format of logs
+    mm = mm.substr(1);
+  }
+
+  var yyyy = today.getFullYear();
+  return mm + '/' + dd + '/' + yyyy;
+}; // Read file and iterate through it
+
+
+var fs = require('fs');
+
+var searchLogs = function searchLogs(filePath, date, level, message) {
+  if (date === void 0) {
+    date = getTodaysDate();
+  }
+
+  if (level === void 0) {
+    level = null;
+  }
+
+  if (message === void 0) {
+    message = null;
+  }
+
+  return new Promise(function (resolve, reject) {
+    if (filePath != null) {
+      //const filePath = path.join(__dirname, fileName);
+      fs.readFile(filePath, function (err, data) {
+        if (err) {
+          console.log("__dirname: " + __dirname);
+          console.log('error reading file', err);
+          return reject;
+        } else {
+          //Logs divided into an array
+          var data_iterated = data.toString().split('\n'); // last element is an empty string due to \n
+
+          data_iterated.pop(); //String array converted to Json objects array
+
+          var json_array_data = data_iterated.map(function (log) {
+            return JSON.parse(log);
+          }); // logs are filtered according to date
+
+          var date_filtered_results = json_array_data.filter(function (log) {
+            return log.timestamp.includes(date);
+          }); // Adding level filter
+
+          var level_filtered = levelFilterLogs(date_filtered_results, level); // Adding Message Filter
+
+          var message_filtered = messageFilterLogs(level_filtered, message);
+          return resolve(message_filtered);
+        }
+      });
+    } else {
+      return reject;
+    }
+  });
+};
+
+var levelFilterLogs = function levelFilterLogs(logArray, levelArray) {
+  if (levelArray === void 0) {
+    levelArray = null;
+  } // Adding level filter
+
+
+  var level_filtered = [];
+  var level_filter_object = {};
+
+  if (levelArray != null) {
+    var _loop_1 = function _loop_1(i) {
+      //objects added to global in order to create dynamically
+      level_filter_object['level_filtered' + i] = logArray.filter(function (log) {
+        return log.level.includes(levelArray[i]);
+      });
+    };
+
+    for (var i = 0; i < levelArray.length; i++) {
+      _loop_1(i);
+    }
+
+    for (var i = 0; i < levelArray.length; i++) {
+      if ("level_filtered" + i in level_filter_object) {
+        level_filtered = level_filtered.concat(level_filter_object["level_filtered" + i]);
+      }
+    }
+  } else {
+    //no level filtered
+    level_filtered = logArray;
+  }
+
+  return level_filtered;
+};
+
+var messageFilterLogs = function messageFilterLogs(logArray, message) {
+  if (message === void 0) {
+    message = null;
+  }
+
+  var message_filtered;
+
+  if (message != null) {
+    message_filtered = logArray.filter(function (log) {
+      return log.message.includes(message);
+    });
+  } else {
+    // no message filtered 
+    message_filtered = logArray;
+  }
+
+  return message_filtered;
+};
+
+searchLogs('./combined.log', '5/28/2020', ['warn', 'error'], 'for').then(function (data) {
+  return console.log('method results', data);
+});
 
 var timezoned = function timezoned() {
   return new Date().toLocaleString('en-US', {
@@ -36578,7 +37649,8 @@ var timezoned = function timezoned() {
   });
 };
 
-var logFormat = winston.format.combine(winston.format.colorize(), winston.format.timestamp({
+var logFormat = winston.format.combine( // winston.format.colorize(),
+winston.format.timestamp({
   format: timezoned
 }), winston.format.json(), winston.format.align());
 var logger$1 = winston.createLogger({
@@ -36844,49 +37916,67 @@ if (isProd) {
     });
     return res.status(200).send();
   });
-}
+  app.post('/getLogs', function (req, res) {
+    // console.log('BODY getLogs',req.body);
+    // logger.info('hello');
+    var date = req.body.date;
 
-app.get('*', function (req, res) {
-  return res.send('');
-});
-
-var runHttpServer = function runHttpServer() {
-  return __awaiter(void 0, void 0, void 0, function () {
-    var err_1;
-    return __generator(this, function (_a) {
-      switch (_a.label) {
-        case 0:
-          _a.trys.push([0, 2,, 3]);
-
-          return [4
-          /*yield*/
-          , reload(app)];
-
-        case 1:
-          _a.sent();
-
-          server.listen(port, function () {
-            console.log("Server is listening on port: " + port);
-          });
-          return [3
-          /*break*/
-          , 3];
-
-        case 2:
-          err_1 = _a.sent();
-          console.error('Reload could not start, could not start server/sample app', err_1);
-          return [3
-          /*break*/
-          , 3];
-
-        case 3:
-          return [2
-          /*return*/
-          ];
+    if (date) {
+      if (date[0] === '0') {
+        date = date.substr(1);
       }
-    });
-  });
-};
+    } // searchLogs('./combined.log', '5/28/2020' ,['warn', 'error'], 'for').then(data => console.log('method results',data));
 
-runHttpServer(); // module.exports = {logger};
+
+    searchLogs('./combined.log', date, req.body.level, req.body.message).then(function (data) {
+      // console.log('method results',data);
+      // res.json(data);
+      return res.status(200).json({
+        data: data
+      });
+    });
+  }, app.get('*', function (req, res) {
+    return res.send('');
+  }));
+
+  var runHttpServer = function runHttpServer() {
+    return __awaiter(void 0, void 0, void 0, function () {
+      var err_1;
+      return __generator(this, function (_a) {
+        switch (_a.label) {
+          case 0:
+            _a.trys.push([0, 2,, 3]);
+
+            return [4
+            /*yield*/
+            , reload(app)];
+
+          case 1:
+            _a.sent();
+
+            server.listen(port, function () {
+              console.log("Server is listening on port: " + port);
+            });
+            return [3
+            /*break*/
+            , 3];
+
+          case 2:
+            err_1 = _a.sent();
+            console.error('Reload could not start, could not start server/sample app', err_1);
+            return [3
+            /*break*/
+            , 3];
+
+          case 3:
+            return [2
+            /*return*/
+            ];
+        }
+      });
+    });
+  };
+
+  runHttpServer(); // module.exports = {logger};
+} // module.exports = {logger};
 //# sourceMappingURL=server.js.map

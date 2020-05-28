@@ -5,6 +5,8 @@ import { fetchPopularRepos } from './api'
 import Counter from '../components/counter'
 import CounterFlux from '../components/fluxCounter'
 import ClassCounter from '../components/classCounter'
+import SearchLog from '../components/SearchLog'
+
 
 
 
@@ -26,6 +28,12 @@ const routes = [
   }, {
     path: '/counterFlux',
     component: CounterFlux,
+    // component: ClassCounter,
+    exact: true
+
+  }, {
+    path: '/logs',
+    component: SearchLog,
     // component: ClassCounter,
     exact: true
 
