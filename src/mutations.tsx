@@ -1,5 +1,6 @@
 import gql from "graphql-tag";
 import { GET_COUNTER } from "./queries";
+import {logger} from './logger';
 
 export const UPDATE_COUNTER = gql`
 mutation updateCounter($offset: Number!) {
@@ -13,6 +14,8 @@ export const CounterMutations = {
     //Calculate new counter value
     const newCounterValue = data.counter + variables.offset;
     console.log('NEWCOUNTER');
+    logger.info(variables);
+    logger.info(newCounterValue);
     cache.writeData({
       data: { counter: newCounterValue }
     });

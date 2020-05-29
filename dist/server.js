@@ -36161,7 +36161,63 @@ var GET_COUNTER = src$1(templateObject_1 || (templateObject_1 = __makeTemplateOb
 var queries = (function () {
   return useQuery(GET_COUNTER);
 });
-var templateObject_1;var UPDATE_COUNTER = src$1(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"], ["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"])));
+var templateObject_1;var logger = {
+  // log: (log='deneme') => {
+  //     fetch('http://localhost:81/logger', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ log: log, type: 'info' }),
+  // });
+  // },
+  info: function info(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: JSON.stringify(log),
+        type: 'info'
+      })
+    });
+  },
+  error: function error(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: JSON.stringify(log),
+        type: 'error'
+      })
+    });
+  },
+  warn: function warn(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: JSON.stringify(log),
+        type: 'warn'
+      })
+    });
+  }
+};var UPDATE_COUNTER = src$1(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"], ["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"])));
 var CounterMutations = {
   updateCounter: function updateCounter(_, variables, _a) {
     var cache = _a.cache; //query existing data
@@ -36172,6 +36228,8 @@ var CounterMutations = {
 
     var newCounterValue = data.counter + variables.offset;
     console.log('NEWCOUNTER');
+    logger.info(variables);
+    logger.info(newCounterValue);
     cache.writeData({
       data: {
         counter: newCounterValue
@@ -36329,63 +36387,7 @@ var Counter = function Counter() {
     }
   }, "-")));
 };
-var templateObject_1$2;var logger = {
-  // log: (log='deneme') => {
-  //     fetch('http://localhost:81/logger', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ log: log, type: 'info' }),
-  // });
-  // },
-  info: function info(log) {
-    if (log === void 0) {
-      log = 'deneme';
-    }
-
-    fetch('http://localhost:81/logger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        log: log,
-        type: 'info'
-      })
-    });
-  },
-  error: function error(log) {
-    if (log === void 0) {
-      log = 'deneme';
-    }
-
-    fetch('http://localhost:81/logger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        log: log,
-        type: 'error'
-      })
-    });
-  },
-  warn: function warn(log) {
-    if (log === void 0) {
-      log = 'deneme';
-    }
-
-    fetch('http://localhost:81/logger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        log: log,
-        type: 'warn'
-      })
-    });
-  }
-};// const clientBundler = require('../../config/rollup.config.browser');
+var templateObject_1$2;// const clientBundler = require('../../config/rollup.config.browser');
 // import { logger } from '../../index'
 // import {logger} from '../server/index'
 
@@ -37894,7 +37896,7 @@ if (isProd) {
       });
     });
   });
-  var options_1 = {
+  var options = {
     // from: new Date() - (24 * 60 * 60 * 1000),
     // until: new Date(),
     limit: 5,
@@ -37905,15 +37907,8 @@ if (isProd) {
   app.post('/logger', function (req, res) {
     // res.send('Hello World!')
     // logger.info('HELLO WORLD');
+    console.log('body', req.body);
     logger$1.log(req.body.type, req.body.log);
-    logger$1.query(options_1, function (err, results) {
-      if (err) {
-        /* TODO: handle me */
-        throw err;
-      }
-
-      console.log('results', results);
-    });
     return res.status(200).send();
   });
   app.post('/getLogs', function (req, res) {
@@ -37925,58 +37920,57 @@ if (isProd) {
       if (date[0] === '0') {
         date = date.substr(1);
       }
-    } // searchLogs('./combined.log', '5/28/2020' ,['warn', 'error'], 'for').then(data => console.log('method results',data));
-
+    }
 
     searchLogs('./combined.log', date, req.body.level, req.body.message).then(function (data) {
-      // console.log('method results',data);
-      // res.json(data);
       return res.status(200).json({
         data: data
       });
     });
-  }, app.get('*', function (req, res) {
-    return res.send('');
-  }));
+  });
+}
 
-  var runHttpServer = function runHttpServer() {
-    return __awaiter(void 0, void 0, void 0, function () {
-      var err_1;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            _a.trys.push([0, 2,, 3]);
+app.get('*', function (req, res) {
+  return res.send('');
+});
 
-            return [4
-            /*yield*/
-            , reload(app)];
+var runHttpServer = function runHttpServer() {
+  return __awaiter(void 0, void 0, void 0, function () {
+    var err_1;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          _a.trys.push([0, 2,, 3]);
 
-          case 1:
-            _a.sent();
+          return [4
+          /*yield*/
+          , reload(app)];
 
-            server.listen(port, function () {
-              console.log("Server is listening on port: " + port);
-            });
-            return [3
-            /*break*/
-            , 3];
+        case 1:
+          _a.sent();
 
-          case 2:
-            err_1 = _a.sent();
-            console.error('Reload could not start, could not start server/sample app', err_1);
-            return [3
-            /*break*/
-            , 3];
+          server.listen(port, function () {
+            console.log("Server is listening on port: " + port);
+          });
+          return [3
+          /*break*/
+          , 3];
 
-          case 3:
-            return [2
-            /*return*/
-            ];
-        }
-      });
+        case 2:
+          err_1 = _a.sent();
+          console.error('Reload could not start, could not start server/sample app', err_1);
+          return [3
+          /*break*/
+          , 3];
+
+        case 3:
+          return [2
+          /*return*/
+          ];
+      }
     });
-  };
+  });
+};
 
-  runHttpServer(); // module.exports = {logger};
-} // module.exports = {logger};
+runHttpServer(); // module.exports = {logger};
 //# sourceMappingURL=server.js.map

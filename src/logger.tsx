@@ -14,21 +14,21 @@ export const logger = {
         fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: log, type: 'info' }),
+      body: JSON.stringify({ log: JSON.stringify(log), type: 'info' }),
     });
     },
     error: (log='deneme') => {
         fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: log, type: 'error' }),
+      body: JSON.stringify({ log: JSON.stringify(log), type: 'error' }),
     });
     },
     warn: (log='deneme') => {
         fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: log, type: 'warn' }),
+      body: JSON.stringify({ log: JSON.stringify(log), type: 'warn' }),
     });
     }
     

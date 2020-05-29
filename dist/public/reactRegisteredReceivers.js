@@ -48850,6 +48850,64 @@
 	});
 	var templateObject_1;
 
+	var logger = {
+	  // log: (log='deneme') => {
+	  //     fetch('http://localhost:81/logger', {
+	  //   method: 'POST',
+	  //   headers: { 'Content-Type': 'application/json' },
+	  //   body: JSON.stringify({ log: log, type: 'info' }),
+	  // });
+	  // },
+	  info: function info(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: JSON.stringify(log),
+	        type: 'info'
+	      })
+	    });
+	  },
+	  error: function error(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: JSON.stringify(log),
+	        type: 'error'
+	      })
+	    });
+	  },
+	  warn: function warn(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: JSON.stringify(log),
+	        type: 'warn'
+	      })
+	    });
+	  }
+	};
+
 	var UPDATE_COUNTER = src(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"], ["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"])));
 	var CounterMutations = {
 	  updateCounter: function updateCounter(_, variables, _a) {
@@ -48861,6 +48919,8 @@
 
 	    var newCounterValue = data.counter + variables.offset;
 	    console.log('NEWCOUNTER');
+	    logger.info(variables);
+	    logger.info(newCounterValue);
 	    cache.writeData({
 	      data: {
 	        counter: newCounterValue
@@ -52203,64 +52263,6 @@
 	  }, "-")));
 	};
 	var templateObject_1$2;
-
-	var logger = {
-	  // log: (log='deneme') => {
-	  //     fetch('http://localhost:81/logger', {
-	  //   method: 'POST',
-	  //   headers: { 'Content-Type': 'application/json' },
-	  //   body: JSON.stringify({ log: log, type: 'info' }),
-	  // });
-	  // },
-	  info: function info(log) {
-	    if (log === void 0) {
-	      log = 'deneme';
-	    }
-
-	    fetch('http://localhost:81/logger', {
-	      method: 'POST',
-	      headers: {
-	        'Content-Type': 'application/json'
-	      },
-	      body: JSON.stringify({
-	        log: log,
-	        type: 'info'
-	      })
-	    });
-	  },
-	  error: function error(log) {
-	    if (log === void 0) {
-	      log = 'deneme';
-	    }
-
-	    fetch('http://localhost:81/logger', {
-	      method: 'POST',
-	      headers: {
-	        'Content-Type': 'application/json'
-	      },
-	      body: JSON.stringify({
-	        log: log,
-	        type: 'error'
-	      })
-	    });
-	  },
-	  warn: function warn(log) {
-	    if (log === void 0) {
-	      log = 'deneme';
-	    }
-
-	    fetch('http://localhost:81/logger', {
-	      method: 'POST',
-	      headers: {
-	        'Content-Type': 'application/json'
-	      },
-	      body: JSON.stringify({
-	        log: log,
-	        type: 'warn'
-	      })
-	    });
-	  }
-	};
 
 	// const clientBundler = require('../../config/rollup.config.browser');
 	// import { logger } from '../../index'

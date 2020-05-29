@@ -25,8 +25,6 @@ import routes from '../shared/routes'
 const winston = require('winston');
 const winstonDailyRotateFile = require('winston-daily-rotate-file');
 
-import BrowserConsole from 'winston-transport-browserconsole';
-
 const app: Application = express()
 const port = process.env.PORT || 81
 const isProd = process.env.NODE_ENV === 'production'
@@ -364,15 +362,8 @@ if(isProd) {
     app.post('/logger', (req, res) => {
       // res.send('Hello World!')
       // logger.info('HELLO WORLD');
+      console.log('body',req.body);
           logger.log(req.body.type, req.body.log)
-          logger.query(options, function (err, results) {
-            if (err) {
-              /* TODO: handle me */
-              throw err;
-            }
-          
-            console.log('results', results);
-          });
           return res.status(200).send();
     })
 
@@ -383,15 +374,12 @@ if(isProd) {
       if(date) {
         if(date[0] === '0') {date = date.substr(1)}
       }
-// searchLogs('./combined.log', '5/28/2020' ,['warn', 'error'], 'for').then(data => console.log('method results',data));
-
 searchLogs('./combined.log', date ,req.body.level, req.body.message).then(data => {
-  // console.log('method results',data);
-  // res.json(data);
   return res.status(200).json({data});
 });
 
   }
+}
 
 app.get('*', (req: Request, res: Response) => res.send(''))
 
