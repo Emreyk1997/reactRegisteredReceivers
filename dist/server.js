@@ -37274,11 +37274,14 @@ var MultiSelect = function MultiSelect(_ref) {
     overrideStrings: overrideStrings
   })));
 };var Container = styled__default.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
-var SubContainer = styled__default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"])));
-var LoggerContainer = styled__default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"])));
-var SubTitle = styled__default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"])));
-var Input = styled__default.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"], ["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"])));
-var Button = styled__default.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"], ["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"])));
+var LeftSubContainer = styled__default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 50px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  padding: 10px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 50px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  padding: 10px;\n"])));
+var RightSubContainer = styled__default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
+var SubTitle = styled__default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-top: 20px;\n  margin-bottom: 5px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-top: 20px;\n  margin-bottom: 5px;\n  width: 50px;\n  text-align: left;\n"])));
+var Input = styled__default.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 25px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  border-radius: 5px;\n  padding: 5px;\n"], ["\n  width: 200px;\n  height: 25px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  border-radius: 5px;\n  padding: 5px;\n"])));
+var Button = styled__default.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 210px;\n  height: 35px;\n  background-color: #4caf50;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n  margin-top: 20px;\n"], ["\n  width: 210px;\n  height: 35px;\n  background-color: #4caf50;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n  margin-top: 20px;\n"])));
+var LogContainer = styled__default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n"])));
+var LogTitle = styled__default.span(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  background-color: #4caf50;\n  text-align: center;\n  padding: 5px;\n  color: white;\n  width: 300px;\n"], ["\n  background-color: #4caf50;\n  text-align: center;\n  padding: 5px;\n  color: white;\n  width: 300px;\n"])));
+var LogContent = styled__default.p(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  text-align: center;\n  padding: 4px;\n  width: 300px;\n  margin: 0px;\n"], ["\n  text-align: center;\n  padding: 4px;\n  width: 300px;\n  margin: 0px;\n"])));
 
 var SearchLog = function SearchLog() {
   var options = [{
@@ -37312,7 +37315,7 @@ var SearchLog = function SearchLog() {
       logsInfo = _d[0],
       setLogsInfo = _d[1];
 
-  var _e = React.useState(''),
+  var _e = React.useState([]),
       allLogs = _e[0],
       changeLogs = _e[1];
 
@@ -37323,7 +37326,7 @@ var SearchLog = function SearchLog() {
         return item.value;
       }),
       date: date === '' ? null : date
-    }); // console.log(logsInfo);
+    });
   };
 
   var getLogs = function getLogs() {
@@ -37334,28 +37337,41 @@ var SearchLog = function SearchLog() {
       },
       body: JSON.stringify(logsInfo)
     }).then(function (data) {
-      return data.text().then(function (textData) {
-        return changeLogs(textData);
+      return data.json().then(function (text) {
+        return changeLogs(text.data);
       });
-    }); // console.log('Logs1', log.text());
-    // return log;
+    });
   };
 
   React.useEffect(function () {
-    getLogs(); // console.log('Logs', logs);
+    getLogs();
   }, [logsInfo]);
-  return /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(SubContainer, null, /*#__PURE__*/React__default.createElement("h1", null, "Log Search"), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Message: "), /*#__PURE__*/React__default.createElement(Input, {
+
+  var showLogs = function showLogs() {
+    console.log('LOGS2', allLogs);
+
+    if (allLogs.length > 0) {
+      return allLogs.map(function (item) {
+        console.log(item.level);
+        return /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, item.timestamp)), /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, item.level)), /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, item.message)));
+      });
+    } else {
+      return /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, "-")), /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, "-")), /*#__PURE__*/React__default.createElement(LogContainer, null, /*#__PURE__*/React__default.createElement(LogContent, null, "-")));
+    }
+  };
+
+  return /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(LeftSubContainer, null, /*#__PURE__*/React__default.createElement("h2", null, "Log Search"), /*#__PURE__*/React__default.createElement(SubTitle, null, "Message: "), /*#__PURE__*/React__default.createElement(Input, {
     type: "text",
     onChange: function onChange(event) {
       return setMessage(event.target.value);
     }
-  })), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Level: "), /*#__PURE__*/React__default.createElement(MultiSelect, {
-    options: options,
+  }), /*#__PURE__*/React__default.createElement(SubTitle, null, "Level: "), /*#__PURE__*/React__default.createElement(MultiSelect, {
     disableSearch: true,
+    options: options,
     value: selected,
     onChange: setSelected,
     labelledBy: 'Select'
-  })), /*#__PURE__*/React__default.createElement(LoggerContainer, null, /*#__PURE__*/React__default.createElement(SubTitle, null, "Date: "), /*#__PURE__*/React__default.createElement(Input, {
+  }), /*#__PURE__*/React__default.createElement(SubTitle, null, "Date: "), /*#__PURE__*/React__default.createElement(Input, {
     placeholder: "DD/MM/YYYY",
     type: "date",
     max: "2200-12-31",
@@ -37365,14 +37381,14 @@ var SearchLog = function SearchLog() {
       var day = event.target.value.substring(8, 10);
       setDate(month + '/' + day + '/' + year);
     }
-  })), /*#__PURE__*/React__default.createElement(Button, {
+  }), /*#__PURE__*/React__default.createElement(Button, {
     type: "button",
     onClick: function onClick() {
       return submit();
     }
-  }, "Submit"), /*#__PURE__*/React__default.createElement("p", null, allLogs)), /*#__PURE__*/React__default.createElement(SubContainer, null, "LOGSS"));
+  }, "Submit")), /*#__PURE__*/React__default.createElement(RightSubContainer, null, /*#__PURE__*/React__default.createElement(Container, null, /*#__PURE__*/React__default.createElement(LogTitle, null, "Date"), /*#__PURE__*/React__default.createElement(LogTitle, null, "Level"), /*#__PURE__*/React__default.createElement(LogTitle, null, "Message")), showLogs()));
 };
-var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;var routes = [{
+var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;var routes = [{
   path: '/',
   exact: true,
   component: Home
@@ -37668,41 +37684,7 @@ var logger$1 = winston.createLogger({
   }), new winston.transports.Console({
     level: 'info'
   })]
-}); // const logger = winston.createLogger({
-//   level: 'info',
-//   format: winston.format.json(),
-//   defaultMeta: { service: 'user-service' },
-//   transports: [
-//     //
-//     // - Write all logs with level `error` and below to `error.log`
-//     // - Write all logs with level `info` and below to `combined.log`
-//     //
-//     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-//     new winston.transports.File({ filename: 'combined.log' })
-//   ]
-// });
-
-var level = "debug"; // const logger = winston.createLogger({
-//   // level: 'info',
-//   // format: winston.format.json(),
-//   // defaultMeta: { service: 'user-service' },
-//   transports: [
-//     //
-//     // - Write all logs with level `error` and below to `error.log`
-//     // - Write all logs with level `info` and below to `combined.log`
-//     //
-//     // new winston.transports.Console(),
-//     // new winston.transports.File({ filename: 'combined.log' }),
-//     new BrowserConsole(
-//       {
-//           format: winston.format.simple(),
-//           level,
-//       },
-//   ),
-//   ],
-// });
-// logger.info('YEEAAAAHHH');
-
+});
 app.use(cors());
 isProd && app.use(compression_1());
 app.use(express$1["static"](publicPath));
@@ -37864,27 +37846,7 @@ if (isProd) {
                 content.on('error', function (err) {
                   console.error('react render error:', err);
                 });
-              }); //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
-              //   res.write(`<!DOCTYPE html>
-              // <html>
-              //   <head>
-              //     <title>${pkg.name} v${pkg.version}</title>
-              //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
-              //   </head>
-              //   <body>
-              //     <div id="root">`)
-              //   bodyStream.on('data', chunk => res.write(chunk))
-              //   bodyStream.on('end', () => {
-              //     res.write(`</div>
-              //     <script src="/reload/reload.js"></script>
-              //     <script src="/${pkg.name}.js"></script>
-              //   </body>
-              // </html>`)
-              //     res.end()
-              //   })
-              // bodyStream.on('error', err => {
-              //   console.error('react render error:', err)
-              // })
+              });
             } catch (error) {
               next(error);
             }
@@ -37912,9 +37874,13 @@ if (isProd) {
     return res.status(200).send();
   });
   app.post('/getLogs', function (req, res) {
-    // console.log('BODY getLogs',req.body);
-    // logger.info('hello');
+    console.log('BODY getLogs', req.body); // logger.info('hello');
+
     var date = req.body.date;
+
+    if (date[3] == '0') {
+      date = date.substr(0, 3) + date.substr(4, date.length - 1);
+    }
 
     if (date) {
       if (date[0] === '0') {
@@ -37922,6 +37888,7 @@ if (isProd) {
       }
     }
 
+    console.log('DATE', date);
     searchLogs('./combined.log', date, req.body.level, req.body.message).then(function (data) {
       return res.status(200).json({
         data: data

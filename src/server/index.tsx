@@ -148,44 +148,6 @@ const logger = winston.createLogger({
      new winston.transports.Console({level: 'info'})]
   }) 
 
-// const logger = winston.createLogger({
-//   level: 'info',
-//   format: winston.format.json(),
-//   defaultMeta: { service: 'user-service' },
-//   transports: [
-//     //
-//     // - Write all logs with level `error` and below to `error.log`
-//     // - Write all logs with level `info` and below to `combined.log`
-//     //
-//     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-//     new winston.transports.File({ filename: 'combined.log' })
-//   ]
-// });
-const level = "debug";
-// const logger = winston.createLogger({
-//   // level: 'info',
-//   // format: winston.format.json(),
-//   // defaultMeta: { service: 'user-service' },
-//   transports: [
-//     //
-//     // - Write all logs with level `error` and below to `error.log`
-//     // - Write all logs with level `info` and below to `combined.log`
-//     //
-//     // new winston.transports.Console(),
-//     // new winston.transports.File({ filename: 'combined.log' }),
-//     new BrowserConsole(
-//       {
-//           format: winston.format.simple(),
-//           level,
-//       },
-//   ),
-//   ],
-// });
-
-// logger.info('YEEAAAAHHH');
-
-
-
 app.use(cors())
 
 isProd && app.use(compression())
@@ -318,31 +280,6 @@ if(isProd) {
         })
         
         });
-      //   const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
-
-      //   res.write(`<!DOCTYPE html>
-      // <html>
-      //   <head>
-      //     <title>${pkg.name} v${pkg.version}</title>
-      //     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
-      //   </head>
-      //   <body>
-      //     <div id="root">`)
-
-      //   bodyStream.on('data', chunk => res.write(chunk))
-
-      //   bodyStream.on('end', () => {
-      //     res.write(`</div>
-      //     <script src="/reload/reload.js"></script>
-      //     <script src="/${pkg.name}.js"></script>
-      //   </body>
-      // </html>`)
-      //     res.end()
-      //   })
-
-        // bodyStream.on('error', err => {
-        //   console.error('react render error:', err)
-        // })
       } catch (error) {
         next(error)
       }
@@ -368,12 +305,17 @@ if(isProd) {
     })
 
     app.post('/getLogs', (req, res) => {
-      // console.log('BODY getLogs',req.body);
+      console.log('BODY getLogs',req.body);
       // logger.info('hello');
+
       let date = req.body.date;
+      if (date[3] == '0') {
+        date = date.substr(0,3) + date.substr(4, date.length-1)
+      }
       if(date) {
         if(date[0] === '0') {date = date.substr(1)}
       }
+      console.log('DATE', date);
 searchLogs('./combined.log', date ,req.body.level, req.body.message).then(data => {
   return res.status(200).json({data});
 });

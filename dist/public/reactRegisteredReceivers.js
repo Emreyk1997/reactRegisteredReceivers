@@ -53159,11 +53159,14 @@
 	};
 
 	var Container = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
-	var SubContainer = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 100px;\n"])));
-	var LoggerContainer = styled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"], ["\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 20px;\n"])));
-	var SubTitle = styled.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-right: 20px;\n  width: 50px;\n  text-align: left;\n"])));
-	var Input = styled.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"], ["\n  width: 200px;\n  height: 30px;\n  border: 1 solid #cccccc;\n"])));
-	var Button = styled.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"], ["\n  width: 150px;\n  height: 30px;\n  background-color: green;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n"])));
+	var LeftSubContainer = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 50px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  padding: 10px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-right: 50px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  padding: 10px;\n"])));
+	var RightSubContainer = styled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n"])));
+	var SubTitle = styled.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 16px;\n  margin-top: 20px;\n  margin-bottom: 5px;\n  width: 50px;\n  text-align: left;\n"], ["\n  font-size: 16px;\n  margin-top: 20px;\n  margin-bottom: 5px;\n  width: 50px;\n  text-align: left;\n"])));
+	var Input = styled.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 200px;\n  height: 25px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  border-radius: 5px;\n  padding: 5px;\n"], ["\n  width: 200px;\n  height: 25px;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n  border-radius: 5px;\n  padding: 5px;\n"])));
+	var Button = styled.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 210px;\n  height: 35px;\n  background-color: #4caf50;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n  margin-top: 20px;\n"], ["\n  width: 210px;\n  height: 35px;\n  background-color: #4caf50;\n  border: none;\n  border-radius: 5px;\n  text-color: white;\n  margin-top: 20px;\n"])));
+	var LogContainer = styled.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  border-width: thin;\n  border-style: solid;\n  border-color: #cccccc;\n"])));
+	var LogTitle = styled.span(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  background-color: #4caf50;\n  text-align: center;\n  padding: 5px;\n  color: white;\n  width: 300px;\n"], ["\n  background-color: #4caf50;\n  text-align: center;\n  padding: 5px;\n  color: white;\n  width: 300px;\n"])));
+	var LogContent = styled.p(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  text-align: center;\n  padding: 4px;\n  width: 300px;\n  margin: 0px;\n"], ["\n  text-align: center;\n  padding: 4px;\n  width: 300px;\n  margin: 0px;\n"])));
 
 	var SearchLog = function SearchLog() {
 	  var options = [{
@@ -53197,7 +53200,7 @@
 	      logsInfo = _d[0],
 	      setLogsInfo = _d[1];
 
-	  var _e = react_27(''),
+	  var _e = react_27([]),
 	      allLogs = _e[0],
 	      changeLogs = _e[1];
 
@@ -53208,7 +53211,7 @@
 	        return item.value;
 	      }),
 	      date: date === '' ? null : date
-	    }); // console.log(logsInfo);
+	    });
 	  };
 
 	  var getLogs = function getLogs() {
@@ -53219,28 +53222,41 @@
 	      },
 	      body: JSON.stringify(logsInfo)
 	    }).then(function (data) {
-	      return data.text().then(function (textData) {
-	        return changeLogs(textData);
+	      return data.json().then(function (text) {
+	        return changeLogs(text.data);
 	      });
-	    }); // console.log('Logs1', log.text());
-	    // return log;
+	    });
 	  };
 
 	  react_21(function () {
-	    getLogs(); // console.log('Logs', logs);
+	    getLogs();
 	  }, [logsInfo]);
-	  return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(SubContainer, null, /*#__PURE__*/react.createElement("h1", null, "Log Search"), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Message: "), /*#__PURE__*/react.createElement(Input, {
+
+	  var showLogs = function showLogs() {
+	    console.log('LOGS2', allLogs);
+
+	    if (allLogs.length > 0) {
+	      return allLogs.map(function (item) {
+	        console.log(item.level);
+	        return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, item.timestamp)), /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, item.level)), /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, item.message)));
+	      });
+	    } else {
+	      return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, "-")), /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, "-")), /*#__PURE__*/react.createElement(LogContainer, null, /*#__PURE__*/react.createElement(LogContent, null, "-")));
+	    }
+	  };
+
+	  return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(LeftSubContainer, null, /*#__PURE__*/react.createElement("h2", null, "Log Search"), /*#__PURE__*/react.createElement(SubTitle, null, "Message: "), /*#__PURE__*/react.createElement(Input, {
 	    type: "text",
 	    onChange: function onChange(event) {
 	      return setMessage(event.target.value);
 	    }
-	  })), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Level: "), /*#__PURE__*/react.createElement(MultiSelect, {
-	    options: options,
+	  }), /*#__PURE__*/react.createElement(SubTitle, null, "Level: "), /*#__PURE__*/react.createElement(MultiSelect, {
 	    disableSearch: true,
+	    options: options,
 	    value: selected,
 	    onChange: setSelected,
 	    labelledBy: 'Select'
-	  })), /*#__PURE__*/react.createElement(LoggerContainer, null, /*#__PURE__*/react.createElement(SubTitle, null, "Date: "), /*#__PURE__*/react.createElement(Input, {
+	  }), /*#__PURE__*/react.createElement(SubTitle, null, "Date: "), /*#__PURE__*/react.createElement(Input, {
 	    placeholder: "DD/MM/YYYY",
 	    type: "date",
 	    max: "2200-12-31",
@@ -53250,14 +53266,14 @@
 	      var day = event.target.value.substring(8, 10);
 	      setDate(month + '/' + day + '/' + year);
 	    }
-	  })), /*#__PURE__*/react.createElement(Button, {
+	  }), /*#__PURE__*/react.createElement(Button, {
 	    type: "button",
 	    onClick: function onClick() {
 	      return submit();
 	    }
-	  }, "Submit"), /*#__PURE__*/react.createElement("p", null, allLogs)), /*#__PURE__*/react.createElement(SubContainer, null, "LOGSS"));
+	  }, "Submit")), /*#__PURE__*/react.createElement(RightSubContainer, null, /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(LogTitle, null, "Date"), /*#__PURE__*/react.createElement(LogTitle, null, "Level"), /*#__PURE__*/react.createElement(LogTitle, null, "Message")), showLogs()));
 	};
-	var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
+	var templateObject_1$3, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
 
 	var routes = [{
 	  path: '/',
