@@ -1,4 +1,5 @@
 import React from 'react';
+import logger from '../logger';
 // import logger from '../../logger';
 // import winston from 'winston';
 
@@ -16,6 +17,7 @@ class ErrorBoundary extends React.Component {
     //logErrorToMyService(error, info);
     // logger.log('Error', error);
     console.log('ComponentDidCatch', error, info);
+    logger.info(error);
   }
   render() {
     if (this.state.hasError) {
