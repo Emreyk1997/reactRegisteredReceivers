@@ -30,6 +30,13 @@ export const logger = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ log: JSON.stringify(log), type: 'warn' }),
     });
-    }
+    },
+    debug: (log='deneme') => {
+      fetch('http://localhost:81/logger', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ log: JSON.stringify(log), type: 'debug' }),
+  });
+  }
     
 }

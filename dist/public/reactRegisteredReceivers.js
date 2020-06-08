@@ -48905,6 +48905,22 @@
 	        type: 'warn'
 	      })
 	    });
+	  },
+	  debug: function debug(log) {
+	    if (log === void 0) {
+	      log = 'deneme';
+	    }
+
+	    fetch('http://localhost:81/logger', {
+	      method: 'POST',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        log: JSON.stringify(log),
+	        type: 'debug'
+	      })
+	    });
 	  }
 	};
 
@@ -48921,6 +48937,7 @@
 	    console.log('NEWCOUNTER');
 	    logger.info(variables);
 	    logger.info(newCounterValue);
+	    logger.debug('DEBUG');
 	    cache.writeData({
 	      data: {
 	        counter: newCounterValue
@@ -53374,8 +53391,12 @@
 	    value: function componentDidCatch(error, info) {
 	      // You can also log the error to an error reporting service
 	      //logErrorToMyService(error, info);
-	      // logger.log('Error', error);
+	      // // logger.log('Error', error);
+	      // logger.info('HEllo');
 	      console.log('ComponentDidCatch', error, info);
+	      logger.info({
+	        error: error
+	      });
 	    }
 	  }, {
 	    key: "render",

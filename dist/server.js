@@ -28040,7 +28040,7 @@ function renderToStringWithData(component) {
         tree: component,
         renderFunction: require('react-dom/server').renderToString
     });
-}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-multi-select-component":"^2.0.8","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1",winston:"^3.2.1","winston-daily-rotate-file":"^4.4.2","winston-transport-browserconsole":"^1.0.5"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
+}var pkg = {name:"reactRegisteredReceivers",version:"1.0.0",description:"trial for SSR application",main:"dist/server.js",module:"dist/server.esm.js",repository:"https://github.com/Emreyk1997/reactRegisteredReceivers.git",author:"Emre Yigit Kuzhan <emreyigit.kuzhan@fibabanka.com.tr>",license:"MIT","private":false,scripts:{start:"yarn run build && cross-env NODE_ENV=production node dist/server",build:"cross-env BUILD=production node index",dev:"cross-env BUILD=development node index"},files:["dist"],dependencies:{"@apollo/react-hooks":"^3.1.5","@apollo/react-ssr":"^3.1.5","apollo-cache-inmemory":"^1.6.5","apollo-client":"^2.6.8","apollo-link-http":"^1.5.17","apollo-link-schema":"^1.2.5",compression:"^1.7.4",cors:"^2.8.5",dotenv:"^8.2.0",express:"^4.17.1",graphql:"^15.0.0","graphql-tag":"^2.10.3",inversify:"^5.0.1","isomorphic-fetch":"^2.2.1",react:"^16.13.1","react-dom":"^16.13.1","react-multi-select-component":"^2.0.8","react-router-dom":"^5.1.2","reflect-metadata":"^0.1.13",reload:"^3.0.4","serialize-javascript":"^3.0.0","styled-components":"^5.0.1",winston:"^3.2.1","winston-daily-rotate-file":"^4.4.2","winston-transport-browserconsole":"^1.0.5"},devDependencies:{"@babel/core":"^7.9.0","@babel/plugin-proposal-class-properties":"^7.8.3","@babel/plugin-syntax-decorators":"^7.8.3","@babel/plugin-syntax-import-meta":"^7.8.3","@babel/preset-env":"^7.9.0","@babel/preset-react":"^7.9.4","@rollup/plugin-commonjs":"^11.0.2","@rollup/plugin-json":"^4.0.2","@rollup/plugin-node-resolve":"^7.1.1","@rollup/plugin-replace":"^2.3.1","@rollup/plugin-run":"^2.0.1","@types/express":"^4.17.3","@types/react":"^16.9.27","@types/react-dom":"^16.9.5","@types/styled-components":"^5.0.1","@typescript-eslint/eslint-plugin":"^2.26.0","@typescript-eslint/parser":"^2.26.0","cross-env":"^7.0.2",eslint:"^6.8.0","eslint-config-prettier":"^6.10.1","eslint-plugin-disable":"^2.0.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-react":"^7.19.0",prettier:"^2.0.2",rimraf:"^3.0.2",rollup:"^2.3.1","rollup-plugin-babel":"^4.4.0","rollup-plugin-filesize":"^6.2.1","rollup-plugin-peer-deps-external":"^2.2.2","rollup-plugin-progress":"^1.1.1","rollup-plugin-typescript2":"^0.27.0","rollup-plugin-uglify":"^6.0.4","rollup-plugin-visualizer":"^4.0.2","source-map-support":"^0.5.16",typescript:"^3.8.3","typescript-plugin-styled-components":"^1.4.4"}};
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -36216,6 +36216,22 @@ var templateObject_1;var logger = {
         type: 'warn'
       })
     });
+  },
+  debug: function debug(log) {
+    if (log === void 0) {
+      log = 'deneme';
+    }
+
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        log: JSON.stringify(log),
+        type: 'debug'
+      })
+    });
   }
 };var UPDATE_COUNTER = src$1(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"], ["\nmutation updateCounter($offset: Number!) {\n  updateCounter(offset: $offset) @client\n}"])));
 var CounterMutations = {
@@ -36230,6 +36246,7 @@ var CounterMutations = {
     console.log('NEWCOUNTER');
     logger.info(variables);
     logger.info(newCounterValue);
+    logger.debug('DEBUG');
     cache.writeData({
       data: {
         counter: newCounterValue
@@ -37481,8 +37498,12 @@ var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
     value: function componentDidCatch(error, info) {
       // You can also log the error to an error reporting service
       //logErrorToMyService(error, info);
-      // logger.log('Error', error);
+      // // logger.log('Error', error);
+      // logger.info('HEllo');
       console.log('ComponentDidCatch', error, info);
+      logger.info({
+        error: error
+      });
     }
   }, {
     key: "render",
@@ -37534,6 +37555,23 @@ var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
 var winstonDailyRotateFile = require('winston-daily-rotate-file');
 
 var app = express$1();
+
+var dotenv = require('dotenv');
+
+console.log('BUILD', process.env.BUILD);
+var pathString;
+
+if (process.env.BUILD === 'development') {
+  pathString = '.env';
+}
+
+if (process.env.BUILD === 'production') {
+  pathString = '.env.production';
+}
+
+dotenv.config({
+  path: pathString
+});
 var port = process.env.PORT || 81;
 var isProd = process.env.NODE_ENV === 'production';
 var publicPath = path$2.join(__dirname, 'public');
@@ -37551,6 +37589,42 @@ var getTodaysDate = function getTodaysDate() {
 
   var yyyy = today.getFullYear();
   return mm + '/' + dd + '/' + yyyy;
+};
+
+var logFileName = getTodaysDate();
+
+if (process.env.LOG_DURATION === 'monthly') {
+  var index = logFileName.indexOf('/');
+  var monthPart = logFileName.substring(0, index);
+  logFileName = monthPart + logFileName.substring(index + 3);
+
+  while (logFileName.includes('/')) {
+    logFileName = logFileName.replace('/', '.');
+  }
+} else {
+  //File name setting up
+  while (logFileName.includes('/')) {
+    logFileName = logFileName.replace('/', '.');
+  }
+}
+
+var changeLogFileName = function changeLogFileName() {
+  logFileName = getTodaysDate();
+
+  if (process.env.LOG_DURATION === 'monthly') {
+    var index = logFileName.indexOf('/');
+    var monthPart = logFileName.substring(0, index);
+    logFileName = monthPart + logFileName.substring(index + 3);
+
+    while (logFileName.includes('/')) {
+      logFileName = logFileName.replace('/', '.');
+    }
+  } else {
+    //File name setting up
+    while (logFileName.includes('/')) {
+      logFileName = logFileName.replace('/', '.');
+    }
+  }
 }; // Read file and iterate through it
 
 
@@ -37667,6 +37741,28 @@ var timezoned = function timezoned() {
   });
 };
 
+var logConfigDuration = {};
+
+var configLogDuration = function configLogDuration() {
+  console.log('configLogDuration', process.env.LOG_DURATION);
+
+  if (process.env.LOG_DURATION === 'monthly') {
+    console.log('MONTHLY');
+    logConfigDuration = {
+      filename: "./log/monthly/" + logFileName + ".log",
+      level: process.env.LOG_LEVEL
+    };
+    console.log('LogGGG', logConfigDuration);
+  } else {
+    logConfigDuration = {
+      filename: "./log/daily/" + logFileName + ".log",
+      level: process.env.LOG_LEVEL
+    };
+    console.log('LogG2', logConfigDuration);
+  }
+};
+
+configLogDuration();
 var logFormat = winston.format.combine( // winston.format.colorize(),
 winston.format.timestamp({
   format: timezoned
@@ -37681,10 +37777,31 @@ var logger$1 = winston.createLogger({
   new winston.transports.File({
     filename: 'combined.log',
     level: 'info'
-  }), new winston.transports.Console({
+  }), new winston.transports.File(logConfigDuration), new winston.transports.Console({
     level: 'info'
   })]
 });
+
+var changeLog = function changeLog() {
+  changeLogFileName();
+  configLogDuration();
+  logger$1 = null;
+  logger$1 = winston.createLogger({
+    format: logFormat,
+    transports: [// new winstonDailyRotateFile({
+    //  filename: './logs/custom-%DATE%.log',
+    //  dataPattern: 'YYYY-MM-DD',
+    //  level: 'info'
+    // }), 
+    new winston.transports.File({
+      filename: 'combined.log',
+      level: 'info'
+    }), new winston.transports.File(logConfigDuration), new winston.transports.Console({
+      level: 'info'
+    })]
+  });
+};
+
 app.use(cors());
 isProd && app.use(compression_1());
 app.use(express$1["static"](publicPath));
@@ -37773,12 +37890,44 @@ if (isProd) {
 } else {
   app.get(paths, function (req, res, next) {
     return __awaiter(void 0, void 0, void 0, function () {
-      var activeRoute, data, _a, context, client_1, sheet_1, markup_1;
+      var envConfig, k, envConfig, k, activeRoute, data, _a, context, client_1, sheet_1, markup_1;
 
       return __generator(this, function (_b) {
         switch (_b.label) {
           case 0:
-            console.log('REQ', paths);
+            if (req.query.env) {
+              if (req.query.env == 'prod') {
+                console.log('ENV', req.query.env);
+                envConfig = dotenv.parse(fs.readFileSync('.env.production'));
+
+                for (k in envConfig) {
+                  process.env[k] = envConfig[k];
+                }
+
+                if (dotenv.error) {
+                  console.log('Error', dotenv.error);
+                }
+
+                changeLog();
+                console.log('LOGGSSSS', logConfigDuration);
+              } else if (req.query.env == 'dev') {
+                console.log('ENV', req.query.env);
+                envConfig = dotenv.parse(fs.readFileSync('.env'));
+
+                for (k in envConfig) {
+                  process.env[k] = envConfig[k];
+                }
+
+                if (dotenv.error) {
+                  console.log('Error', dotenv.error);
+                }
+
+                changeLog();
+              }
+
+              console.log('HELLO');
+            }
+
             res.setHeader('Content-Type', 'text/html; charset=utf-8');
             activeRoute = routes.find(function (route) {
               return reactRouterDom.matchPath(req.url, route);
@@ -37870,6 +38019,7 @@ if (isProd) {
     // res.send('Hello World!')
     // logger.info('HELLO WORLD');
     console.log('body', req.body);
+    console.log('ENV LEVEL', process.env.LOG_LEVEL);
     logger$1.log(req.body.type, req.body.log);
     return res.status(200).send();
   });

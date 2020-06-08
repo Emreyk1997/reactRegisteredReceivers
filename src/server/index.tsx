@@ -26,6 +26,17 @@ const winston = require('winston');
 const winstonDailyRotateFile = require('winston-daily-rotate-file');
 
 const app: Application = express()
+const dotenv = require('dotenv')
+console.log('BUILD', process.env.BUILD);
+let pathString;
+if (process.env.BUILD === 'development') {
+  pathString = '.env'
+} 
+if (process.env.BUILD === 'production') {
+  pathString = '.env.production'
+}
+
+dotenv.config({path: pathString});
 const port = process.env.PORT || 81
 const isProd = process.env.NODE_ENV === 'production'
 const publicPath = path.join(__dirname, 'public')
@@ -42,6 +53,37 @@ const getTodaysDate = () => {
   }
   const yyyy = today.getFullYear();
   return mm + '/' + dd + '/' + yyyy;
+}
+let logFileName = getTodaysDate();
+if(process.env.LOG_DURATION === 'monthly') {
+  let index = logFileName.indexOf('/'); 
+  let monthPart = logFileName.substring(0,index)
+  logFileName = monthPart + logFileName.substring(index+3);
+  while(logFileName.includes('/')) {
+    logFileName =logFileName.replace('/', '.')
+  }
+} else {
+  //File name setting up
+  while(logFileName.includes('/')) {
+    logFileName =logFileName.replace('/', '.')
+  }
+}
+
+const changeLogFileName = () => {
+  logFileName = getTodaysDate();
+if(process.env.LOG_DURATION === 'monthly') {
+  let index = logFileName.indexOf('/'); 
+  let monthPart = logFileName.substring(0,index)
+  logFileName = monthPart + logFileName.substring(index+3);
+  while(logFileName.includes('/')) {
+    logFileName =logFileName.replace('/', '.')
+  }
+} else {
+  //File name setting up
+  while(logFileName.includes('/')) {
+    logFileName =logFileName.replace('/', '.')
+  }
+}
 }
 // Read file and iterate through it
 const fs = require('fs');
@@ -119,6 +161,26 @@ const timezoned = () => {
     hour12: false
   });
 };
+let logConfigDuration = {}
+
+const configLogDuration = () => {
+  console.log('configLogDuration', process.env.LOG_DURATION);
+  if(process.env.LOG_DURATION === 'monthly'){
+    console.log('MONTHLY');
+    logConfigDuration= {
+      filename: `./log/monthly/${logFileName}.log`,
+      level: process.env.LOG_LEVEL
+    }
+    console.log('LogGGG', logConfigDuration);
+  } else {
+    logConfigDuration= {
+      filename: `./log/daily/${logFileName}.log`,
+      level: process.env.LOG_LEVEL
+    }
+    console.log('LogG2', logConfigDuration);
+  }
+}
+configLogDuration();
 
 const logFormat = winston.format.combine(
   // winston.format.colorize(),
@@ -133,7 +195,8 @@ const logFormat = winston.format.combine(
 )
 
 
-const logger = winston.createLogger({
+
+let logger = winston.createLogger({
   format: logFormat,
    transports: [
     // new winstonDailyRotateFile({
@@ -145,8 +208,31 @@ const logger = winston.createLogger({
       filename: 'combined.log',
       level: 'info'
     }),
+     new winston.transports.File(logConfigDuration),
      new winston.transports.Console({level: 'info'})]
   }) 
+
+  const changeLog = () => {
+    changeLogFileName();
+    configLogDuration();
+    logger = null;
+    logger = winston.createLogger({
+      format: logFormat,
+       transports: [
+        // new winstonDailyRotateFile({
+        //  filename: './logs/custom-%DATE%.log',
+        //  dataPattern: 'YYYY-MM-DD',
+        //  level: 'info'
+        // }), 
+        new winston.transports.File({
+          filename: 'combined.log',
+          level: 'info'
+        }),
+         new winston.transports.File(logConfigDuration),
+         new winston.transports.Console({level: 'info'})]
+      }) 
+
+  }
 
 app.use(cors())
 
@@ -209,7 +295,32 @@ if(isProd) {
   }
   else {
     app.get(paths, async (req: Request, res: Response, next) => {
-    console.log('REQ', paths);
+      if(req.query.env) {
+          if(req.query.env == 'prod') {
+            console.log('ENV', req.query.env);
+          let envConfig = dotenv.parse(fs.readFileSync('.env.production'))
+          for (const k in envConfig) {
+            process.env[k] = envConfig[k]
+          }
+          if (dotenv.error) {
+            console.log('Error',dotenv.error) 
+          }
+          changeLog();
+          console.log('LOGGSSSS', logConfigDuration);
+        } else if(req.query.env == 'dev') {
+          console.log('ENV', req.query.env);
+        let envConfig = dotenv.parse(fs.readFileSync('.env'))
+        for (const k in envConfig) {
+          process.env[k] = envConfig[k]
+        }
+        if (dotenv.error) {
+          console.log('Error',dotenv.error) 
+        }
+        changeLog();
+      }
+        
+        console.log('HELLO');
+      }
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
       const activeRoute = routes.find(route => matchPath(req.url, route)) || {}
@@ -300,6 +411,7 @@ if(isProd) {
       // res.send('Hello World!')
       // logger.info('HELLO WORLD');
       console.log('body',req.body);
+      console.log('ENV LEVEL', process.env.LOG_LEVEL);
           logger.log(req.body.type, req.body.log)
           return res.status(200).send();
     })

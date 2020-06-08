@@ -16,6 +16,7 @@ export const CounterMutations = {
     console.log('NEWCOUNTER');
     logger.info(variables);
     logger.info(newCounterValue);
+    logger.debug('DEBUG')
     cache.writeData({
       data: { counter: newCounterValue }
     });
