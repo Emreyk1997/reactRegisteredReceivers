@@ -20,5 +20,10 @@ export const GET_COUNTER = gql`
     counter @client
   }
 `;
+export const GET_CONFIGS = gql`
+  query GetConfigs {
+    configs @client
+  }
+`;
 
 export default () => useQuery(GET_COUNTER);

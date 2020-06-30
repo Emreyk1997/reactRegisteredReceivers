@@ -9,13 +9,11 @@ import { renderToNodeStream } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { ServerStyleSheet } from 'styled-components'
 import serialize from 'serialize-javascript'
-import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloProvider } from '@apollo/react-common';
-
+import { ApolloProvider } from '@apollo/client';
 import { getDataFromTree } from "@apollo/react-ssr";
-
+import apolloClient from '../store';
 
 import pkg from '../../package.json'
 import App from '../shared/App'
@@ -23,11 +21,11 @@ import routes from '../shared/routes'
 
 // import * as winston from 'winston';
 const winston = require('winston');
+const initialState = {}
 const winstonDailyRotateFile = require('winston-daily-rotate-file');
 
 const app: Application = express()
 const dotenv = require('dotenv')
-console.log('BUILD', process.env.BUILD);
 let pathString;
 if (process.env.BUILD === 'development') {
   pathString = '.env'
@@ -164,20 +162,16 @@ const timezoned = () => {
 let logConfigDuration = {}
 
 const configLogDuration = () => {
-  console.log('configLogDuration', process.env.LOG_DURATION);
   if(process.env.LOG_DURATION === 'monthly'){
-    console.log('MONTHLY');
     logConfigDuration= {
       filename: `./log/monthly/${logFileName}.log`,
       level: process.env.LOG_LEVEL
     }
-    console.log('LogGGG', logConfigDuration);
   } else {
     logConfigDuration= {
       filename: `./log/daily/${logFileName}.log`,
       level: process.env.LOG_LEVEL
     }
-    console.log('LogG2', logConfigDuration);
   }
 }
 configLogDuration();
@@ -245,7 +239,6 @@ const paths = routes.map(({ path }) => path)
 
 if(isProd) {
    app.get(paths, async (req: Request, res: Response, next) => {
-    console.log('Req', req);
       res.setHeader('Content-Type', 'application/json')
 
       const fragment = {
@@ -263,11 +256,13 @@ if(isProd) {
       try {
         const sheet = new ServerStyleSheet()
         const markup = sheet.collectStyles(
-          <StaticRouter location={req.url} context={data && data.context}>
-            <App />
-          </StaticRouter>
+          <ApolloProvider client={apolloClient}>
+            <StaticRouter location={req.url} context={data && data.context}>
+              <App />
+            </StaticRouter>
+          </ApolloProvider>
         )
-
+        getDataFromTree(markup).then(() => {
         const bodyStream = sheet.interleaveWithNodeStream(renderToNodeStream(markup))
 
         fragment.html = `<script>window.__INITIAL_DATA__ = ${serialize(data)}</script><div>`
@@ -288,6 +283,7 @@ if(isProd) {
         bodyStream.on('error', err => {
           console.error('react render error:', err)
         })
+      });
       } catch (error) {
         next(error)
       }
@@ -295,9 +291,10 @@ if(isProd) {
   }
   else {
     app.get(paths, async (req: Request, res: Response, next) => {
+      initialState = apolloClient.extract();
+      console.log('INITIAL BEFORE', initialState);
       if(req.query.env) {
           if(req.query.env == 'prod') {
-            console.log('ENV', req.query.env);
           let envConfig = dotenv.parse(fs.readFileSync('.env.production'))
           for (const k in envConfig) {
             process.env[k] = envConfig[k]
@@ -306,9 +303,10 @@ if(isProd) {
             console.log('Error',dotenv.error) 
           }
           changeLog();
-          console.log('LOGGSSSS', logConfigDuration);
+          initialState.ROOT_QUERY.configs = 'PROD';
+        console.log('INITIAL AFTER', initialState);
         } else if(req.query.env == 'dev') {
-          console.log('ENV', req.query.env);
+          console.log('DEV')
         let envConfig = dotenv.parse(fs.readFileSync('.env'))
         for (const k in envConfig) {
           process.env[k] = envConfig[k]
@@ -317,9 +315,13 @@ if(isProd) {
           console.log('Error',dotenv.error) 
         }
         changeLog();
+        // initialState = {...initialState, configs: 'DEV'}
+        initialState.ROOT_QUERY.configs = 'DEV';
+        console.log('INITIAL AFTER', initialState);
       }
         
         console.log('HELLO');
+        // useMutation(UPDATE_CONFIGS, { variables: { offset: 1 } })
       }
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
@@ -333,23 +335,23 @@ if(isProd) {
         const { context } = data
         // console.log('Context True/False', activeRoute.fetchInitialData);
         // console.log('DATA', context);
-        const client = new ApolloClient({
-          ssrMode: true,
-          // Remember that this is the interface the SSR server will use to connect to the
-          // API server, so we need to ensure it isn't firewalled, etc
-          link: createHttpLink({
-            uri: 'http://localhost:81',
-            credentials: 'same-origin',
-            headers: {
-              cookie: req.header('Cookie'),
-            },
-          }),
-          cache: new InMemoryCache(),
-        });
+        // const client = new ApolloClient({
+        //   ssrMode: true,
+        //   // Remember that this is the interface the SSR server will use to connect to the
+        //   // API server, so we need to ensure it isn't firewalled, etc
+        //   link: createHttpLink({
+        //     uri: 'http://localhost:81',
+        //     credentials: 'same-origin',
+        //     headers: {
+        //       cookie: req.header('Cookie'),
+        //     },
+        //   }),
+        //   cache: new InMemoryCache(),
+        // });
 
         const sheet = new ServerStyleSheet()
         const markup = sheet.collectStyles(
-          <ApolloProvider client={client}>
+          <ApolloProvider client={apolloClient}>
             <StaticRouter location={req.url} context={data.context}>
               <App />
             </StaticRouter>
@@ -359,13 +361,19 @@ if(isProd) {
         getDataFromTree(markup).then(() => {
           // We are ready to render for real
           const content = sheet.interleaveWithNodeStream(renderToNodeStream(markup));
-          const initialState = client.extract();
-          console.log('INITIALSTATE', initialState)
+          console.log('INITIALSTATE------------', initialState)
 
           res.write(`<!DOCTYPE html>
        <html>
          <head>
            <title>${pkg.name} v${pkg.version}</title>
+    ${
+      initialState &&
+      `<script>${`window.__${pkg.name.toUpperCase()}_INITIAL_STATE__=${JSON.stringify(initialState).replace(
+        /</g,
+        '\\u003c'
+      )};`}</script>`
+    }
            <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
       
          </head>
@@ -410,8 +418,6 @@ if(isProd) {
     app.post('/logger', (req, res) => {
       // res.send('Hello World!')
       // logger.info('HELLO WORLD');
-      console.log('body',req.body);
-      console.log('ENV LEVEL', process.env.LOG_LEVEL);
           logger.log(req.body.type, req.body.log)
           return res.status(200).send();
     })
@@ -427,7 +433,6 @@ if(isProd) {
       if(date) {
         if(date[0] === '0') {date = date.substr(1)}
       }
-      console.log('DATE', date);
 searchLogs('./combined.log', date ,req.body.level, req.body.message).then(data => {
   return res.status(200).json({data});
 });

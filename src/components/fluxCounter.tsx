@@ -3,7 +3,7 @@ import { useInjection } from '../providers/ioc.react';
 import { IProvider } from '../providers/providers';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 // import styles from './styles.css'
-import { GET_COUNTER } from '../queries';
+import { GET_COUNTER, GET_CONFIGS } from '../queries';
 import { UPDATE_COUNTER } from '../mutations';
 import {logger} from '../logger'
 // const logger = require('../../index');
@@ -14,6 +14,9 @@ import {logger} from '../logger'
 
 export default function CounterFlux() {
   const { data } = useQuery(GET_COUNTER);
+  console.log('GETCOUNTER', data);
+  // const configData = useQuery(GET_CONFIGS).data;
+  // console.log('CONFIGDATA PRINT', configData);
   const [, setErrorCatch] = React.useState(null);
   const [increment] = useMutation(UPDATE_COUNTER, { variables: { offset: 1 } })
   const [decrement] = useMutation(UPDATE_COUNTER, { variables: { offset: -1 } })
@@ -27,7 +30,7 @@ export default function CounterFlux() {
     <div>
       <h1>Counter: {data ? data.counter : 5}</h1>
       <p>Provider:</p>
-      <p>{provider.provide()}</p>
+      {/* <p>{provider.provide()}</p> */}
       <div className="controllers">
         <button type='button' onClick={() => newIncrement()}>Add</button>
         <button type='button' onClick={() => decrement()}>Remove</button>

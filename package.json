@@ -11,14 +11,20 @@
   "scripts": {
     "start": "yarn run build && cross-env NODE_ENV=production node dist/server",
     "build": "cross-env BUILD=production node index",
-    "dev": "cross-env BUILD=development node index"
+    "dev": "cross-env BUILD=development node index",
+    "test": "react-scripts test"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
+    "@apollo/client": "^3.0.0-rc.9",
     "@apollo/react-hooks": "^3.1.5",
     "@apollo/react-ssr": "^3.1.5",
+    "@apollo/react-testing": "^3.1.4",
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/react": "^10.4.3",
+    "@testing-library/user-event": "^12.0.11",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.17",
@@ -35,6 +41,7 @@
     "react-dom": "^16.13.1",
     "react-multi-select-component": "^2.0.8",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
     "reflect-metadata": "^0.1.13",
     "reload": "^3.0.4",
     "serialize-javascript": "^3.0.0",
@@ -44,7 +51,7 @@
     "winston-transport-browserconsole": "^1.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-syntax-decorators": "^7.8.3",
     "@babel/plugin-syntax-import-meta": "^7.8.3",

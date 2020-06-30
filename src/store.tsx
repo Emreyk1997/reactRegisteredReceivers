@@ -12,10 +12,18 @@
 // });
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from '@apollo/client';
 import { CounterMutations } from './mutations'
 
-const cache = new InMemoryCache();
+const isServer = typeof window === 'undefined';
+
+console.log('IS SERVER', isServer)
+if (!isServer) {
+  console.log('WINDOW', window)
+}
+
+
+const cache = isServer ? new InMemoryCache() : new InMemoryCache().restore(window.__REACTREGISTEREDRECEIVERS_INITIAL_STATE__);
 const client = new ApolloClient({
    cache,
    resolvers: {
@@ -24,6 +32,6 @@ const client = new ApolloClient({
      }
    }
 });
-const initialState = { counter: 0 };
-cache.writeData({ data: initialState });
+const initialState = { counter: 0, configs: '' };
+isServer ? cache.writeData({ data: initialState }) : null;
 export default client;

@@ -29,7 +29,7 @@ const output = {
   sourcemap: !isProd,
 };
 
-const external = [...commonExternal, 'react-dom/server', 'cors', 'reload', 'serialize-javascript'];
+const external = [...commonExternal, 'react-dom/server', 'cors', 'reload', 'serialize-javascript', '@apollo/client'];
 
 const options = {
   cache: true,

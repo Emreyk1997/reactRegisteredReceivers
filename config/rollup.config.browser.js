@@ -30,13 +30,14 @@ const output = {
     'react-dom': 'ReactDOM',
     'prop-types': 'PropTypes',
     'styled-components': 'styled',
+    '@apollo/client': 'apolloClient',
     'react-router': 'ReactRouter',
     'react-router-dom': 'ReactRouterDOM',
     'isomorphic-fetch': 'fetch',
   },
 };
 
-const external = isProd ? [...commonExternal, 'react-dom'] : [...builtinModules];
+const external = isProd ? [...commonExternal, 'react-dom', '@apollo/client'] : [...builtinModules];
 
 const options = {
   cache: true,

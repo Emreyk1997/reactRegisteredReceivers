@@ -1,97 +1,10 @@
-{"message":"deneme","level":"info"}
-{"message":"error","level":"error"}
-2020-05-21T12:11:32.188Z [32minfo[39m: 	deneme
-2020-05-21T12:11:32.192Z [31merror[39m: 	error
-2020-05-21T12:11:45.701Z [31merror[39m: 	error
-2020-05-21T12:11:45.702Z [32minfo[39m: 	deneme
-2020-05-21T12:11:47.414Z [32minfo[39m: 	deneme
-2020-05-21T12:11:47.416Z [31merror[39m: 	error
-2020-05-21T12:12:39.652Z [32minfo[39m: 	deneme
-2020-05-21T12:12:39.656Z [31merror[39m: 	error
-2020-05-21T12:12:41.058Z [32minfo[39m: 	deneme
-2020-05-21T12:12:41.059Z [31merror[39m: 	error
-2020-05-21T12:18:34.968Z [32minfo[39m: 	deneme
-2020-05-21T12:18:34.972Z [31merror[39m: 	error
-2020-05-21T12:20:05.226Z [32minfo[39m: 	deneme
-2020-05-21T12:20:05.229Z [31merror[39m: 	error
-2020-05-21T12:20:06.537Z [31merror[39m: 	error
-2020-05-21T12:20:06.538Z [32minfo[39m: 	deneme
-2020-05-21T12:20:07.465Z [32minfo[39m: 	deneme
-2020-05-21T12:20:07.466Z [31merror[39m: 	error
-2020-05-21T12:21:05.224Z [32minfo[39m: 	deneme
-2020-05-21T12:21:05.225Z [31merror[39m: 	error
-2020-05-21T12:21:08.598Z [32minfo[39m: 	deneme
-2020-05-21T12:21:08.599Z [31merror[39m: 	error
-2020-05-21T12:21:09.750Z [32minfo[39m: 	deneme
-2020-05-21T12:21:09.752Z [31merror[39m: 	error
-2020-05-21T12:21:25.368Z [32minfo[39m: 	deneme
-2020-05-21T12:21:25.369Z [31merror[39m: 	error
-2020-05-21T12:21:26.935Z [31merror[39m: 	error
-2020-05-21T12:21:26.935Z [32minfo[39m: 	deneme
-2020-05-21T12:21:28.286Z [32minfo[39m: 	deneme
-2020-05-21T12:21:28.287Z [31merror[39m: 	error
-2020-05-21T12:22:15.821Z [32minfo[39m: 	deneme
-2020-05-21T12:22:15.826Z [31merror[39m: 	error
-2020-05-21T12:22:17.729Z [32minfo[39m: 	deneme
-2020-05-21T12:22:17.729Z [31merror[39m: 	error
-2020-05-21T12:22:18.932Z [32minfo[39m: 	deneme
-2020-05-21T12:22:18.933Z [31merror[39m: 	error
-2020-05-21T12:22:45.049Z [32minfo[39m: 	deneme
-2020-05-21T12:22:45.050Z [31merror[39m: 	error
-2020-05-21T12:22:53.366Z [31merror[39m: 	error
-2020-05-21T12:22:53.366Z [32minfo[39m: 	deneme
-2020-05-21T12:23:01.551Z [32minfo[39m: 	deneme
-2020-05-21T12:23:01.552Z [31merror[39m: 	error
-2020-05-21T12:24:48.092Z [32minfo[39m: 	deneme
-2020-05-21T12:24:49.772Z [32minfo[39m: 	deneme
-2020-05-21T12:24:51.552Z [32minfo[39m: 	deneme
-2020-05-21T12:24:53.198Z [32minfo[39m: 	deneme
-2020-05-21T12:24:54.802Z [32minfo[39m: 	deneme
-2020-05-21T12:24:55.907Z [32minfo[39m: 	deneme
-2020-05-21T12:25:14.904Z [32minfo[39m: 	deneme
-2020-05-21T12:25:17.195Z [32minfo[39m: 	deneme
-2020-05-21T12:25:20.581Z [32minfo[39m: 	deneme
-2020-05-21T12:25:23.335Z [32minfo[39m: 	deneme
-2020-05-21T12:25:25.335Z [32minfo[39m: 	deneme
-2020-05-21T12:25:27.540Z [32minfo[39m: 	deneme
-2020-05-21T12:25:48.354Z [32minfo[39m: 	deneme
-2020-05-21T12:25:51.474Z [32minfo[39m: 	deneme
-2020-05-21T12:25:55.067Z [32minfo[39m: 	deneme
-2020-05-21T12:25:57.478Z [32minfo[39m: 	deneme
-2020-05-21T12:25:59.597Z [32minfo[39m: 	deneme
-2020-05-21T12:26:02.912Z [32minfo[39m: 	deneme
-2020-05-21T12:28:14.733Z [32minfo[39m: 	deneme
-2020-05-21T12:28:16.215Z [32minfo[39m: 	deneme
-2020-05-21T12:28:17.828Z [32minfo[39m: 	deneme
-2020-05-21T12:28:19.552Z [32minfo[39m: 	deneme
-2020-05-21T12:28:21.574Z [32minfo[39m: 	deneme
-2020-05-21T12:28:23.209Z [32minfo[39m: 	deneme
-2020-05-21T12:30:14.759Z [32minfo[39m: 	deneme
-2020-05-21T12:30:16.228Z [32minfo[39m: 	deneme
-2020-05-21T12:30:17.839Z [32minfo[39m: 	deneme
-2020-05-21T12:30:19.567Z [32minfo[39m: 	deneme
-2020-05-21T12:30:21.581Z [32minfo[39m: 	deneme
-2020-05-21T12:30:23.218Z [32minfo[39m: 	deneme
-2020-05-21T12:32:14.782Z [32minfo[39m: 	deneme
-2020-05-21T12:32:16.240Z [32minfo[39m: 	deneme
-2020-05-21T12:32:17.849Z [32minfo[39m: 	deneme
-2020-05-21T12:32:19.578Z [32minfo[39m: 	deneme
-2020-05-21T12:32:21.590Z [32minfo[39m: 	deneme
-2020-05-21T12:32:23.230Z [32minfo[39m: 	deneme
-2020-05-21T12:34:24.429Z [32minfo[39m: 	deneme
-2020-05-21T12:34:25.128Z [32minfo[39m: 	deneme
-2020-05-21T12:34:40.918Z [32minfo[39m: 	deneme
-2020-05-21T12:34:42.074Z [32minfo[39m: 	deneme
-2020-05-21T12:34:51.616Z [32minfo[39m: 	deneme
-2020-05-21T12:34:53.335Z [32minfo[39m: 	deneme
-2020-05-21T12:36:24.456Z [32minfo[39m: 	deneme
-2020-05-21T12:36:25.136Z [32minfo[39m: 	deneme
-2020-05-21T12:36:40.930Z [32minfo[39m: 	deneme
-2020-05-21T12:36:42.079Z [32minfo[39m: 	deneme
-2020-05-21T12:36:51.627Z [32minfo[39m: 	deneme
-2020-05-21T12:38:07.319Z [32minfo[39m: 	deneme
-2020-05-21T12:38:24.471Z [32minfo[39m: 	deneme
-2020-05-21T12:38:25.145Z [32minfo[39m: 	deneme
-2020-05-21T12:38:40.934Z [32minfo[39m: 	deneme
-2020-05-21T12:38:42.086Z [32minfo[39m: 	deneme
-2020-05-21T12:38:51.634Z [32minfo[39m: 	deneme
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}
+{"level":"info","message":"deneme"}

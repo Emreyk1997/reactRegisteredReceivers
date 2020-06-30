@@ -7,7 +7,7 @@ import { Provider } from '../providers/ioc.react';
 
 
 import apolloClient from '../store';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider } from '@apollo/client';
 
 import routes from './routes'
 import Navbar from './Navbar'

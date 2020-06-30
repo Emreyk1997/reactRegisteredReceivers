@@ -21,6 +21,7 @@ export const Provider: React.FC<Props> = (props) => {
 //Can be useful after
 export function useInjection<T>(identifier: interfaces.ServiceIdentifier<T>) {
     const { container } = useContext(InversifyContext);
+    console.log('Container', container)
     if (!container) { throw new Error(); }
     return container.get<T>(identifier);
 };
