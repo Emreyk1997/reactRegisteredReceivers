@@ -1,28 +1,28 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true,
+    "baseUrl": ".",
     "target": "es5",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "importHelpers": false,
-    "noEmit": true,
-    "noResolve": false,
-    "jsx": "preserve",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noEmitOnError": false,
+    "jsx": "preserve",
     "typeRoots": [
-      "node_modules/@types"
+      "./src/types/definations.d.ts",
+      "./node_modules/@types"
     ],
     "plugins": [
       {
@@ -37,7 +37,9 @@
     ]
   },
   "include": [
-    "src", "logger.js"
+    "src",
+    "index.js",
+    "src/lib/logger.js"
   ],
   "exclude": [
     "node_modules",

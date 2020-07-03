@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$2$1 = require('../node_modules/express/lib/router/index.js');
+
+
+
+exports.default = index$2$1.default;
+//# sourceMappingURL=index3.js_commonjs-proxy.map

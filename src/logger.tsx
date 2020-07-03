@@ -1,42 +1,37 @@
-import React from 'react'
-
-
 export const logger = {
-
-    // log: (log='deneme') => {
-    //     fetch('http://localhost:81/logger', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ log: log, type: 'info' }),
-    // });
-    // },
-    info: (log='deneme') => {
-        fetch('http://localhost:81/logger', {
+  log: (log = 'deneme', type = 'info') => {
+    fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: JSON.stringify(log), type: 'info' }),
+      body: JSON.stringify({ log: log, type: type }),
     });
-    },
-    error: (log='deneme') => {
-        fetch('http://localhost:81/logger', {
+  },
+  info: (log = 'deneme') => {
+    fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: JSON.stringify(log), type: 'error' }),
+      body: JSON.stringify({ log: log, type: 'info' }),
     });
-    },
-    warn: (log='deneme') => {
-        fetch('http://localhost:81/logger', {
+  },
+  error: (log = 'deneme') => {
+    fetch('http://localhost:81/logger', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ log: JSON.stringify(log), type: 'warn' }),
+      body: JSON.stringify({ log: log, type: 'error' }),
     });
-    },
-    debug: (log='deneme') => {
-      fetch('http://localhost:81/logger', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ log: JSON.stringify(log), type: 'debug' }),
-  });
-  }
-    
-}
+  },
+  warn: (log = 'deneme') => {
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ log: log, type: 'warn' }),
+    });
+  },
+  debug: (log = 'deneme') => {
+    fetch('http://localhost:81/logger', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ log: log, type: 'debug' }),
+    });
+  },
+};

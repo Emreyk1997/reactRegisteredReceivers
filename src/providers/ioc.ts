@@ -1,4 +1,3 @@
-
 import { Container } from 'inversify';
 import { IProvider, NameProvider } from './providers';
 

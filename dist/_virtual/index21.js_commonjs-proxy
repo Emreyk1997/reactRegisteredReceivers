@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$5 = require('../node_modules/utils-merge/index.js');
+
+
+
+exports.default = index$5.default;
+//# sourceMappingURL=index21.js_commonjs-proxy.map

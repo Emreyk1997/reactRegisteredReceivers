@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$2 = require('../node_modules/debug/src/index.js');
+
+
+
+exports.default = index$2.default;
+//# sourceMappingURL=index8.js_commonjs-proxy.map

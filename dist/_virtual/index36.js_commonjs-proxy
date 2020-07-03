@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$3$1 = require('../node_modules/etag/index.js');
+
+
+
+exports.default = index$3$1.default;
+//# sourceMappingURL=index36.js_commonjs-proxy.map

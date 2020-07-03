@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$6 = require('../node_modules/destroy/index.js');
+
+
+
+exports.default = index$6.default;
+//# sourceMappingURL=index48.js_commonjs-proxy.map

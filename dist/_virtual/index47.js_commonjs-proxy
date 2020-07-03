@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$3 = require('../node_modules/body-parser/node_modules/qs/lib/index.js');
+
+
+
+exports.default = index$3.default;
+//# sourceMappingURL=index47.js_commonjs-proxy.map

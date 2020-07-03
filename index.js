@@ -1,6 +1,6 @@
 /* eslint-plugin-disable @typescript-eslint */
 
-const { isProd, pkg } = require('./config/utils');
+const { isProd, pkg } = require('./config/constants');
 process.env.NODE_ENV = isProd ? 'production' : 'development';
 process.env.BABEL_ENV = isProd ? 'production' : 'development';
 
@@ -10,12 +10,7 @@ const rimraf = require('rimraf');
 const clientBundler = require('./config/rollup.config.browser');
 const serverBundler = require('./config/rollup.config.server');
 
-// const BrowserConsole = require('winston-transport-browserconsole');
-
-// import BrowserConsole from 'winston-transport-browserconsole';
-
 // Generate fragment json
-
 const build = async () => {
   await rimraf.sync('dist');
 
@@ -34,15 +29,11 @@ const build = async () => {
   await Promise.all([clientSideBuild(), serverBuild()]);
 };
 
-const watch = async () => {
-  await rimraf.sync('dist');
-
-  const watcher = rollup.watch([serverBundler.watchOptions, clientBundler.watchOptions]);
-
+const watcherLog = (watcher) => {
   try {
     watcher.on('event', (event) => {
       if (event.code === 'ERROR') {
-        console.error(event);
+        console.log(event.error);
       } else if (event.code === 'BUNDLE_START' || event.code === 'BUNDLE_END') {
         console.info(`${event.code} ${event.input}`);
       }
@@ -50,6 +41,15 @@ const watch = async () => {
   } catch (err) {
     console.error(err);
   }
+};
+
+const watch = async () => {
+  await rimraf.sync('dist');
+
+  const clientWatcher = rollup.watch(clientBundler.watchOptions);
+  const serverWatcher = rollup.watch(serverBundler.watchOptions);
+  watcherLog(clientWatcher);
+  watcherLog(serverWatcher);
 };
 
 isProd ? build() : watch();

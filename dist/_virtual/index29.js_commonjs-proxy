@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$7 = require('../node_modules/content-disposition/index.js');
+
+
+
+exports.default = index$7.default;
+//# sourceMappingURL=index29.js_commonjs-proxy.map

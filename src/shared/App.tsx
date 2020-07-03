@@ -1,40 +1,28 @@
 import 'reflect-metadata';
-import React from 'react'
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-import { container } from '../providers/ioc';
 import { Provider } from '../providers/ioc.react';
+import ErrorBoundary from '../errorBoundary';
+import NotFound from './NotFound';
+import routes from './routes';
+import client from '../state/config';
+import { container } from '../providers/ioc';
 
-
-import apolloClient from '../store';
-import { ApolloProvider } from '@apollo/client';
-
-import routes from './routes'
-import Navbar from './Navbar'
-import NoMatch from './NoMatch'
-import ErrorBoundary from './errorBoundary'
-import ClassCounter from '../components/classCounter'
-
-const App = props => (
-  <>
+const App = (props) => (
   <Provider container={container}>
-    <ApolloProvider client={apolloClient}>
-    <ErrorBoundary>
-          {/* <ClassCounter/> */}
-      
-        <Navbar />
-
+    <ApolloProvider client={client}>
+      <ErrorBoundary>
         <Switch>
           {routes.map(({ path, exact, component: Component, ...rest }) => (
-            <Route key={path} path={path} exact={exact} render={props => <Component {...props} {...rest} />} />
+            <Route key={path} path={path} exact={exact} render={(props) => <Component {...props} {...rest} />} />
           ))}
-          <Route render={props => <NoMatch {...props} />} />
+          <Route render={(props) => <NotFound {...props} />} />
         </Switch>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </ApolloProvider>
+  </Provider>
+);
 
-      </ApolloProvider>
-    </Provider>
-  </>
-)
-
-export default App
+export default App;

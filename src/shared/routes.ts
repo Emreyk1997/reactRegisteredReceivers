@@ -1,43 +1,17 @@
-import Home from './Home'
-import Grid from './Grid'
-
-import { fetchPopularRepos } from './api'
-import Counter from '../components/counter'
-import CounterFlux from '../components/fluxCounter'
-import ClassCounter from '../components/classCounter'
-import SearchLog from '../components/SearchLog'
-
-
-
+import Counter from './Counter';
+import SearchLog from './SearchLog';
 
 const routes = [
   {
     path: '/',
     exact: true,
-    component: Home
+    component: Counter,
   },
   {
-    path: '/popular/:id',
-    component: Grid,
-    fetchInitialData: (path = '') => fetchPopularRepos(path.split('/').pop())
-  }, {
-    path: '/counter',
-    component: Counter,
-    exact: true
-
-  }, {
-    path: '/counterFlux',
-    component: CounterFlux,
-    // component: ClassCounter,
-    exact: true
-
-  }, {
-    path: '/logs',
+    path: '/log',
+    exact: true,
     component: SearchLog,
-    // component: ClassCounter,
-    exact: true
+  },
+];
 
-  }
-]
-
-export default routes
+export default routes;

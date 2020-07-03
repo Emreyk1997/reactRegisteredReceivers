@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$9 = require('../node_modules/cookie-signature/index.js');
+
+
+
+exports.default = index$9.default;
+//# sourceMappingURL=index31.js_commonjs-proxy.map

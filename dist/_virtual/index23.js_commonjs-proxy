@@ -1,0 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var index$2$1$1 = require('../node_modules/parseurl/index.js');
+
+
+
+exports.default = index$2$1$1.default;
+//# sourceMappingURL=index23.js_commonjs-proxy.map
